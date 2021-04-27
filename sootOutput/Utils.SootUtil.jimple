@@ -1,0 +1,59 @@
+public class Utils.SootUtil extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        Utils.SootUtil r0;
+
+        r0 := @this: Utils.SootUtil;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static java.lang.String checkModifiers(int)
+    {
+        int i0;
+        boolean $z0, $z1, $z2, $z3, $z4;
+
+        i0 := @parameter0: int;
+
+        $z0 = staticinvoke <soot.Modifier: boolean isPublic(int)>(i0);
+
+        if $z0 == 0 goto label1;
+
+        return "public";
+
+     label1:
+        $z1 = staticinvoke <soot.Modifier: boolean isPrivate(int)>(i0);
+
+        if $z1 == 0 goto label2;
+
+        return "private";
+
+     label2:
+        $z2 = staticinvoke <soot.Modifier: boolean isAbstract(int)>(i0);
+
+        if $z2 == 0 goto label3;
+
+        return "abstract";
+
+     label3:
+        $z3 = staticinvoke <soot.Modifier: boolean isFinal(int)>(i0);
+
+        if $z3 == 0 goto label4;
+
+        return "final";
+
+     label4:
+        $z4 = staticinvoke <soot.Modifier: boolean isStatic(int)>(i0);
+
+        if $z4 == 0 goto label5;
+
+        return "static";
+
+     label5:
+        return "error!";
+    }
+}

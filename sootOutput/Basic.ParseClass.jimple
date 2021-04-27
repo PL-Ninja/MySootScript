@@ -1,0 +1,216 @@
+public class Basic.ParseClass extends java.lang.Object
+{
+    private static java.lang.String className;
+
+    public void <init>()
+    {
+        Basic.ParseClass r0;
+
+        r0 := @this: Basic.ParseClass;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        java.lang.String $r0;
+        java.lang.String[] r1;
+
+        r1 := @parameter0: java.lang.String[];
+
+        $r0 = <Basic.ParseClass: java.lang.String className>;
+
+        staticinvoke <Config.SootConfig: void setupSoot(java.lang.String)>($r0);
+
+        staticinvoke <Basic.ParseClass: void getClassInfo()>();
+
+        return;
+    }
+
+    public static void getClassInfo()
+    {
+        soot.Scene $r0, $r10;
+        java.lang.String $r1, r3, r4, r6, $r51;
+        soot.SootClass r2, r7;
+        soot.RefType r5;
+        int i0, i1, i2;
+        boolean z0;
+        soot.util.Chain r8;
+        java.util.List r9;
+        soot.SootMethod r11;
+        java.lang.StringBuilder $r12, $r14, $r15, $r16, $r17, $r18, $r19, $r20, $r21, $r22, $r23, $r24, $r25, $r26, $r27, $r28, $r29, $r30, $r31, $r32, $r33, $r34, $r35, $r36, $r37, $r38, $r39, $r40, $r41, $r42, $r43, $r44, $r45, $r46, $r47, $r48, $r49, $r50;
+        java.io.PrintStream $r13;
+
+        $r0 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        $r1 = <Basic.ParseClass: java.lang.String className>;
+
+        r2 = virtualinvoke $r0.<soot.Scene: soot.SootClass getSootClass(java.lang.String)>($r1);
+
+        r3 = virtualinvoke r2.<soot.SootClass: java.lang.String getName()>();
+
+        r4 = virtualinvoke r2.<soot.SootClass: java.lang.String getJavaPackageName()>();
+
+        r5 = virtualinvoke r2.<soot.SootClass: soot.RefType getType()>();
+
+        i0 = virtualinvoke r2.<soot.SootClass: int getModifiers()>();
+
+        r6 = staticinvoke <Utils.SootUtil: java.lang.String checkModifiers(int)>(i0);
+
+        r7 = virtualinvoke r2.<soot.SootClass: soot.SootClass getSuperclass()>();
+
+        z0 = virtualinvoke r2.<soot.SootClass: boolean isApplicationClass()>();
+
+        i1 = virtualinvoke r2.<soot.SootClass: int getFieldCount()>();
+
+        r8 = virtualinvoke r2.<soot.SootClass: soot.util.Chain getFields()>();
+
+        i2 = virtualinvoke r2.<soot.SootClass: int getMethodCount()>();
+
+        r9 = virtualinvoke r2.<soot.SootClass: java.util.List getMethods()>();
+
+        $r10 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        r11 = virtualinvoke $r10.<soot.Scene: soot.SootMethod getMainMethod()>();
+
+        $r13 = <java.lang.System: java.io.PrintStream out>;
+
+        $r12 = new java.lang.StringBuilder;
+
+        specialinvoke $r12.<java.lang.StringBuilder: void <init>()>();
+
+        $r14 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[class full name] = ");
+
+        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r3);
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[package name] = ");
+
+        $r18 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r4);
+
+        $r19 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[class type] = ");
+
+        $r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r5);
+
+        $r22 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r23 = virtualinvoke $r22.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[modifier type] = ");
+
+        $r24 = virtualinvoke $r23.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r6);
+
+        $r25 = virtualinvoke $r24.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r26 = virtualinvoke $r25.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[super class] = ");
+
+        $r27 = virtualinvoke $r26.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r7);
+
+        $r28 = virtualinvoke $r27.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r29 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[application class] = ");
+
+        $r30 = virtualinvoke $r29.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>(z0);
+
+        $r31 = virtualinvoke $r30.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r32 = virtualinvoke $r31.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("--------------------------------------");
+
+        $r33 = virtualinvoke $r32.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r34 = virtualinvoke $r33.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[field count] = ");
+
+        $r35 = virtualinvoke $r34.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i1);
+
+        $r36 = virtualinvoke $r35.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r37 = virtualinvoke $r36.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[field list] = ");
+
+        $r38 = virtualinvoke $r37.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r8);
+
+        $r39 = virtualinvoke $r38.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r40 = virtualinvoke $r39.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("--------------------------------------");
+
+        $r41 = virtualinvoke $r40.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r42 = virtualinvoke $r41.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[method count] = ");
+
+        $r43 = virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i2);
+
+        $r44 = virtualinvoke $r43.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r45 = virtualinvoke $r44.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[method list] : ");
+
+        $r46 = virtualinvoke $r45.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r9);
+
+        $r47 = virtualinvoke $r46.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r48 = virtualinvoke $r47.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[main method] =  ");
+
+        $r49 = virtualinvoke $r48.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r11);
+
+        $r50 = virtualinvoke $r49.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r51 = virtualinvoke $r50.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r13.<java.io.PrintStream: void print(java.lang.String)>($r51);
+
+        return;
+    }
+
+    private static java.lang.String checkModifiers(int)
+    {
+        int i0;
+        boolean $z0, $z1, $z2, $z3, $z4;
+
+        i0 := @parameter0: int;
+
+        $z0 = staticinvoke <soot.Modifier: boolean isPublic(int)>(i0);
+
+        if $z0 == 0 goto label1;
+
+        return "public";
+
+     label1:
+        $z1 = staticinvoke <soot.Modifier: boolean isPrivate(int)>(i0);
+
+        if $z1 == 0 goto label2;
+
+        return "private";
+
+     label2:
+        $z2 = staticinvoke <soot.Modifier: boolean isAbstract(int)>(i0);
+
+        if $z2 == 0 goto label3;
+
+        return "abstract";
+
+     label3:
+        $z3 = staticinvoke <soot.Modifier: boolean isFinal(int)>(i0);
+
+        if $z3 == 0 goto label4;
+
+        return "final";
+
+     label4:
+        $z4 = staticinvoke <soot.Modifier: boolean isStatic(int)>(i0);
+
+        if $z4 == 0 goto label5;
+
+        return "static";
+
+     label5:
+        return "error!";
+    }
+
+    static void <clinit>()
+    {
+        <Basic.ParseClass: java.lang.String className> = "Demo.Circle";
+
+        return;
+    }
+}

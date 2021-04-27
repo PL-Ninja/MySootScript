@@ -1,0 +1,178 @@
+public class Demo.Circle extends java.lang.Object
+{
+    private int id;
+    private static int circleCount;
+    private final double PI;
+    public int radius;
+
+    public void <init>(int)
+    {
+        Demo.Circle r0;
+        int $i0, $i1, $i2, i3;
+
+        r0 := @this: Demo.Circle;
+
+        i3 := @parameter0: int;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<Demo.Circle: double PI> = 3.1415;
+
+        r0.<Demo.Circle: double PI> = 3.1415;
+
+        $i0 = <Demo.Circle: int circleCount>;
+
+        $i1 = $i0 + 1;
+
+        <Demo.Circle: int circleCount> = $i1;
+
+        $i2 = <Demo.Circle: int circleCount>;
+
+        r0.<Demo.Circle: int id> = $i2;
+
+        r0.<Demo.Circle: int radius> = i3;
+
+        return;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        Demo.Circle $r0;
+        java.lang.String[] r2;
+
+        r2 := @parameter0: java.lang.String[];
+
+        $r0 = new Demo.Circle;
+
+        specialinvoke $r0.<Demo.Circle: void <init>(int)>(5);
+
+        virtualinvoke $r0.<Demo.Circle: int area(boolean)>(0);
+
+        virtualinvoke $r0.<Demo.Circle: int area(boolean)>(1);
+
+        return;
+    }
+
+    public int area()
+    {
+        Demo.Circle r0;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, i10, i11, i12;
+
+        r0 := @this: Demo.Circle;
+
+        i10 = 0;
+
+        $i0 = r0.<Demo.Circle: int radius>;
+
+        i11 = neg $i0;
+
+     label1:
+        $i1 = r0.<Demo.Circle: int radius>;
+
+        if i11 > $i1 goto label5;
+
+        $i2 = r0.<Demo.Circle: int radius>;
+
+        i12 = neg $i2;
+
+     label2:
+        $i3 = r0.<Demo.Circle: int radius>;
+
+        if i12 > $i3 goto label4;
+
+        $i5 = i11 * i11;
+
+        $i4 = i12 * i12;
+
+        $i9 = $i5 + $i4;
+
+        $i7 = r0.<Demo.Circle: int radius>;
+
+        $i6 = r0.<Demo.Circle: int radius>;
+
+        $i8 = $i7 * $i6;
+
+        if $i9 > $i8 goto label3;
+
+        i10 = i10 + 1;
+
+     label3:
+        i12 = i12 + 1;
+
+        goto label2;
+
+     label4:
+        i11 = i11 + 1;
+
+        goto label1;
+
+     label5:
+        return i10;
+    }
+
+    public int area(boolean)
+    {
+        boolean z0;
+        Demo.Circle r0;
+        int $i0, $i1, $i2, $i3;
+        double $d0, $d1, $d2, $d3, $d4;
+        java.lang.Exception $r1;
+
+        r0 := @this: Demo.Circle;
+
+        z0 := @parameter0: boolean;
+
+     label1:
+        staticinvoke <Demo.Circle: int getCircleCount()>();
+
+        if z0 == 0 goto label3;
+
+        $i3 = virtualinvoke r0.<Demo.Circle: int area()>();
+
+     label2:
+        return $i3;
+
+     label3:
+        goto label5;
+
+     label4:
+        $r1 := @caughtexception;
+
+     label5:
+        $i0 = r0.<Demo.Circle: int radius>;
+
+        $d0 = (double) $i0;
+
+        $d2 = 1.0 * $d0;
+
+        $i1 = r0.<Demo.Circle: int radius>;
+
+        $d1 = (double) $i1;
+
+        $d3 = $d2 * $d1;
+
+        $d4 = $d3 * 3.1415;
+
+        $i2 = (int) $d4;
+
+        return $i2;
+
+        catch java.lang.Exception from label1 to label2 with label4;
+    }
+
+    public static int getCircleCount()
+    {
+        int $i0;
+
+        $i0 = <Demo.Circle: int circleCount>;
+
+        return $i0;
+    }
+
+    static void <clinit>()
+    {
+        <Demo.Circle: int circleCount> = 0;
+
+        return;
+    }
+}

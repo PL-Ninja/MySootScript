@@ -1,0 +1,183 @@
+public class Basic.ParseMethod extends java.lang.Object
+{
+    private static java.lang.String className;
+
+    public void <init>()
+    {
+        Basic.ParseMethod r0;
+
+        r0 := @this: Basic.ParseMethod;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        java.lang.String $r0;
+        java.lang.String[] r1;
+
+        r1 := @parameter0: java.lang.String[];
+
+        $r0 = <Basic.ParseMethod: java.lang.String className>;
+
+        staticinvoke <Config.SootConfig: void setupSoot(java.lang.String)>($r0);
+
+        staticinvoke <Basic.ParseMethod: void getMethodInfo()>();
+
+        return;
+    }
+
+    private static void getMethodInfo()
+    {
+        soot.Scene $r0;
+        java.lang.String $r1, $r7, $r9, $r14, $r24, r25, $r29, $r31, $r36, r37, $r42;
+        soot.SootClass r2, $r22;
+        java.util.List r3;
+        java.lang.StringBuilder $r4, $r6, $r8, $r10, $r12, $r13, $r19, $r21, $r23, $r26, $r28, $r30, $r32, $r34, $r35, $r38, $r40, $r41;
+        java.io.PrintStream $r5, $r11, $r15, $r20, $r27, $r33, $r39, $r43;
+        int $i0, $i1;
+        java.util.Iterator r16;
+        boolean $z0;
+        java.lang.Object $r17;
+        soot.SootMethod r18;
+
+        $r0 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        $r1 = <Basic.ParseMethod: java.lang.String className>;
+
+        r2 = virtualinvoke $r0.<soot.Scene: soot.SootClass getSootClass(java.lang.String)>($r1);
+
+        r3 = virtualinvoke r2.<soot.SootClass: java.util.List getMethods()>();
+
+        $r5 = <java.lang.System: java.io.PrintStream out>;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r6 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[class name] = ");
+
+        $r7 = virtualinvoke r2.<soot.SootClass: java.lang.String getName()>();
+
+        $r8 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r5.<java.io.PrintStream: void println(java.lang.String)>($r9);
+
+        $r11 = <java.lang.System: java.io.PrintStream out>;
+
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>()>();
+
+        $r12 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[method] = ");
+
+        $i0 = virtualinvoke r2.<soot.SootClass: int getMethodCount()>();
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r11.<java.io.PrintStream: void println(java.lang.String)>($r14);
+
+        $r15 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $r15.<java.io.PrintStream: void println(java.lang.String)>("---------------------------------");
+
+        r16 = interfaceinvoke r3.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke r16.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r17 = interfaceinvoke r16.<java.util.Iterator: java.lang.Object next()>();
+
+        r18 = (soot.SootMethod) $r17;
+
+        $r20 = <java.lang.System: java.io.PrintStream out>;
+
+        $r19 = new java.lang.StringBuilder;
+
+        specialinvoke $r19.<java.lang.StringBuilder: void <init>()>();
+
+        $r21 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[declaring class] = ");
+
+        $r22 = virtualinvoke r18.<soot.SootMethod: soot.SootClass getDeclaringClass()>();
+
+        $r23 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r22);
+
+        $r24 = virtualinvoke $r23.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r20.<java.io.PrintStream: void println(java.lang.String)>($r24);
+
+        r25 = virtualinvoke r18.<soot.SootMethod: java.lang.String getSignature()>();
+
+        $r27 = <java.lang.System: java.io.PrintStream out>;
+
+        $r26 = new java.lang.StringBuilder;
+
+        specialinvoke $r26.<java.lang.StringBuilder: void <init>()>();
+
+        $r28 = virtualinvoke $r26.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[modify type] = ");
+
+        $i1 = virtualinvoke r18.<soot.SootMethod: int getModifiers()>();
+
+        $r29 = staticinvoke <Utils.SootUtil: java.lang.String checkModifiers(int)>($i1);
+
+        $r30 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r29);
+
+        $r31 = virtualinvoke $r30.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r27.<java.io.PrintStream: void println(java.lang.String)>($r31);
+
+        $r33 = <java.lang.System: java.io.PrintStream out>;
+
+        $r32 = new java.lang.StringBuilder;
+
+        specialinvoke $r32.<java.lang.StringBuilder: void <init>()>();
+
+        $r34 = virtualinvoke $r32.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[signature] = ");
+
+        $r35 = virtualinvoke $r34.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r25);
+
+        $r36 = virtualinvoke $r35.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r33.<java.io.PrintStream: void println(java.lang.String)>($r36);
+
+        r37 = virtualinvoke r18.<soot.SootMethod: java.lang.String getSubSignature()>();
+
+        $r39 = <java.lang.System: java.io.PrintStream out>;
+
+        $r38 = new java.lang.StringBuilder;
+
+        specialinvoke $r38.<java.lang.StringBuilder: void <init>()>();
+
+        $r40 = virtualinvoke $r38.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[sub signature] = ");
+
+        $r41 = virtualinvoke $r40.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r37);
+
+        $r42 = virtualinvoke $r41.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r39.<java.io.PrintStream: void println(java.lang.String)>($r42);
+
+        $r43 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $r43.<java.io.PrintStream: void println(java.lang.String)>("-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    static void <clinit>()
+    {
+        <Basic.ParseMethod: java.lang.String className> = "Demo.Circle";
+
+        return;
+    }
+}

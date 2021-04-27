@@ -1,0 +1,41 @@
+public class Basic.ClassJimple2File extends java.lang.Object
+{
+    private static java.lang.String className;
+
+    public void <init>()
+    {
+        Basic.ClassJimple2File r0;
+
+        r0 := @this: Basic.ClassJimple2File;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void main(java.lang.String[]) throws java.lang.Exception
+    {
+        java.lang.String $r0;
+        soot.PackManager $r1;
+        java.lang.String[] r2;
+
+        r2 := @parameter0: java.lang.String[];
+
+        $r0 = <Basic.ClassJimple2File: java.lang.String className>;
+
+        staticinvoke <Config.SootConfig: void setupSoot(java.lang.String)>($r0);
+
+        $r1 = staticinvoke <soot.PackManager: soot.PackManager v()>();
+
+        virtualinvoke $r1.<soot.PackManager: void writeOutput()>();
+
+        return;
+    }
+
+    static void <clinit>()
+    {
+        <Basic.ClassJimple2File: java.lang.String className> = "Demo.Circle";
+
+        return;
+    }
+}

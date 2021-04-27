@@ -1,0 +1,186 @@
+public class Basic.ParseMethodBody extends java.lang.Object
+{
+    private static java.lang.String className;
+    private static final java.lang.String methodSubSignature;
+
+    public void <init>()
+    {
+        Basic.ParseMethodBody r0;
+
+        r0 := @this: Basic.ParseMethodBody;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        java.lang.String $r0;
+        java.lang.String[] r1;
+
+        r1 := @parameter0: java.lang.String[];
+
+        $r0 = <Basic.ParseMethodBody: java.lang.String className>;
+
+        staticinvoke <Config.SootConfig: void setupSoot(java.lang.String)>($r0);
+
+        staticinvoke <Basic.ParseMethodBody: void getMethodBodyInfo()>();
+
+        return;
+    }
+
+    private static void getMethodBodyInfo()
+    {
+        soot.Scene $r0;
+        java.lang.String $r1, $r15, $r19, $r23, $r27, $r59;
+        soot.SootClass r2;
+        soot.SootMethod r3;
+        soot.Body $r4;
+        soot.jimple.JimpleBody r5;
+        int i0;
+        soot.util.Chain r6, r8;
+        soot.UnitPatchingChain r7;
+        soot.Local r9, r11;
+        soot.Type r10;
+        java.lang.StringBuilder $r12, $r14, $r16, $r17, $r18, $r20, $r21, $r22, $r24, $r25, $r26, $r28, $r29, $r30, $r31, $r32, $r33, $r34, $r35, $r36, $r37, $r38, $r39, $r40, $r41, $r42, $r43, $r44, $r45, $r46, $r47, $r48, $r49, $r50, $r51, $r52, $r53, $r54, $r55, $r56, $r57, $r58;
+        java.io.PrintStream $r13;
+
+        $r0 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        $r1 = <Basic.ParseMethodBody: java.lang.String className>;
+
+        r2 = virtualinvoke $r0.<soot.Scene: soot.SootClass getSootClass(java.lang.String)>($r1);
+
+        r3 = virtualinvoke r2.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("int area(boolean)");
+
+        $r4 = virtualinvoke r3.<soot.SootMethod: soot.Body retrieveActiveBody()>();
+
+        r5 = (soot.jimple.JimpleBody) $r4;
+
+        i0 = virtualinvoke r5.<soot.jimple.JimpleBody: int getLocalCount()>();
+
+        r6 = virtualinvoke r5.<soot.jimple.JimpleBody: soot.util.Chain getLocals()>();
+
+        r7 = virtualinvoke r5.<soot.jimple.JimpleBody: soot.UnitPatchingChain getUnits()>();
+
+        r8 = virtualinvoke r5.<soot.jimple.JimpleBody: soot.util.Chain getTraps()>();
+
+        r9 = virtualinvoke r5.<soot.jimple.JimpleBody: soot.Local getThisLocal()>();
+
+        r10 = interfaceinvoke r9.<soot.Local: soot.Type getType()>();
+
+        r11 = virtualinvoke r5.<soot.jimple.JimpleBody: soot.Local getParameterLocal(int)>(0);
+
+        $r13 = <java.lang.System: java.io.PrintStream out>;
+
+        $r12 = new java.lang.StringBuilder;
+
+        specialinvoke $r12.<java.lang.StringBuilder: void <init>()>();
+
+        $r14 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[class name] = ");
+
+        $r15 = virtualinvoke r2.<soot.SootClass: java.lang.String getName()>();
+
+        $r16 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r15);
+
+        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r18 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[method name] = ");
+
+        $r19 = virtualinvoke r3.<soot.SootMethod: java.lang.String getName()>();
+
+        $r20 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r19);
+
+        $r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r22 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[method signature] = ");
+
+        $r23 = virtualinvoke r3.<soot.SootMethod: java.lang.String getSignature()>();
+
+        $r24 = virtualinvoke $r22.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r23);
+
+        $r25 = virtualinvoke $r24.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r26 = virtualinvoke $r25.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[method signature] = ");
+
+        $r27 = virtualinvoke r3.<soot.SootMethod: java.lang.String getSubSignature()>();
+
+        $r28 = virtualinvoke $r26.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r27);
+
+        $r29 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r30 = virtualinvoke $r29.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("--------------------------------------");
+
+        $r31 = virtualinvoke $r30.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r32 = virtualinvoke $r31.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[locals count] = ");
+
+        $r33 = virtualinvoke $r32.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r34 = virtualinvoke $r33.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r35 = virtualinvoke $r34.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[local  list] = ");
+
+        $r36 = virtualinvoke $r35.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r6);
+
+        $r37 = virtualinvoke $r36.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r38 = virtualinvoke $r37.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("--------------------------------------");
+
+        $r39 = virtualinvoke $r38.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r40 = virtualinvoke $r39.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[unit list] = ");
+
+        $r41 = virtualinvoke $r40.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r7);
+
+        $r42 = virtualinvoke $r41.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r43 = virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("--------------------------------------");
+
+        $r44 = virtualinvoke $r43.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r45 = virtualinvoke $r44.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[exception] = ");
+
+        $r46 = virtualinvoke $r45.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r8);
+
+        $r47 = virtualinvoke $r46.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r48 = virtualinvoke $r47.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("--------------------------------------");
+
+        $r49 = virtualinvoke $r48.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r50 = virtualinvoke $r49.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[this] = ");
+
+        $r51 = virtualinvoke $r50.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r9);
+
+        $r52 = virtualinvoke $r51.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r53 = virtualinvoke $r52.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[this type] = ");
+
+        $r54 = virtualinvoke $r53.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r10);
+
+        $r55 = virtualinvoke $r54.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r56 = virtualinvoke $r55.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[0th local] = ");
+
+        $r57 = virtualinvoke $r56.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r11);
+
+        $r58 = virtualinvoke $r57.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $r59 = virtualinvoke $r58.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r13.<java.io.PrintStream: void print(java.lang.String)>($r59);
+
+        return;
+    }
+
+    static void <clinit>()
+    {
+        <Basic.ParseMethodBody: java.lang.String methodSubSignature> = "int area(boolean)";
+
+        <Basic.ParseMethodBody: java.lang.String className> = "Demo.Circle";
+
+        return;
+    }
+}

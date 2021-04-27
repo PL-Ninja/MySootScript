@@ -1,0 +1,166 @@
+public class Config.SootConfig extends java.lang.Object
+{
+    public static final java.lang.String sourceDirectory;
+
+    public void <init>()
+    {
+        Config.SootConfig r0;
+
+        r0 := @this: Config.SootConfig;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void setupSoot(java.lang.String)
+    {
+        soot.options.Options $r0, $r1, $r2, $r3, $r5, $r6, $r9, $r15, $r16, $r17, $r18;
+        java.lang.String $r4, $r7, r13;
+        java.util.List $r8;
+        soot.Scene $r10, $r12;
+        soot.PackManager $r11;
+        soot.SootClass r14;
+
+        r13 := @parameter0: java.lang.String;
+
+        staticinvoke <soot.G: void reset()>();
+
+        $r0 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+
+        virtualinvoke $r0.<soot.options.Options: void set_prepend_classpath(boolean)>(1);
+
+        $r1 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+
+        virtualinvoke $r1.<soot.options.Options: void set_allow_phantom_refs(boolean)>(1);
+
+        $r2 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+
+        virtualinvoke $r2.<soot.options.Options: void set_keep_line_number(boolean)>(1);
+
+        $r3 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+
+        $r4 = <Config.SootConfig: java.lang.String sourceDirectory>;
+
+        virtualinvoke $r3.<soot.options.Options: void set_soot_classpath(java.lang.String)>($r4);
+
+        $r5 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+
+        virtualinvoke $r5.<soot.options.Options: void set_output_format(int)>(1);
+
+        $r6 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+
+        $r7 = <Config.SootConfig: java.lang.String sourceDirectory>;
+
+        $r8 = staticinvoke <java.util.Collections: java.util.List singletonList(java.lang.Object)>($r7);
+
+        virtualinvoke $r6.<soot.options.Options: void set_process_dir(java.util.List)>($r8);
+
+        $r9 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+
+        virtualinvoke $r9.<soot.options.Options: void set_whole_program(boolean)>(1);
+
+        $r10 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        virtualinvoke $r10.<soot.Scene: void loadNecessaryClasses()>();
+
+        $r11 = staticinvoke <soot.PackManager: soot.PackManager v()>();
+
+        virtualinvoke $r11.<soot.PackManager: void runPacks()>();
+
+        $r12 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        r14 = virtualinvoke $r12.<soot.Scene: soot.SootClass loadClassAndSupport(java.lang.String)>(r13);
+
+        virtualinvoke r14.<soot.SootClass: void setApplicationClass()>();
+
+        $r15 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+
+        virtualinvoke $r15.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "on");
+
+        $r16 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+
+        virtualinvoke $r16.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "enabled:true");
+
+        $r17 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+
+        virtualinvoke $r17.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "verbose:true");
+
+        $r18 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+
+        virtualinvoke $r18.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "on-fly-cg:true");
+
+        return;
+    }
+
+    public static void getBasicInfo()
+    {
+        soot.Scene $r0, $r2, $r4, $r6, $r8, $r10, $r12, $r14;
+
+        $r0 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        virtualinvoke $r0.<soot.Scene: soot.SootClass getMainClass()>();
+
+        $r2 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        virtualinvoke $r2.<soot.Scene: soot.SootMethod getMainMethod()>();
+
+        $r4 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        virtualinvoke $r4.<soot.Scene: soot.util.Chain getLibraryClasses()>();
+
+        $r6 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        virtualinvoke $r6.<soot.Scene: soot.util.Chain getApplicationClasses()>();
+
+        $r8 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        virtualinvoke $r8.<soot.Scene: java.util.Set getBasicClasses()>();
+
+        $r10 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        virtualinvoke $r10.<soot.Scene: soot.util.Chain getClasses()>();
+
+        $r12 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        virtualinvoke $r12.<soot.Scene: java.lang.String getSootClassPath()>();
+
+        $r14 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        virtualinvoke $r14.<soot.Scene: java.lang.String defaultClassPath()>();
+
+        return;
+    }
+
+    static void <clinit>()
+    {
+        java.lang.StringBuilder $r0, $r2, $r4, $r5, $r7, $r8;
+        java.lang.String $r1, $r3, $r6, $r9;
+
+        $r0 = new java.lang.StringBuilder;
+
+        specialinvoke $r0.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("user.dir");
+
+        $r2 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r3 = <java.io.File: java.lang.String separator>;
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("target");
+
+        $r6 = <java.io.File: java.lang.String separator>;
+
+        $r7 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("classes");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        <Config.SootConfig: java.lang.String sourceDirectory> = $r9;
+
+        return;
+    }
+}
