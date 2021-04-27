@@ -1,0 +1,79 @@
+final class Basic.ParseExpr$3 extends soot.jimple.AbstractRefSwitch
+{
+
+    void <init>()
+    {
+        Basic.ParseExpr$3 r0;
+
+        r0 := @this: Basic.ParseExpr$3;
+
+        specialinvoke r0.<soot.jimple.AbstractRefSwitch: void <init>()>();
+
+        return;
+    }
+
+    public void caseStaticFieldRef(soot.jimple.StaticFieldRef)
+    {
+        Basic.ParseExpr$3 r0;
+        soot.jimple.StaticFieldRef r1;
+
+        r0 := @this: Basic.ParseExpr$3;
+
+        r1 := @parameter0: soot.jimple.StaticFieldRef;
+
+        return;
+    }
+
+    public void caseInstanceFieldRef(soot.jimple.InstanceFieldRef)
+    {
+        soot.jimple.InstanceFieldRef r0;
+        soot.Value r1;
+        soot.SootField r2;
+        soot.SootFieldRef r3;
+        soot.Type r4;
+        java.lang.StringBuilder $r5, $r7, $r8, $r9, $r10, $r11, $r12, $r13, $r14;
+        java.io.PrintStream $r6;
+        java.lang.String $r15;
+        Basic.ParseExpr$3 r16;
+
+        r16 := @this: Basic.ParseExpr$3;
+
+        r0 := @parameter0: soot.jimple.InstanceFieldRef;
+
+        r1 = interfaceinvoke r0.<soot.jimple.InstanceFieldRef: soot.Value getBase()>();
+
+        r2 = interfaceinvoke r0.<soot.jimple.InstanceFieldRef: soot.SootField getField()>();
+
+        r3 = interfaceinvoke r0.<soot.jimple.InstanceFieldRef: soot.SootFieldRef getFieldRef()>();
+
+        r4 = interfaceinvoke r0.<soot.jimple.InstanceFieldRef: soot.Type getType()>();
+
+        $r6 = <java.lang.System: java.io.PrintStream out>;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r7 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("baseVar = ");
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; field = ");
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r2);
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; fieldRef = ");
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r3);
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; fieldType = ");
+
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r4);
+
+        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r6.<java.io.PrintStream: void println(java.lang.String)>($r15);
+
+        return;
+    }
+}

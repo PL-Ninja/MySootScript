@@ -1,0 +1,14 @@
+public class Graph.BuildCallGraph extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        Graph.BuildCallGraph r0;
+
+        r0 := @this: Graph.BuildCallGraph;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

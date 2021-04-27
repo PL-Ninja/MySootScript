@@ -1,0 +1,40 @@
+public class Demo.CFGDemo extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        Demo.CFGDemo r0;
+
+        r0 := @this: Demo.CFGDemo;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public java.lang.String begin(java.lang.String) throws java.io.IOException
+    {
+        Demo.A $r0;
+        java.lang.String r1, r2, $r4;
+        Demo.B $r3;
+        Demo.CFGDemo r5;
+
+        r5 := @this: Demo.CFGDemo;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r0 = new Demo.A;
+
+        specialinvoke $r0.<Demo.A: void <init>()>();
+
+        r2 = virtualinvoke $r0.<Demo.A: java.lang.String method1(java.lang.String)>(r1);
+
+        $r3 = new Demo.B;
+
+        specialinvoke $r3.<Demo.B: void <init>()>();
+
+        $r4 = virtualinvoke $r3.<Demo.B: java.lang.String method2(java.lang.String)>(r2);
+
+        return $r4;
+    }
+}
