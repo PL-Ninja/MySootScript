@@ -1,11 +1,11 @@
-public class Demo.CFGDemo extends java.lang.Object
+public class Demo.CGDemo extends java.lang.Object
 {
 
     public void <init>()
     {
-        Demo.CFGDemo r0;
+        Demo.CGDemo r0;
 
-        r0 := @this: Demo.CFGDemo;
+        r0 := @this: Demo.CGDemo;
 
         specialinvoke r0.<java.lang.Object: void <init>()>();
 
@@ -17,9 +17,9 @@ public class Demo.CFGDemo extends java.lang.Object
         Demo.A $r0;
         java.lang.String r1, r2, $r4;
         Demo.B $r3;
-        Demo.CFGDemo r5;
+        Demo.CGDemo r5;
 
-        r5 := @this: Demo.CFGDemo;
+        r5 := @this: Demo.CGDemo;
 
         r1 := @parameter0: java.lang.String;
 
