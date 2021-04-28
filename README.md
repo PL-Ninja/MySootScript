@@ -1,7 +1,7 @@
 # MySootScript
 
 [soot](https://github.com/soot-oss/soot)是一个十分强大的框架，但是苦于官方文档晦涩难懂，一度十分头大，陷入自闭。
-在这里记录我在学习[soot](https://github.com/soot-oss/soot)过程中写的代码，会保持更新。
+在这里记录我在学习soot过程中写的代码，会保持更新。
 我会结合soot的API以及自己的理解，写一些小例子，相信对大家熟练soot的使用有很大的帮助。
 如果这部分内容对你有帮助，欢迎star & issue，期待和大家的交流。
 
