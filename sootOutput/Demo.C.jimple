@@ -3,24 +3,24 @@ class Demo.C extends java.lang.Object
 
     void <init>()
     {
-        Demo.C r0;
+        Demo.C this;
 
-        r0 := @this: Demo.C;
+        this := @this: Demo.C;
 
-        specialinvoke r0.<java.lang.Object: void <init>()>();
+        specialinvoke this.<java.lang.Object: void <init>()>();
 
         return;
     }
 
     public java.lang.String method3(java.lang.String)
     {
-        java.lang.String r0;
-        Demo.C r1;
+        java.lang.String param;
+        Demo.C this;
 
-        r1 := @this: Demo.C;
+        this := @this: Demo.C;
 
-        r0 := @parameter0: java.lang.String;
+        param := @parameter0: java.lang.String;
 
-        return r0;
+        return param;
     }
 }

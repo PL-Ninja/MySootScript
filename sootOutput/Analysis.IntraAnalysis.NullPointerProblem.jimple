@@ -1,0 +1,98 @@
+public class Analysis.IntraAnalysis.NullPointerProblem extends java.lang.Object
+{
+    public static java.lang.String className;
+
+    public void <init>()
+    {
+        Analysis.IntraAnalysis.NullPointerProblem this;
+
+        this := @this: Analysis.IntraAnalysis.NullPointerProblem;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void main(java.lang.String[]) throws java.lang.Exception
+    {
+        java.lang.String $stack1;
+        java.lang.String[] args;
+
+        args := @parameter0: java.lang.String[];
+
+        $stack1 = <Analysis.IntraAnalysis.NullPointerProblem: java.lang.String className>;
+
+        staticinvoke <Config.SootConfig: void setupSoot(java.lang.String)>($stack1);
+
+        staticinvoke <Analysis.IntraAnalysis.NullPointerProblem: void findNullPointer()>();
+
+        return;
+    }
+
+    public static void findNullPointer()
+    {
+        soot.Scene $stack4;
+        java.lang.String $stack5, $stack14, $stack16;
+        soot.SootClass sc;
+        java.util.List $stack7;
+        java.util.Iterator l1;
+        boolean $stack9;
+        java.lang.Object $stack10;
+        soot.SootMethod method;
+        java.lang.StringBuilder $stack11, $stack13, $stack15;
+        java.io.PrintStream $stack12;
+        soot.Body $stack17;
+        soot.jimple.JimpleBody l3;
+
+        $stack4 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        $stack5 = <Analysis.IntraAnalysis.NullPointerProblem: java.lang.String className>;
+
+        sc = virtualinvoke $stack4.<soot.Scene: soot.SootClass getSootClass(java.lang.String)>($stack5);
+
+        $stack7 = virtualinvoke sc.<soot.SootClass: java.util.List getMethods()>();
+
+        l1 = interfaceinvoke $stack7.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $stack9 = interfaceinvoke l1.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack9 == 0 goto label2;
+
+        $stack10 = interfaceinvoke l1.<java.util.Iterator: java.lang.Object next()>();
+
+        method = (soot.SootMethod) $stack10;
+
+        $stack12 = <java.lang.System: java.io.PrintStream out>;
+
+        $stack11 = new java.lang.StringBuilder;
+
+        specialinvoke $stack11.<java.lang.StringBuilder: void <init>()>();
+
+        $stack13 = virtualinvoke $stack11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Method: ");
+
+        $stack14 = virtualinvoke method.<soot.SootMethod: java.lang.String getSignature()>();
+
+        $stack15 = virtualinvoke $stack13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack14);
+
+        $stack16 = virtualinvoke $stack15.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $stack12.<java.io.PrintStream: void println(java.lang.String)>($stack16);
+
+        $stack17 = virtualinvoke method.<soot.SootMethod: soot.Body retrieveActiveBody()>();
+
+        l3 = (soot.jimple.JimpleBody) $stack17;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    static void <clinit>()
+    {
+        <Analysis.IntraAnalysis.NullPointerProblem: java.lang.String className> = "Demo.NullPointerExample";
+
+        return;
+    }
+}

@@ -5,25 +5,25 @@ public class Basic.MethodJimple2File extends java.lang.Object
 
     public void <init>()
     {
-        Basic.MethodJimple2File r0;
+        Basic.MethodJimple2File this;
 
-        r0 := @this: Basic.MethodJimple2File;
+        this := @this: Basic.MethodJimple2File;
 
-        specialinvoke r0.<java.lang.Object: void <init>()>();
+        specialinvoke this.<java.lang.Object: void <init>()>();
 
         return;
     }
 
     public static void main(java.lang.String[]) throws java.lang.Exception
     {
-        java.lang.String $r0;
-        java.lang.String[] r1;
+        java.lang.String $stack1;
+        java.lang.String[] args;
 
-        r1 := @parameter0: java.lang.String[];
+        args := @parameter0: java.lang.String[];
 
-        $r0 = <Basic.MethodJimple2File: java.lang.String className>;
+        $stack1 = <Basic.MethodJimple2File: java.lang.String className>;
 
-        staticinvoke <Config.SootConfig: void setupSoot(java.lang.String)>($r0);
+        staticinvoke <Config.SootConfig: void setupSoot(java.lang.String)>($stack1);
 
         staticinvoke <Basic.MethodJimple2File: void method2JimpleFile()>();
 
@@ -32,126 +32,126 @@ public class Basic.MethodJimple2File extends java.lang.Object
 
     public static void method2JimpleFile() throws java.lang.Exception
     {
-        soot.Scene $r0;
-        java.lang.String $r1, $r8, $r10, $r13, $r15, $r18, $r24, $r35;
-        soot.SootClass r2;
-        soot.SootMethod r3;
-        soot.Body $r4;
-        soot.jimple.JimpleBody r5;
-        java.io.FileWriter $r6;
-        java.lang.StringBuilder $r7, $r9, $r11, $r12, $r14, $r16, $r17;
-        soot.UnitPatchingChain $r20;
-        java.util.Iterator r21;
-        boolean $z0;
-        java.lang.Object[] $r22, $r29, $r33;
-        java.io.PrintStream $r23, $r30;
-        java.lang.Object $r26;
-        soot.Unit r27;
-        soot.jimple.Stmt r28;
-        java.lang.Integer $r31, $r34;
-        int i0;
+        soot.Scene $stack8;
+        java.lang.String $stack9, $stack15, $stack17, $stack20, $stack22, $stack25, $stack33, $stack46;
+        soot.SootClass sc;
+        soot.SootMethod areaMethod;
+        soot.Body $stack12;
+        soot.jimple.JimpleBody areaBody;
+        java.io.FileWriter $stack13;
+        java.lang.StringBuilder $stack14, $stack16, $stack18, $stack19, $stack21, $stack23, $stack24;
+        soot.UnitPatchingChain $stack26;
+        java.util.Iterator l5;
+        boolean $stack28;
+        java.lang.Object[] $stack29, $stack36, $stack42;
+        java.io.PrintStream $stack30, $stack37;
+        java.lang.Object $stack35;
+        soot.Unit unit;
+        soot.jimple.Stmt stmt;
+        java.lang.Integer $stack40, $stack45;
+        int c;
 
-        $r0 = staticinvoke <soot.Scene: soot.Scene v()>();
+        $stack8 = staticinvoke <soot.Scene: soot.Scene v()>();
 
-        $r1 = <Basic.MethodJimple2File: java.lang.String className>;
+        $stack9 = <Basic.MethodJimple2File: java.lang.String className>;
 
-        r2 = virtualinvoke $r0.<soot.Scene: soot.SootClass getSootClass(java.lang.String)>($r1);
+        sc = virtualinvoke $stack8.<soot.Scene: soot.SootClass getSootClass(java.lang.String)>($stack9);
 
-        r3 = virtualinvoke r2.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("int area(boolean)");
+        areaMethod = virtualinvoke sc.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("int area(boolean)");
 
-        $r4 = virtualinvoke r3.<soot.SootMethod: soot.Body retrieveActiveBody()>();
+        $stack12 = virtualinvoke areaMethod.<soot.SootMethod: soot.Body retrieveActiveBody()>();
 
-        r5 = (soot.jimple.JimpleBody) $r4;
+        areaBody = (soot.jimple.JimpleBody) $stack12;
 
-        $r6 = new java.io.FileWriter;
+        $stack13 = new java.io.FileWriter;
 
-        $r7 = new java.lang.StringBuilder;
+        $stack14 = new java.lang.StringBuilder;
 
-        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+        specialinvoke $stack14.<java.lang.StringBuilder: void <init>()>();
 
-        $r8 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("user.dir");
+        $stack15 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("user.dir");
 
-        $r9 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r8);
+        $stack16 = virtualinvoke $stack14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack15);
 
-        $r10 = <java.io.File: java.lang.String separator>;
+        $stack17 = <java.io.File: java.lang.String separator>;
 
-        $r11 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10);
+        $stack18 = virtualinvoke $stack16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack17);
 
-        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("MyJimpleFiles");
+        $stack19 = virtualinvoke $stack18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("MyJimpleFiles");
 
-        $r13 = <java.io.File: java.lang.String separator>;
+        $stack20 = <java.io.File: java.lang.String separator>;
 
-        $r14 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r13);
+        $stack21 = virtualinvoke $stack19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack20);
 
-        $r15 = <Basic.MethodJimple2File: java.lang.String className>;
+        $stack22 = <Basic.MethodJimple2File: java.lang.String className>;
 
-        $r16 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r15);
+        $stack23 = virtualinvoke $stack21.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack22);
 
-        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".jimple");
+        $stack24 = virtualinvoke $stack23.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".jimple");
 
-        $r18 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.String toString()>();
+        $stack25 = virtualinvoke $stack24.<java.lang.StringBuilder: java.lang.String toString()>();
 
-        specialinvoke $r6.<java.io.FileWriter: void <init>(java.lang.String)>($r18);
+        specialinvoke $stack13.<java.io.FileWriter: void <init>(java.lang.String)>($stack25);
 
-        i0 = 0;
+        c = 0;
 
-        $r20 = virtualinvoke r5.<soot.jimple.JimpleBody: soot.UnitPatchingChain getUnits()>();
+        $stack26 = virtualinvoke areaBody.<soot.jimple.JimpleBody: soot.UnitPatchingChain getUnits()>();
 
-        r21 = virtualinvoke $r20.<soot.UnitPatchingChain: java.util.Iterator iterator()>();
+        l5 = virtualinvoke $stack26.<soot.UnitPatchingChain: java.util.Iterator iterator()>();
 
      label1:
-        $z0 = interfaceinvoke r21.<java.util.Iterator: boolean hasNext()>();
+        $stack28 = interfaceinvoke l5.<java.util.Iterator: boolean hasNext()>();
 
-        if $z0 == 0 goto label2;
+        if $stack28 == 0 goto label2;
 
-        $r26 = interfaceinvoke r21.<java.util.Iterator: java.lang.Object next()>();
+        $stack35 = interfaceinvoke l5.<java.util.Iterator: java.lang.Object next()>();
 
-        r27 = (soot.Unit) $r26;
+        unit = (soot.Unit) $stack35;
 
-        i0 = i0 + 1;
+        c = c + 1;
 
-        r28 = (soot.jimple.Stmt) r27;
+        stmt = (soot.jimple.Stmt) unit;
 
-        $r30 = <java.lang.System: java.io.PrintStream out>;
+        $stack37 = <java.lang.System: java.io.PrintStream out>;
 
-        $r29 = newarray (java.lang.Object)[2];
+        $stack36 = newarray (java.lang.Object)[2];
 
-        $r31 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(i0);
+        $stack40 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(c);
 
-        $r29[0] = $r31;
+        $stack36[0] = $stack40;
 
-        $r29[1] = r28;
+        $stack36[1] = stmt;
 
-        virtualinvoke $r30.<java.io.PrintStream: java.io.PrintStream printf(java.lang.String,java.lang.Object[])>("(%d): %s%n", $r29);
+        virtualinvoke $stack37.<java.io.PrintStream: java.io.PrintStream printf(java.lang.String,java.lang.Object[])>("(%d): %s%n", $stack36);
 
-        $r33 = newarray (java.lang.Object)[2];
+        $stack42 = newarray (java.lang.Object)[2];
 
-        $r34 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(i0);
+        $stack45 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(c);
 
-        $r33[0] = $r34;
+        $stack42[0] = $stack45;
 
-        $r33[1] = r28;
+        $stack42[1] = stmt;
 
-        $r35 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("(%d): %s%n", $r33);
+        $stack46 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("(%d): %s%n", $stack42);
 
-        virtualinvoke $r6.<java.io.FileWriter: void write(java.lang.String)>($r35);
+        virtualinvoke $stack13.<java.io.FileWriter: void write(java.lang.String)>($stack46);
 
-        virtualinvoke $r6.<java.io.FileWriter: void flush()>();
+        virtualinvoke $stack13.<java.io.FileWriter: void flush()>();
 
         goto label1;
 
      label2:
-        virtualinvoke $r6.<java.io.FileWriter: void close()>();
+        virtualinvoke $stack13.<java.io.FileWriter: void close()>();
 
-        $r23 = <java.lang.System: java.io.PrintStream out>;
+        $stack30 = <java.lang.System: java.io.PrintStream out>;
 
-        $r22 = newarray (java.lang.Object)[1];
+        $stack29 = newarray (java.lang.Object)[1];
 
-        $r24 = virtualinvoke r3.<soot.SootMethod: java.lang.String getName()>();
+        $stack33 = virtualinvoke areaMethod.<soot.SootMethod: java.lang.String getName()>();
 
-        $r22[0] = $r24;
+        $stack29[0] = $stack33;
 
-        virtualinvoke $r23.<java.io.PrintStream: java.io.PrintStream printf(java.lang.String,java.lang.Object[])>("Method %s \'s jimple file is transformed. \n", $r22);
+        virtualinvoke $stack30.<java.io.PrintStream: java.io.PrintStream printf(java.lang.String,java.lang.Object[])>("Method %s \'s jimple file is transformed. \n", $stack29);
 
         return;
     }

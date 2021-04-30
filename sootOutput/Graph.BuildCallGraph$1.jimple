@@ -5,136 +5,136 @@ final class Graph.BuildCallGraph$1 extends soot.jimple.AbstractExprSwitch
 
     void <init>(java.util.List, java.lang.String)
     {
-        Graph.BuildCallGraph$1 r0;
-        java.util.List r1;
-        java.lang.String r2;
+        Graph.BuildCallGraph$1 this;
+        java.util.List l1;
+        java.lang.String l2;
 
-        r0 := @this: Graph.BuildCallGraph$1;
+        this := @this: Graph.BuildCallGraph$1;
 
-        r1 := @parameter0: java.util.List;
+        l1 := @parameter0: java.util.List;
 
-        r2 := @parameter1: java.lang.String;
+        l2 := @parameter1: java.lang.String;
 
-        r0.<Graph.BuildCallGraph$1: java.util.List val$targetMethodsList> = r1;
+        this.<Graph.BuildCallGraph$1: java.util.List val$targetMethodsList> = l1;
 
-        r0.<Graph.BuildCallGraph$1: java.lang.String val$signature> = r2;
+        this.<Graph.BuildCallGraph$1: java.lang.String val$signature> = l2;
 
-        specialinvoke r0.<soot.jimple.AbstractExprSwitch: void <init>()>();
+        specialinvoke this.<soot.jimple.AbstractExprSwitch: void <init>()>();
 
         return;
     }
 
     public void caseStaticInvokeExpr(soot.jimple.StaticInvokeExpr)
     {
-        Graph.BuildCallGraph$1 r0;
-        soot.jimple.StaticInvokeExpr r1;
-        java.util.List $r2;
-        soot.SootMethod $r3;
+        Graph.BuildCallGraph$1 this;
+        soot.jimple.StaticInvokeExpr v;
+        java.util.List $stack2;
+        soot.SootMethod $stack3;
 
-        r0 := @this: Graph.BuildCallGraph$1;
+        this := @this: Graph.BuildCallGraph$1;
 
-        r1 := @parameter0: soot.jimple.StaticInvokeExpr;
+        v := @parameter0: soot.jimple.StaticInvokeExpr;
 
-        $r2 = r0.<Graph.BuildCallGraph$1: java.util.List val$targetMethodsList>;
+        $stack2 = this.<Graph.BuildCallGraph$1: java.util.List val$targetMethodsList>;
 
-        $r3 = interfaceinvoke r1.<soot.jimple.StaticInvokeExpr: soot.SootMethod getMethod()>();
+        $stack3 = interfaceinvoke v.<soot.jimple.StaticInvokeExpr: soot.SootMethod getMethod()>();
 
-        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>($r3);
+        interfaceinvoke $stack2.<java.util.List: boolean add(java.lang.Object)>($stack3);
 
         return;
     }
 
     public void caseSpecialInvokeExpr(soot.jimple.SpecialInvokeExpr)
     {
-        soot.jimple.SpecialInvokeExpr r0;
-        soot.SootMethod $r1, r5;
-        soot.SootClass r2;
-        Graph.BuildCallGraph$1 r3;
-        java.lang.String $r4;
-        java.util.List $r6;
+        soot.jimple.SpecialInvokeExpr v;
+        soot.SootMethod $stack4, dispatchMethod;
+        soot.SootClass declaringClass;
+        Graph.BuildCallGraph$1 this;
+        java.lang.String $stack6;
+        java.util.List $stack8;
 
-        r3 := @this: Graph.BuildCallGraph$1;
+        this := @this: Graph.BuildCallGraph$1;
 
-        r0 := @parameter0: soot.jimple.SpecialInvokeExpr;
+        v := @parameter0: soot.jimple.SpecialInvokeExpr;
 
-        $r1 = interfaceinvoke r0.<soot.jimple.SpecialInvokeExpr: soot.SootMethod getMethod()>();
+        $stack4 = interfaceinvoke v.<soot.jimple.SpecialInvokeExpr: soot.SootMethod getMethod()>();
 
-        r2 = virtualinvoke $r1.<soot.SootMethod: soot.SootClass getDeclaringClass()>();
+        declaringClass = virtualinvoke $stack4.<soot.SootMethod: soot.SootClass getDeclaringClass()>();
 
-        $r4 = r3.<Graph.BuildCallGraph$1: java.lang.String val$signature>;
+        $stack6 = this.<Graph.BuildCallGraph$1: java.lang.String val$signature>;
 
-        r5 = staticinvoke <Graph.BuildCallGraph: soot.SootMethod Dispatch(soot.SootClass,java.lang.String)>(r2, $r4);
+        dispatchMethod = staticinvoke <Graph.BuildCallGraph: soot.SootMethod Dispatch(soot.SootClass,java.lang.String)>(declaringClass, $stack6);
 
-        $r6 = r3.<Graph.BuildCallGraph$1: java.util.List val$targetMethodsList>;
+        $stack8 = this.<Graph.BuildCallGraph$1: java.util.List val$targetMethodsList>;
 
-        interfaceinvoke $r6.<java.util.List: boolean add(java.lang.Object)>(r5);
+        interfaceinvoke $stack8.<java.util.List: boolean add(java.lang.Object)>(dispatchMethod);
 
         return;
     }
 
     public void caseVirtualInvokeExpr(soot.jimple.VirtualInvokeExpr)
     {
-        soot.Scene $r0, $r6;
-        soot.jimple.VirtualInvokeExpr r1;
-        soot.Value $r2;
-        soot.Type $r3;
-        java.lang.String $r4, $r15;
-        soot.SootClass r5, r13;
-        soot.Hierarchy r7;
-        java.util.ArrayList $r8;
-        java.util.List $r9, $r17;
-        java.util.Iterator r11;
-        boolean $z1;
-        java.lang.Object $r12;
-        Graph.BuildCallGraph$1 r14;
-        soot.SootMethod r16;
+        soot.Scene $stack8, $stack13;
+        soot.jimple.VirtualInvokeExpr v;
+        soot.Value $stack9;
+        soot.Type $stack10;
+        java.lang.String $stack11, $stack21;
+        soot.SootClass baseClass, c;
+        soot.Hierarchy h;
+        java.util.ArrayList $stack15;
+        java.util.List $stack16, $stack23;
+        java.util.Iterator l5;
+        boolean $stack19;
+        java.lang.Object $stack20;
+        Graph.BuildCallGraph$1 this;
+        soot.SootMethod dispatchMethod;
 
-        r14 := @this: Graph.BuildCallGraph$1;
+        this := @this: Graph.BuildCallGraph$1;
 
-        r1 := @parameter0: soot.jimple.VirtualInvokeExpr;
+        v := @parameter0: soot.jimple.VirtualInvokeExpr;
 
-        $r0 = staticinvoke <soot.Scene: soot.Scene v()>();
+        $stack8 = staticinvoke <soot.Scene: soot.Scene v()>();
 
-        $r2 = interfaceinvoke r1.<soot.jimple.VirtualInvokeExpr: soot.Value getBase()>();
+        $stack9 = interfaceinvoke v.<soot.jimple.VirtualInvokeExpr: soot.Value getBase()>();
 
-        $r3 = interfaceinvoke $r2.<soot.Value: soot.Type getType()>();
+        $stack10 = interfaceinvoke $stack9.<soot.Value: soot.Type getType()>();
 
-        $r4 = virtualinvoke $r3.<soot.Type: java.lang.String toString()>();
+        $stack11 = virtualinvoke $stack10.<soot.Type: java.lang.String toString()>();
 
-        r5 = virtualinvoke $r0.<soot.Scene: soot.SootClass getSootClass(java.lang.String)>($r4);
+        baseClass = virtualinvoke $stack8.<soot.Scene: soot.SootClass getSootClass(java.lang.String)>($stack11);
 
-        $r6 = staticinvoke <soot.Scene: soot.Scene v()>();
+        $stack13 = staticinvoke <soot.Scene: soot.Scene v()>();
 
-        r7 = virtualinvoke $r6.<soot.Scene: soot.Hierarchy getActiveHierarchy()>();
+        h = virtualinvoke $stack13.<soot.Scene: soot.Hierarchy getActiveHierarchy()>();
 
-        virtualinvoke r5.<soot.SootClass: void checkLevel(int)>(1);
+        virtualinvoke baseClass.<soot.SootClass: void checkLevel(int)>(1);
 
-        $r8 = new java.util.ArrayList;
+        $stack15 = new java.util.ArrayList;
 
-        $r9 = virtualinvoke r7.<soot.Hierarchy: java.util.List getSubclassesOf(soot.SootClass)>(r5);
+        $stack16 = virtualinvoke h.<soot.Hierarchy: java.util.List getSubclassesOf(soot.SootClass)>(baseClass);
 
-        specialinvoke $r8.<java.util.ArrayList: void <init>(java.util.Collection)>($r9);
+        specialinvoke $stack15.<java.util.ArrayList: void <init>(java.util.Collection)>($stack16);
 
-        interfaceinvoke $r8.<java.util.List: boolean add(java.lang.Object)>(r5);
+        interfaceinvoke $stack15.<java.util.List: boolean add(java.lang.Object)>(baseClass);
 
-        r11 = interfaceinvoke $r8.<java.util.List: java.util.Iterator iterator()>();
+        l5 = interfaceinvoke $stack15.<java.util.List: java.util.Iterator iterator()>();
 
      label1:
-        $z1 = interfaceinvoke r11.<java.util.Iterator: boolean hasNext()>();
+        $stack19 = interfaceinvoke l5.<java.util.Iterator: boolean hasNext()>();
 
-        if $z1 == 0 goto label2;
+        if $stack19 == 0 goto label2;
 
-        $r12 = interfaceinvoke r11.<java.util.Iterator: java.lang.Object next()>();
+        $stack20 = interfaceinvoke l5.<java.util.Iterator: java.lang.Object next()>();
 
-        r13 = (soot.SootClass) $r12;
+        c = (soot.SootClass) $stack20;
 
-        $r15 = r14.<Graph.BuildCallGraph$1: java.lang.String val$signature>;
+        $stack21 = this.<Graph.BuildCallGraph$1: java.lang.String val$signature>;
 
-        r16 = staticinvoke <Graph.BuildCallGraph: soot.SootMethod Dispatch(soot.SootClass,java.lang.String)>(r13, $r15);
+        dispatchMethod = staticinvoke <Graph.BuildCallGraph: soot.SootMethod Dispatch(soot.SootClass,java.lang.String)>(c, $stack21);
 
-        $r17 = r14.<Graph.BuildCallGraph$1: java.util.List val$targetMethodsList>;
+        $stack23 = this.<Graph.BuildCallGraph$1: java.util.List val$targetMethodsList>;
 
-        interfaceinvoke $r17.<java.util.List: boolean add(java.lang.Object)>(r16);
+        interfaceinvoke $stack23.<java.util.List: boolean add(java.lang.Object)>(dispatchMethod);
 
         goto label1;
 

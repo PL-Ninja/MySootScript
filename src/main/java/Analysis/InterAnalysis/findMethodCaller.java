@@ -1,4 +1,4 @@
-package Analysis;
+package Analysis.InterAnalysis;
 
 import Config.SootConfig;
 import soot.*;
@@ -12,24 +12,24 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * @program: MySootScript
  * @description:
  * @author: 0range
- * @create: 2021-04-29 10:46
+ * @create: 2021-04-29 15:48
  **/
 
 
-public class IntraAnalysis {
+public class findMethodCaller {
     public static final String className = "Demo.AnalysisExample";
 
     public static void main(String[] args) throws Exception {
         SootConfig.setupSoot(className);
-        intra();
+        findMCaller();
     }
 
-    public static void intra() {
+    public static void findMCaller() {
         SootClass sc = Scene.v().getSootClass(className);
 
         // 查看哪些方法调用了C方法
         SootMethod method = sc.getMethod("void methodC(java.lang.String)");
-        System.out.println("Analysis the method [ " + method.getName() + " ] from class [ "+sc.getName() + " ] ");
+        System.out.println("Analysis the method [" + method.getName() + "] from class " + "{"+sc.getName() + "}");
 
         // 遍历类中的方法
         for(SootMethod m : sc.getMethods()){

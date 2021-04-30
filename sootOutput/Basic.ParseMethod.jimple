@@ -4,25 +4,25 @@ public class Basic.ParseMethod extends java.lang.Object
 
     public void <init>()
     {
-        Basic.ParseMethod r0;
+        Basic.ParseMethod this;
 
-        r0 := @this: Basic.ParseMethod;
+        this := @this: Basic.ParseMethod;
 
-        specialinvoke r0.<java.lang.Object: void <init>()>();
+        specialinvoke this.<java.lang.Object: void <init>()>();
 
         return;
     }
 
     public static void main(java.lang.String[])
     {
-        java.lang.String $r0;
-        java.lang.String[] r1;
+        java.lang.String $stack1;
+        java.lang.String[] args;
 
-        r1 := @parameter0: java.lang.String[];
+        args := @parameter0: java.lang.String[];
 
-        $r0 = <Basic.ParseMethod: java.lang.String className>;
+        $stack1 = <Basic.ParseMethod: java.lang.String className>;
 
-        staticinvoke <Config.SootConfig: void setupSoot(java.lang.String)>($r0);
+        staticinvoke <Config.SootConfig: void setupSoot(java.lang.String)>($stack1);
 
         staticinvoke <Basic.ParseMethod: void getMethodInfo()>();
 
@@ -31,142 +31,142 @@ public class Basic.ParseMethod extends java.lang.Object
 
     private static void getMethodInfo()
     {
-        soot.Scene $r0;
-        java.lang.String $r1, $r7, $r9, $r14, $r24, r25, $r29, $r31, $r36, r37, $r42;
-        soot.SootClass r2, $r22;
-        java.util.List r3;
-        java.lang.StringBuilder $r4, $r6, $r8, $r10, $r12, $r13, $r19, $r21, $r23, $r26, $r28, $r30, $r32, $r34, $r35, $r38, $r40, $r41;
-        java.io.PrintStream $r5, $r11, $r15, $r20, $r27, $r33, $r39, $r43;
-        int $i0, $i1;
-        java.util.Iterator r16;
-        boolean $z0;
-        java.lang.Object $r17;
-        soot.SootMethod r18;
+        soot.Scene $stack6;
+        java.lang.String $stack7, $stack13, $stack15, $stack21, $stack31, signature, $stack37, $stack39, $stack44, subSignature, $stack50;
+        soot.SootClass sc, $stack29;
+        java.util.List methods;
+        java.lang.StringBuilder $stack10, $stack12, $stack14, $stack16, $stack18, $stack20, $stack26, $stack28, $stack30, $stack33, $stack35, $stack38, $stack40, $stack42, $stack43, $stack46, $stack48, $stack49;
+        java.io.PrintStream $stack11, $stack17, $stack22, $stack27, $stack34, $stack41, $stack47, $stack51;
+        int $stack19, $stack36;
+        java.util.Iterator l2;
+        boolean $stack24;
+        java.lang.Object $stack25;
+        soot.SootMethod method;
 
-        $r0 = staticinvoke <soot.Scene: soot.Scene v()>();
+        $stack6 = staticinvoke <soot.Scene: soot.Scene v()>();
 
-        $r1 = <Basic.ParseMethod: java.lang.String className>;
+        $stack7 = <Basic.ParseMethod: java.lang.String className>;
 
-        r2 = virtualinvoke $r0.<soot.Scene: soot.SootClass getSootClass(java.lang.String)>($r1);
+        sc = virtualinvoke $stack6.<soot.Scene: soot.SootClass getSootClass(java.lang.String)>($stack7);
 
-        r3 = virtualinvoke r2.<soot.SootClass: java.util.List getMethods()>();
+        methods = virtualinvoke sc.<soot.SootClass: java.util.List getMethods()>();
 
-        $r5 = <java.lang.System: java.io.PrintStream out>;
+        $stack11 = <java.lang.System: java.io.PrintStream out>;
 
-        $r4 = new java.lang.StringBuilder;
+        $stack10 = new java.lang.StringBuilder;
 
-        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+        specialinvoke $stack10.<java.lang.StringBuilder: void <init>()>();
 
-        $r6 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[class name] = ");
+        $stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[class name] = ");
 
-        $r7 = virtualinvoke r2.<soot.SootClass: java.lang.String getName()>();
+        $stack13 = virtualinvoke sc.<soot.SootClass: java.lang.String getName()>();
 
-        $r8 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+        $stack14 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack13);
 
-        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+        $stack15 = virtualinvoke $stack14.<java.lang.StringBuilder: java.lang.String toString()>();
 
-        virtualinvoke $r5.<java.io.PrintStream: void println(java.lang.String)>($r9);
+        virtualinvoke $stack11.<java.io.PrintStream: void println(java.lang.String)>($stack15);
 
-        $r11 = <java.lang.System: java.io.PrintStream out>;
+        $stack17 = <java.lang.System: java.io.PrintStream out>;
 
-        $r10 = new java.lang.StringBuilder;
+        $stack16 = new java.lang.StringBuilder;
 
-        specialinvoke $r10.<java.lang.StringBuilder: void <init>()>();
+        specialinvoke $stack16.<java.lang.StringBuilder: void <init>()>();
 
-        $r12 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[method] = ");
+        $stack18 = virtualinvoke $stack16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[method] = ");
 
-        $i0 = virtualinvoke r2.<soot.SootClass: int getMethodCount()>();
+        $stack19 = virtualinvoke sc.<soot.SootClass: int getMethodCount()>();
 
-        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+        $stack20 = virtualinvoke $stack18.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($stack19);
 
-        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+        $stack21 = virtualinvoke $stack20.<java.lang.StringBuilder: java.lang.String toString()>();
 
-        virtualinvoke $r11.<java.io.PrintStream: void println(java.lang.String)>($r14);
+        virtualinvoke $stack17.<java.io.PrintStream: void println(java.lang.String)>($stack21);
 
-        $r15 = <java.lang.System: java.io.PrintStream out>;
+        $stack22 = <java.lang.System: java.io.PrintStream out>;
 
-        virtualinvoke $r15.<java.io.PrintStream: void println(java.lang.String)>("---------------------------------");
+        virtualinvoke $stack22.<java.io.PrintStream: void println(java.lang.String)>("---------------------------------");
 
-        r16 = interfaceinvoke r3.<java.util.List: java.util.Iterator iterator()>();
+        l2 = interfaceinvoke methods.<java.util.List: java.util.Iterator iterator()>();
 
      label1:
-        $z0 = interfaceinvoke r16.<java.util.Iterator: boolean hasNext()>();
+        $stack24 = interfaceinvoke l2.<java.util.Iterator: boolean hasNext()>();
 
-        if $z0 == 0 goto label2;
+        if $stack24 == 0 goto label2;
 
-        $r17 = interfaceinvoke r16.<java.util.Iterator: java.lang.Object next()>();
+        $stack25 = interfaceinvoke l2.<java.util.Iterator: java.lang.Object next()>();
 
-        r18 = (soot.SootMethod) $r17;
+        method = (soot.SootMethod) $stack25;
 
-        $r20 = <java.lang.System: java.io.PrintStream out>;
+        $stack27 = <java.lang.System: java.io.PrintStream out>;
 
-        $r19 = new java.lang.StringBuilder;
+        $stack26 = new java.lang.StringBuilder;
 
-        specialinvoke $r19.<java.lang.StringBuilder: void <init>()>();
+        specialinvoke $stack26.<java.lang.StringBuilder: void <init>()>();
 
-        $r21 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[declaring class] = ");
+        $stack28 = virtualinvoke $stack26.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[declaring class] = ");
 
-        $r22 = virtualinvoke r18.<soot.SootMethod: soot.SootClass getDeclaringClass()>();
+        $stack29 = virtualinvoke method.<soot.SootMethod: soot.SootClass getDeclaringClass()>();
 
-        $r23 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r22);
+        $stack30 = virtualinvoke $stack28.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack29);
 
-        $r24 = virtualinvoke $r23.<java.lang.StringBuilder: java.lang.String toString()>();
+        $stack31 = virtualinvoke $stack30.<java.lang.StringBuilder: java.lang.String toString()>();
 
-        virtualinvoke $r20.<java.io.PrintStream: void println(java.lang.String)>($r24);
+        virtualinvoke $stack27.<java.io.PrintStream: void println(java.lang.String)>($stack31);
 
-        r25 = virtualinvoke r18.<soot.SootMethod: java.lang.String getSignature()>();
+        signature = virtualinvoke method.<soot.SootMethod: java.lang.String getSignature()>();
 
-        $r27 = <java.lang.System: java.io.PrintStream out>;
+        $stack34 = <java.lang.System: java.io.PrintStream out>;
 
-        $r26 = new java.lang.StringBuilder;
+        $stack33 = new java.lang.StringBuilder;
 
-        specialinvoke $r26.<java.lang.StringBuilder: void <init>()>();
+        specialinvoke $stack33.<java.lang.StringBuilder: void <init>()>();
 
-        $r28 = virtualinvoke $r26.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[modify type] = ");
+        $stack35 = virtualinvoke $stack33.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[modify type] = ");
 
-        $i1 = virtualinvoke r18.<soot.SootMethod: int getModifiers()>();
+        $stack36 = virtualinvoke method.<soot.SootMethod: int getModifiers()>();
 
-        $r29 = staticinvoke <Utils.SootUtil: java.lang.String checkModifiers(int)>($i1);
+        $stack37 = staticinvoke <Utils.SootUtil: java.lang.String checkModifiers(int)>($stack36);
 
-        $r30 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r29);
+        $stack38 = virtualinvoke $stack35.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack37);
 
-        $r31 = virtualinvoke $r30.<java.lang.StringBuilder: java.lang.String toString()>();
+        $stack39 = virtualinvoke $stack38.<java.lang.StringBuilder: java.lang.String toString()>();
 
-        virtualinvoke $r27.<java.io.PrintStream: void println(java.lang.String)>($r31);
+        virtualinvoke $stack34.<java.io.PrintStream: void println(java.lang.String)>($stack39);
 
-        $r33 = <java.lang.System: java.io.PrintStream out>;
+        $stack41 = <java.lang.System: java.io.PrintStream out>;
 
-        $r32 = new java.lang.StringBuilder;
+        $stack40 = new java.lang.StringBuilder;
 
-        specialinvoke $r32.<java.lang.StringBuilder: void <init>()>();
+        specialinvoke $stack40.<java.lang.StringBuilder: void <init>()>();
 
-        $r34 = virtualinvoke $r32.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[signature] = ");
+        $stack42 = virtualinvoke $stack40.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[signature] = ");
 
-        $r35 = virtualinvoke $r34.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r25);
+        $stack43 = virtualinvoke $stack42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(signature);
 
-        $r36 = virtualinvoke $r35.<java.lang.StringBuilder: java.lang.String toString()>();
+        $stack44 = virtualinvoke $stack43.<java.lang.StringBuilder: java.lang.String toString()>();
 
-        virtualinvoke $r33.<java.io.PrintStream: void println(java.lang.String)>($r36);
+        virtualinvoke $stack41.<java.io.PrintStream: void println(java.lang.String)>($stack44);
 
-        r37 = virtualinvoke r18.<soot.SootMethod: java.lang.String getSubSignature()>();
+        subSignature = virtualinvoke method.<soot.SootMethod: java.lang.String getSubSignature()>();
 
-        $r39 = <java.lang.System: java.io.PrintStream out>;
+        $stack47 = <java.lang.System: java.io.PrintStream out>;
 
-        $r38 = new java.lang.StringBuilder;
+        $stack46 = new java.lang.StringBuilder;
 
-        specialinvoke $r38.<java.lang.StringBuilder: void <init>()>();
+        specialinvoke $stack46.<java.lang.StringBuilder: void <init>()>();
 
-        $r40 = virtualinvoke $r38.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[sub signature] = ");
+        $stack48 = virtualinvoke $stack46.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[sub signature] = ");
 
-        $r41 = virtualinvoke $r40.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r37);
+        $stack49 = virtualinvoke $stack48.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(subSignature);
 
-        $r42 = virtualinvoke $r41.<java.lang.StringBuilder: java.lang.String toString()>();
+        $stack50 = virtualinvoke $stack49.<java.lang.StringBuilder: java.lang.String toString()>();
 
-        virtualinvoke $r39.<java.io.PrintStream: void println(java.lang.String)>($r42);
+        virtualinvoke $stack47.<java.io.PrintStream: void println(java.lang.String)>($stack50);
 
-        $r43 = <java.lang.System: java.io.PrintStream out>;
+        $stack51 = <java.lang.System: java.io.PrintStream out>;
 
-        virtualinvoke $r43.<java.io.PrintStream: void println(java.lang.String)>("-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+        virtualinvoke $stack51.<java.io.PrintStream: void println(java.lang.String)>("-=-=-=-=-=-=-=-=-=-=-=-=-=-");
 
         goto label1;
 

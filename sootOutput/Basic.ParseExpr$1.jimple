@@ -3,167 +3,167 @@ final class Basic.ParseExpr$1 extends soot.jimple.AbstractExprSwitch
 
     void <init>()
     {
-        Basic.ParseExpr$1 r0;
+        Basic.ParseExpr$1 this;
 
-        r0 := @this: Basic.ParseExpr$1;
+        this := @this: Basic.ParseExpr$1;
 
-        specialinvoke r0.<soot.jimple.AbstractExprSwitch: void <init>()>();
+        specialinvoke this.<soot.jimple.AbstractExprSwitch: void <init>()>();
 
         return;
     }
 
     public void caseInterfaceInvokeExpr(soot.jimple.InterfaceInvokeExpr)
     {
-        Basic.ParseExpr$1 r0;
-        soot.jimple.InterfaceInvokeExpr r1;
+        Basic.ParseExpr$1 this;
+        soot.jimple.InterfaceInvokeExpr v;
 
-        r0 := @this: Basic.ParseExpr$1;
+        this := @this: Basic.ParseExpr$1;
 
-        r1 := @parameter0: soot.jimple.InterfaceInvokeExpr;
+        v := @parameter0: soot.jimple.InterfaceInvokeExpr;
 
-        specialinvoke r0.<soot.jimple.AbstractExprSwitch: void caseInterfaceInvokeExpr(soot.jimple.InterfaceInvokeExpr)>(r1);
+        specialinvoke this.<soot.jimple.AbstractExprSwitch: void caseInterfaceInvokeExpr(soot.jimple.InterfaceInvokeExpr)>(v);
 
         return;
     }
 
     public void caseSpecialInvokeExpr(soot.jimple.SpecialInvokeExpr)
     {
-        Basic.ParseExpr$1 r0;
-        soot.jimple.SpecialInvokeExpr r1;
+        Basic.ParseExpr$1 this;
+        soot.jimple.SpecialInvokeExpr v;
 
-        r0 := @this: Basic.ParseExpr$1;
+        this := @this: Basic.ParseExpr$1;
 
-        r1 := @parameter0: soot.jimple.SpecialInvokeExpr;
+        v := @parameter0: soot.jimple.SpecialInvokeExpr;
 
-        specialinvoke r0.<soot.jimple.AbstractExprSwitch: void caseSpecialInvokeExpr(soot.jimple.SpecialInvokeExpr)>(r1);
+        specialinvoke this.<soot.jimple.AbstractExprSwitch: void caseSpecialInvokeExpr(soot.jimple.SpecialInvokeExpr)>(v);
 
         return;
     }
 
     public void caseStaticInvokeExpr(soot.jimple.StaticInvokeExpr)
     {
-        java.lang.Object[] $r0;
-        soot.jimple.StaticInvokeExpr r1;
-        java.io.PrintStream $r2, $r7, $r13;
-        soot.SootMethod $r3;
-        soot.SootClass $r4;
-        java.lang.StringBuilder $r6, $r8, $r10, $r12, $r14, $r16;
-        soot.SootMethodRef $r9;
-        java.lang.String $r11, $r17;
-        java.util.List $r15;
-        Basic.ParseExpr$1 r18;
+        java.lang.Object[] $stack2;
+        soot.jimple.StaticInvokeExpr v;
+        java.io.PrintStream $stack3, $stack10, $stack16;
+        soot.SootMethod $stack6;
+        soot.SootClass $stack7;
+        java.lang.StringBuilder $stack9, $stack11, $stack13, $stack15, $stack17, $stack19;
+        soot.SootMethodRef $stack12;
+        java.lang.String $stack14, $stack20;
+        java.util.List $stack18;
+        Basic.ParseExpr$1 this;
 
-        r18 := @this: Basic.ParseExpr$1;
+        this := @this: Basic.ParseExpr$1;
 
-        r1 := @parameter0: soot.jimple.StaticInvokeExpr;
+        v := @parameter0: soot.jimple.StaticInvokeExpr;
 
-        $r2 = <java.lang.System: java.io.PrintStream out>;
+        $stack3 = <java.lang.System: java.io.PrintStream out>;
 
-        $r0 = newarray (java.lang.Object)[2];
+        $stack2 = newarray (java.lang.Object)[2];
 
-        $r0[0] = r1;
+        $stack2[0] = v;
 
-        $r3 = interfaceinvoke r1.<soot.jimple.StaticInvokeExpr: soot.SootMethod getMethod()>();
+        $stack6 = interfaceinvoke v.<soot.jimple.StaticInvokeExpr: soot.SootMethod getMethod()>();
 
-        $r4 = virtualinvoke $r3.<soot.SootMethod: soot.SootClass getDeclaringClass()>();
+        $stack7 = virtualinvoke $stack6.<soot.SootMethod: soot.SootClass getDeclaringClass()>();
 
-        $r0[1] = $r4;
+        $stack2[1] = $stack7;
 
-        virtualinvoke $r2.<java.io.PrintStream: java.io.PrintStream printf(java.lang.String,java.lang.Object[])>("[StaticInvoke] StaticInvokeExpr \'%s\' from class \'%s\'%n", $r0);
+        virtualinvoke $stack3.<java.io.PrintStream: java.io.PrintStream printf(java.lang.String,java.lang.Object[])>("[StaticInvoke] StaticInvokeExpr \'%s\' from class \'%s\'%n", $stack2);
 
-        $r7 = <java.lang.System: java.io.PrintStream out>;
+        $stack10 = <java.lang.System: java.io.PrintStream out>;
 
-        $r6 = new java.lang.StringBuilder;
+        $stack9 = new java.lang.StringBuilder;
 
-        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+        specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>();
 
-        $r8 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[MethodRef] ");
+        $stack11 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[MethodRef] ");
 
-        $r9 = interfaceinvoke r1.<soot.jimple.StaticInvokeExpr: soot.SootMethodRef getMethodRef()>();
+        $stack12 = interfaceinvoke v.<soot.jimple.StaticInvokeExpr: soot.SootMethodRef getMethodRef()>();
 
-        $r10 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r9);
+        $stack13 = virtualinvoke $stack11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack12);
 
-        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+        $stack14 = virtualinvoke $stack13.<java.lang.StringBuilder: java.lang.String toString()>();
 
-        virtualinvoke $r7.<java.io.PrintStream: void println(java.lang.String)>($r11);
+        virtualinvoke $stack10.<java.io.PrintStream: void println(java.lang.String)>($stack14);
 
-        $r13 = <java.lang.System: java.io.PrintStream out>;
+        $stack16 = <java.lang.System: java.io.PrintStream out>;
 
-        $r12 = new java.lang.StringBuilder;
+        $stack15 = new java.lang.StringBuilder;
 
-        specialinvoke $r12.<java.lang.StringBuilder: void <init>()>();
+        specialinvoke $stack15.<java.lang.StringBuilder: void <init>()>();
 
-        $r14 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[Args] ");
+        $stack17 = virtualinvoke $stack15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[Args] ");
 
-        $r15 = interfaceinvoke r1.<soot.jimple.StaticInvokeExpr: java.util.List getArgs()>();
+        $stack18 = interfaceinvoke v.<soot.jimple.StaticInvokeExpr: java.util.List getArgs()>();
 
-        $r16 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r15);
+        $stack19 = virtualinvoke $stack17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack18);
 
-        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.String toString()>();
+        $stack20 = virtualinvoke $stack19.<java.lang.StringBuilder: java.lang.String toString()>();
 
-        virtualinvoke $r13.<java.io.PrintStream: void println(java.lang.String)>($r17);
+        virtualinvoke $stack16.<java.io.PrintStream: void println(java.lang.String)>($stack20);
 
         return;
     }
 
     public void caseVirtualInvokeExpr(soot.jimple.VirtualInvokeExpr)
     {
-        java.lang.Object[] $r0;
-        soot.jimple.VirtualInvokeExpr r1;
-        java.io.PrintStream $r2;
-        soot.Value $r3, $r4;
-        soot.Type $r5;
-        Basic.ParseExpr$1 r7;
+        java.lang.Object[] $stack2;
+        soot.jimple.VirtualInvokeExpr v;
+        java.io.PrintStream $stack3;
+        soot.Value $stack6, $stack8;
+        soot.Type $stack9;
+        Basic.ParseExpr$1 this;
 
-        r7 := @this: Basic.ParseExpr$1;
+        this := @this: Basic.ParseExpr$1;
 
-        r1 := @parameter0: soot.jimple.VirtualInvokeExpr;
+        v := @parameter0: soot.jimple.VirtualInvokeExpr;
 
-        $r2 = <java.lang.System: java.io.PrintStream out>;
+        $stack3 = <java.lang.System: java.io.PrintStream out>;
 
-        $r0 = newarray (java.lang.Object)[3];
+        $stack2 = newarray (java.lang.Object)[3];
 
-        $r0[0] = r1;
+        $stack2[0] = v;
 
-        $r3 = interfaceinvoke r1.<soot.jimple.VirtualInvokeExpr: soot.Value getBase()>();
+        $stack6 = interfaceinvoke v.<soot.jimple.VirtualInvokeExpr: soot.Value getBase()>();
 
-        $r0[1] = $r3;
+        $stack2[1] = $stack6;
 
-        $r4 = interfaceinvoke r1.<soot.jimple.VirtualInvokeExpr: soot.Value getBase()>();
+        $stack8 = interfaceinvoke v.<soot.jimple.VirtualInvokeExpr: soot.Value getBase()>();
 
-        $r5 = interfaceinvoke $r4.<soot.Value: soot.Type getType()>();
+        $stack9 = interfaceinvoke $stack8.<soot.Value: soot.Type getType()>();
 
-        $r0[2] = $r5;
+        $stack2[2] = $stack9;
 
-        virtualinvoke $r2.<java.io.PrintStream: java.io.PrintStream printf(java.lang.String,java.lang.Object[])>("[VirtualInvoke] VirtualInvokeExpr \'%s\' from local \'%s\' with type %s %n", $r0);
+        virtualinvoke $stack3.<java.io.PrintStream: java.io.PrintStream printf(java.lang.String,java.lang.Object[])>("[VirtualInvoke] VirtualInvokeExpr \'%s\' from local \'%s\' with type %s %n", $stack2);
 
         return;
     }
 
     public void caseDynamicInvokeExpr(soot.jimple.DynamicInvokeExpr)
     {
-        Basic.ParseExpr$1 r0;
-        soot.jimple.DynamicInvokeExpr r1;
+        Basic.ParseExpr$1 this;
+        soot.jimple.DynamicInvokeExpr v;
 
-        r0 := @this: Basic.ParseExpr$1;
+        this := @this: Basic.ParseExpr$1;
 
-        r1 := @parameter0: soot.jimple.DynamicInvokeExpr;
+        v := @parameter0: soot.jimple.DynamicInvokeExpr;
 
-        specialinvoke r0.<soot.jimple.AbstractExprSwitch: void caseDynamicInvokeExpr(soot.jimple.DynamicInvokeExpr)>(r1);
+        specialinvoke this.<soot.jimple.AbstractExprSwitch: void caseDynamicInvokeExpr(soot.jimple.DynamicInvokeExpr)>(v);
 
         return;
     }
 
     public void defaultCase(java.lang.Object)
     {
-        Basic.ParseExpr$1 r0;
-        java.lang.Object r1;
+        Basic.ParseExpr$1 this;
+        java.lang.Object v;
 
-        r0 := @this: Basic.ParseExpr$1;
+        this := @this: Basic.ParseExpr$1;
 
-        r1 := @parameter0: java.lang.Object;
+        v := @parameter0: java.lang.Object;
 
-        specialinvoke r0.<soot.jimple.AbstractExprSwitch: void defaultCase(java.lang.Object)>(r1);
+        specialinvoke this.<soot.jimple.AbstractExprSwitch: void defaultCase(java.lang.Object)>(v);
 
         return;
     }

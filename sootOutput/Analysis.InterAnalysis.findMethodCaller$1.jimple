@@ -1,0 +1,82 @@
+final class Analysis.InterAnalysis.findMethodCaller$1 extends soot.jimple.AbstractExprSwitch
+{
+
+    void <init>()
+    {
+        Analysis.InterAnalysis.findMethodCaller$1 this;
+
+        this := @this: Analysis.InterAnalysis.findMethodCaller$1;
+
+        specialinvoke this.<soot.jimple.AbstractExprSwitch: void <init>()>();
+
+        return;
+    }
+
+    public void caseVirtualInvokeExpr(soot.jimple.VirtualInvokeExpr)
+    {
+        java.lang.StringBuilder $stack2, $stack4, $stack6, $stack8, $stack10, $stack13, $stack15, $stack17, $stack19;
+        java.io.PrintStream $stack3, $stack9, $stack16;
+        soot.jimple.VirtualInvokeExpr v;
+        soot.Value $stack5, $stack11;
+        java.lang.String $stack7, $stack14, $stack20;
+        soot.Type $stack12;
+        soot.SootMethodRef $stack18;
+        Analysis.InterAnalysis.findMethodCaller$1 this;
+
+        this := @this: Analysis.InterAnalysis.findMethodCaller$1;
+
+        v := @parameter0: soot.jimple.VirtualInvokeExpr;
+
+        $stack3 = <java.lang.System: java.io.PrintStream out>;
+
+        $stack2 = new java.lang.StringBuilder;
+
+        specialinvoke $stack2.<java.lang.StringBuilder: void <init>()>();
+
+        $stack4 = virtualinvoke $stack2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("receiver object = ");
+
+        $stack5 = interfaceinvoke v.<soot.jimple.VirtualInvokeExpr: soot.Value getBase()>();
+
+        $stack6 = virtualinvoke $stack4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack5);
+
+        $stack7 = virtualinvoke $stack6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $stack3.<java.io.PrintStream: void println(java.lang.String)>($stack7);
+
+        $stack9 = <java.lang.System: java.io.PrintStream out>;
+
+        $stack8 = new java.lang.StringBuilder;
+
+        specialinvoke $stack8.<java.lang.StringBuilder: void <init>()>();
+
+        $stack10 = virtualinvoke $stack8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("receiver object\'s class = ");
+
+        $stack11 = interfaceinvoke v.<soot.jimple.VirtualInvokeExpr: soot.Value getBase()>();
+
+        $stack12 = interfaceinvoke $stack11.<soot.Value: soot.Type getType()>();
+
+        $stack13 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack12);
+
+        $stack14 = virtualinvoke $stack13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $stack9.<java.io.PrintStream: void println(java.lang.String)>($stack14);
+
+        $stack16 = <java.lang.System: java.io.PrintStream out>;
+
+        $stack15 = new java.lang.StringBuilder;
+
+        specialinvoke $stack15.<java.lang.StringBuilder: void <init>()>();
+
+        $stack17 = virtualinvoke $stack15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("method ref = ");
+
+        $stack18 = interfaceinvoke v.<soot.jimple.VirtualInvokeExpr: soot.SootMethodRef getMethodRef()>();
+
+        $stack19 = virtualinvoke $stack17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack18);
+
+        $stack20 = virtualinvoke $stack19.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $stack16.<java.io.PrintStream: void println(java.lang.String)>($stack20);
+
+        return;
+    }
+}

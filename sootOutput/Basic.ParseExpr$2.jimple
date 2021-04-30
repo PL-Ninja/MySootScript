@@ -4,77 +4,77 @@ final class Basic.ParseExpr$2 extends soot.jimple.AbstractStmtSwitch
 
     void <init>(soot.jimple.JimpleBody)
     {
-        Basic.ParseExpr$2 r0;
-        soot.jimple.JimpleBody r1;
+        Basic.ParseExpr$2 this;
+        soot.jimple.JimpleBody l1;
 
-        r0 := @this: Basic.ParseExpr$2;
+        this := @this: Basic.ParseExpr$2;
 
-        r1 := @parameter0: soot.jimple.JimpleBody;
+        l1 := @parameter0: soot.jimple.JimpleBody;
 
-        r0.<Basic.ParseExpr$2: soot.jimple.JimpleBody val$areaBody> = r1;
+        this.<Basic.ParseExpr$2: soot.jimple.JimpleBody val$areaBody> = l1;
 
-        specialinvoke r0.<soot.jimple.AbstractStmtSwitch: void <init>()>();
+        specialinvoke this.<soot.jimple.AbstractStmtSwitch: void <init>()>();
 
         return;
     }
 
     public void caseIfStmt(soot.jimple.IfStmt)
     {
-        soot.jimple.IfStmt r0;
-        java.io.PrintStream $r1, $r3, $r12;
-        java.lang.Object[] $r2, $r11;
-        soot.Value $r4, $r13;
-        soot.jimple.Stmt $r5, $r14;
-        Basic.ParseExpr$2 r7;
-        soot.jimple.JimpleBody $r8;
-        soot.UnitPatchingChain $r9;
-        soot.Unit $r10, $r16;
+        soot.jimple.IfStmt stmt;
+        java.io.PrintStream $stack2, $stack4, $stack15;
+        java.lang.Object[] $stack3, $stack14;
+        soot.Value $stack7, $stack18;
+        soot.jimple.Stmt $stack9, $stack20;
+        Basic.ParseExpr$2 this;
+        soot.jimple.JimpleBody $stack11;
+        soot.UnitPatchingChain $stack12;
+        soot.Unit $stack13, $r0;
 
-        r7 := @this: Basic.ParseExpr$2;
+        this := @this: Basic.ParseExpr$2;
 
-        r0 := @parameter0: soot.jimple.IfStmt;
+        stmt := @parameter0: soot.jimple.IfStmt;
 
-        $r1 = <java.lang.System: java.io.PrintStream out>;
+        $stack2 = <java.lang.System: java.io.PrintStream out>;
 
-        virtualinvoke $r1.<java.io.PrintStream: void println(java.lang.Object)>(r0);
+        virtualinvoke $stack2.<java.io.PrintStream: void println(java.lang.Object)>(stmt);
 
-        $r3 = <java.lang.System: java.io.PrintStream out>;
+        $stack4 = <java.lang.System: java.io.PrintStream out>;
 
-        $r2 = newarray (java.lang.Object)[2];
+        $stack3 = newarray (java.lang.Object)[2];
 
-        $r4 = interfaceinvoke r0.<soot.jimple.IfStmt: soot.Value getCondition()>();
+        $stack7 = interfaceinvoke stmt.<soot.jimple.IfStmt: soot.Value getCondition()>();
 
-        $r2[0] = $r4;
+        $stack3[0] = $stack7;
 
-        $r5 = interfaceinvoke r0.<soot.jimple.IfStmt: soot.jimple.Stmt getTarget()>();
+        $stack9 = interfaceinvoke stmt.<soot.jimple.IfStmt: soot.jimple.Stmt getTarget()>();
 
-        $r2[1] = $r5;
+        $stack3[1] = $stack9;
 
-        virtualinvoke $r3.<java.io.PrintStream: java.io.PrintStream printf(java.lang.String,java.lang.Object[])>("[Before change] if condition \'%s\' is true goes to stmt \'%s\'%n", $r2);
+        virtualinvoke $stack4.<java.io.PrintStream: java.io.PrintStream printf(java.lang.String,java.lang.Object[])>("[Before change] if condition \'%s\' is true goes to stmt \'%s\'%n", $stack3);
 
-        $r8 = r7.<Basic.ParseExpr$2: soot.jimple.JimpleBody val$areaBody>;
+        $stack11 = this.<Basic.ParseExpr$2: soot.jimple.JimpleBody val$areaBody>;
 
-        $r9 = virtualinvoke $r8.<soot.jimple.JimpleBody: soot.UnitPatchingChain getUnits()>();
+        $stack12 = virtualinvoke $stack11.<soot.jimple.JimpleBody: soot.UnitPatchingChain getUnits()>();
 
-        $r16 = (soot.Unit) r0;
+        $r0 = (soot.Unit) stmt;
 
-        $r10 = virtualinvoke $r9.<soot.UnitPatchingChain: soot.Unit getSuccOf(soot.Unit)>($r16);
+        $stack13 = virtualinvoke $stack12.<soot.UnitPatchingChain: soot.Unit getSuccOf(soot.Unit)>($r0);
 
-        interfaceinvoke r0.<soot.jimple.IfStmt: void setTarget(soot.Unit)>($r10);
+        interfaceinvoke stmt.<soot.jimple.IfStmt: void setTarget(soot.Unit)>($stack13);
 
-        $r12 = <java.lang.System: java.io.PrintStream out>;
+        $stack15 = <java.lang.System: java.io.PrintStream out>;
 
-        $r11 = newarray (java.lang.Object)[2];
+        $stack14 = newarray (java.lang.Object)[2];
 
-        $r13 = interfaceinvoke r0.<soot.jimple.IfStmt: soot.Value getCondition()>();
+        $stack18 = interfaceinvoke stmt.<soot.jimple.IfStmt: soot.Value getCondition()>();
 
-        $r11[0] = $r13;
+        $stack14[0] = $stack18;
 
-        $r14 = interfaceinvoke r0.<soot.jimple.IfStmt: soot.jimple.Stmt getTarget()>();
+        $stack20 = interfaceinvoke stmt.<soot.jimple.IfStmt: soot.jimple.Stmt getTarget()>();
 
-        $r11[1] = $r14;
+        $stack14[1] = $stack20;
 
-        virtualinvoke $r12.<java.io.PrintStream: java.io.PrintStream printf(java.lang.String,java.lang.Object[])>("[After change] if condition \'%s\' is true goes to stmt \'%s\'%n", $r11);
+        virtualinvoke $stack15.<java.io.PrintStream: java.io.PrintStream printf(java.lang.String,java.lang.Object[])>("[After change] if condition \'%s\' is true goes to stmt \'%s\'%n", $stack14);
 
         return;
     }

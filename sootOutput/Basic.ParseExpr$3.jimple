@@ -3,76 +3,76 @@ final class Basic.ParseExpr$3 extends soot.jimple.AbstractRefSwitch
 
     void <init>()
     {
-        Basic.ParseExpr$3 r0;
+        Basic.ParseExpr$3 this;
 
-        r0 := @this: Basic.ParseExpr$3;
+        this := @this: Basic.ParseExpr$3;
 
-        specialinvoke r0.<soot.jimple.AbstractRefSwitch: void <init>()>();
+        specialinvoke this.<soot.jimple.AbstractRefSwitch: void <init>()>();
 
         return;
     }
 
     public void caseStaticFieldRef(soot.jimple.StaticFieldRef)
     {
-        Basic.ParseExpr$3 r0;
-        soot.jimple.StaticFieldRef r1;
+        Basic.ParseExpr$3 this;
+        soot.jimple.StaticFieldRef v;
 
-        r0 := @this: Basic.ParseExpr$3;
+        this := @this: Basic.ParseExpr$3;
 
-        r1 := @parameter0: soot.jimple.StaticFieldRef;
+        v := @parameter0: soot.jimple.StaticFieldRef;
 
         return;
     }
 
     public void caseInstanceFieldRef(soot.jimple.InstanceFieldRef)
     {
-        soot.jimple.InstanceFieldRef r0;
-        soot.Value r1;
-        soot.SootField r2;
-        soot.SootFieldRef r3;
-        soot.Type r4;
-        java.lang.StringBuilder $r5, $r7, $r8, $r9, $r10, $r11, $r12, $r13, $r14;
-        java.io.PrintStream $r6;
-        java.lang.String $r15;
-        Basic.ParseExpr$3 r16;
+        soot.jimple.InstanceFieldRef v;
+        soot.Value base;
+        soot.SootField field;
+        soot.SootFieldRef fieldRef;
+        soot.Type fieldType;
+        java.lang.StringBuilder $stack10, $stack12, $stack13, $stack14, $stack15, $stack16, $stack17, $stack18, $stack19;
+        java.io.PrintStream $stack11;
+        java.lang.String $stack20;
+        Basic.ParseExpr$3 this;
 
-        r16 := @this: Basic.ParseExpr$3;
+        this := @this: Basic.ParseExpr$3;
 
-        r0 := @parameter0: soot.jimple.InstanceFieldRef;
+        v := @parameter0: soot.jimple.InstanceFieldRef;
 
-        r1 = interfaceinvoke r0.<soot.jimple.InstanceFieldRef: soot.Value getBase()>();
+        base = interfaceinvoke v.<soot.jimple.InstanceFieldRef: soot.Value getBase()>();
 
-        r2 = interfaceinvoke r0.<soot.jimple.InstanceFieldRef: soot.SootField getField()>();
+        field = interfaceinvoke v.<soot.jimple.InstanceFieldRef: soot.SootField getField()>();
 
-        r3 = interfaceinvoke r0.<soot.jimple.InstanceFieldRef: soot.SootFieldRef getFieldRef()>();
+        fieldRef = interfaceinvoke v.<soot.jimple.InstanceFieldRef: soot.SootFieldRef getFieldRef()>();
 
-        r4 = interfaceinvoke r0.<soot.jimple.InstanceFieldRef: soot.Type getType()>();
+        fieldType = interfaceinvoke v.<soot.jimple.InstanceFieldRef: soot.Type getType()>();
 
-        $r6 = <java.lang.System: java.io.PrintStream out>;
+        $stack11 = <java.lang.System: java.io.PrintStream out>;
 
-        $r5 = new java.lang.StringBuilder;
+        $stack10 = new java.lang.StringBuilder;
 
-        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+        specialinvoke $stack10.<java.lang.StringBuilder: void <init>()>();
 
-        $r7 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("baseVar = ");
+        $stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("baseVar = ");
 
-        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+        $stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(base);
 
-        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; field = ");
+        $stack14 = virtualinvoke $stack13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; field = ");
 
-        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r2);
+        $stack15 = virtualinvoke $stack14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(field);
 
-        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; fieldRef = ");
+        $stack16 = virtualinvoke $stack15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; fieldRef = ");
 
-        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r3);
+        $stack17 = virtualinvoke $stack16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(fieldRef);
 
-        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; fieldType = ");
+        $stack18 = virtualinvoke $stack17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; fieldType = ");
 
-        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r4);
+        $stack19 = virtualinvoke $stack18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(fieldType);
 
-        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.String toString()>();
+        $stack20 = virtualinvoke $stack19.<java.lang.StringBuilder: java.lang.String toString()>();
 
-        virtualinvoke $r6.<java.io.PrintStream: void println(java.lang.String)>($r15);
+        virtualinvoke $stack11.<java.io.PrintStream: void println(java.lang.String)>($stack20);
 
         return;
     }

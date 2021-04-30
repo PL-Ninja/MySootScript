@@ -4,162 +4,170 @@ public class Config.SootConfig extends java.lang.Object
 
     public void <init>()
     {
-        Config.SootConfig r0;
+        Config.SootConfig this;
 
-        r0 := @this: Config.SootConfig;
+        this := @this: Config.SootConfig;
 
-        specialinvoke r0.<java.lang.Object: void <init>()>();
+        specialinvoke this.<java.lang.Object: void <init>()>();
 
         return;
     }
 
     public static void setupSoot(java.lang.String)
     {
-        soot.options.Options $r0, $r1, $r2, $r3, $r5, $r6, $r9, $r15, $r16, $r17, $r18;
-        java.lang.String $r4, $r7, r13;
-        java.util.List $r8;
-        soot.Scene $r10, $r12;
-        soot.PackManager $r11;
-        soot.SootClass r14;
+        soot.options.Options $stack2, $stack3, $stack4, $stack5, $stack7, $stack8, $stack11, $stack12, $stack18, $stack20, $stack22, $stack24;
+        java.lang.String $stack6, $stack9, classname;
+        java.util.List $stack10;
+        soot.Scene $stack14, $stack16;
+        soot.PackManager $stack15, $stack26;
+        soot.SootClass sootClass;
 
-        r13 := @parameter0: java.lang.String;
+        classname := @parameter0: java.lang.String;
 
         staticinvoke <soot.G: void reset()>();
 
-        $r0 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+        $stack2 = staticinvoke <soot.options.Options: soot.options.Options v()>();
 
-        virtualinvoke $r0.<soot.options.Options: void set_prepend_classpath(boolean)>(1);
+        virtualinvoke $stack2.<soot.options.Options: void set_prepend_classpath(boolean)>(1);
 
-        $r1 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+        $stack3 = staticinvoke <soot.options.Options: soot.options.Options v()>();
 
-        virtualinvoke $r1.<soot.options.Options: void set_allow_phantom_refs(boolean)>(1);
+        virtualinvoke $stack3.<soot.options.Options: void set_allow_phantom_refs(boolean)>(1);
 
-        $r2 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+        $stack4 = staticinvoke <soot.options.Options: soot.options.Options v()>();
 
-        virtualinvoke $r2.<soot.options.Options: void set_keep_line_number(boolean)>(1);
+        virtualinvoke $stack4.<soot.options.Options: void set_keep_line_number(boolean)>(1);
 
-        $r3 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+        $stack5 = staticinvoke <soot.options.Options: soot.options.Options v()>();
 
-        $r4 = <Config.SootConfig: java.lang.String sourceDirectory>;
+        $stack6 = <Config.SootConfig: java.lang.String sourceDirectory>;
 
-        virtualinvoke $r3.<soot.options.Options: void set_soot_classpath(java.lang.String)>($r4);
+        virtualinvoke $stack5.<soot.options.Options: void set_soot_classpath(java.lang.String)>($stack6);
 
-        $r5 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+        $stack7 = staticinvoke <soot.options.Options: soot.options.Options v()>();
 
-        virtualinvoke $r5.<soot.options.Options: void set_output_format(int)>(1);
+        virtualinvoke $stack7.<soot.options.Options: void set_output_format(int)>(1);
 
-        $r6 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+        $stack8 = staticinvoke <soot.options.Options: soot.options.Options v()>();
 
-        $r7 = <Config.SootConfig: java.lang.String sourceDirectory>;
+        $stack9 = <Config.SootConfig: java.lang.String sourceDirectory>;
 
-        $r8 = staticinvoke <java.util.Collections: java.util.List singletonList(java.lang.Object)>($r7);
+        $stack10 = staticinvoke <java.util.Collections: java.util.List singletonList(java.lang.Object)>($stack9);
 
-        virtualinvoke $r6.<soot.options.Options: void set_process_dir(java.util.List)>($r8);
+        virtualinvoke $stack8.<soot.options.Options: void set_process_dir(java.util.List)>($stack10);
 
-        $r9 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+        $stack11 = staticinvoke <soot.options.Options: soot.options.Options v()>();
 
-        virtualinvoke $r9.<soot.options.Options: void set_whole_program(boolean)>(1);
+        virtualinvoke $stack11.<soot.options.Options: void set_whole_program(boolean)>(1);
 
-        $r10 = staticinvoke <soot.Scene: soot.Scene v()>();
+        $stack12 = staticinvoke <soot.options.Options: soot.options.Options v()>();
 
-        virtualinvoke $r10.<soot.Scene: void loadNecessaryClasses()>();
+        virtualinvoke $stack12.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("jb", "use-original-names:true");
 
-        $r11 = staticinvoke <soot.PackManager: soot.PackManager v()>();
+        $stack14 = staticinvoke <soot.Scene: soot.Scene v()>();
 
-        virtualinvoke $r11.<soot.PackManager: void runPacks()>();
+        virtualinvoke $stack14.<soot.Scene: void loadNecessaryClasses()>();
 
-        $r12 = staticinvoke <soot.Scene: soot.Scene v()>();
+        $stack15 = staticinvoke <soot.PackManager: soot.PackManager v()>();
 
-        r14 = virtualinvoke $r12.<soot.Scene: soot.SootClass loadClassAndSupport(java.lang.String)>(r13);
+        virtualinvoke $stack15.<soot.PackManager: void runPacks()>();
 
-        virtualinvoke r14.<soot.SootClass: void setApplicationClass()>();
+        $stack16 = staticinvoke <soot.Scene: soot.Scene v()>();
 
-        $r15 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+        sootClass = virtualinvoke $stack16.<soot.Scene: soot.SootClass loadClassAndSupport(java.lang.String)>(classname);
 
-        virtualinvoke $r15.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "on");
+        virtualinvoke sootClass.<soot.SootClass: void setApplicationClass()>();
 
-        $r16 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+        $stack18 = staticinvoke <soot.options.Options: soot.options.Options v()>();
 
-        virtualinvoke $r16.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "enabled:true");
+        virtualinvoke $stack18.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "on");
 
-        $r17 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+        $stack20 = staticinvoke <soot.options.Options: soot.options.Options v()>();
 
-        virtualinvoke $r17.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "verbose:true");
+        virtualinvoke $stack20.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "enabled:true");
 
-        $r18 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+        $stack22 = staticinvoke <soot.options.Options: soot.options.Options v()>();
 
-        virtualinvoke $r18.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "on-fly-cg:true");
+        virtualinvoke $stack22.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "verbose:true");
+
+        $stack24 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+
+        virtualinvoke $stack24.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "on-fly-cg:true");
+
+        $stack26 = staticinvoke <soot.PackManager: soot.PackManager v()>();
+
+        virtualinvoke $stack26.<soot.PackManager: void writeOutput()>();
 
         return;
     }
 
     public static void getBasicInfo()
     {
-        soot.Scene $r0, $r2, $r4, $r6, $r8, $r10, $r12, $r14;
+        soot.Scene $stack8, $stack10, $stack12, $stack14, $stack16, $stack18, $stack20, $stack22;
 
-        $r0 = staticinvoke <soot.Scene: soot.Scene v()>();
+        $stack8 = staticinvoke <soot.Scene: soot.Scene v()>();
 
-        virtualinvoke $r0.<soot.Scene: soot.SootClass getMainClass()>();
+        virtualinvoke $stack8.<soot.Scene: soot.SootClass getMainClass()>();
 
-        $r2 = staticinvoke <soot.Scene: soot.Scene v()>();
+        $stack10 = staticinvoke <soot.Scene: soot.Scene v()>();
 
-        virtualinvoke $r2.<soot.Scene: soot.SootMethod getMainMethod()>();
+        virtualinvoke $stack10.<soot.Scene: soot.SootMethod getMainMethod()>();
 
-        $r4 = staticinvoke <soot.Scene: soot.Scene v()>();
+        $stack12 = staticinvoke <soot.Scene: soot.Scene v()>();
 
-        virtualinvoke $r4.<soot.Scene: soot.util.Chain getLibraryClasses()>();
+        virtualinvoke $stack12.<soot.Scene: soot.util.Chain getLibraryClasses()>();
 
-        $r6 = staticinvoke <soot.Scene: soot.Scene v()>();
+        $stack14 = staticinvoke <soot.Scene: soot.Scene v()>();
 
-        virtualinvoke $r6.<soot.Scene: soot.util.Chain getApplicationClasses()>();
+        virtualinvoke $stack14.<soot.Scene: soot.util.Chain getApplicationClasses()>();
 
-        $r8 = staticinvoke <soot.Scene: soot.Scene v()>();
+        $stack16 = staticinvoke <soot.Scene: soot.Scene v()>();
 
-        virtualinvoke $r8.<soot.Scene: java.util.Set getBasicClasses()>();
+        virtualinvoke $stack16.<soot.Scene: java.util.Set getBasicClasses()>();
 
-        $r10 = staticinvoke <soot.Scene: soot.Scene v()>();
+        $stack18 = staticinvoke <soot.Scene: soot.Scene v()>();
 
-        virtualinvoke $r10.<soot.Scene: soot.util.Chain getClasses()>();
+        virtualinvoke $stack18.<soot.Scene: soot.util.Chain getClasses()>();
 
-        $r12 = staticinvoke <soot.Scene: soot.Scene v()>();
+        $stack20 = staticinvoke <soot.Scene: soot.Scene v()>();
 
-        virtualinvoke $r12.<soot.Scene: java.lang.String getSootClassPath()>();
+        virtualinvoke $stack20.<soot.Scene: java.lang.String getSootClassPath()>();
 
-        $r14 = staticinvoke <soot.Scene: soot.Scene v()>();
+        $stack22 = staticinvoke <soot.Scene: soot.Scene v()>();
 
-        virtualinvoke $r14.<soot.Scene: java.lang.String defaultClassPath()>();
+        virtualinvoke $stack22.<soot.Scene: java.lang.String defaultClassPath()>();
 
         return;
     }
 
     static void <clinit>()
     {
-        java.lang.StringBuilder $r0, $r2, $r4, $r5, $r7, $r8;
-        java.lang.String $r1, $r3, $r6, $r9;
+        java.lang.StringBuilder $stack0, $stack2, $stack4, $stack5, $stack7, $stack8;
+        java.lang.String $stack1, $stack3, $stack6, $stack9;
 
-        $r0 = new java.lang.StringBuilder;
+        $stack0 = new java.lang.StringBuilder;
 
-        specialinvoke $r0.<java.lang.StringBuilder: void <init>()>();
+        specialinvoke $stack0.<java.lang.StringBuilder: void <init>()>();
 
-        $r1 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("user.dir");
+        $stack1 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("user.dir");
 
-        $r2 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+        $stack2 = virtualinvoke $stack0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack1);
 
-        $r3 = <java.io.File: java.lang.String separator>;
+        $stack3 = <java.io.File: java.lang.String separator>;
 
-        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+        $stack4 = virtualinvoke $stack2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack3);
 
-        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("target");
+        $stack5 = virtualinvoke $stack4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("target");
 
-        $r6 = <java.io.File: java.lang.String separator>;
+        $stack6 = <java.io.File: java.lang.String separator>;
 
-        $r7 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+        $stack7 = virtualinvoke $stack5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack6);
 
-        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("classes");
+        $stack8 = virtualinvoke $stack7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("classes");
 
-        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+        $stack9 = virtualinvoke $stack8.<java.lang.StringBuilder: java.lang.String toString()>();
 
-        <Config.SootConfig: java.lang.String sourceDirectory> = $r9;
+        <Config.SootConfig: java.lang.String sourceDirectory> = $stack9;
 
         return;
     }

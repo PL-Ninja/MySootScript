@@ -1,0 +1,89 @@
+public class Graph.SootParseCallGraph extends java.lang.Object
+{
+    public static final java.lang.String className;
+    public static final java.lang.String methodName;
+
+    public void <init>()
+    {
+        Graph.SootParseCallGraph this;
+
+        this := @this: Graph.SootParseCallGraph;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void main(java.lang.String[]) throws java.lang.Exception
+    {
+        java.lang.String[] args;
+
+        args := @parameter0: java.lang.String[];
+
+        staticinvoke <Config.SootConfig: void setupSoot(java.lang.String)>("Demo.CGDemo");
+
+        staticinvoke <Graph.SootParseCallGraph: void parseCG()>();
+
+        return;
+    }
+
+    public static void parseCG()
+    {
+        soot.Scene $stack3, $stack8;
+        soot.SootClass sc;
+        soot.SootMethod srcMethod;
+        soot.PackManager $stack9, $stack14;
+        soot.Pack $stack10;
+        java.util.ArrayList $u0;
+        Pack.MyAnalysis $u1;
+        soot.Transform $u2;
+        soot.Transformer $r0;
+
+        $stack3 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        sc = virtualinvoke $stack3.<soot.Scene: soot.SootClass forceResolve(java.lang.String,int)>("Demo.CGDemo", 3);
+
+        srcMethod = virtualinvoke sc.<soot.SootClass: soot.SootMethod getMethodByName(java.lang.String)>("begin");
+
+        $u0 = new java.util.ArrayList;
+
+        specialinvoke $u0.<java.util.ArrayList: void <init>()>();
+
+        interfaceinvoke $u0.<java.util.List: boolean add(java.lang.Object)>(srcMethod);
+
+        $stack8 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        virtualinvoke $stack8.<soot.Scene: void setEntryPoints(java.util.List)>($u0);
+
+        $stack9 = staticinvoke <soot.PackManager: soot.PackManager v()>();
+
+        $stack10 = virtualinvoke $stack9.<soot.PackManager: soot.Pack getPack(java.lang.String)>("wjtp");
+
+        $u2 = new soot.Transform;
+
+        $u1 = new Pack.MyAnalysis;
+
+        specialinvoke $u1.<Pack.MyAnalysis: void <init>(java.lang.String,java.lang.String)>("Demo.CGDemo", "begin");
+
+        $r0 = (soot.Transformer) $u1;
+
+        specialinvoke $u2.<soot.Transform: void <init>(java.lang.String,soot.Transformer)>("wjtp.myRecorder", $r0);
+
+        virtualinvoke $stack10.<soot.Pack: void add(soot.Transform)>($u2);
+
+        $stack14 = staticinvoke <soot.PackManager: soot.PackManager v()>();
+
+        virtualinvoke $stack14.<soot.PackManager: void runPacks()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <Graph.SootParseCallGraph: java.lang.String methodName> = "begin";
+
+        <Graph.SootParseCallGraph: java.lang.String className> = "Demo.CGDemo";
+
+        return;
+    }
+}

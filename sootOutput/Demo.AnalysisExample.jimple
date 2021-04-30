@@ -1,0 +1,65 @@
+public class Demo.AnalysisExample extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        Demo.AnalysisExample this;
+
+        this := @this: Demo.AnalysisExample;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void methodA(int)
+    {
+        int n;
+        java.lang.String s;
+        Demo.AnalysisExample this;
+
+        this := @this: Demo.AnalysisExample;
+
+        n := @parameter0: int;
+
+        s = staticinvoke <java.lang.String: java.lang.String valueOf(int)>(n);
+
+        virtualinvoke this.<Demo.AnalysisExample: void methodC(java.lang.String)>(s);
+
+        return;
+    }
+
+    public void methodB(int)
+    {
+        int n;
+        java.lang.String s;
+        Demo.AnalysisExample this;
+
+        this := @this: Demo.AnalysisExample;
+
+        n := @parameter0: int;
+
+        s = staticinvoke <java.lang.String: java.lang.String valueOf(int)>(n);
+
+        virtualinvoke this.<Demo.AnalysisExample: void methodC(java.lang.String)>(s);
+
+        return;
+    }
+
+    public void methodC(java.lang.String)
+    {
+        java.lang.String str;
+        java.io.PrintStream $stack2;
+        Demo.AnalysisExample this;
+
+        this := @this: Demo.AnalysisExample;
+
+        str := @parameter0: java.lang.String;
+
+        $stack2 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $stack2.<java.io.PrintStream: void println(java.lang.String)>(str);
+
+        return;
+    }
+}

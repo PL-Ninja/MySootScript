@@ -5,6 +5,8 @@ import soot.*;
 import soot.jimple.JimpleBody;
 import soot.util.Chain;
 
+import java.util.List;
+
 /**
  * @program: MySootScript
  * @description:
@@ -21,7 +23,28 @@ public class ParseMethodBody {
 
     public static void main(String[] args) {
         SootConfig.setupSoot(className);
-        getMethodBodyInfo();
+        //getMethodBodyInfo();
+        myTest();
+    }
+
+    private static void myTest() {
+        SootClass sc = Scene.v().getSootClass(className);
+        SootMethod areaMethod = sc.getMethod(methodSubSignature);
+        //获得方法体
+        JimpleBody areaBody = (JimpleBody)areaMethod.retrieveActiveBody();
+        for (Unit unit : areaBody.getUnits()) {
+            //System.out.println("unit : " + unit);
+            List<ValueBox> defBoxes = unit.getDefBoxes();
+            List<ValueBox> useBoxes = unit.getUseBoxes();
+            for (ValueBox defBox : defBoxes) {
+                System.out.println("defBox.getValue() = " + defBox.getValue());
+            }
+            System.out.println("|");
+            for (ValueBox useBox : useBoxes) {
+                System.out.println("useBox.getValue() = " + useBox.getValue());
+            }
+            System.out.println("=========");
+        }
     }
 
     private static void getMethodBodyInfo() {

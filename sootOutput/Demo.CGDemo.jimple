@@ -3,38 +3,38 @@ public class Demo.CGDemo extends java.lang.Object
 
     public void <init>()
     {
-        Demo.CGDemo r0;
+        Demo.CGDemo this;
 
-        r0 := @this: Demo.CGDemo;
+        this := @this: Demo.CGDemo;
 
-        specialinvoke r0.<java.lang.Object: void <init>()>();
+        specialinvoke this.<java.lang.Object: void <init>()>();
 
         return;
     }
 
     public java.lang.String begin(java.lang.String) throws java.io.IOException
     {
-        Demo.A $r0;
-        java.lang.String r1, r2, $r4;
-        Demo.B $r3;
-        Demo.CGDemo r5;
+        Demo.A $stack3;
+        java.lang.String args, cmd, $stack6;
+        Demo.B $stack5;
+        Demo.CGDemo this;
 
-        r5 := @this: Demo.CGDemo;
+        this := @this: Demo.CGDemo;
 
-        r1 := @parameter0: java.lang.String;
+        args := @parameter0: java.lang.String;
 
-        $r0 = new Demo.A;
+        $stack3 = new Demo.A;
 
-        specialinvoke $r0.<Demo.A: void <init>()>();
+        specialinvoke $stack3.<Demo.A: void <init>()>();
 
-        r2 = virtualinvoke $r0.<Demo.A: java.lang.String method1(java.lang.String)>(r1);
+        cmd = virtualinvoke $stack3.<Demo.A: java.lang.String method1(java.lang.String)>(args);
 
-        $r3 = new Demo.B;
+        $stack5 = new Demo.B;
 
-        specialinvoke $r3.<Demo.B: void <init>()>();
+        specialinvoke $stack5.<Demo.B: void <init>()>();
 
-        $r4 = virtualinvoke $r3.<Demo.B: java.lang.String method2(java.lang.String)>(r2);
+        $stack6 = virtualinvoke $stack5.<Demo.B: java.lang.String method2(java.lang.String)>(cmd);
 
-        return $r4;
+        return $stack6;
     }
 }

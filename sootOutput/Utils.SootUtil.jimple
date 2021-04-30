@@ -3,53 +3,53 @@ public class Utils.SootUtil extends java.lang.Object
 
     public void <init>()
     {
-        Utils.SootUtil r0;
+        Utils.SootUtil this;
 
-        r0 := @this: Utils.SootUtil;
+        this := @this: Utils.SootUtil;
 
-        specialinvoke r0.<java.lang.Object: void <init>()>();
+        specialinvoke this.<java.lang.Object: void <init>()>();
 
         return;
     }
 
     public static java.lang.String checkModifiers(int)
     {
-        int i0;
-        boolean $z0, $z1, $z2, $z3, $z4;
+        int modifier;
+        boolean $stack1, $stack2, $stack3, $stack4, $stack5;
 
-        i0 := @parameter0: int;
+        modifier := @parameter0: int;
 
-        $z0 = staticinvoke <soot.Modifier: boolean isPublic(int)>(i0);
+        $stack1 = staticinvoke <soot.Modifier: boolean isPublic(int)>(modifier);
 
-        if $z0 == 0 goto label1;
+        if $stack1 == 0 goto label1;
 
         return "public";
 
      label1:
-        $z1 = staticinvoke <soot.Modifier: boolean isPrivate(int)>(i0);
+        $stack2 = staticinvoke <soot.Modifier: boolean isPrivate(int)>(modifier);
 
-        if $z1 == 0 goto label2;
+        if $stack2 == 0 goto label2;
 
         return "private";
 
      label2:
-        $z2 = staticinvoke <soot.Modifier: boolean isAbstract(int)>(i0);
+        $stack3 = staticinvoke <soot.Modifier: boolean isAbstract(int)>(modifier);
 
-        if $z2 == 0 goto label3;
+        if $stack3 == 0 goto label3;
 
         return "abstract";
 
      label3:
-        $z3 = staticinvoke <soot.Modifier: boolean isFinal(int)>(i0);
+        $stack4 = staticinvoke <soot.Modifier: boolean isFinal(int)>(modifier);
 
-        if $z3 == 0 goto label4;
+        if $stack4 == 0 goto label4;
 
         return "final";
 
      label4:
-        $z4 = staticinvoke <soot.Modifier: boolean isStatic(int)>(i0);
+        $stack5 = staticinvoke <soot.Modifier: boolean isStatic(int)>(modifier);
 
-        if $z4 == 0 goto label5;
+        if $stack5 == 0 goto label5;
 
         return "static";
 

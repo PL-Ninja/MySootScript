@@ -41,6 +41,8 @@ public class SootConfig {
         Options.v().setPhaseOption("cg.spark","verbose:true");
         Options.v().setPhaseOption("cg.spark","on-fly-cg:true");
 
+        //PackManager.v().writeOutput();
+
     }
 
     public static void getBasicInfo(){
