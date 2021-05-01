@@ -27,13 +27,11 @@ public class SimpleLiveVariablesAnalysis extends BackwardFlowAnalysis<DirectedGr
 
     @Override
     protected FlowSet newInitialFlow() {
-        // TODO Auto-generated method stub
         return emptySet.emptySet();
     }
 
     @Override
     protected FlowSet entryInitialFlow() {
-        // TODO Auto-generated method stub
         return emptySet.emptySet();
     }
 
