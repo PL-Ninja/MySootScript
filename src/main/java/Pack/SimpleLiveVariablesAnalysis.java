@@ -44,7 +44,9 @@ public class SimpleLiveVariablesAnalysis extends BackwardFlowAnalysis<DirectedGr
     }
 
     @Override
-    protected void copy(FlowSet flowSet, FlowSet a1) {
+    protected void copy(FlowSet source, FlowSet dest) {
+        //backward copy
+        source.copy(dest);
 
     }
 
