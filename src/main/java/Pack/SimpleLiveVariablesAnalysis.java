@@ -1,6 +1,7 @@
 package Pack;
 
 import soot.toolkits.graph.DirectedGraph;
+import soot.toolkits.scalar.ArraySparseSet;
 import soot.toolkits.scalar.BackwardFlowAnalysis;
 import soot.toolkits.scalar.FlowSet;
 
@@ -14,16 +15,27 @@ import soot.toolkits.scalar.FlowSet;
 
 public class SimpleLiveVariablesAnalysis extends BackwardFlowAnalysis<DirectedGraph,FlowSet>{
 
+    private FlowSet emptySet;
+
     public SimpleLiveVariablesAnalysis(DirectedGraph graph) {
         super(graph);
+        this.emptySet = new ArraySparseSet();
+        // do fixed-point
+        doAnalysis();
     }
 
 
     @Override
     protected FlowSet newInitialFlow() {
-        return null;
+        // TODO Auto-generated method stub
+        return emptySet.emptySet();
     }
 
+    @Override
+    protected FlowSet entryInitialFlow() {
+        // TODO Auto-generated method stub
+        return emptySet.emptySet();
+    }
 
 
     @Override
