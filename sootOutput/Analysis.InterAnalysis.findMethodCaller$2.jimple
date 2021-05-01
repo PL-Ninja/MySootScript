@@ -1,23 +1,23 @@
-final class Analysis.InterAnalysis.findMethodCaller$2 extends soot.jimple.AbstractStmtSwitch
+final class Analysis.InterAnalysis.FindMethodCaller$2 extends soot.jimple.AbstractStmtSwitch
 {
     final soot.SootMethod val$method;
     final java.util.concurrent.atomic.AtomicBoolean val$result;
 
     void <init>(soot.SootMethod, java.util.concurrent.atomic.AtomicBoolean)
     {
-        Analysis.InterAnalysis.findMethodCaller$2 this;
+        Analysis.InterAnalysis.FindMethodCaller$2 this;
         soot.SootMethod l1;
         java.util.concurrent.atomic.AtomicBoolean l2;
 
-        this := @this: Analysis.InterAnalysis.findMethodCaller$2;
+        this := @this: Analysis.InterAnalysis.FindMethodCaller$2;
 
         l1 := @parameter0: soot.SootMethod;
 
         l2 := @parameter1: java.util.concurrent.atomic.AtomicBoolean;
 
-        this.<Analysis.InterAnalysis.findMethodCaller$2: soot.SootMethod val$method> = l1;
+        this.<Analysis.InterAnalysis.FindMethodCaller$2: soot.SootMethod val$method> = l1;
 
-        this.<Analysis.InterAnalysis.findMethodCaller$2: java.util.concurrent.atomic.AtomicBoolean val$result> = l2;
+        this.<Analysis.InterAnalysis.FindMethodCaller$2: java.util.concurrent.atomic.AtomicBoolean val$result> = l2;
 
         specialinvoke this.<soot.jimple.AbstractStmtSwitch: void <init>()>();
 
@@ -29,11 +29,11 @@ final class Analysis.InterAnalysis.findMethodCaller$2 extends soot.jimple.Abstra
         soot.jimple.InvokeStmt stmt;
         soot.jimple.InvokeExpr $stack2;
         soot.SootMethod $stack3, $stack4;
-        Analysis.InterAnalysis.findMethodCaller$2 this;
+        Analysis.InterAnalysis.FindMethodCaller$2 this;
         boolean $stack5;
         java.util.concurrent.atomic.AtomicBoolean $stack6;
 
-        this := @this: Analysis.InterAnalysis.findMethodCaller$2;
+        this := @this: Analysis.InterAnalysis.FindMethodCaller$2;
 
         stmt := @parameter0: soot.jimple.InvokeStmt;
 
@@ -41,13 +41,13 @@ final class Analysis.InterAnalysis.findMethodCaller$2 extends soot.jimple.Abstra
 
         $stack3 = interfaceinvoke $stack2.<soot.jimple.InvokeExpr: soot.SootMethod getMethod()>();
 
-        $stack4 = this.<Analysis.InterAnalysis.findMethodCaller$2: soot.SootMethod val$method>;
+        $stack4 = this.<Analysis.InterAnalysis.FindMethodCaller$2: soot.SootMethod val$method>;
 
         $stack5 = virtualinvoke $stack3.<java.lang.Object: boolean equals(java.lang.Object)>($stack4);
 
         if $stack5 == 0 goto label1;
 
-        $stack6 = this.<Analysis.InterAnalysis.findMethodCaller$2: java.util.concurrent.atomic.AtomicBoolean val$result>;
+        $stack6 = this.<Analysis.InterAnalysis.FindMethodCaller$2: java.util.concurrent.atomic.AtomicBoolean val$result>;
 
         virtualinvoke $stack6.<java.util.concurrent.atomic.AtomicBoolean: void set(boolean)>(1);
 

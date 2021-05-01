@@ -35,7 +35,7 @@ public class Graph.SootParseCallGraph extends java.lang.Object
         soot.PackManager $stack9, $stack14;
         soot.Pack $stack10;
         java.util.ArrayList $u0;
-        Pack.MyAnalysis $u1;
+        Pack.MyMethodFinderAnalysis $u1;
         soot.Transform $u2;
         soot.Transformer $r0;
 
@@ -61,9 +61,9 @@ public class Graph.SootParseCallGraph extends java.lang.Object
 
         $u2 = new soot.Transform;
 
-        $u1 = new Pack.MyAnalysis;
+        $u1 = new Pack.MyMethodFinderAnalysis;
 
-        specialinvoke $u1.<Pack.MyAnalysis: void <init>(java.lang.String,java.lang.String)>("Demo.CGDemo", "begin");
+        specialinvoke $u1.<Pack.MyMethodFinderAnalysis: void <init>(java.lang.String,java.lang.String)>("Demo.CGDemo", "begin");
 
         $r0 = (soot.Transformer) $u1;
 

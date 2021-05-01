@@ -1,14 +1,14 @@
-public class Pack.MyAnalysis extends soot.SceneTransformer
+public class Pack.MyMethodFinderAnalysis extends soot.SceneTransformer
 {
     public java.lang.String classname;
     public java.lang.String methodname;
 
     public void <init>(java.lang.String, java.lang.String)
     {
-        Pack.MyAnalysis this;
+        Pack.MyMethodFinderAnalysis this;
         java.lang.String classname, methodname;
 
-        this := @this: Pack.MyAnalysis;
+        this := @this: Pack.MyMethodFinderAnalysis;
 
         classname := @parameter0: java.lang.String;
 
@@ -16,9 +16,9 @@ public class Pack.MyAnalysis extends soot.SceneTransformer
 
         specialinvoke this.<soot.SceneTransformer: void <init>()>();
 
-        this.<Pack.MyAnalysis: java.lang.String classname> = classname;
+        this.<Pack.MyMethodFinderAnalysis: java.lang.String classname> = classname;
 
-        this.<Pack.MyAnalysis: java.lang.String methodname> = methodname;
+        this.<Pack.MyMethodFinderAnalysis: java.lang.String methodname> = methodname;
 
         return;
     }
@@ -32,14 +32,14 @@ public class Pack.MyAnalysis extends soot.SceneTransformer
         java.lang.Object $stack13, $stack25;
         soot.SootClass sootClass, $stack27;
         java.lang.String $stack14, $stack15, $stack19, $stack28, $stack29, $stack33, $stack34, s;
-        Pack.MyAnalysis this;
+        Pack.MyMethodFinderAnalysis this;
         soot.jimple.toolkits.callgraph.CallGraph cg;
         soot.jimple.toolkits.callgraph.Edge edge;
         soot.SootMethod $stack26, $stack32;
         java.io.PrintStream $stack36;
         java.util.Map map;
 
-        this := @this: Pack.MyAnalysis;
+        this := @this: Pack.MyMethodFinderAnalysis;
 
         s := @parameter0: java.lang.String;
 
@@ -62,7 +62,7 @@ public class Pack.MyAnalysis extends soot.SceneTransformer
 
         $stack14 = virtualinvoke sootClass.<soot.SootClass: java.lang.String getName()>();
 
-        $stack15 = this.<Pack.MyAnalysis: java.lang.String classname>;
+        $stack15 = this.<Pack.MyMethodFinderAnalysis: java.lang.String classname>;
 
         $stack16 = virtualinvoke $stack14.<java.lang.String: boolean equals(java.lang.Object)>($stack15);
 
@@ -95,7 +95,7 @@ public class Pack.MyAnalysis extends soot.SceneTransformer
 
         $stack28 = virtualinvoke $stack27.<soot.SootClass: java.lang.String getName()>();
 
-        $stack29 = this.<Pack.MyAnalysis: java.lang.String classname>;
+        $stack29 = this.<Pack.MyMethodFinderAnalysis: java.lang.String classname>;
 
         $stack30 = virtualinvoke $stack28.<java.lang.String: boolean equals(java.lang.Object)>($stack29);
 
@@ -105,7 +105,7 @@ public class Pack.MyAnalysis extends soot.SceneTransformer
 
         $stack33 = virtualinvoke $stack32.<soot.SootMethod: java.lang.String getName()>();
 
-        $stack34 = this.<Pack.MyAnalysis: java.lang.String methodname>;
+        $stack34 = this.<Pack.MyMethodFinderAnalysis: java.lang.String methodname>;
 
         $stack35 = virtualinvoke $stack33.<java.lang.String: boolean equals(java.lang.Object)>($stack34);
 

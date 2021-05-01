@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  **/
 
 
-public class findMethodCaller {
+public class FindMethodCaller {
     public static final String className = "Demo.AnalysisExample";
 
     public static void main(String[] args) throws Exception {

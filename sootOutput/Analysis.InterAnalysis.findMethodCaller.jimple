@@ -1,12 +1,12 @@
-public class Analysis.InterAnalysis.findMethodCaller extends java.lang.Object
+public class Analysis.InterAnalysis.FindMethodCaller extends java.lang.Object
 {
     public static final java.lang.String className;
 
     public void <init>()
     {
-        Analysis.InterAnalysis.findMethodCaller this;
+        Analysis.InterAnalysis.FindMethodCaller this;
 
-        this := @this: Analysis.InterAnalysis.findMethodCaller;
+        this := @this: Analysis.InterAnalysis.FindMethodCaller;
 
         specialinvoke this.<java.lang.Object: void <init>()>();
 
@@ -21,7 +21,7 @@ public class Analysis.InterAnalysis.findMethodCaller extends java.lang.Object
 
         staticinvoke <Config.SootConfig: void setupSoot(java.lang.String)>("Demo.AnalysisExample");
 
-        staticinvoke <Analysis.InterAnalysis.findMethodCaller: void findMCaller()>();
+        staticinvoke <Analysis.InterAnalysis.FindMethodCaller: void findMCaller()>();
 
         return;
     }
@@ -46,7 +46,7 @@ public class Analysis.InterAnalysis.findMethodCaller extends java.lang.Object
         soot.jimple.Stmt stmt, unit#5;
         soot.jimple.InvokeExpr stmt#6;
         java.util.ArrayList $u1;
-        Analysis.InterAnalysis.findMethodCaller$1 $u6;
+        Analysis.InterAnalysis.FindMethodCaller$1 $u6;
         soot.util.Switch $r1;
 
         $stack11 = staticinvoke <soot.Scene: soot.Scene v()>();
@@ -117,7 +117,7 @@ public class Analysis.InterAnalysis.findMethodCaller extends java.lang.Object
 
         $r0 = (soot.Unit) stmt;
 
-        $stack69 = staticinvoke <Analysis.InterAnalysis.findMethodCaller: boolean doesinvoke(soot.Unit,soot.SootMethod)>($r0, method);
+        $stack69 = staticinvoke <Analysis.InterAnalysis.FindMethodCaller: boolean doesinvoke(soot.Unit,soot.SootMethod)>($r0, method);
 
         if $stack69 == 0 goto label3;
 
@@ -216,9 +216,9 @@ public class Analysis.InterAnalysis.findMethodCaller extends java.lang.Object
 
         virtualinvoke $stack62.<java.io.PrintStream: void println(java.lang.String)>($stack65);
 
-        $u6 = new Analysis.InterAnalysis.findMethodCaller$1;
+        $u6 = new Analysis.InterAnalysis.FindMethodCaller$1;
 
-        specialinvoke $u6.<Analysis.InterAnalysis.findMethodCaller$1: void <init>()>();
+        specialinvoke $u6.<Analysis.InterAnalysis.FindMethodCaller$1: void <init>()>();
 
         $r1 = (soot.util.Switch) $u6;
 
@@ -239,7 +239,7 @@ public class Analysis.InterAnalysis.findMethodCaller extends java.lang.Object
         soot.SootMethod method;
         boolean $stack5;
         java.util.concurrent.atomic.AtomicBoolean $u0;
-        Analysis.InterAnalysis.findMethodCaller$2 $u1;
+        Analysis.InterAnalysis.FindMethodCaller$2 $u1;
         soot.util.Switch $r0;
 
         u := @parameter0: soot.Unit;
@@ -250,9 +250,9 @@ public class Analysis.InterAnalysis.findMethodCaller extends java.lang.Object
 
         specialinvoke $u0.<java.util.concurrent.atomic.AtomicBoolean: void <init>(boolean)>(0);
 
-        $u1 = new Analysis.InterAnalysis.findMethodCaller$2;
+        $u1 = new Analysis.InterAnalysis.FindMethodCaller$2;
 
-        specialinvoke $u1.<Analysis.InterAnalysis.findMethodCaller$2: void <init>(soot.SootMethod,java.util.concurrent.atomic.AtomicBoolean)>(method, $u0);
+        specialinvoke $u1.<Analysis.InterAnalysis.FindMethodCaller$2: void <init>(soot.SootMethod,java.util.concurrent.atomic.AtomicBoolean)>(method, $u0);
 
         $r0 = (soot.util.Switch) $u1;
 
@@ -265,7 +265,7 @@ public class Analysis.InterAnalysis.findMethodCaller extends java.lang.Object
 
     public static void <clinit>()
     {
-        <Analysis.InterAnalysis.findMethodCaller: java.lang.String className> = "Demo.AnalysisExample";
+        <Analysis.InterAnalysis.FindMethodCaller: java.lang.String className> = "Demo.AnalysisExample";
 
         return;
     }

@@ -1,12 +1,11 @@
 package Graph;
 
 import Config.SootConfig;
-import Pack.MyAnalysis;
+import Pack.MyMethodFinderAnalysis;
 import soot.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @program: MySootScript
@@ -35,7 +34,7 @@ public class SootParseCallGraph {
         Scene.v().setEntryPoints(entrypoint);
 
         // my own pack
-        PackManager.v().getPack("wjtp").add(new Transform("wjtp.myRecorder", new MyAnalysis(className,methodName)));
+        PackManager.v().getPack("wjtp").add(new Transform("wjtp.myRecorder", new MyMethodFinderAnalysis(className,methodName)));
 
         // use my own pack
         PackManager.v().runPacks();

@@ -3,7 +3,6 @@ package Pack;
 import soot.Scene;
 import soot.SceneTransformer;
 import soot.SootClass;
-import soot.SootMethod;
 import soot.jimple.toolkits.callgraph.CallGraph;
 import soot.jimple.toolkits.callgraph.Edge;
 
@@ -17,12 +16,12 @@ import java.util.Map;
  **/
 
 
-public class MyAnalysis extends SceneTransformer {
+public class MyMethodFinderAnalysis extends SceneTransformer {
 
     public String classname;
     public String methodname;
 
-    public MyAnalysis(String classname,String methodname){
+    public MyMethodFinderAnalysis(String classname, String methodname){
         this.classname = classname;
         this.methodname = methodname;
     }
