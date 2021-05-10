@@ -17,14 +17,14 @@ import java.util.*;
  */
 
 
-public class NullPointerFlowSets extends AbstractBoundedFlowSet<Local> {
+public class NullPointerFlowSet extends AbstractBoundedFlowSet<Local> {
     private Set<Local> nullLocals = new HashSet<>();
-    public NullPointerFlowSets() {
+    public NullPointerFlowSet() {
         super();
     }
     @Override
-    public NullPointerFlowSets clone() {
-        NullPointerFlowSets myClone = new NullPointerFlowSets();
+    public NullPointerFlowSet clone() {
+        NullPointerFlowSet myClone = new NullPointerFlowSet();
         myClone.nullLocals.addAll(this.nullLocals);
         return myClone;
     }

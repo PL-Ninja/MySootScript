@@ -1,6 +1,6 @@
 package Pack;
 
-import FlowSets.NullPointerFlowSets;
+import FlowSets.NullPointerFlowSet;
 import soot.Local;
 import soot.Unit;
 import soot.jimple.*;
@@ -15,7 +15,7 @@ import soot.toolkits.scalar.ForwardFlowAnalysis;
  **/
 
 
-public class NullPointerAnalysis extends ForwardFlowAnalysis<Unit, NullPointerFlowSets> {
+public class NullPointerAnalysis extends ForwardFlowAnalysis<Unit, NullPointerFlowSet> {
 
 
     public enum AnalysisMode {MUST, MAY_P, MAY_O}
@@ -29,19 +29,19 @@ public class NullPointerAnalysis extends ForwardFlowAnalysis<Unit, NullPointerFl
     }
 
     @Override
-    protected NullPointerFlowSets newInitialFlow() {
-        return new NullPointerFlowSets();
+    protected NullPointerFlowSet newInitialFlow() {
+        return new NullPointerFlowSet();
     }
 
     @Override
-    protected void flowThrough(NullPointerFlowSets inSet, Unit unit, NullPointerFlowSets outSet) {
+    protected void flowThrough(NullPointerFlowSet inSet, Unit unit, NullPointerFlowSet outSet) {
         inSet.copy(outSet);
         kill(inSet, unit, outSet);
         gen(inSet, unit, outSet);
     }
 
     @Override
-    protected void merge(NullPointerFlowSets inSet1, NullPointerFlowSets inSet2, NullPointerFlowSets outSet) {
+    protected void merge(NullPointerFlowSet inSet1, NullPointerFlowSet inSet2, NullPointerFlowSet outSet) {
         if(analysisMode != AnalysisMode.MUST) {
             inSet1.union(inSet2, outSet);
         } else {
@@ -50,11 +50,11 @@ public class NullPointerAnalysis extends ForwardFlowAnalysis<Unit, NullPointerFl
     }
 
     @Override
-    protected void copy(NullPointerFlowSets source, NullPointerFlowSets dest) {
+    protected void copy(NullPointerFlowSet source, NullPointerFlowSet dest) {
         source.copy(dest);
     }
 
-    protected void kill(NullPointerFlowSets inSet, Unit unit, NullPointerFlowSets outSet){
+    protected void kill(NullPointerFlowSet inSet, Unit unit, NullPointerFlowSet outSet){
         unit.apply(new AbstractStmtSwitch() {
             @Override
             public void caseAssignStmt(AssignStmt stmt) {
@@ -64,7 +64,7 @@ public class NullPointerAnalysis extends ForwardFlowAnalysis<Unit, NullPointerFl
         });
     }
 
-    protected void gen(NullPointerFlowSets inSet, Unit unit, NullPointerFlowSets outSet){
+    protected void gen(NullPointerFlowSet inSet, Unit unit, NullPointerFlowSet outSet){
         unit.apply(new AbstractStmtSwitch() {
             @Override
             public void caseAssignStmt(AssignStmt stmt) {
