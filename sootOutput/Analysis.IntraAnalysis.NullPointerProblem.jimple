@@ -31,61 +31,253 @@ public class Analysis.IntraAnalysis.NullPointerProblem extends java.lang.Object
 
     public static void findNullPointer()
     {
-        soot.Scene $stack4;
-        java.lang.String $stack5, $stack14, $stack16;
+        soot.Scene $stack6;
+        java.lang.String $stack7;
         soot.SootClass sc;
-        java.util.List $stack7;
+        java.util.List $stack9;
         java.util.Iterator l1;
-        boolean $stack9;
-        java.lang.Object $stack10;
+        boolean $stack11;
+        java.lang.Object $stack12;
         soot.SootMethod method;
-        java.lang.StringBuilder $stack11, $stack13, $stack15;
-        java.io.PrintStream $stack12;
-        soot.Body $stack17;
-        soot.jimple.JimpleBody l3;
+        soot.Body $stack13, $r0;
+        soot.jimple.JimpleBody body;
+        Pack.NullPointerAnalysis$AnalysisMode $stack17, $stack20, $stack23;
+        soot.toolkits.graph.TrapUnitGraph $u0;
+        java.util.ArrayList $u1;
+        Pack.NullPointerAnalysis $u2, $u3, $u4;
+        soot.toolkits.graph.DirectedGraph $r1, $r2, $r3;
 
-        $stack4 = staticinvoke <soot.Scene: soot.Scene v()>();
+        $stack6 = staticinvoke <soot.Scene: soot.Scene v()>();
 
-        $stack5 = <Analysis.IntraAnalysis.NullPointerProblem: java.lang.String className>;
+        $stack7 = <Analysis.IntraAnalysis.NullPointerProblem: java.lang.String className>;
 
-        sc = virtualinvoke $stack4.<soot.Scene: soot.SootClass getSootClass(java.lang.String)>($stack5);
+        sc = virtualinvoke $stack6.<soot.Scene: soot.SootClass getSootClass(java.lang.String)>($stack7);
 
-        $stack7 = virtualinvoke sc.<soot.SootClass: java.util.List getMethods()>();
+        $stack9 = virtualinvoke sc.<soot.SootClass: java.util.List getMethods()>();
 
-        l1 = interfaceinvoke $stack7.<java.util.List: java.util.Iterator iterator()>();
+        l1 = interfaceinvoke $stack9.<java.util.List: java.util.Iterator iterator()>();
 
      label1:
-        $stack9 = interfaceinvoke l1.<java.util.Iterator: boolean hasNext()>();
+        $stack11 = interfaceinvoke l1.<java.util.Iterator: boolean hasNext()>();
 
-        if $stack9 == 0 goto label2;
+        if $stack11 == 0 goto label2;
 
-        $stack10 = interfaceinvoke l1.<java.util.Iterator: java.lang.Object next()>();
+        $stack12 = interfaceinvoke l1.<java.util.Iterator: java.lang.Object next()>();
 
-        method = (soot.SootMethod) $stack10;
+        method = (soot.SootMethod) $stack12;
 
-        $stack12 = <java.lang.System: java.io.PrintStream out>;
+        $stack13 = virtualinvoke method.<soot.SootMethod: soot.Body retrieveActiveBody()>();
 
-        $stack11 = new java.lang.StringBuilder;
+        body = (soot.jimple.JimpleBody) $stack13;
 
-        specialinvoke $stack11.<java.lang.StringBuilder: void <init>()>();
+        $u0 = new soot.toolkits.graph.TrapUnitGraph;
 
-        $stack13 = virtualinvoke $stack11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Method: ");
+        $r0 = (soot.Body) body;
 
-        $stack14 = virtualinvoke method.<soot.SootMethod: java.lang.String getSignature()>();
+        specialinvoke $u0.<soot.toolkits.graph.TrapUnitGraph: void <init>(soot.Body)>($r0);
 
-        $stack15 = virtualinvoke $stack13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack14);
+        $u1 = new java.util.ArrayList;
 
-        $stack16 = virtualinvoke $stack15.<java.lang.StringBuilder: java.lang.String toString()>();
+        specialinvoke $u1.<java.util.ArrayList: void <init>()>();
 
-        virtualinvoke $stack12.<java.io.PrintStream: void println(java.lang.String)>($stack16);
+        $u2 = new Pack.NullPointerAnalysis;
 
-        $stack17 = virtualinvoke method.<soot.SootMethod: soot.Body retrieveActiveBody()>();
+        $stack17 = <Pack.NullPointerAnalysis$AnalysisMode: Pack.NullPointerAnalysis$AnalysisMode MUST>;
 
-        l3 = (soot.jimple.JimpleBody) $stack17;
+        $r1 = (soot.toolkits.graph.DirectedGraph) $u0;
+
+        specialinvoke $u2.<Pack.NullPointerAnalysis: void <init>(soot.toolkits.graph.DirectedGraph,Pack.NullPointerAnalysis$AnalysisMode)>($r1, $stack17);
+
+        interfaceinvoke $u1.<java.util.List: boolean add(java.lang.Object)>($u2);
+
+        $u3 = new Pack.NullPointerAnalysis;
+
+        $stack20 = <Pack.NullPointerAnalysis$AnalysisMode: Pack.NullPointerAnalysis$AnalysisMode MAY_O>;
+
+        $r2 = (soot.toolkits.graph.DirectedGraph) $u0;
+
+        specialinvoke $u3.<Pack.NullPointerAnalysis: void <init>(soot.toolkits.graph.DirectedGraph,Pack.NullPointerAnalysis$AnalysisMode)>($r2, $stack20);
+
+        interfaceinvoke $u1.<java.util.List: boolean add(java.lang.Object)>($u3);
+
+        $u4 = new Pack.NullPointerAnalysis;
+
+        $stack23 = <Pack.NullPointerAnalysis$AnalysisMode: Pack.NullPointerAnalysis$AnalysisMode MAY_P>;
+
+        $r3 = (soot.toolkits.graph.DirectedGraph) $u0;
+
+        specialinvoke $u4.<Pack.NullPointerAnalysis: void <init>(soot.toolkits.graph.DirectedGraph,Pack.NullPointerAnalysis$AnalysisMode)>($r3, $stack23);
+
+        interfaceinvoke $u1.<java.util.List: boolean add(java.lang.Object)>($u4);
+
+        staticinvoke <Analysis.IntraAnalysis.NullPointerProblem: void doNullPointerAnalysis(soot.jimple.JimpleBody,java.util.List)>(body, $u1);
 
         goto label1;
 
      label2:
+        return;
+    }
+
+    public static void doNullPointerAnalysis(soot.jimple.JimpleBody, java.util.List)
+    {
+        soot.jimple.JimpleBody body;
+        soot.UnitPatchingChain $stack10;
+        java.util.Iterator l3, l5, l8;
+        boolean $stack12, $stack16, $stack20, $stack21, $stack26, $stack39, $stack44;
+        java.lang.Object $stack13, $stack18, $stack41, $stack42;
+        soot.Unit unit;
+        java.util.List $stack14, npAnalyzers;
+        soot.ValueBox useBox;
+        soot.Value $stack19, $stack23, $stack37;
+        soot.Type $stack24;
+        soot.NullType $stack25;
+        java.lang.StringBuilder $stack27, $stack29, $stack31, $stack32, $stack33, $stack34, $stack35, $stack46, $stack48, $stack50, $stack51, $stack53, $stack54, $stack55, $stack56, $stack57;
+        java.io.PrintStream $stack28, $stack47;
+        int $stack30, $stack49;
+        java.lang.String $stack36, $stack58;
+        soot.Local usedLocal;
+        Pack.NullPointerAnalysis npa;
+        FlowSets.NullPointerFlowSet $stack43;
+        Pack.NullPointerAnalysis$AnalysisMode $stack52;
+
+        body := @parameter0: soot.jimple.JimpleBody;
+
+        npAnalyzers := @parameter1: java.util.List;
+
+        $stack10 = virtualinvoke body.<soot.jimple.JimpleBody: soot.UnitPatchingChain getUnits()>();
+
+        l3 = virtualinvoke $stack10.<soot.UnitPatchingChain: java.util.Iterator iterator()>();
+
+     label1:
+        $stack12 = interfaceinvoke l3.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack12 == 0 goto label8;
+
+        $stack13 = interfaceinvoke l3.<java.util.Iterator: java.lang.Object next()>();
+
+        unit = (soot.Unit) $stack13;
+
+        $stack14 = interfaceinvoke unit.<soot.Unit: java.util.List getUseBoxes()>();
+
+        l5 = interfaceinvoke $stack14.<java.util.List: java.util.Iterator iterator()>();
+
+     label2:
+        $stack16 = interfaceinvoke l5.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack16 == 0 goto label7;
+
+        $stack18 = interfaceinvoke l5.<java.util.Iterator: java.lang.Object next()>();
+
+        useBox = (soot.ValueBox) $stack18;
+
+        $stack19 = interfaceinvoke useBox.<soot.ValueBox: soot.Value getValue()>();
+
+        $stack20 = $stack19 instanceof soot.Local;
+
+        if $stack20 == 0 goto label5;
+
+        $stack37 = interfaceinvoke useBox.<soot.ValueBox: soot.Value getValue()>();
+
+        usedLocal = (soot.Local) $stack37;
+
+        l8 = interfaceinvoke npAnalyzers.<java.util.List: java.util.Iterator iterator()>();
+
+     label3:
+        $stack39 = interfaceinvoke l8.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack39 == 0 goto label5;
+
+        $stack41 = interfaceinvoke l8.<java.util.Iterator: java.lang.Object next()>();
+
+        npa = (Pack.NullPointerAnalysis) $stack41;
+
+        $stack42 = virtualinvoke npa.<Pack.NullPointerAnalysis: java.lang.Object getFlowBefore(java.lang.Object)>(unit);
+
+        $stack43 = (FlowSets.NullPointerFlowSet) $stack42;
+
+        $stack44 = virtualinvoke $stack43.<FlowSets.NullPointerFlowSet: boolean contains(soot.Local)>(usedLocal);
+
+        if $stack44 == 0 goto label4;
+
+        $stack47 = <java.lang.System: java.io.PrintStream out>;
+
+        $stack46 = new java.lang.StringBuilder;
+
+        specialinvoke $stack46.<java.lang.StringBuilder: void <init>()>();
+
+        $stack48 = virtualinvoke $stack46.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[+]Line ");
+
+        $stack49 = interfaceinvoke unit.<soot.Unit: int getJavaSourceStartLineNumber()>();
+
+        $stack50 = virtualinvoke $stack48.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($stack49);
+
+        $stack51 = virtualinvoke $stack50.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": ");
+
+        $stack52 = npa.<Pack.NullPointerAnalysis: Pack.NullPointerAnalysis$AnalysisMode analysisMode>;
+
+        $stack53 = virtualinvoke $stack51.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack52);
+
+        $stack54 = virtualinvoke $stack53.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" NullPointer usage of local ");
+
+        $stack55 = virtualinvoke $stack54.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(usedLocal);
+
+        $stack56 = virtualinvoke $stack55.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" in unit ");
+
+        $stack57 = virtualinvoke $stack56.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(unit);
+
+        $stack58 = virtualinvoke $stack57.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $stack47.<java.io.PrintStream: void println(java.lang.String)>($stack58);
+
+     label4:
+        goto label3;
+
+     label5:
+        $stack21 = unit instanceof soot.jimple.InvokeStmt;
+
+        if $stack21 == 0 goto label6;
+
+        $stack23 = interfaceinvoke useBox.<soot.ValueBox: soot.Value getValue()>();
+
+        $stack24 = interfaceinvoke $stack23.<soot.Value: soot.Type getType()>();
+
+        $stack25 = staticinvoke <soot.NullType: soot.NullType v()>();
+
+        $stack26 = virtualinvoke $stack24.<java.lang.Object: boolean equals(java.lang.Object)>($stack25);
+
+        if $stack26 == 0 goto label6;
+
+        $stack28 = <java.lang.System: java.io.PrintStream out>;
+
+        $stack27 = new java.lang.StringBuilder;
+
+        specialinvoke $stack27.<java.lang.StringBuilder: void <init>()>();
+
+        $stack29 = virtualinvoke $stack27.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[*]Line ");
+
+        $stack30 = interfaceinvoke unit.<soot.Unit: int getJavaSourceStartLineNumber()>();
+
+        $stack31 = virtualinvoke $stack29.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($stack30);
+
+        $stack32 = virtualinvoke $stack31.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": MUST NullPointer usage in unit (");
+
+        $stack33 = virtualinvoke $stack32.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(0);
+
+        $stack34 = virtualinvoke $stack33.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(") ");
+
+        $stack35 = virtualinvoke $stack34.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(unit);
+
+        $stack36 = virtualinvoke $stack35.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $stack28.<java.io.PrintStream: void println(java.lang.String)>($stack36);
+
+     label6:
+        goto label2;
+
+     label7:
+        goto label1;
+
+     label8:
         return;
     }
 

@@ -15,11 +15,11 @@ public class Config.SootConfig extends java.lang.Object
 
     public static void setupSoot(java.lang.String)
     {
-        soot.options.Options $stack2, $stack3, $stack4, $stack5, $stack7, $stack8, $stack11, $stack12, $stack18, $stack20, $stack22, $stack24;
+        soot.options.Options $stack2, $stack3, $stack4, $stack5, $stack7, $stack8, $stack11, $stack12, $stack13, $stack19, $stack21, $stack23, $stack25;
         java.lang.String $stack6, $stack9, classname;
         java.util.List $stack10;
-        soot.Scene $stack14, $stack16;
-        soot.PackManager $stack15, $stack26;
+        soot.Scene $stack15, $stack17;
+        soot.PackManager $stack16;
         soot.SootClass sootClass;
 
         classname := @parameter0: java.lang.String;
@@ -62,41 +62,41 @@ public class Config.SootConfig extends java.lang.Object
 
         $stack12 = staticinvoke <soot.options.Options: soot.options.Options v()>();
 
-        virtualinvoke $stack12.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("jb", "use-original-names:true");
+        virtualinvoke $stack12.<soot.options.Options: void set_verbose(boolean)>(1);
 
-        $stack14 = staticinvoke <soot.Scene: soot.Scene v()>();
+        $stack13 = staticinvoke <soot.options.Options: soot.options.Options v()>();
 
-        virtualinvoke $stack14.<soot.Scene: void loadNecessaryClasses()>();
+        virtualinvoke $stack13.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("jb", "use-original-names:true");
 
-        $stack15 = staticinvoke <soot.PackManager: soot.PackManager v()>();
+        $stack15 = staticinvoke <soot.Scene: soot.Scene v()>();
 
-        virtualinvoke $stack15.<soot.PackManager: void runPacks()>();
+        virtualinvoke $stack15.<soot.Scene: void loadNecessaryClasses()>();
 
-        $stack16 = staticinvoke <soot.Scene: soot.Scene v()>();
+        $stack16 = staticinvoke <soot.PackManager: soot.PackManager v()>();
 
-        sootClass = virtualinvoke $stack16.<soot.Scene: soot.SootClass loadClassAndSupport(java.lang.String)>(classname);
+        virtualinvoke $stack16.<soot.PackManager: void runPacks()>();
+
+        $stack17 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        sootClass = virtualinvoke $stack17.<soot.Scene: soot.SootClass loadClassAndSupport(java.lang.String)>(classname);
 
         virtualinvoke sootClass.<soot.SootClass: void setApplicationClass()>();
 
-        $stack18 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+        $stack19 = staticinvoke <soot.options.Options: soot.options.Options v()>();
 
-        virtualinvoke $stack18.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "on");
+        virtualinvoke $stack19.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "on");
 
-        $stack20 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+        $stack21 = staticinvoke <soot.options.Options: soot.options.Options v()>();
 
-        virtualinvoke $stack20.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "enabled:true");
+        virtualinvoke $stack21.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "enabled:true");
 
-        $stack22 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+        $stack23 = staticinvoke <soot.options.Options: soot.options.Options v()>();
 
-        virtualinvoke $stack22.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "verbose:true");
+        virtualinvoke $stack23.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "verbose:true");
 
-        $stack24 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+        $stack25 = staticinvoke <soot.options.Options: soot.options.Options v()>();
 
-        virtualinvoke $stack24.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "on-fly-cg:true");
-
-        $stack26 = staticinvoke <soot.PackManager: soot.PackManager v()>();
-
-        virtualinvoke $stack26.<soot.PackManager: void writeOutput()>();
+        virtualinvoke $stack25.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "on-fly-cg:true");
 
         return;
     }

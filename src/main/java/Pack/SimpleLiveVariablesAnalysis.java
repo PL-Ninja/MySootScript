@@ -1,18 +1,17 @@
 package Pack;
 
+import FlowSets.LiveVariableFlowSet;
+import FlowSets.NullPointerFlowSet;
 import soot.Local;
 import soot.Unit;
 import soot.ValueBox;
 import soot.jimple.AbstractJimpleValueSwitch;
-import soot.jimple.AbstractRefSwitch;
 import soot.toolkits.graph.DirectedGraph;
 import soot.toolkits.scalar.ArraySparseSet;
 import soot.toolkits.scalar.BackwardFlowAnalysis;
 import soot.toolkits.scalar.FlowSet;
-import soot.util.ArraySet;
 
 import java.util.Iterator;
-import java.util.List;
 
 /**
  * @program: MySootScript
@@ -22,57 +21,48 @@ import java.util.List;
  **/
 
 
-public class SimpleLiveVariablesAnalysis extends BackwardFlowAnalysis{
+public class SimpleLiveVariablesAnalysis extends BackwardFlowAnalysis<Unit, LiveVariableFlowSet>{
 
-    private FlowSet emptySet;
+    private LiveVariableFlowSet emptySet;
 
     public SimpleLiveVariablesAnalysis(DirectedGraph graph) {
         super(graph);
-        this.emptySet = new ArraySparseSet();
         // do fixed-point
         doAnalysis();
     }
 
 
     @Override
-    protected Object newInitialFlow() {
-        return emptySet.emptySet();
+    protected LiveVariableFlowSet newInitialFlow() {
+        return new LiveVariableFlowSet();
     }
 
     @Override
-    protected Object entryInitialFlow() {
-        return emptySet.emptySet();
+    protected LiveVariableFlowSet entryInitialFlow() {
+        return new LiveVariableFlowSet();
     }
 
 
     @Override
-    protected void merge(Object srcSet1, Object srcSet2, Object destSet) {
-        FlowSet in1 = (FlowSet)srcSet1;
-        FlowSet in2 = (FlowSet)srcSet2;
-        FlowSet out = (FlowSet)destSet;
+    protected void merge(LiveVariableFlowSet srcSet1, LiveVariableFlowSet srcSet2, LiveVariableFlowSet destSet) {
         // union
-        in1.union(in2,out);
+        srcSet1.union(srcSet2,srcSet2);
     }
 
     @Override
-    protected void copy(Object srcSet, Object destSet) {
+    protected void copy(LiveVariableFlowSet srcSet, LiveVariableFlowSet destSet) {
         //backward copy
-        FlowSet src = (FlowSet)srcSet;
-        FlowSet dest = (FlowSet)destSet;
-        src.copy(dest);
+        srcSet.copy(destSet);
 
     }
 
     @Override
-    protected void flowThrough(Object srcSet, Object o, Object destSet) {
+    protected void flowThrough(LiveVariableFlowSet srcSet, Unit u, LiveVariableFlowSet destSet) {
         //transfer function
-        FlowSet src = (FlowSet)srcSet;
-        FlowSet dest = (FlowSet)destSet;
-        Unit u = (Unit)o;
         // 1.1 kill leftOp
-        kill(src,u,dest);
+        kill(srcSet,u,destSet);
         // 1.2 gen rightOps
-        gen(u,dest);
+        gen(u,destSet);
 
         // 2. something more beauty
         // first kill all Locals
@@ -122,8 +112,8 @@ public class SimpleLiveVariablesAnalysis extends BackwardFlowAnalysis{
     }
 
 
-    private void kill(FlowSet inSet, Unit u, FlowSet destSet) {
-        FlowSet kills = emptySet.clone();
+    private void kill(LiveVariableFlowSet inSet, Unit u, LiveVariableFlowSet destSet) {
+        LiveVariableFlowSet kills = new LiveVariableFlowSet();
         Iterator<ValueBox> defIt = u.getDefBoxes().iterator();
         while(defIt.hasNext()){
             ValueBox defBox = defIt.next();
@@ -134,7 +124,7 @@ public class SimpleLiveVariablesAnalysis extends BackwardFlowAnalysis{
                     while(inIt.hasNext()){
                         Local inValue = (Local)inIt.next();
                         if(inValue.equivTo(defBox.getValue())){
-                            kills.add(defBox.getValue());
+                            kills.add((Local) defBox.getValue());
                         }
                     }
                 }
@@ -144,14 +134,14 @@ public class SimpleLiveVariablesAnalysis extends BackwardFlowAnalysis{
         inSet.difference(kills,destSet);
     }
 
-    private void gen(Unit u, FlowSet destSet) {
+    private void gen(Unit u, LiveVariableFlowSet destSet) {
         Iterator<ValueBox> it = u.getUseBoxes().iterator();
         while(it.hasNext()){
             ValueBox useBox = it.next();
             useBox.getValue().apply(new AbstractJimpleValueSwitch() {
                 @Override
                 public void caseLocal(Local v) {
-                    destSet.add(useBox.getValue());
+                    destSet.add((Local) useBox.getValue());
                 }
             });
         }

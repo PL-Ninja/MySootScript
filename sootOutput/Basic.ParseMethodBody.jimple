@@ -25,69 +25,130 @@ public class Basic.ParseMethodBody extends java.lang.Object
 
         staticinvoke <Config.SootConfig: void setupSoot(java.lang.String)>($stack1);
 
-        staticinvoke <Basic.ParseMethodBody: void getMethodBodyInfo()>();
+        staticinvoke <Basic.ParseMethodBody: void myTest()>();
 
         return;
     }
 
     private static void myTest()
     {
-        soot.Scene $stack5;
-        java.lang.String $stack6, $stack18;
+        soot.Scene $stack9;
+        java.lang.String $stack10, $stack33, $stack41;
         soot.SootClass sc;
         soot.SootMethod areaMethod;
-        soot.Body $stack9;
+        soot.Body $stack13;
         soot.jimple.JimpleBody areaBody;
-        soot.UnitPatchingChain $stack10;
-        java.util.Iterator l3;
-        boolean $stack12;
-        java.lang.Object $stack13;
+        soot.UnitPatchingChain $stack14;
+        java.util.Iterator l3, l7;
+        boolean $stack16, $stack21, $stack24;
+        java.lang.Object $stack17, $stack27, $stack35;
         soot.Unit unit;
-        java.lang.StringBuilder $stack14, $stack16, $stack17;
-        java.io.PrintStream $stack15;
+        java.util.List defBoxes, useBoxes;
+        java.io.PrintStream $stack22, $stack25, $stack29, $stack37;
+        java.lang.StringBuilder $stack28, $stack30, $stack32, $stack36, $stack38, $stack40;
+        soot.Value $stack31, $stack39;
+        soot.ValueBox defBox;
 
-        $stack5 = staticinvoke <soot.Scene: soot.Scene v()>();
+        $stack9 = staticinvoke <soot.Scene: soot.Scene v()>();
 
-        $stack6 = <Basic.ParseMethodBody: java.lang.String className>;
+        $stack10 = <Basic.ParseMethodBody: java.lang.String className>;
 
-        sc = virtualinvoke $stack5.<soot.Scene: soot.SootClass getSootClass(java.lang.String)>($stack6);
+        sc = virtualinvoke $stack9.<soot.Scene: soot.SootClass getSootClass(java.lang.String)>($stack10);
 
         areaMethod = virtualinvoke sc.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("int area(boolean)");
 
-        $stack9 = virtualinvoke areaMethod.<soot.SootMethod: soot.Body retrieveActiveBody()>();
+        $stack13 = virtualinvoke areaMethod.<soot.SootMethod: soot.Body retrieveActiveBody()>();
 
-        areaBody = (soot.jimple.JimpleBody) $stack9;
+        areaBody = (soot.jimple.JimpleBody) $stack13;
 
-        $stack10 = virtualinvoke areaBody.<soot.jimple.JimpleBody: soot.UnitPatchingChain getUnits()>();
+        $stack14 = virtualinvoke areaBody.<soot.jimple.JimpleBody: soot.UnitPatchingChain getUnits()>();
 
-        l3 = virtualinvoke $stack10.<soot.UnitPatchingChain: java.util.Iterator iterator()>();
+        l3 = virtualinvoke $stack14.<soot.UnitPatchingChain: java.util.Iterator iterator()>();
 
      label1:
-        $stack12 = interfaceinvoke l3.<java.util.Iterator: boolean hasNext()>();
+        $stack16 = interfaceinvoke l3.<java.util.Iterator: boolean hasNext()>();
 
-        if $stack12 == 0 goto label2;
+        if $stack16 == 0 goto label6;
 
-        $stack13 = interfaceinvoke l3.<java.util.Iterator: java.lang.Object next()>();
+        $stack17 = interfaceinvoke l3.<java.util.Iterator: java.lang.Object next()>();
 
-        unit = (soot.Unit) $stack13;
+        unit = (soot.Unit) $stack17;
 
-        $stack15 = <java.lang.System: java.io.PrintStream out>;
+        defBoxes = interfaceinvoke unit.<soot.Unit: java.util.List getDefBoxes()>();
 
-        $stack14 = new java.lang.StringBuilder;
+        useBoxes = interfaceinvoke unit.<soot.Unit: java.util.List getUseBoxes()>();
 
-        specialinvoke $stack14.<java.lang.StringBuilder: void <init>()>();
+        l7 = interfaceinvoke defBoxes.<java.util.List: java.util.Iterator iterator()>();
 
-        $stack16 = virtualinvoke $stack14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("unit = ");
+     label2:
+        $stack21 = interfaceinvoke l7.<java.util.Iterator: boolean hasNext()>();
 
-        $stack17 = virtualinvoke $stack16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(unit);
+        if $stack21 == 0 goto label3;
 
-        $stack18 = virtualinvoke $stack17.<java.lang.StringBuilder: java.lang.String toString()>();
+        $stack35 = interfaceinvoke l7.<java.util.Iterator: java.lang.Object next()>();
 
-        virtualinvoke $stack15.<java.io.PrintStream: void println(java.lang.String)>($stack18);
+        defBox = (soot.ValueBox) $stack35;
+
+        $stack37 = <java.lang.System: java.io.PrintStream out>;
+
+        $stack36 = new java.lang.StringBuilder;
+
+        specialinvoke $stack36.<java.lang.StringBuilder: void <init>()>();
+
+        $stack38 = virtualinvoke $stack36.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("defBox.getValue() = ");
+
+        $stack39 = interfaceinvoke defBox.<soot.ValueBox: soot.Value getValue()>();
+
+        $stack40 = virtualinvoke $stack38.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack39);
+
+        $stack41 = virtualinvoke $stack40.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $stack37.<java.io.PrintStream: void println(java.lang.String)>($stack41);
+
+        goto label2;
+
+     label3:
+        $stack22 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $stack22.<java.io.PrintStream: void println(java.lang.String)>("|");
+
+        l7 = interfaceinvoke useBoxes.<java.util.List: java.util.Iterator iterator()>();
+
+     label4:
+        $stack24 = interfaceinvoke l7.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack24 == 0 goto label5;
+
+        $stack27 = interfaceinvoke l7.<java.util.Iterator: java.lang.Object next()>();
+
+        defBox = (soot.ValueBox) $stack27;
+
+        $stack29 = <java.lang.System: java.io.PrintStream out>;
+
+        $stack28 = new java.lang.StringBuilder;
+
+        specialinvoke $stack28.<java.lang.StringBuilder: void <init>()>();
+
+        $stack30 = virtualinvoke $stack28.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("useBox.getValue() = ");
+
+        $stack31 = interfaceinvoke defBox.<soot.ValueBox: soot.Value getValue()>();
+
+        $stack32 = virtualinvoke $stack30.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack31);
+
+        $stack33 = virtualinvoke $stack32.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $stack29.<java.io.PrintStream: void println(java.lang.String)>($stack33);
+
+        goto label4;
+
+     label5:
+        $stack25 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $stack25.<java.io.PrintStream: void println(java.lang.String)>("=========");
 
         goto label1;
 
-     label2:
+     label6:
         return;
     }
 

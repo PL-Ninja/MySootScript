@@ -1,0 +1,262 @@
+public class Pack.NullPointerAnalysis extends soot.toolkits.scalar.ForwardFlowAnalysis
+{
+    public Pack.NullPointerAnalysis$AnalysisMode analysisMode;
+
+    public void <init>(soot.toolkits.graph.DirectedGraph, Pack.NullPointerAnalysis$AnalysisMode)
+    {
+        Pack.NullPointerAnalysis this;
+        soot.toolkits.graph.DirectedGraph graph;
+        Pack.NullPointerAnalysis$AnalysisMode analysisMode;
+
+        this := @this: Pack.NullPointerAnalysis;
+
+        graph := @parameter0: soot.toolkits.graph.DirectedGraph;
+
+        analysisMode := @parameter1: Pack.NullPointerAnalysis$AnalysisMode;
+
+        specialinvoke this.<soot.toolkits.scalar.ForwardFlowAnalysis: void <init>(soot.toolkits.graph.DirectedGraph)>(graph);
+
+        this.<Pack.NullPointerAnalysis: Pack.NullPointerAnalysis$AnalysisMode analysisMode> = analysisMode;
+
+        virtualinvoke this.<Pack.NullPointerAnalysis: void doAnalysis()>();
+
+        return;
+    }
+
+    protected FlowSets.NullPointerFlowSet newInitialFlow()
+    {
+        FlowSets.NullPointerFlowSet $stack1;
+        Pack.NullPointerAnalysis this;
+
+        this := @this: Pack.NullPointerAnalysis;
+
+        $stack1 = new FlowSets.NullPointerFlowSet;
+
+        specialinvoke $stack1.<FlowSets.NullPointerFlowSet: void <init>()>();
+
+        return $stack1;
+    }
+
+    protected void flowThrough(FlowSets.NullPointerFlowSet, soot.Unit, FlowSets.NullPointerFlowSet)
+    {
+        FlowSets.NullPointerFlowSet inSet, outSet;
+        Pack.NullPointerAnalysis this;
+        soot.Unit unit;
+        soot.toolkits.scalar.FlowSet $r0;
+
+        this := @this: Pack.NullPointerAnalysis;
+
+        inSet := @parameter0: FlowSets.NullPointerFlowSet;
+
+        unit := @parameter1: soot.Unit;
+
+        outSet := @parameter2: FlowSets.NullPointerFlowSet;
+
+        $r0 = (soot.toolkits.scalar.FlowSet) outSet;
+
+        virtualinvoke inSet.<FlowSets.NullPointerFlowSet: void copy(soot.toolkits.scalar.FlowSet)>($r0);
+
+        virtualinvoke this.<Pack.NullPointerAnalysis: void kill(FlowSets.NullPointerFlowSet,soot.Unit,FlowSets.NullPointerFlowSet)>(inSet, unit, outSet);
+
+        virtualinvoke this.<Pack.NullPointerAnalysis: void gen(FlowSets.NullPointerFlowSet,soot.Unit,FlowSets.NullPointerFlowSet)>(inSet, unit, outSet);
+
+        return;
+    }
+
+    protected void merge(FlowSets.NullPointerFlowSet, FlowSets.NullPointerFlowSet, FlowSets.NullPointerFlowSet)
+    {
+        Pack.NullPointerAnalysis this;
+        Pack.NullPointerAnalysis$AnalysisMode $stack4, $stack5;
+        FlowSets.NullPointerFlowSet inSet1, inSet2, outSet;
+        soot.toolkits.scalar.FlowSet $r0, $r1, $r2, $r3;
+
+        this := @this: Pack.NullPointerAnalysis;
+
+        inSet1 := @parameter0: FlowSets.NullPointerFlowSet;
+
+        inSet2 := @parameter1: FlowSets.NullPointerFlowSet;
+
+        outSet := @parameter2: FlowSets.NullPointerFlowSet;
+
+        $stack5 = this.<Pack.NullPointerAnalysis: Pack.NullPointerAnalysis$AnalysisMode analysisMode>;
+
+        $stack4 = <Pack.NullPointerAnalysis$AnalysisMode: Pack.NullPointerAnalysis$AnalysisMode MUST>;
+
+        if $stack5 == $stack4 goto label1;
+
+        $r0 = (soot.toolkits.scalar.FlowSet) inSet2;
+
+        $r1 = (soot.toolkits.scalar.FlowSet) outSet;
+
+        virtualinvoke inSet1.<FlowSets.NullPointerFlowSet: void union(soot.toolkits.scalar.FlowSet,soot.toolkits.scalar.FlowSet)>($r0, $r1);
+
+        goto label2;
+
+     label1:
+        $r2 = (soot.toolkits.scalar.FlowSet) inSet2;
+
+        $r3 = (soot.toolkits.scalar.FlowSet) outSet;
+
+        virtualinvoke inSet1.<FlowSets.NullPointerFlowSet: void intersection(soot.toolkits.scalar.FlowSet,soot.toolkits.scalar.FlowSet)>($r2, $r3);
+
+     label2:
+        return;
+    }
+
+    protected void copy(FlowSets.NullPointerFlowSet, FlowSets.NullPointerFlowSet)
+    {
+        FlowSets.NullPointerFlowSet source, dest;
+        Pack.NullPointerAnalysis this;
+        soot.toolkits.scalar.FlowSet $r0;
+
+        this := @this: Pack.NullPointerAnalysis;
+
+        source := @parameter0: FlowSets.NullPointerFlowSet;
+
+        dest := @parameter1: FlowSets.NullPointerFlowSet;
+
+        $r0 = (soot.toolkits.scalar.FlowSet) dest;
+
+        virtualinvoke source.<FlowSets.NullPointerFlowSet: void copy(soot.toolkits.scalar.FlowSet)>($r0);
+
+        return;
+    }
+
+    protected void kill(FlowSets.NullPointerFlowSet, soot.Unit, FlowSets.NullPointerFlowSet)
+    {
+        soot.Unit unit;
+        Pack.NullPointerAnalysis this;
+        FlowSets.NullPointerFlowSet outSet, inSet;
+        Pack.NullPointerAnalysis$1 $u0;
+        soot.util.Switch $r0;
+
+        this := @this: Pack.NullPointerAnalysis;
+
+        inSet := @parameter0: FlowSets.NullPointerFlowSet;
+
+        unit := @parameter1: soot.Unit;
+
+        outSet := @parameter2: FlowSets.NullPointerFlowSet;
+
+        $u0 = new Pack.NullPointerAnalysis$1;
+
+        specialinvoke $u0.<Pack.NullPointerAnalysis$1: void <init>(Pack.NullPointerAnalysis,FlowSets.NullPointerFlowSet)>(this, outSet);
+
+        $r0 = (soot.util.Switch) $u0;
+
+        interfaceinvoke unit.<soot.Unit: void apply(soot.util.Switch)>($r0);
+
+        return;
+    }
+
+    protected void gen(FlowSets.NullPointerFlowSet, soot.Unit, FlowSets.NullPointerFlowSet)
+    {
+        soot.Unit unit;
+        Pack.NullPointerAnalysis this;
+        FlowSets.NullPointerFlowSet inSet, outSet;
+        Pack.NullPointerAnalysis$2 $u0;
+        soot.util.Switch $r0;
+
+        this := @this: Pack.NullPointerAnalysis;
+
+        inSet := @parameter0: FlowSets.NullPointerFlowSet;
+
+        unit := @parameter1: soot.Unit;
+
+        outSet := @parameter2: FlowSets.NullPointerFlowSet;
+
+        $u0 = new Pack.NullPointerAnalysis$2;
+
+        specialinvoke $u0.<Pack.NullPointerAnalysis$2: void <init>(Pack.NullPointerAnalysis,FlowSets.NullPointerFlowSet,FlowSets.NullPointerFlowSet)>(this, inSet, outSet);
+
+        $r0 = (soot.util.Switch) $u0;
+
+        interfaceinvoke unit.<soot.Unit: void apply(soot.util.Switch)>($r0);
+
+        return;
+    }
+
+    protected volatile void flowThrough(java.lang.Object, java.lang.Object, java.lang.Object)
+    {
+        Pack.NullPointerAnalysis this;
+        java.lang.Object l1, l2, l3;
+        FlowSets.NullPointerFlowSet $stack4, $stack6;
+        soot.Unit $stack5;
+
+        this := @this: Pack.NullPointerAnalysis;
+
+        l1 := @parameter0: java.lang.Object;
+
+        l2 := @parameter1: java.lang.Object;
+
+        l3 := @parameter2: java.lang.Object;
+
+        $stack6 = (FlowSets.NullPointerFlowSet) l1;
+
+        $stack5 = (soot.Unit) l2;
+
+        $stack4 = (FlowSets.NullPointerFlowSet) l3;
+
+        virtualinvoke this.<Pack.NullPointerAnalysis: void flowThrough(FlowSets.NullPointerFlowSet,soot.Unit,FlowSets.NullPointerFlowSet)>($stack6, $stack5, $stack4);
+
+        return;
+    }
+
+    protected volatile void copy(java.lang.Object, java.lang.Object)
+    {
+        Pack.NullPointerAnalysis this;
+        java.lang.Object l1, l2;
+        FlowSets.NullPointerFlowSet $stack3, $stack4;
+
+        this := @this: Pack.NullPointerAnalysis;
+
+        l1 := @parameter0: java.lang.Object;
+
+        l2 := @parameter1: java.lang.Object;
+
+        $stack4 = (FlowSets.NullPointerFlowSet) l1;
+
+        $stack3 = (FlowSets.NullPointerFlowSet) l2;
+
+        virtualinvoke this.<Pack.NullPointerAnalysis: void copy(FlowSets.NullPointerFlowSet,FlowSets.NullPointerFlowSet)>($stack4, $stack3);
+
+        return;
+    }
+
+    protected volatile void merge(java.lang.Object, java.lang.Object, java.lang.Object)
+    {
+        Pack.NullPointerAnalysis this;
+        java.lang.Object l1, l2, l3;
+        FlowSets.NullPointerFlowSet $stack4, $stack5, $stack6;
+
+        this := @this: Pack.NullPointerAnalysis;
+
+        l1 := @parameter0: java.lang.Object;
+
+        l2 := @parameter1: java.lang.Object;
+
+        l3 := @parameter2: java.lang.Object;
+
+        $stack6 = (FlowSets.NullPointerFlowSet) l1;
+
+        $stack5 = (FlowSets.NullPointerFlowSet) l2;
+
+        $stack4 = (FlowSets.NullPointerFlowSet) l3;
+
+        virtualinvoke this.<Pack.NullPointerAnalysis: void merge(FlowSets.NullPointerFlowSet,FlowSets.NullPointerFlowSet,FlowSets.NullPointerFlowSet)>($stack6, $stack5, $stack4);
+
+        return;
+    }
+
+    protected volatile java.lang.Object newInitialFlow()
+    {
+        Pack.NullPointerAnalysis this;
+        FlowSets.NullPointerFlowSet $stack1;
+
+        this := @this: Pack.NullPointerAnalysis;
+
+        $stack1 = virtualinvoke this.<Pack.NullPointerAnalysis: FlowSets.NullPointerFlowSet newInitialFlow()>();
+
+        return $stack1;
+    }
+}

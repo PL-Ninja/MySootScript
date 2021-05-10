@@ -1,0 +1,352 @@
+public class Pack.AvailableExpressionAnalysis extends soot.toolkits.scalar.ForwardFlowAnalysis
+{
+    private soot.toolkits.scalar.FlowSet emptySet;
+
+    public void <init>(soot.toolkits.graph.DirectedGraph, soot.SootMethod)
+    {
+        Pack.AvailableExpressionAnalysis this;
+        soot.toolkits.graph.DirectedGraph g;
+        soot.SootMethod m;
+
+        this := @this: Pack.AvailableExpressionAnalysis;
+
+        g := @parameter0: soot.toolkits.graph.DirectedGraph;
+
+        m := @parameter1: soot.SootMethod;
+
+        specialinvoke this.<soot.toolkits.scalar.ForwardFlowAnalysis: void <init>(soot.toolkits.graph.DirectedGraph)>(g);
+
+        virtualinvoke this.<Pack.AvailableExpressionAnalysis: void doAnalysis()>();
+
+        return;
+    }
+
+    protected void merge(soot.toolkits.scalar.FlowSet, soot.toolkits.scalar.FlowSet, soot.toolkits.scalar.FlowSet)
+    {
+        soot.toolkits.scalar.FlowSet in1, in2, out;
+        Pack.AvailableExpressionAnalysis this;
+
+        this := @this: Pack.AvailableExpressionAnalysis;
+
+        in1 := @parameter0: soot.toolkits.scalar.FlowSet;
+
+        in2 := @parameter1: soot.toolkits.scalar.FlowSet;
+
+        out := @parameter2: soot.toolkits.scalar.FlowSet;
+
+        interfaceinvoke in1.<soot.toolkits.scalar.FlowSet: void intersection(soot.toolkits.scalar.FlowSet,soot.toolkits.scalar.FlowSet)>(in2, out);
+
+        return;
+    }
+
+    protected void copy(soot.toolkits.scalar.FlowSet, soot.toolkits.scalar.FlowSet)
+    {
+        soot.toolkits.scalar.FlowSet source, dest;
+        Pack.AvailableExpressionAnalysis this;
+
+        this := @this: Pack.AvailableExpressionAnalysis;
+
+        source := @parameter0: soot.toolkits.scalar.FlowSet;
+
+        dest := @parameter1: soot.toolkits.scalar.FlowSet;
+
+        interfaceinvoke source.<soot.toolkits.scalar.FlowSet: void copy(soot.toolkits.scalar.FlowSet)>(dest);
+
+        return;
+    }
+
+    protected soot.toolkits.scalar.FlowSet newInitialFlow()
+    {
+        Pack.AvailableExpressionAnalysis this;
+        soot.toolkits.scalar.FlowSet $stack1, $stack2;
+
+        this := @this: Pack.AvailableExpressionAnalysis;
+
+        $stack1 = this.<Pack.AvailableExpressionAnalysis: soot.toolkits.scalar.FlowSet emptySet>;
+
+        $stack2 = interfaceinvoke $stack1.<soot.toolkits.scalar.FlowSet: soot.toolkits.scalar.FlowSet clone()>();
+
+        return $stack2;
+    }
+
+    protected soot.toolkits.scalar.FlowSet entryInitialFlow()
+    {
+        Pack.AvailableExpressionAnalysis this;
+        soot.toolkits.scalar.FlowSet $stack1, $stack2;
+
+        this := @this: Pack.AvailableExpressionAnalysis;
+
+        $stack1 = this.<Pack.AvailableExpressionAnalysis: soot.toolkits.scalar.FlowSet emptySet>;
+
+        $stack2 = interfaceinvoke $stack1.<soot.toolkits.scalar.FlowSet: soot.toolkits.scalar.FlowSet clone()>();
+
+        return $stack2;
+    }
+
+    protected void flowThrough(soot.toolkits.scalar.FlowSet, soot.Unit, soot.toolkits.scalar.FlowSet)
+    {
+        Pack.AvailableExpressionAnalysis this;
+        soot.toolkits.scalar.FlowSet in, out;
+        soot.Unit unit;
+
+        this := @this: Pack.AvailableExpressionAnalysis;
+
+        in := @parameter0: soot.toolkits.scalar.FlowSet;
+
+        unit := @parameter1: soot.Unit;
+
+        out := @parameter2: soot.toolkits.scalar.FlowSet;
+
+        specialinvoke this.<Pack.AvailableExpressionAnalysis: void kill(soot.toolkits.scalar.FlowSet,soot.Unit,soot.toolkits.scalar.FlowSet)>(in, unit, out);
+
+        specialinvoke this.<Pack.AvailableExpressionAnalysis: void gen(soot.toolkits.scalar.FlowSet,soot.Unit)>(out, unit);
+
+        return;
+    }
+
+    private void kill(soot.toolkits.scalar.FlowSet, soot.Unit, soot.toolkits.scalar.FlowSet)
+    {
+        Pack.AvailableExpressionAnalysis this;
+        soot.toolkits.scalar.FlowSet $stack11, kills, inSet, outSet;
+        soot.Unit u;
+        java.util.List $stack13, $stack23;
+        java.util.Iterator l5, inIt, eIt;
+        boolean $stack15, $stack18, $stack21, $stack25, $stack29, $stack33;
+        java.lang.Object $stack16, $stack22, $stack27;
+        soot.ValueBox defBox, useBox;
+        soot.Value $stack17, $stack28, $stack31, $stack32;
+        soot.jimple.internal.AbstractBinopExpr e;
+
+        this := @this: Pack.AvailableExpressionAnalysis;
+
+        inSet := @parameter0: soot.toolkits.scalar.FlowSet;
+
+        u := @parameter1: soot.Unit;
+
+        outSet := @parameter2: soot.toolkits.scalar.FlowSet;
+
+        $stack11 = this.<Pack.AvailableExpressionAnalysis: soot.toolkits.scalar.FlowSet emptySet>;
+
+        kills = interfaceinvoke $stack11.<soot.toolkits.scalar.FlowSet: soot.toolkits.scalar.FlowSet clone()>();
+
+        $stack13 = interfaceinvoke u.<soot.Unit: java.util.List getDefBoxes()>();
+
+        l5 = interfaceinvoke $stack13.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $stack15 = interfaceinvoke l5.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack15 == 0 goto label7;
+
+        $stack16 = interfaceinvoke l5.<java.util.Iterator: java.lang.Object next()>();
+
+        defBox = (soot.ValueBox) $stack16;
+
+        $stack17 = interfaceinvoke defBox.<soot.ValueBox: soot.Value getValue()>();
+
+        $stack18 = $stack17 instanceof soot.Local;
+
+        if $stack18 == 0 goto label6;
+
+        inIt = interfaceinvoke inSet.<soot.toolkits.scalar.FlowSet: java.util.Iterator iterator()>();
+
+     label2:
+        $stack21 = interfaceinvoke inIt.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack21 == 0 goto label6;
+
+        $stack22 = interfaceinvoke inIt.<java.util.Iterator: java.lang.Object next()>();
+
+        e = (soot.jimple.internal.AbstractBinopExpr) $stack22;
+
+        $stack23 = virtualinvoke e.<soot.jimple.internal.AbstractBinopExpr: java.util.List getUseBoxes()>();
+
+        eIt = interfaceinvoke $stack23.<java.util.List: java.util.Iterator iterator()>();
+
+     label3:
+        $stack25 = interfaceinvoke eIt.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack25 == 0 goto label5;
+
+        $stack27 = interfaceinvoke eIt.<java.util.Iterator: java.lang.Object next()>();
+
+        useBox = (soot.ValueBox) $stack27;
+
+        $stack28 = interfaceinvoke useBox.<soot.ValueBox: soot.Value getValue()>();
+
+        $stack29 = $stack28 instanceof soot.Local;
+
+        if $stack29 == 0 goto label4;
+
+        $stack31 = interfaceinvoke useBox.<soot.ValueBox: soot.Value getValue()>();
+
+        $stack32 = interfaceinvoke defBox.<soot.ValueBox: soot.Value getValue()>();
+
+        $stack33 = interfaceinvoke $stack31.<soot.Value: boolean equivTo(java.lang.Object)>($stack32);
+
+        if $stack33 == 0 goto label4;
+
+        interfaceinvoke kills.<soot.toolkits.scalar.FlowSet: void add(java.lang.Object)>(e);
+
+     label4:
+        goto label3;
+
+     label5:
+        goto label2;
+
+     label6:
+        goto label1;
+
+     label7:
+        interfaceinvoke inSet.<soot.toolkits.scalar.FlowSet: void difference(soot.toolkits.scalar.FlowSet,soot.toolkits.scalar.FlowSet)>(kills, outSet);
+
+        return;
+    }
+
+    private void gen(soot.toolkits.scalar.FlowSet, soot.Unit)
+    {
+        soot.Unit u;
+        java.util.List $stack5;
+        java.util.Iterator l3;
+        boolean $stack7, $stack10;
+        java.lang.Object $stack8;
+        soot.ValueBox useBox;
+        soot.Value $stack9, $stack12;
+        soot.toolkits.scalar.FlowSet outSet;
+        soot.jimple.internal.AbstractBinopExpr $stack13;
+        Pack.AvailableExpressionAnalysis this;
+
+        this := @this: Pack.AvailableExpressionAnalysis;
+
+        outSet := @parameter0: soot.toolkits.scalar.FlowSet;
+
+        u := @parameter1: soot.Unit;
+
+        $stack5 = interfaceinvoke u.<soot.Unit: java.util.List getUseBoxes()>();
+
+        l3 = interfaceinvoke $stack5.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $stack7 = interfaceinvoke l3.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack7 == 0 goto label3;
+
+        $stack8 = interfaceinvoke l3.<java.util.Iterator: java.lang.Object next()>();
+
+        useBox = (soot.ValueBox) $stack8;
+
+        $stack9 = interfaceinvoke useBox.<soot.ValueBox: soot.Value getValue()>();
+
+        $stack10 = $stack9 instanceof soot.jimple.internal.AbstractBinopExpr;
+
+        if $stack10 == 0 goto label2;
+
+        $stack12 = interfaceinvoke useBox.<soot.ValueBox: soot.Value getValue()>();
+
+        $stack13 = (soot.jimple.internal.AbstractBinopExpr) $stack12;
+
+        interfaceinvoke outSet.<soot.toolkits.scalar.FlowSet: void add(java.lang.Object)>($stack13);
+
+     label2:
+        goto label1;
+
+     label3:
+        return;
+    }
+
+    protected volatile void flowThrough(java.lang.Object, java.lang.Object, java.lang.Object)
+    {
+        Pack.AvailableExpressionAnalysis this;
+        java.lang.Object l1, l2, l3;
+        soot.toolkits.scalar.FlowSet $stack4, $stack6;
+        soot.Unit $stack5;
+
+        this := @this: Pack.AvailableExpressionAnalysis;
+
+        l1 := @parameter0: java.lang.Object;
+
+        l2 := @parameter1: java.lang.Object;
+
+        l3 := @parameter2: java.lang.Object;
+
+        $stack6 = (soot.toolkits.scalar.FlowSet) l1;
+
+        $stack5 = (soot.Unit) l2;
+
+        $stack4 = (soot.toolkits.scalar.FlowSet) l3;
+
+        virtualinvoke this.<Pack.AvailableExpressionAnalysis: void flowThrough(soot.toolkits.scalar.FlowSet,soot.Unit,soot.toolkits.scalar.FlowSet)>($stack6, $stack5, $stack4);
+
+        return;
+    }
+
+    protected volatile void copy(java.lang.Object, java.lang.Object)
+    {
+        Pack.AvailableExpressionAnalysis this;
+        java.lang.Object l1, l2;
+        soot.toolkits.scalar.FlowSet $stack3, $stack4;
+
+        this := @this: Pack.AvailableExpressionAnalysis;
+
+        l1 := @parameter0: java.lang.Object;
+
+        l2 := @parameter1: java.lang.Object;
+
+        $stack4 = (soot.toolkits.scalar.FlowSet) l1;
+
+        $stack3 = (soot.toolkits.scalar.FlowSet) l2;
+
+        virtualinvoke this.<Pack.AvailableExpressionAnalysis: void copy(soot.toolkits.scalar.FlowSet,soot.toolkits.scalar.FlowSet)>($stack4, $stack3);
+
+        return;
+    }
+
+    protected volatile void merge(java.lang.Object, java.lang.Object, java.lang.Object)
+    {
+        Pack.AvailableExpressionAnalysis this;
+        java.lang.Object l1, l2, l3;
+        soot.toolkits.scalar.FlowSet $stack4, $stack5, $stack6;
+
+        this := @this: Pack.AvailableExpressionAnalysis;
+
+        l1 := @parameter0: java.lang.Object;
+
+        l2 := @parameter1: java.lang.Object;
+
+        l3 := @parameter2: java.lang.Object;
+
+        $stack6 = (soot.toolkits.scalar.FlowSet) l1;
+
+        $stack5 = (soot.toolkits.scalar.FlowSet) l2;
+
+        $stack4 = (soot.toolkits.scalar.FlowSet) l3;
+
+        virtualinvoke this.<Pack.AvailableExpressionAnalysis: void merge(soot.toolkits.scalar.FlowSet,soot.toolkits.scalar.FlowSet,soot.toolkits.scalar.FlowSet)>($stack6, $stack5, $stack4);
+
+        return;
+    }
+
+    protected volatile java.lang.Object entryInitialFlow()
+    {
+        Pack.AvailableExpressionAnalysis this;
+        soot.toolkits.scalar.FlowSet $stack1;
+
+        this := @this: Pack.AvailableExpressionAnalysis;
+
+        $stack1 = virtualinvoke this.<Pack.AvailableExpressionAnalysis: soot.toolkits.scalar.FlowSet entryInitialFlow()>();
+
+        return $stack1;
+    }
+
+    protected volatile java.lang.Object newInitialFlow()
+    {
+        Pack.AvailableExpressionAnalysis this;
+        soot.toolkits.scalar.FlowSet $stack1;
+
+        this := @this: Pack.AvailableExpressionAnalysis;
+
+        $stack1 = virtualinvoke this.<Pack.AvailableExpressionAnalysis: soot.toolkits.scalar.FlowSet newInitialFlow()>();
+
+        return $stack1;
+    }
+}

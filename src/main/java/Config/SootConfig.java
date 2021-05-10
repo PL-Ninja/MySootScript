@@ -29,7 +29,14 @@ public class SootConfig {
         Options.v().set_output_format(Options.output_format_jimple);
         Options.v().set_process_dir(Collections.singletonList(sourceDirectory));
         Options.v().set_whole_program(true);
+        Options.v().set_verbose(true);
         Options.v().setPhaseOption("jb","use-original-names:true");
+//        Options.v().setPhaseOption("jb.ls","enabled:false");
+//        Options.v().setPhaseOption("jb.dae","enabled:false");
+//        Options.v().setPhaseOption("jb.dae","only-stack-locals:true");
+//        Options.v().setPhaseOption("jb.ulp","unsplit-original-locals:false");
+//        Options.v().setPhaseOption("jb.a","enabled:false");
+//        Options.v().setPhaseOption("jb.cp","enabled:false");
         Scene.v().loadNecessaryClasses();
         PackManager.v().runPacks();
         SootClass sootClass = Scene.v().loadClassAndSupport(classname);
