@@ -1,9 +1,8 @@
-package Utils.NullPointerUtils;
+package Pack;
 
-import heros.flowfunc.Kill;
+import FlowSets.NullPointerFlowSets;
 import soot.Local;
 import soot.Unit;
-import soot.Value;
 import soot.jimple.*;
 import soot.toolkits.graph.DirectedGraph;
 import soot.toolkits.scalar.ForwardFlowAnalysis;
@@ -11,77 +10,69 @@ import soot.toolkits.scalar.ForwardFlowAnalysis;
 /**
  * @program: MySootScript
  * @description:
- * @author: 0range
- * @create: 2021-04-29 16:48
+ * @author: Dr.Navid
+ * @create: 2021-05-10 15:11
  **/
 
 
-public class NullPointerAnalysis extends ForwardFlowAnalysis<Unit,NullFlowSet> {
+public class NullPointerAnalysis extends ForwardFlowAnalysis<Unit, NullPointerFlowSets> {
 
-    enum AnalysisMode {MUST, MAY_P, MAY_O}
 
-    AnalysisMode analysisMode;
+    public enum AnalysisMode {MUST, MAY_P, MAY_O}
 
-    public NullPointerAnalysis(DirectedGraph<Unit> graph,AnalysisMode analysisMode) {
+    public AnalysisMode analysisMode;
+
+    public NullPointerAnalysis(DirectedGraph graph, AnalysisMode analysisMode) {
         super(graph);
         this.analysisMode = analysisMode;
         doAnalysis();
     }
 
     @Override
-    protected NullFlowSet newInitialFlow() {
-        return new NullFlowSet();
+    protected NullPointerFlowSets newInitialFlow() {
+        return new NullPointerFlowSets();
     }
 
     @Override
-    protected void copy(NullFlowSet source, NullFlowSet dest) {
-        // source -> dest
+    protected void flowThrough(NullPointerFlowSets inSet, Unit unit, NullPointerFlowSets outSet) {
+        inSet.copy(outSet);
+        kill(inSet, unit, outSet);
+        gen(inSet, unit, outSet);
+    }
+
+    @Override
+    protected void merge(NullPointerFlowSets inSet1, NullPointerFlowSets inSet2, NullPointerFlowSets outSet) {
+        if(analysisMode != AnalysisMode.MUST) {
+            inSet1.union(inSet2, outSet);
+        } else {
+            inSet1.intersection(inSet2, outSet);
+        }
+    }
+
+    @Override
+    protected void copy(NullPointerFlowSets source, NullPointerFlowSets dest) {
         source.copy(dest);
     }
 
-    @Override
-    protected void flowThrough(NullFlowSet inSet, Unit unit, NullFlowSet outSet) {
-        inSet.copy(outSet);
-        kill(inSet,unit,outSet);
-        generate(inSet, unit, outSet);
-    }
-
-    protected void kill(NullFlowSet inSet, Unit unit, NullFlowSet outSet) {
-        // 赋值语句
+    protected void kill(NullPointerFlowSets inSet, Unit unit, NullPointerFlowSets outSet){
         unit.apply(new AbstractStmtSwitch() {
             @Override
             public void caseAssignStmt(AssignStmt stmt) {
-                //获取左边变量
-                Local leftOp = (Local)stmt.getLeftOp();
-                //把它从outSet中取走
+                Local leftOp = (Local) stmt.getLeftOp();
                 outSet.remove(leftOp);
             }
         });
     }
 
-
-    @Override
-    protected void merge(NullFlowSet inSet1, NullFlowSet inSet2, NullFlowSet outSet) {
-        if(analysisMode != AnalysisMode.MUST){
-            // inSet1 u inSet2 = outSet
-            inSet1.union(inSet2,outSet);
-        }else{
-            // inSet1 n inSet2 = outSet
-            inSet1.intersection(inSet2, outSet);
-        }
-    }
-
-    protected void generate(NullFlowSet inSet, Unit unit, NullFlowSet outSet){
+    protected void gen(NullPointerFlowSets inSet, Unit unit, NullPointerFlowSets outSet){
         unit.apply(new AbstractStmtSwitch() {
-
             @Override
             public void caseAssignStmt(AssignStmt stmt) {
-                Local leftOp = (Local)stmt.getLeftOp();
+                Local leftOp = (Local) stmt.getLeftOp();
                 stmt.getRightOp().apply(new AbstractJimpleValueSwitch() {
                     @Override
                     public void caseLocal(Local v) {
-                        // local val
-                        if(inSet.contains(v)){
+                        if (inSet.contains(v)) {
                             outSet.add(leftOp);
                         }
                     }
@@ -111,7 +102,6 @@ public class NullPointerAnalysis extends ForwardFlowAnalysis<Unit,NullFlowSet> {
                             outSet.add(leftOp);
                         }
                     }
-
                 });
             }
 
@@ -127,7 +117,5 @@ public class NullPointerAnalysis extends ForwardFlowAnalysis<Unit,NullFlowSet> {
             }
         });
     }
-
-
 
 }

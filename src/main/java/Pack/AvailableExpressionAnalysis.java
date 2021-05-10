@@ -1,6 +1,7 @@
 package Pack;
 
 import soot.Local;
+import soot.SootMethod;
 import soot.Unit;
 import soot.ValueBox;
 import soot.jimple.internal.AbstractBinopExpr;
@@ -19,7 +20,7 @@ import java.util.Iterator;
  **/
 
 /**
- * forward & MUST
+ * Forward & MUST
  */
 
 
@@ -27,7 +28,7 @@ public class AvailableExpressionAnalysis extends ForwardFlowAnalysis<Unit, FlowS
 
     private FlowSet<AbstractBinopExpr> emptySet;
 
-    public AvailableExpressionAnalysis(DirectedGraph g){
+    public AvailableExpressionAnalysis(DirectedGraph g, SootMethod m){
         super(g);
 
         doAnalysis();
@@ -48,7 +49,7 @@ public class AvailableExpressionAnalysis extends ForwardFlowAnalysis<Unit, FlowS
 
     @Override
     protected FlowSet<AbstractBinopExpr> newInitialFlow() {
-        //new flow
+        //TODO: try to hold top
         return emptySet.clone();
     }
 
