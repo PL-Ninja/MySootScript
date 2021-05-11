@@ -31,6 +31,7 @@ public class SootConfig {
         Options.v().set_whole_program(true);
         Options.v().set_verbose(true);
         Options.v().setPhaseOption("jb","use-original-names:true");
+        Options.v().setPhaseOption("jb.cp", "enabled:false");
 //        Options.v().setPhaseOption("jb.ls","enabled:false");
 //        Options.v().setPhaseOption("jb.dae","enabled:false");
 //        Options.v().setPhaseOption("jb.dae","only-stack-locals:true");
