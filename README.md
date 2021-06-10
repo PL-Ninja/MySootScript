@@ -1,5 +1,8 @@
 # MySootScript
 
+
+[![Page Views Count](https://badges.toozhao.com/badges/01F7NNRQH1QEEJVY4HA933246X/blue.svg)](https://badges.toozhao.com/stats/01F7NNRQH1QEEJVY4HA933246X "Get your own page views count badge on badges.toozhao.com")
+
 [soot](https://github.com/soot-oss/soot)是一个十分强大的框架，但是苦于官方文档晦涩难懂，一度十分头大，陷入自闭。
 在这里记录我在学习soot过程中写的代码，会保持更新。
 我会结合soot的API以及自己的理解，写一些小例子，相信对大家熟练soot的使用有很大的帮助。
