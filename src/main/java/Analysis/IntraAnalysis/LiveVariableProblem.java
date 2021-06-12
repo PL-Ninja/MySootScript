@@ -5,7 +5,6 @@ import Pack.SimpleLiveVariablesAnalysis;
 import soot.*;
 import soot.jimple.Jimple;
 import soot.jimple.JimpleBody;
-import soot.toolkits.graph.DirectedGraph;
 import soot.toolkits.graph.TrapUnitGraph;
 
 /**

@@ -3,6 +3,7 @@ package Pack;
 import soot.Scene;
 import soot.SceneTransformer;
 import soot.SootClass;
+import soot.SootMethod;
 import soot.jimple.toolkits.callgraph.CallGraph;
 import soot.jimple.toolkits.callgraph.Edge;
 
@@ -31,7 +32,7 @@ public class MyMethodFinderAnalysis extends SceneTransformer {
         for(SootClass sootClass: Scene.v().getApplicationClasses()){
             if(sootClass.getName().equals(this.classname)){
                 SootClass sc = Scene.v().forceResolve(sootClass.getName(), SootClass.BODIES);
-//                SootMethod src = sc.getMethodByName(this.methodname);
+                SootMethod srcMethod = sc.getMethodByName(this.methodname);
                 CallGraph cg = Scene.v().getCallGraph();
 
                 for (Edge edge : cg) {
@@ -39,7 +40,6 @@ public class MyMethodFinderAnalysis extends SceneTransformer {
                         System.out.println(edge);
                     }
                 }
-                
 
             }
 

@@ -58,8 +58,6 @@ public class BuildCallGraph {
         }
 
 
-
-
         for(Map.Entry<CallInfo, SootMethod> entry : CG.entrySet()){
             for(Map.Entry<SootMethod,Integer> en : entry.getKey().info.entrySet()){
                 System.out.println("{RESULT} : { (Location : " + en.getValue() + ") : " + en.getKey() + " -invoke-> " + entry.getValue() + " }");
