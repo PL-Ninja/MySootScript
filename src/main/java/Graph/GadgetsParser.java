@@ -42,7 +42,8 @@ public class GadgetsParser {
             @Override
             protected void internalTransform(String s, Map<String, String> map) {
 
-                List<SootMethod> gadgetList = new LinkedList<>();
+                List<SootMethod> directList = new LinkedList<>();
+                List<SootMethod> transitiveList = new LinkedList<>();
 
                 for (SootClass sootClass : Scene.v().getApplicationClasses()) {
                     if (sootClass.getName().equals(className)) {
@@ -63,24 +64,32 @@ public class GadgetsParser {
 //                            System.out.println(method.getName());
 //                        }
 
+                        // directTargets是方法内直接能走到的方法
                         ReachableMethods directTargets = new ReachableMethods(cg, new Targets(cg.edgesOutOf(srcMethod)));
+                        // transitiveTargets是间接跳转的
                         TransitiveTargets transitiveTargets = new TransitiveTargets(cg);
 
                         Iterator<MethodOrMethodContext> transitiveIterator = transitiveTargets.iterator(srcMethod);
 
                         while (transitiveIterator.hasNext()) {
                             SootMethod transitiveTarget = (SootMethod) transitiveIterator.next();
-                            // 添加到list
-                            gadgetList.add(transitiveTarget);
+
+                            transitiveList.add(transitiveTarget);
+
+                            //
+                            if(directTargets.contains(transitiveTarget)){
+                                directList.add(transitiveTarget);
+                            }
                         }
 
-                        System.out.println(gadgetList);
+                        System.out.println(srcMethod.getName()+ " may reach "+ transitiveList);
+                        System.out.println(srcMethod.getName()+ " direct to "+ directList);
+
                     }
                 }
             }
         }));
-//
-//
+
         PackManager.v().runPacks();
 
     }
