@@ -1,0 +1,216 @@
+public class basic.test extends java.lang.Object
+{
+    private static java.lang.String className;
+
+    public void <init>()
+    {
+        basic.test this;
+
+        this := @this: basic.test;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        java.lang.String $stack1;
+        java.lang.String[] args;
+
+        args := @parameter0: java.lang.String[];
+
+        $stack1 = <basic.test: java.lang.String className>;
+
+        staticinvoke <config.SootConfig: void setupSoot(java.lang.String)>($stack1);
+
+        staticinvoke <basic.test: void getClassInfo()>();
+
+        return;
+    }
+
+    public static void getClassInfo()
+    {
+        soot.Scene $stack13, $stack27;
+        java.lang.String $stack14, classFullName, packageName, modifyType, $stack68;
+        soot.SootClass sc, superClass;
+        soot.RefType classType;
+        int modifier, fieldCount, methodCount;
+        boolean isapplicationClass;
+        soot.util.Chain fields;
+        java.util.List methods;
+        soot.SootMethod mainMethod;
+        java.lang.StringBuilder $stack29, $stack31, $stack32, $stack33, $stack34, $stack35, $stack36, $stack37, $stack38, $stack39, $stack40, $stack41, $stack42, $stack43, $stack44, $stack45, $stack46, $stack47, $stack48, $stack49, $stack50, $stack51, $stack52, $stack53, $stack54, $stack55, $stack56, $stack57, $stack58, $stack59, $stack60, $stack61, $stack62, $stack63, $stack64, $stack65, $stack66, $stack67;
+        java.io.PrintStream $stack30;
+
+        $stack13 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        $stack14 = <basic.test: java.lang.String className>;
+
+        sc = virtualinvoke $stack13.<soot.Scene: soot.SootClass getSootClass(java.lang.String)>($stack14);
+
+        classFullName = virtualinvoke sc.<soot.SootClass: java.lang.String getName()>();
+
+        packageName = virtualinvoke sc.<soot.SootClass: java.lang.String getJavaPackageName()>();
+
+        classType = virtualinvoke sc.<soot.SootClass: soot.RefType getType()>();
+
+        modifier = virtualinvoke sc.<soot.SootClass: int getModifiers()>();
+
+        modifyType = staticinvoke <utils.SootUtil: java.lang.String checkModifiers(int)>(modifier);
+
+        superClass = virtualinvoke sc.<soot.SootClass: soot.SootClass getSuperclass()>();
+
+        isapplicationClass = virtualinvoke sc.<soot.SootClass: boolean isApplicationClass()>();
+
+        fieldCount = virtualinvoke sc.<soot.SootClass: int getFieldCount()>();
+
+        fields = virtualinvoke sc.<soot.SootClass: soot.util.Chain getFields()>();
+
+        methodCount = virtualinvoke sc.<soot.SootClass: int getMethodCount()>();
+
+        methods = virtualinvoke sc.<soot.SootClass: java.util.List getMethods()>();
+
+        $stack27 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        mainMethod = virtualinvoke $stack27.<soot.Scene: soot.SootMethod getMainMethod()>();
+
+        $stack30 = <java.lang.System: java.io.PrintStream out>;
+
+        $stack29 = new java.lang.StringBuilder;
+
+        specialinvoke $stack29.<java.lang.StringBuilder: void <init>()>();
+
+        $stack31 = virtualinvoke $stack29.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[class full name] = ");
+
+        $stack32 = virtualinvoke $stack31.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(classFullName);
+
+        $stack33 = virtualinvoke $stack32.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $stack34 = virtualinvoke $stack33.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[package name] = ");
+
+        $stack35 = virtualinvoke $stack34.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(packageName);
+
+        $stack36 = virtualinvoke $stack35.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $stack37 = virtualinvoke $stack36.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[class type] = ");
+
+        $stack38 = virtualinvoke $stack37.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(classType);
+
+        $stack39 = virtualinvoke $stack38.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $stack40 = virtualinvoke $stack39.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[modifier type] = ");
+
+        $stack41 = virtualinvoke $stack40.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(modifyType);
+
+        $stack42 = virtualinvoke $stack41.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $stack43 = virtualinvoke $stack42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[super class] = ");
+
+        $stack44 = virtualinvoke $stack43.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(superClass);
+
+        $stack45 = virtualinvoke $stack44.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $stack46 = virtualinvoke $stack45.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[application class] = ");
+
+        $stack47 = virtualinvoke $stack46.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>(isapplicationClass);
+
+        $stack48 = virtualinvoke $stack47.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $stack49 = virtualinvoke $stack48.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("--------------------------------------");
+
+        $stack50 = virtualinvoke $stack49.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $stack51 = virtualinvoke $stack50.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[field count] = ");
+
+        $stack52 = virtualinvoke $stack51.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(fieldCount);
+
+        $stack53 = virtualinvoke $stack52.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $stack54 = virtualinvoke $stack53.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[field list] = ");
+
+        $stack55 = virtualinvoke $stack54.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(fields);
+
+        $stack56 = virtualinvoke $stack55.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $stack57 = virtualinvoke $stack56.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("--------------------------------------");
+
+        $stack58 = virtualinvoke $stack57.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $stack59 = virtualinvoke $stack58.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[method count] = ");
+
+        $stack60 = virtualinvoke $stack59.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(methodCount);
+
+        $stack61 = virtualinvoke $stack60.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $stack62 = virtualinvoke $stack61.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[method list] : ");
+
+        $stack63 = virtualinvoke $stack62.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(methods);
+
+        $stack64 = virtualinvoke $stack63.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $stack65 = virtualinvoke $stack64.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[main method] =  ");
+
+        $stack66 = virtualinvoke $stack65.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(mainMethod);
+
+        $stack67 = virtualinvoke $stack66.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        $stack68 = virtualinvoke $stack67.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $stack30.<java.io.PrintStream: void print(java.lang.String)>($stack68);
+
+        return;
+    }
+
+    private static java.lang.String checkModifiers(int)
+    {
+        int modifier;
+        boolean $stack1, $stack2, $stack3, $stack4, $stack5;
+
+        modifier := @parameter0: int;
+
+        $stack1 = staticinvoke <soot.Modifier: boolean isPublic(int)>(modifier);
+
+        if $stack1 == 0 goto label1;
+
+        return "public";
+
+     label1:
+        $stack2 = staticinvoke <soot.Modifier: boolean isPrivate(int)>(modifier);
+
+        if $stack2 == 0 goto label2;
+
+        return "private";
+
+     label2:
+        $stack3 = staticinvoke <soot.Modifier: boolean isAbstract(int)>(modifier);
+
+        if $stack3 == 0 goto label3;
+
+        return "abstract";
+
+     label3:
+        $stack4 = staticinvoke <soot.Modifier: boolean isFinal(int)>(modifier);
+
+        if $stack4 == 0 goto label4;
+
+        return "final";
+
+     label4:
+        $stack5 = staticinvoke <soot.Modifier: boolean isStatic(int)>(modifier);
+
+        if $stack5 == 0 goto label5;
+
+        return "static";
+
+     label5:
+        return "error!";
+    }
+
+    static void <clinit>()
+    {
+        <basic.test: java.lang.String className> = "java.io.FileOutputStream";
+
+        return;
+    }
+}

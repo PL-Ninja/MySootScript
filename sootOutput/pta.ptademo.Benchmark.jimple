@@ -1,0 +1,35 @@
+public class pta.ptademo.Benchmark extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        pta.ptademo.Benchmark this;
+
+        this := @this: pta.ptademo.Benchmark;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void alloc(int)
+    {
+        int id;
+
+        id := @parameter0: int;
+
+        return;
+    }
+
+    public static void test(int, java.lang.Object)
+    {
+        int id;
+        java.lang.Object targetVariable;
+
+        id := @parameter0: int;
+
+        targetVariable := @parameter1: java.lang.Object;
+
+        return;
+    }
+}

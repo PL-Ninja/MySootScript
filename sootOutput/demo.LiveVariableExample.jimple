@@ -1,0 +1,53 @@
+public class demo.LiveVariableExample extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        demo.LiveVariableExample this;
+
+        this := @this: demo.LiveVariableExample;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        byte a, b;
+        java.lang.String[] args;
+
+        args := @parameter0: java.lang.String[];
+
+        a = 0;
+
+        b = 95;
+
+        staticinvoke <demo.LiveVariableExample: void func1(int)>(a);
+
+        staticinvoke <demo.LiveVariableExample: void func1(int)>(b);
+
+        return;
+    }
+
+    public static void func1(int)
+    {
+        int $stack1, x;
+
+        x := @parameter0: int;
+
+        if x == 0 goto label2;
+
+     label1:
+        $stack1 = x % 4;
+
+        if $stack1 == 0 goto label2;
+
+        x = x / 4;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+}

@@ -1,0 +1,189 @@
+class pack.NullPointerAnalysis$2$1 extends soot.jimple.AbstractJimpleValueSwitch
+{
+    final soot.Local val$leftOp;
+    final pack.NullPointerAnalysis$2 this$1;
+
+    void <init>(pack.NullPointerAnalysis$2, soot.Local)
+    {
+        pack.NullPointerAnalysis$2$1 this;
+        pack.NullPointerAnalysis$2 this$1;
+        soot.Local l2;
+
+        this := @this: pack.NullPointerAnalysis$2$1;
+
+        this$1 := @parameter0: pack.NullPointerAnalysis$2;
+
+        l2 := @parameter1: soot.Local;
+
+        this.<pack.NullPointerAnalysis$2$1: pack.NullPointerAnalysis$2 this$1> = this$1;
+
+        this.<pack.NullPointerAnalysis$2$1: soot.Local val$leftOp> = l2;
+
+        specialinvoke this.<soot.jimple.AbstractJimpleValueSwitch: void <init>()>();
+
+        return;
+    }
+
+    public void caseLocal(soot.Local)
+    {
+        pack.NullPointerAnalysis$2$1 this;
+        pack.NullPointerAnalysis$2 $stack2, $stack5;
+        soot.Local v, $stack6;
+        flowsets.NullPointerFlowSet $stack3, $stack7;
+        boolean $stack4;
+
+        this := @this: pack.NullPointerAnalysis$2$1;
+
+        v := @parameter0: soot.Local;
+
+        $stack2 = this.<pack.NullPointerAnalysis$2$1: pack.NullPointerAnalysis$2 this$1>;
+
+        $stack3 = $stack2.<pack.NullPointerAnalysis$2: flowsets.NullPointerFlowSet val$inSet>;
+
+        $stack4 = virtualinvoke $stack3.<flowsets.NullPointerFlowSet: boolean contains(soot.Local)>(v);
+
+        if $stack4 == 0 goto label1;
+
+        $stack5 = this.<pack.NullPointerAnalysis$2$1: pack.NullPointerAnalysis$2 this$1>;
+
+        $stack7 = $stack5.<pack.NullPointerAnalysis$2: flowsets.NullPointerFlowSet val$outSet>;
+
+        $stack6 = this.<pack.NullPointerAnalysis$2$1: soot.Local val$leftOp>;
+
+        virtualinvoke $stack7.<flowsets.NullPointerFlowSet: void add(soot.Local)>($stack6);
+
+     label1:
+        return;
+    }
+
+    public void caseNullConstant(soot.jimple.NullConstant)
+    {
+        pack.NullPointerAnalysis$2$1 this;
+        pack.NullPointerAnalysis$2 $stack2;
+        soot.Local $stack3;
+        flowsets.NullPointerFlowSet $stack4;
+        soot.jimple.NullConstant v;
+
+        this := @this: pack.NullPointerAnalysis$2$1;
+
+        v := @parameter0: soot.jimple.NullConstant;
+
+        $stack2 = this.<pack.NullPointerAnalysis$2$1: pack.NullPointerAnalysis$2 this$1>;
+
+        $stack4 = $stack2.<pack.NullPointerAnalysis$2: flowsets.NullPointerFlowSet val$outSet>;
+
+        $stack3 = this.<pack.NullPointerAnalysis$2$1: soot.Local val$leftOp>;
+
+        virtualinvoke $stack4.<flowsets.NullPointerFlowSet: void add(soot.Local)>($stack3);
+
+        return;
+    }
+
+    public void caseInterfaceInvokeExpr(soot.jimple.InterfaceInvokeExpr)
+    {
+        pack.NullPointerAnalysis$2$1 this;
+        pack.NullPointerAnalysis$2 $stack2, $stack6;
+        pack.NullPointerAnalysis $stack3;
+        pack.NullPointerAnalysis$AnalysisMode $stack4, $stack5;
+        soot.Local $stack7;
+        flowsets.NullPointerFlowSet $stack8;
+        soot.jimple.InterfaceInvokeExpr v;
+
+        this := @this: pack.NullPointerAnalysis$2$1;
+
+        v := @parameter0: soot.jimple.InterfaceInvokeExpr;
+
+        $stack2 = this.<pack.NullPointerAnalysis$2$1: pack.NullPointerAnalysis$2 this$1>;
+
+        $stack3 = $stack2.<pack.NullPointerAnalysis$2: pack.NullPointerAnalysis this$0>;
+
+        $stack5 = $stack3.<pack.NullPointerAnalysis: pack.NullPointerAnalysis$AnalysisMode analysisMode>;
+
+        $stack4 = <pack.NullPointerAnalysis$AnalysisMode: pack.NullPointerAnalysis$AnalysisMode MAY_P>;
+
+        if $stack5 != $stack4 goto label1;
+
+        $stack6 = this.<pack.NullPointerAnalysis$2$1: pack.NullPointerAnalysis$2 this$1>;
+
+        $stack8 = $stack6.<pack.NullPointerAnalysis$2: flowsets.NullPointerFlowSet val$outSet>;
+
+        $stack7 = this.<pack.NullPointerAnalysis$2$1: soot.Local val$leftOp>;
+
+        virtualinvoke $stack8.<flowsets.NullPointerFlowSet: void add(soot.Local)>($stack7);
+
+     label1:
+        return;
+    }
+
+    public void caseStaticInvokeExpr(soot.jimple.StaticInvokeExpr)
+    {
+        pack.NullPointerAnalysis$2$1 this;
+        pack.NullPointerAnalysis$2 $stack2, $stack6;
+        pack.NullPointerAnalysis $stack3;
+        pack.NullPointerAnalysis$AnalysisMode $stack4, $stack5;
+        soot.Local $stack7;
+        flowsets.NullPointerFlowSet $stack8;
+        soot.jimple.StaticInvokeExpr v;
+
+        this := @this: pack.NullPointerAnalysis$2$1;
+
+        v := @parameter0: soot.jimple.StaticInvokeExpr;
+
+        $stack2 = this.<pack.NullPointerAnalysis$2$1: pack.NullPointerAnalysis$2 this$1>;
+
+        $stack3 = $stack2.<pack.NullPointerAnalysis$2: pack.NullPointerAnalysis this$0>;
+
+        $stack5 = $stack3.<pack.NullPointerAnalysis: pack.NullPointerAnalysis$AnalysisMode analysisMode>;
+
+        $stack4 = <pack.NullPointerAnalysis$AnalysisMode: pack.NullPointerAnalysis$AnalysisMode MAY_P>;
+
+        if $stack5 != $stack4 goto label1;
+
+        $stack6 = this.<pack.NullPointerAnalysis$2$1: pack.NullPointerAnalysis$2 this$1>;
+
+        $stack8 = $stack6.<pack.NullPointerAnalysis$2: flowsets.NullPointerFlowSet val$outSet>;
+
+        $stack7 = this.<pack.NullPointerAnalysis$2$1: soot.Local val$leftOp>;
+
+        virtualinvoke $stack8.<flowsets.NullPointerFlowSet: void add(soot.Local)>($stack7);
+
+     label1:
+        return;
+    }
+
+    public void caseVirtualInvokeExpr(soot.jimple.VirtualInvokeExpr)
+    {
+        pack.NullPointerAnalysis$2$1 this;
+        pack.NullPointerAnalysis$2 $stack2, $stack6;
+        pack.NullPointerAnalysis $stack3;
+        pack.NullPointerAnalysis$AnalysisMode $stack4, $stack5;
+        soot.Local $stack7;
+        flowsets.NullPointerFlowSet $stack8;
+        soot.jimple.VirtualInvokeExpr v;
+
+        this := @this: pack.NullPointerAnalysis$2$1;
+
+        v := @parameter0: soot.jimple.VirtualInvokeExpr;
+
+        $stack2 = this.<pack.NullPointerAnalysis$2$1: pack.NullPointerAnalysis$2 this$1>;
+
+        $stack3 = $stack2.<pack.NullPointerAnalysis$2: pack.NullPointerAnalysis this$0>;
+
+        $stack5 = $stack3.<pack.NullPointerAnalysis: pack.NullPointerAnalysis$AnalysisMode analysisMode>;
+
+        $stack4 = <pack.NullPointerAnalysis$AnalysisMode: pack.NullPointerAnalysis$AnalysisMode MAY_P>;
+
+        if $stack5 != $stack4 goto label1;
+
+        $stack6 = this.<pack.NullPointerAnalysis$2$1: pack.NullPointerAnalysis$2 this$1>;
+
+        $stack8 = $stack6.<pack.NullPointerAnalysis$2: flowsets.NullPointerFlowSet val$outSet>;
+
+        $stack7 = this.<pack.NullPointerAnalysis$2$1: soot.Local val$leftOp>;
+
+        virtualinvoke $stack8.<flowsets.NullPointerFlowSet: void add(soot.Local)>($stack7);
+
+     label1:
+        return;
+    }
+}

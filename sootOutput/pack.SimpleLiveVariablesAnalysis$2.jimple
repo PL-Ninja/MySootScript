@@ -1,0 +1,57 @@
+class pack.SimpleLiveVariablesAnalysis$2 extends soot.jimple.AbstractJimpleValueSwitch
+{
+    final flowsets.LiveVariableFlowSet val$destSet;
+    final soot.ValueBox val$useBox;
+    final pack.SimpleLiveVariablesAnalysis this$0;
+
+    void <init>(pack.SimpleLiveVariablesAnalysis, flowsets.LiveVariableFlowSet, soot.ValueBox)
+    {
+        pack.SimpleLiveVariablesAnalysis$2 this;
+        pack.SimpleLiveVariablesAnalysis this$0;
+        flowsets.LiveVariableFlowSet l2;
+        soot.ValueBox l3;
+
+        this := @this: pack.SimpleLiveVariablesAnalysis$2;
+
+        this$0 := @parameter0: pack.SimpleLiveVariablesAnalysis;
+
+        l2 := @parameter1: flowsets.LiveVariableFlowSet;
+
+        l3 := @parameter2: soot.ValueBox;
+
+        this.<pack.SimpleLiveVariablesAnalysis$2: pack.SimpleLiveVariablesAnalysis this$0> = this$0;
+
+        this.<pack.SimpleLiveVariablesAnalysis$2: flowsets.LiveVariableFlowSet val$destSet> = l2;
+
+        this.<pack.SimpleLiveVariablesAnalysis$2: soot.ValueBox val$useBox> = l3;
+
+        specialinvoke this.<soot.jimple.AbstractJimpleValueSwitch: void <init>()>();
+
+        return;
+    }
+
+    public void caseLocal(soot.Local)
+    {
+        pack.SimpleLiveVariablesAnalysis$2 this;
+        soot.ValueBox $stack2;
+        flowsets.LiveVariableFlowSet $stack3;
+        soot.Value $stack4;
+        soot.Local $stack5, v;
+
+        this := @this: pack.SimpleLiveVariablesAnalysis$2;
+
+        v := @parameter0: soot.Local;
+
+        $stack3 = this.<pack.SimpleLiveVariablesAnalysis$2: flowsets.LiveVariableFlowSet val$destSet>;
+
+        $stack2 = this.<pack.SimpleLiveVariablesAnalysis$2: soot.ValueBox val$useBox>;
+
+        $stack4 = interfaceinvoke $stack2.<soot.ValueBox: soot.Value getValue()>();
+
+        $stack5 = (soot.Local) $stack4;
+
+        virtualinvoke $stack3.<flowsets.LiveVariableFlowSet: void add(soot.Local)>($stack5);
+
+        return;
+    }
+}

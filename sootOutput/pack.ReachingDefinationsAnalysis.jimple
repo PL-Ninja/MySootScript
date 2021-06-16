@@ -1,0 +1,246 @@
+public class pack.ReachingDefinationsAnalysis extends soot.toolkits.scalar.ForwardFlowAnalysis
+{
+    private soot.toolkits.scalar.FlowSet emptySet;
+
+    public void <init>(soot.toolkits.graph.DirectedGraph)
+    {
+        pack.ReachingDefinationsAnalysis this;
+        soot.toolkits.graph.DirectedGraph g;
+        soot.toolkits.scalar.ArraySparseSet $u0;
+        soot.toolkits.scalar.FlowSet $r0;
+
+        this := @this: pack.ReachingDefinationsAnalysis;
+
+        g := @parameter0: soot.toolkits.graph.DirectedGraph;
+
+        specialinvoke this.<soot.toolkits.scalar.ForwardFlowAnalysis: void <init>(soot.toolkits.graph.DirectedGraph)>(g);
+
+        $u0 = new soot.toolkits.scalar.ArraySparseSet;
+
+        specialinvoke $u0.<soot.toolkits.scalar.ArraySparseSet: void <init>()>();
+
+        $r0 = (soot.toolkits.scalar.FlowSet) $u0;
+
+        this.<pack.ReachingDefinationsAnalysis: soot.toolkits.scalar.FlowSet emptySet> = $r0;
+
+        virtualinvoke this.<pack.ReachingDefinationsAnalysis: void doAnalysis()>();
+
+        return;
+    }
+
+    protected java.lang.Object newInitialFlow()
+    {
+        pack.ReachingDefinationsAnalysis this;
+        soot.toolkits.scalar.FlowSet $stack1, $stack2;
+
+        this := @this: pack.ReachingDefinationsAnalysis;
+
+        $stack1 = this.<pack.ReachingDefinationsAnalysis: soot.toolkits.scalar.FlowSet emptySet>;
+
+        $stack2 = interfaceinvoke $stack1.<soot.toolkits.scalar.FlowSet: soot.toolkits.scalar.FlowSet clone()>();
+
+        return $stack2;
+    }
+
+    protected java.lang.Object entryInitialFlow()
+    {
+        pack.ReachingDefinationsAnalysis this;
+        soot.toolkits.scalar.FlowSet $stack1, $stack2;
+
+        this := @this: pack.ReachingDefinationsAnalysis;
+
+        $stack1 = this.<pack.ReachingDefinationsAnalysis: soot.toolkits.scalar.FlowSet emptySet>;
+
+        $stack2 = interfaceinvoke $stack1.<soot.toolkits.scalar.FlowSet: soot.toolkits.scalar.FlowSet clone()>();
+
+        return $stack2;
+    }
+
+    protected void merge(java.lang.Object, java.lang.Object, java.lang.Object)
+    {
+        java.lang.Object in1, in2, out;
+        soot.toolkits.scalar.FlowSet inSeta, inSetb, outSet;
+        pack.ReachingDefinationsAnalysis this;
+
+        this := @this: pack.ReachingDefinationsAnalysis;
+
+        in1 := @parameter0: java.lang.Object;
+
+        in2 := @parameter1: java.lang.Object;
+
+        out := @parameter2: java.lang.Object;
+
+        inSeta = (soot.toolkits.scalar.FlowSet) in1;
+
+        inSetb = (soot.toolkits.scalar.FlowSet) in2;
+
+        outSet = (soot.toolkits.scalar.FlowSet) out;
+
+        interfaceinvoke inSeta.<soot.toolkits.scalar.FlowSet: void union(soot.toolkits.scalar.FlowSet,soot.toolkits.scalar.FlowSet)>(inSetb, outSet);
+
+        return;
+    }
+
+    protected void copy(java.lang.Object, java.lang.Object)
+    {
+        java.lang.Object src, dest;
+        soot.toolkits.scalar.FlowSet srcSet, outSet;
+        pack.ReachingDefinationsAnalysis this;
+
+        this := @this: pack.ReachingDefinationsAnalysis;
+
+        src := @parameter0: java.lang.Object;
+
+        dest := @parameter1: java.lang.Object;
+
+        srcSet = (soot.toolkits.scalar.FlowSet) src;
+
+        outSet = (soot.toolkits.scalar.FlowSet) dest;
+
+        interfaceinvoke srcSet.<soot.toolkits.scalar.FlowSet: void copy(soot.toolkits.scalar.FlowSet)>(outSet);
+
+        return;
+    }
+
+    protected void flowThrough(java.lang.Object, java.lang.Object, java.lang.Object)
+    {
+        java.lang.Object src, dest, u;
+        soot.toolkits.scalar.FlowSet srcSet, destSet;
+        boolean $stack6;
+        pack.ReachingDefinationsAnalysis this;
+        soot.Unit $stack7, $stack8;
+
+        this := @this: pack.ReachingDefinationsAnalysis;
+
+        src := @parameter0: java.lang.Object;
+
+        u := @parameter1: java.lang.Object;
+
+        dest := @parameter2: java.lang.Object;
+
+        srcSet = (soot.toolkits.scalar.FlowSet) src;
+
+        destSet = (soot.toolkits.scalar.FlowSet) dest;
+
+        $stack6 = u instanceof soot.Unit;
+
+        if $stack6 == 0 goto label1;
+
+        $stack7 = (soot.Unit) u;
+
+        specialinvoke this.<pack.ReachingDefinationsAnalysis: void kill(soot.toolkits.scalar.FlowSet,soot.Unit,soot.toolkits.scalar.FlowSet)>(srcSet, $stack7, destSet);
+
+        $stack8 = (soot.Unit) u;
+
+        specialinvoke this.<pack.ReachingDefinationsAnalysis: void gen(soot.toolkits.scalar.FlowSet,soot.Unit)>(destSet, $stack8);
+
+     label1:
+        return;
+    }
+
+    private void kill(soot.toolkits.scalar.FlowSet, soot.Unit, soot.toolkits.scalar.FlowSet)
+    {
+        pack.ReachingDefinationsAnalysis this;
+        soot.toolkits.scalar.FlowSet $stack7, kills, inSet, outSet;
+        soot.Unit u;
+        java.util.List $stack9;
+        java.util.Iterator defIt;
+        boolean $stack11;
+        java.lang.Object $stack12;
+        soot.ValueBox defBox;
+        soot.Value $stack13;
+        pack.ReachingDefinationsAnalysis$1 $u0;
+        soot.util.Switch $r0;
+
+        this := @this: pack.ReachingDefinationsAnalysis;
+
+        inSet := @parameter0: soot.toolkits.scalar.FlowSet;
+
+        u := @parameter1: soot.Unit;
+
+        outSet := @parameter2: soot.toolkits.scalar.FlowSet;
+
+        $stack7 = this.<pack.ReachingDefinationsAnalysis: soot.toolkits.scalar.FlowSet emptySet>;
+
+        kills = interfaceinvoke $stack7.<soot.toolkits.scalar.FlowSet: soot.toolkits.scalar.FlowSet clone()>();
+
+        $stack9 = interfaceinvoke u.<soot.Unit: java.util.List getDefBoxes()>();
+
+        defIt = interfaceinvoke $stack9.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $stack11 = interfaceinvoke defIt.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack11 == 0 goto label2;
+
+        $stack12 = interfaceinvoke defIt.<java.util.Iterator: java.lang.Object next()>();
+
+        defBox = (soot.ValueBox) $stack12;
+
+        $stack13 = interfaceinvoke defBox.<soot.ValueBox: soot.Value getValue()>();
+
+        $u0 = new pack.ReachingDefinationsAnalysis$1;
+
+        specialinvoke $u0.<pack.ReachingDefinationsAnalysis$1: void <init>(pack.ReachingDefinationsAnalysis,soot.toolkits.scalar.FlowSet,java.util.Iterator,soot.ValueBox,soot.toolkits.scalar.FlowSet)>(this, inSet, defIt, defBox, kills);
+
+        $r0 = (soot.util.Switch) $u0;
+
+        interfaceinvoke $stack13.<soot.Value: void apply(soot.util.Switch)>($r0);
+
+        goto label1;
+
+     label2:
+        interfaceinvoke inSet.<soot.toolkits.scalar.FlowSet: void difference(soot.toolkits.scalar.FlowSet,soot.toolkits.scalar.FlowSet)>(kills, outSet);
+
+        return;
+    }
+
+    private void gen(soot.toolkits.scalar.FlowSet, soot.Unit)
+    {
+        soot.Unit u;
+        java.util.List $stack5;
+        java.util.Iterator it;
+        boolean $stack7;
+        java.lang.Object $stack8;
+        soot.ValueBox defBox;
+        soot.Value $stack9;
+        pack.ReachingDefinationsAnalysis this;
+        soot.toolkits.scalar.FlowSet destSet;
+        pack.ReachingDefinationsAnalysis$2 $u0;
+        soot.util.Switch $r0;
+
+        this := @this: pack.ReachingDefinationsAnalysis;
+
+        destSet := @parameter0: soot.toolkits.scalar.FlowSet;
+
+        u := @parameter1: soot.Unit;
+
+        $stack5 = interfaceinvoke u.<soot.Unit: java.util.List getDefBoxes()>();
+
+        it = interfaceinvoke $stack5.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $stack7 = interfaceinvoke it.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack7 == 0 goto label2;
+
+        $stack8 = interfaceinvoke it.<java.util.Iterator: java.lang.Object next()>();
+
+        defBox = (soot.ValueBox) $stack8;
+
+        $stack9 = interfaceinvoke defBox.<soot.ValueBox: soot.Value getValue()>();
+
+        $u0 = new pack.ReachingDefinationsAnalysis$2;
+
+        specialinvoke $u0.<pack.ReachingDefinationsAnalysis$2: void <init>(pack.ReachingDefinationsAnalysis,soot.toolkits.scalar.FlowSet,soot.ValueBox)>(this, destSet, defBox);
+
+        $r0 = (soot.util.Switch) $u0;
+
+        interfaceinvoke $stack9.<soot.Value: void apply(soot.util.Switch)>($r0);
+
+        goto label1;
+
+     label2:
+        return;
+    }
+}

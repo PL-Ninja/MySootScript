@@ -1,0 +1,169 @@
+public class basic.MethodJimple2File extends java.lang.Object
+{
+    private static java.lang.String className;
+    public static final java.lang.String methodSubSignature;
+
+    public void <init>()
+    {
+        basic.MethodJimple2File this;
+
+        this := @this: basic.MethodJimple2File;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void main(java.lang.String[]) throws java.lang.Exception
+    {
+        java.lang.String $stack1;
+        java.lang.String[] args;
+
+        args := @parameter0: java.lang.String[];
+
+        $stack1 = <basic.MethodJimple2File: java.lang.String className>;
+
+        staticinvoke <config.SootConfig: void setupSoot(java.lang.String)>($stack1);
+
+        staticinvoke <basic.MethodJimple2File: void method2JimpleFile()>();
+
+        return;
+    }
+
+    public static void method2JimpleFile() throws java.lang.Exception
+    {
+        soot.Scene $stack8;
+        java.lang.String $stack9, $stack15, $stack17, $stack20, $stack22, $stack25, $stack33, $stack46;
+        soot.SootClass sc;
+        soot.SootMethod areaMethod;
+        soot.Body $stack12;
+        soot.jimple.JimpleBody areaBody;
+        java.io.FileWriter $stack13, writer;
+        java.lang.StringBuilder $stack14, $stack16, $stack18, $stack19, $stack21, $stack23, $stack24;
+        soot.UnitPatchingChain $stack26;
+        java.util.Iterator l5;
+        boolean $stack28;
+        java.lang.Object[] $stack29, $stack36, $stack42;
+        java.io.PrintStream $stack30, $stack37;
+        java.lang.Object $stack35;
+        soot.Unit unit;
+        soot.jimple.Stmt stmt;
+        java.lang.Integer $stack40, $stack45;
+        int c;
+
+        $stack8 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        $stack9 = <basic.MethodJimple2File: java.lang.String className>;
+
+        sc = virtualinvoke $stack8.<soot.Scene: soot.SootClass getSootClass(java.lang.String)>($stack9);
+
+        areaMethod = virtualinvoke sc.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("int area(boolean)");
+
+        $stack12 = virtualinvoke areaMethod.<soot.SootMethod: soot.Body retrieveActiveBody()>();
+
+        areaBody = (soot.jimple.JimpleBody) $stack12;
+
+        $stack13 = new java.io.FileWriter;
+
+        $stack14 = new java.lang.StringBuilder;
+
+        specialinvoke $stack14.<java.lang.StringBuilder: void <init>()>();
+
+        $stack15 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("user.dir");
+
+        $stack16 = virtualinvoke $stack14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack15);
+
+        $stack17 = <java.io.File: java.lang.String separator>;
+
+        $stack18 = virtualinvoke $stack16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack17);
+
+        $stack19 = virtualinvoke $stack18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("MyJimpleFiles");
+
+        $stack20 = <java.io.File: java.lang.String separator>;
+
+        $stack21 = virtualinvoke $stack19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack20);
+
+        $stack22 = <basic.MethodJimple2File: java.lang.String className>;
+
+        $stack23 = virtualinvoke $stack21.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack22);
+
+        $stack24 = virtualinvoke $stack23.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".jimple");
+
+        $stack25 = virtualinvoke $stack24.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $stack13.<java.io.FileWriter: void <init>(java.lang.String)>($stack25);
+
+        writer = $stack13;
+
+        c = 0;
+
+        $stack26 = virtualinvoke areaBody.<soot.jimple.JimpleBody: soot.UnitPatchingChain getUnits()>();
+
+        l5 = virtualinvoke $stack26.<soot.UnitPatchingChain: java.util.Iterator iterator()>();
+
+     label1:
+        $stack28 = interfaceinvoke l5.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack28 == 0 goto label2;
+
+        $stack35 = interfaceinvoke l5.<java.util.Iterator: java.lang.Object next()>();
+
+        unit = (soot.Unit) $stack35;
+
+        c = c + 1;
+
+        stmt = (soot.jimple.Stmt) unit;
+
+        $stack37 = <java.lang.System: java.io.PrintStream out>;
+
+        $stack36 = newarray (java.lang.Object)[2];
+
+        $stack40 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(c);
+
+        $stack36[0] = $stack40;
+
+        $stack36[1] = stmt;
+
+        virtualinvoke $stack37.<java.io.PrintStream: java.io.PrintStream printf(java.lang.String,java.lang.Object[])>("(%d): %s%n", $stack36);
+
+        $stack42 = newarray (java.lang.Object)[2];
+
+        $stack45 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(c);
+
+        $stack42[0] = $stack45;
+
+        $stack42[1] = stmt;
+
+        $stack46 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("(%d): %s%n", $stack42);
+
+        virtualinvoke writer.<java.io.FileWriter: void write(java.lang.String)>($stack46);
+
+        virtualinvoke writer.<java.io.FileWriter: void flush()>();
+
+        goto label1;
+
+     label2:
+        virtualinvoke writer.<java.io.FileWriter: void close()>();
+
+        $stack30 = <java.lang.System: java.io.PrintStream out>;
+
+        $stack29 = newarray (java.lang.Object)[1];
+
+        $stack33 = virtualinvoke areaMethod.<soot.SootMethod: java.lang.String getName()>();
+
+        $stack29[0] = $stack33;
+
+        virtualinvoke $stack30.<java.io.PrintStream: java.io.PrintStream printf(java.lang.String,java.lang.Object[])>("Method %s \'s jimple file is transformed. \n", $stack29);
+
+        return;
+    }
+
+    static void <clinit>()
+    {
+        <basic.MethodJimple2File: java.lang.String methodSubSignature> = "int area(boolean)";
+
+        <basic.MethodJimple2File: java.lang.String className> = "Demo.Circle";
+
+        return;
+    }
+}

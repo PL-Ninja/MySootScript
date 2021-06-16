@@ -1,0 +1,183 @@
+public class demo.Circle extends java.lang.Object
+{
+    private int id;
+    private static int circleCount;
+    private final double PI;
+    public int radius;
+
+    public void <init>(int)
+    {
+        demo.Circle this;
+        int $stack2, $stack3, $stack4, radius;
+
+        this := @this: demo.Circle;
+
+        radius := @parameter0: int;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<demo.Circle: double PI> = 3.1415;
+
+        this.<demo.Circle: double PI> = 3.1415;
+
+        $stack2 = <demo.Circle: int circleCount>;
+
+        $stack3 = $stack2 + 1;
+
+        <demo.Circle: int circleCount> = $stack3;
+
+        $stack4 = <demo.Circle: int circleCount>;
+
+        this.<demo.Circle: int id> = $stack4;
+
+        this.<demo.Circle: int radius> = radius;
+
+        return;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        demo.Circle $stack4, circle;
+        int actualArea, integerArea;
+        java.lang.String[] args;
+
+        args := @parameter0: java.lang.String[];
+
+        $stack4 = new demo.Circle;
+
+        specialinvoke $stack4.<demo.Circle: void <init>(int)>(5);
+
+        circle = $stack4;
+
+        actualArea = virtualinvoke circle.<demo.Circle: int area(boolean)>(0);
+
+        integerArea = virtualinvoke circle.<demo.Circle: int area(boolean)>(1);
+
+        return;
+    }
+
+    public int area()
+    {
+        demo.Circle this;
+        int $stack4, $stack5, $stack6, $stack7, $stack10, $stack11, $stack12, $stack13, $stack14, $stack15, result, x, y;
+
+        this := @this: demo.Circle;
+
+        result = 0;
+
+        $stack4 = this.<demo.Circle: int radius>;
+
+        x = neg $stack4;
+
+     label1:
+        $stack5 = this.<demo.Circle: int radius>;
+
+        if x > $stack5 goto label5;
+
+        $stack6 = this.<demo.Circle: int radius>;
+
+        y = neg $stack6;
+
+     label2:
+        $stack7 = this.<demo.Circle: int radius>;
+
+        if y > $stack7 goto label4;
+
+        $stack11 = x * x;
+
+        $stack10 = y * y;
+
+        $stack15 = $stack11 + $stack10;
+
+        $stack13 = this.<demo.Circle: int radius>;
+
+        $stack12 = this.<demo.Circle: int radius>;
+
+        $stack14 = $stack13 * $stack12;
+
+        if $stack15 > $stack14 goto label3;
+
+        result = result + 1;
+
+     label3:
+        y = y + 1;
+
+        goto label2;
+
+     label4:
+        x = x + 1;
+
+        goto label1;
+
+     label5:
+        return result;
+    }
+
+    public int area(boolean)
+    {
+        boolean integerArea;
+        demo.Circle this;
+        int $stack4, $stack6, $stack11, $stack12;
+        double $stack5, $stack7, $stack8, $stack9, $stack10;
+        java.lang.Exception $stack13, circleCount#2;
+
+        this := @this: demo.Circle;
+
+        integerArea := @parameter0: boolean;
+
+     label1:
+        staticinvoke <demo.Circle: int getCircleCount()>();
+
+        if integerArea == 0 goto label3;
+
+        $stack12 = virtualinvoke this.<demo.Circle: int area()>();
+
+     label2:
+        return $stack12;
+
+     label3:
+        goto label5;
+
+     label4:
+        $stack13 := @caughtexception;
+
+        circleCount#2 = $stack13;
+
+     label5:
+        $stack4 = this.<demo.Circle: int radius>;
+
+        $stack5 = (double) $stack4;
+
+        $stack8 = 1.0 * $stack5;
+
+        $stack6 = this.<demo.Circle: int radius>;
+
+        $stack7 = (double) $stack6;
+
+        $stack9 = $stack8 * $stack7;
+
+        $stack10 = $stack9 * 3.1415;
+
+        $stack11 = (int) $stack10;
+
+        return $stack11;
+
+        catch java.lang.Exception from label1 to label2 with label4;
+    }
+
+    public static int getCircleCount()
+    {
+        int $stack0;
+
+        $stack0 = <demo.Circle: int circleCount>;
+
+        return $stack0;
+    }
+
+    static void <clinit>()
+    {
+        <demo.Circle: int circleCount> = 0;
+
+        return;
+    }
+}

@@ -1,0 +1,98 @@
+class pack.ReachingDefinationsAnalysis$1 extends soot.jimple.AbstractJimpleValueSwitch
+{
+    final soot.toolkits.scalar.FlowSet val$inSet;
+    final java.util.Iterator val$defIt;
+    final soot.ValueBox val$defBox;
+    final soot.toolkits.scalar.FlowSet val$kills;
+    final pack.ReachingDefinationsAnalysis this$0;
+
+    void <init>(pack.ReachingDefinationsAnalysis, soot.toolkits.scalar.FlowSet, java.util.Iterator, soot.ValueBox, soot.toolkits.scalar.FlowSet)
+    {
+        pack.ReachingDefinationsAnalysis$1 this;
+        pack.ReachingDefinationsAnalysis this$0;
+        soot.toolkits.scalar.FlowSet l2, l5;
+        java.util.Iterator l3;
+        soot.ValueBox l4;
+
+        this := @this: pack.ReachingDefinationsAnalysis$1;
+
+        this$0 := @parameter0: pack.ReachingDefinationsAnalysis;
+
+        l2 := @parameter1: soot.toolkits.scalar.FlowSet;
+
+        l3 := @parameter2: java.util.Iterator;
+
+        l4 := @parameter3: soot.ValueBox;
+
+        l5 := @parameter4: soot.toolkits.scalar.FlowSet;
+
+        this.<pack.ReachingDefinationsAnalysis$1: pack.ReachingDefinationsAnalysis this$0> = this$0;
+
+        this.<pack.ReachingDefinationsAnalysis$1: soot.toolkits.scalar.FlowSet val$inSet> = l2;
+
+        this.<pack.ReachingDefinationsAnalysis$1: java.util.Iterator val$defIt> = l3;
+
+        this.<pack.ReachingDefinationsAnalysis$1: soot.ValueBox val$defBox> = l4;
+
+        this.<pack.ReachingDefinationsAnalysis$1: soot.toolkits.scalar.FlowSet val$kills> = l5;
+
+        specialinvoke this.<soot.jimple.AbstractJimpleValueSwitch: void <init>()>();
+
+        return;
+    }
+
+    public void caseLocal(soot.Local)
+    {
+        pack.ReachingDefinationsAnalysis$1 this;
+        soot.toolkits.scalar.FlowSet $stack4, $stack14;
+        java.util.Iterator inIt, $stack7;
+        boolean $stack6, $stack11;
+        java.lang.Object $stack8;
+        soot.Local inValue, v;
+        soot.ValueBox $stack9, $stack13, $stack16;
+        soot.Value $stack10, $stack15;
+
+        this := @this: pack.ReachingDefinationsAnalysis$1;
+
+        v := @parameter0: soot.Local;
+
+        $stack4 = this.<pack.ReachingDefinationsAnalysis$1: soot.toolkits.scalar.FlowSet val$inSet>;
+
+        inIt = interfaceinvoke $stack4.<soot.toolkits.scalar.FlowSet: java.util.Iterator iterator()>();
+
+     label1:
+        $stack6 = interfaceinvoke inIt.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack6 == 0 goto label3;
+
+        $stack7 = this.<pack.ReachingDefinationsAnalysis$1: java.util.Iterator val$defIt>;
+
+        $stack8 = interfaceinvoke $stack7.<java.util.Iterator: java.lang.Object next()>();
+
+        inValue = (soot.Local) $stack8;
+
+        $stack9 = this.<pack.ReachingDefinationsAnalysis$1: soot.ValueBox val$defBox>;
+
+        $stack10 = interfaceinvoke $stack9.<soot.ValueBox: soot.Value getValue()>();
+
+        $stack11 = interfaceinvoke inValue.<soot.Local: boolean equivTo(java.lang.Object)>($stack10);
+
+        if $stack11 == 0 goto label2;
+
+        $stack14 = this.<pack.ReachingDefinationsAnalysis$1: soot.toolkits.scalar.FlowSet val$kills>;
+
+        $stack13 = this.<pack.ReachingDefinationsAnalysis$1: soot.ValueBox val$defBox>;
+
+        $stack15 = interfaceinvoke $stack13.<soot.ValueBox: soot.Value getValue()>();
+
+        $stack16 = (soot.ValueBox) $stack15;
+
+        interfaceinvoke $stack14.<soot.toolkits.scalar.FlowSet: void add(java.lang.Object)>($stack16);
+
+     label2:
+        goto label1;
+
+     label3:
+        return;
+    }
+}

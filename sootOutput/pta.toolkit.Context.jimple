@@ -1,0 +1,520 @@
+public class pta.toolkit.Context extends java.lang.Object
+{
+    private pta.toolkit.Analyzer analyzer;
+    private int depth;
+    private java.lang.String className;
+    private pta.toolkit.Context invokeContext;
+    private java.lang.String methodSignature;
+    private java.util.List argsList;
+    private pta.toolkit.Context preContext;
+    private java.lang.String branchStmt;
+    private pta.toolkit.Variable thisVar;
+    private java.util.Map localMap;
+
+    private void <init>(pta.toolkit.Analyzer, int, java.lang.String, pta.toolkit.Context, java.lang.String, java.util.List, pta.toolkit.Context, java.lang.String, pta.toolkit.Variable)
+    {
+        pta.toolkit.Context this, invokeContext, preContext;
+        pta.toolkit.Analyzer analyzer;
+        int depth;
+        java.lang.String className, methodSignature, branchStmt;
+        java.util.List argsList;
+        pta.toolkit.Variable thisVar;
+        java.util.LinkedHashMap $stack10;
+
+        this := @this: pta.toolkit.Context;
+
+        analyzer := @parameter0: pta.toolkit.Analyzer;
+
+        depth := @parameter1: int;
+
+        className := @parameter2: java.lang.String;
+
+        invokeContext := @parameter3: pta.toolkit.Context;
+
+        methodSignature := @parameter4: java.lang.String;
+
+        argsList := @parameter5: java.util.List;
+
+        preContext := @parameter6: pta.toolkit.Context;
+
+        branchStmt := @parameter7: java.lang.String;
+
+        thisVar := @parameter8: pta.toolkit.Variable;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<pta.toolkit.Context: pta.toolkit.Analyzer analyzer> = analyzer;
+
+        this.<pta.toolkit.Context: int depth> = depth;
+
+        this.<pta.toolkit.Context: java.lang.String className> = className;
+
+        this.<pta.toolkit.Context: pta.toolkit.Context invokeContext> = invokeContext;
+
+        this.<pta.toolkit.Context: java.lang.String methodSignature> = methodSignature;
+
+        this.<pta.toolkit.Context: java.util.List argsList> = argsList;
+
+        this.<pta.toolkit.Context: pta.toolkit.Context preContext> = preContext;
+
+        this.<pta.toolkit.Context: java.lang.String branchStmt> = branchStmt;
+
+        this.<pta.toolkit.Context: pta.toolkit.Variable thisVar> = thisVar;
+
+        $stack10 = new java.util.LinkedHashMap;
+
+        specialinvoke $stack10.<java.util.LinkedHashMap: void <init>()>();
+
+        this.<pta.toolkit.Context: java.util.Map localMap> = $stack10;
+
+        return;
+    }
+
+    public static pta.toolkit.Context getInstance(pta.toolkit.Analyzer, java.lang.String)
+    {
+        pta.toolkit.Context $stack2;
+        pta.toolkit.Analyzer analyzer;
+        java.lang.String className;
+        java.util.List $stack6;
+
+        analyzer := @parameter0: pta.toolkit.Analyzer;
+
+        className := @parameter1: java.lang.String;
+
+        $stack2 = new pta.toolkit.Context;
+
+        $stack6 = staticinvoke <java.util.Collections: java.util.List emptyList()>();
+
+        specialinvoke $stack2.<pta.toolkit.Context: void <init>(pta.toolkit.Analyzer,int,java.lang.String,pta.toolkit.Context,java.lang.String,java.util.List,pta.toolkit.Context,java.lang.String,pta.toolkit.Variable)>(analyzer, 0, className, null, null, $stack6, null, null, null);
+
+        return $stack2;
+    }
+
+    public pta.toolkit.Context createInvokeContext(java.lang.String, java.util.List, pta.toolkit.Variable)
+    {
+        soot.Scene $stack6;
+        java.lang.String methodSignature, targetClassName;
+        soot.SootMethod targetMethod;
+        soot.SootClass $stack8;
+        pta.toolkit.Context $stack10, this;
+        int $stack11, $stack12;
+        java.util.List args;
+        pta.toolkit.Variable thisVar;
+        pta.toolkit.Analyzer $stack13;
+
+        this := @this: pta.toolkit.Context;
+
+        methodSignature := @parameter0: java.lang.String;
+
+        args := @parameter1: java.util.List;
+
+        thisVar := @parameter2: pta.toolkit.Variable;
+
+        $stack6 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        targetMethod = virtualinvoke $stack6.<soot.Scene: soot.SootMethod getMethod(java.lang.String)>(methodSignature);
+
+        $stack8 = virtualinvoke targetMethod.<soot.SootMethod: soot.SootClass getDeclaringClass()>();
+
+        targetClassName = virtualinvoke $stack8.<soot.SootClass: java.lang.String getName()>();
+
+        $stack10 = new pta.toolkit.Context;
+
+        $stack13 = this.<pta.toolkit.Context: pta.toolkit.Analyzer analyzer>;
+
+        $stack11 = this.<pta.toolkit.Context: int depth>;
+
+        $stack12 = $stack11 + 1;
+
+        specialinvoke $stack10.<pta.toolkit.Context: void <init>(pta.toolkit.Analyzer,int,java.lang.String,pta.toolkit.Context,java.lang.String,java.util.List,pta.toolkit.Context,java.lang.String,pta.toolkit.Variable)>($stack13, $stack12, targetClassName, this, methodSignature, args, null, null, thisVar);
+
+        return $stack10;
+    }
+
+    public pta.toolkit.Context createBranchScope(java.lang.String)
+    {
+        pta.toolkit.Context $stack6, this, $stack10, context;
+        java.lang.String branchStmt, $stack9, $stack11;
+        pta.toolkit.Variable $stack7, $stack20, copy;
+        java.util.List $stack8;
+        int $stack12;
+        pta.toolkit.Analyzer $stack13;
+        java.util.Map $stack14;
+        java.util.Set $stack15;
+        java.util.Iterator l3;
+        boolean $stack17;
+        java.lang.Object $stack18, $stack19;
+        java.util.Map$Entry entry;
+        soot.Local $stack22;
+
+        this := @this: pta.toolkit.Context;
+
+        branchStmt := @parameter0: java.lang.String;
+
+        $stack6 = new pta.toolkit.Context;
+
+        $stack13 = this.<pta.toolkit.Context: pta.toolkit.Analyzer analyzer>;
+
+        $stack12 = this.<pta.toolkit.Context: int depth>;
+
+        $stack11 = this.<pta.toolkit.Context: java.lang.String className>;
+
+        $stack10 = this.<pta.toolkit.Context: pta.toolkit.Context invokeContext>;
+
+        $stack9 = this.<pta.toolkit.Context: java.lang.String methodSignature>;
+
+        $stack8 = this.<pta.toolkit.Context: java.util.List argsList>;
+
+        $stack7 = this.<pta.toolkit.Context: pta.toolkit.Variable thisVar>;
+
+        specialinvoke $stack6.<pta.toolkit.Context: void <init>(pta.toolkit.Analyzer,int,java.lang.String,pta.toolkit.Context,java.lang.String,java.util.List,pta.toolkit.Context,java.lang.String,pta.toolkit.Variable)>($stack13, $stack12, $stack11, $stack10, $stack9, $stack8, this, branchStmt, $stack7);
+
+        context = $stack6;
+
+        $stack14 = this.<pta.toolkit.Context: java.util.Map localMap>;
+
+        $stack15 = interfaceinvoke $stack14.<java.util.Map: java.util.Set entrySet()>();
+
+        l3 = interfaceinvoke $stack15.<java.util.Set: java.util.Iterator iterator()>();
+
+     label1:
+        $stack17 = interfaceinvoke l3.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack17 == 0 goto label2;
+
+        $stack18 = interfaceinvoke l3.<java.util.Iterator: java.lang.Object next()>();
+
+        entry = (java.util.Map$Entry) $stack18;
+
+        $stack19 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $stack20 = (pta.toolkit.Variable) $stack19;
+
+        copy = virtualinvoke $stack20.<pta.toolkit.Variable: pta.toolkit.Variable copyDeep(boolean)>(1);
+
+        $stack22 = virtualinvoke copy.<pta.toolkit.Variable: soot.Local getLocal()>();
+
+        virtualinvoke context.<pta.toolkit.Context: void bindLocalAndVariable(soot.Local,pta.toolkit.Variable)>($stack22, copy);
+
+        goto label1;
+
+     label2:
+        return context;
+    }
+
+    public void bindLocalAndVariable(soot.Local, pta.toolkit.Variable)
+    {
+        pta.toolkit.Context this;
+        soot.Local local;
+        pta.toolkit.Variable var;
+        java.util.Map $stack3;
+        pta.toolkit.Analyzer $stack5;
+
+        this := @this: pta.toolkit.Context;
+
+        local := @parameter0: soot.Local;
+
+        var := @parameter1: pta.toolkit.Variable;
+
+        $stack3 = this.<pta.toolkit.Context: java.util.Map localMap>;
+
+        interfaceinvoke $stack3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(local, var);
+
+        $stack5 = this.<pta.toolkit.Context: pta.toolkit.Analyzer analyzer>;
+
+        virtualinvoke $stack5.<pta.toolkit.Analyzer: void addLocal(soot.Local,pta.toolkit.Variable)>(local, var);
+
+        return;
+    }
+
+    public pta.toolkit.Analyzer getAnalyzer()
+    {
+        pta.toolkit.Context this;
+        pta.toolkit.Analyzer $stack1;
+
+        this := @this: pta.toolkit.Context;
+
+        $stack1 = this.<pta.toolkit.Context: pta.toolkit.Analyzer analyzer>;
+
+        return $stack1;
+    }
+
+    public pta.toolkit.Variable getVariable(soot.Local)
+    {
+        pta.toolkit.Context this;
+        soot.Local local;
+        java.util.Map $stack2;
+        java.lang.Object $stack3;
+        pta.toolkit.Variable $stack4;
+
+        this := @this: pta.toolkit.Context;
+
+        local := @parameter0: soot.Local;
+
+        $stack2 = this.<pta.toolkit.Context: java.util.Map localMap>;
+
+        $stack3 = interfaceinvoke $stack2.<java.util.Map: java.lang.Object get(java.lang.Object)>(local);
+
+        $stack4 = (pta.toolkit.Variable) $stack3;
+
+        return $stack4;
+    }
+
+    public void bindArg(soot.Local, int)
+    {
+        int paramIndex, $stack7;
+        pta.toolkit.Context this, $stack12;
+        java.util.List $stack6, $stack8;
+        java.lang.Object $stack9;
+        soot.Value argValue;
+        boolean $stack10;
+        soot.Local $stack11, local;
+        pta.toolkit.Variable argVar, var;
+
+        this := @this: pta.toolkit.Context;
+
+        local := @parameter0: soot.Local;
+
+        paramIndex := @parameter1: int;
+
+        if paramIndex < 0 goto label3;
+
+        $stack6 = this.<pta.toolkit.Context: java.util.List argsList>;
+
+        $stack7 = interfaceinvoke $stack6.<java.util.List: int size()>();
+
+        if paramIndex >= $stack7 goto label3;
+
+        $stack8 = this.<pta.toolkit.Context: java.util.List argsList>;
+
+        $stack9 = interfaceinvoke $stack8.<java.util.List: java.lang.Object get(int)>(paramIndex);
+
+        argValue = (soot.Value) $stack9;
+
+        $stack10 = argValue instanceof soot.Local;
+
+        if $stack10 == 0 goto label3;
+
+        $stack12 = this.<pta.toolkit.Context: pta.toolkit.Context invokeContext>;
+
+        $stack11 = (soot.Local) argValue;
+
+        argVar = virtualinvoke $stack12.<pta.toolkit.Context: pta.toolkit.Variable getVariable(soot.Local)>($stack11);
+
+        if argVar == null goto label1;
+
+        var = virtualinvoke argVar.<pta.toolkit.Variable: pta.toolkit.Variable copyDeep(boolean)>(0);
+
+        goto label2;
+
+     label1:
+        var = staticinvoke <pta.toolkit.Variable: pta.toolkit.Variable getInstance(soot.Value,pta.toolkit.Context)>(argValue, this);
+
+     label2:
+        virtualinvoke this.<pta.toolkit.Context: void bindLocalAndVariable(soot.Local,pta.toolkit.Variable)>(local, var);
+
+     label3:
+        return;
+    }
+
+    public pta.toolkit.Variable getOrAdd(soot.Local)
+    {
+        pta.toolkit.Context this;
+        soot.Local local;
+        pta.toolkit.Variable var;
+        soot.Value $r0;
+
+        this := @this: pta.toolkit.Context;
+
+        local := @parameter0: soot.Local;
+
+        var = virtualinvoke this.<pta.toolkit.Context: pta.toolkit.Variable getVariable(soot.Local)>(local);
+
+        if var != null goto label1;
+
+        $r0 = (soot.Value) local;
+
+        var = staticinvoke <pta.toolkit.Variable: pta.toolkit.Variable getInstance(soot.Value,pta.toolkit.Context)>($r0, this);
+
+        virtualinvoke this.<pta.toolkit.Context: void bindLocalAndVariable(soot.Local,pta.toolkit.Variable)>(local, var);
+
+     label1:
+        return var;
+    }
+
+    public void bindThis(soot.Local)
+    {
+        pta.toolkit.Context this;
+        soot.Local local;
+        pta.toolkit.Variable $stack2, $stack3;
+
+        this := @this: pta.toolkit.Context;
+
+        local := @parameter0: soot.Local;
+
+        $stack2 = this.<pta.toolkit.Context: pta.toolkit.Variable thisVar>;
+
+        $stack3 = virtualinvoke $stack2.<pta.toolkit.Variable: pta.toolkit.Variable copyDeep(boolean)>(0);
+
+        virtualinvoke this.<pta.toolkit.Context: void bindLocalAndVariable(soot.Local,pta.toolkit.Variable)>(local, $stack3);
+
+        return;
+    }
+
+    public pta.toolkit.Variable createVariable(soot.Value)
+    {
+        soot.Value val;
+        pta.toolkit.Context this;
+        pta.toolkit.Variable $stack2;
+
+        this := @this: pta.toolkit.Context;
+
+        val := @parameter0: soot.Value;
+
+        $stack2 = staticinvoke <pta.toolkit.Variable: pta.toolkit.Variable getInstance(soot.Value,pta.toolkit.Context)>(val, this);
+
+        return $stack2;
+    }
+
+    public pta.toolkit.Variable createConstant(soot.Value)
+    {
+        soot.Value val;
+        pta.toolkit.Context this;
+        pta.toolkit.Variable $stack2;
+
+        this := @this: pta.toolkit.Context;
+
+        val := @parameter0: soot.Value;
+
+        $stack2 = staticinvoke <pta.toolkit.Variable: pta.toolkit.Variable getInstance(soot.Value,pta.toolkit.Context)>(val, this);
+
+        return $stack2;
+    }
+
+    public boolean isInRecursion(java.lang.String)
+    {
+        java.lang.String invokeSignature, $stack2;
+        pta.toolkit.Context this, $stack4, $stack5;
+        boolean $stack3, $stack6;
+
+        this := @this: pta.toolkit.Context;
+
+        invokeSignature := @parameter0: java.lang.String;
+
+        $stack2 = this.<pta.toolkit.Context: java.lang.String methodSignature>;
+
+        $stack3 = virtualinvoke invokeSignature.<java.lang.String: boolean equals(java.lang.Object)>($stack2);
+
+        if $stack3 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        $stack4 = this.<pta.toolkit.Context: pta.toolkit.Context invokeContext>;
+
+        if $stack4 == null goto label2;
+
+        $stack5 = this.<pta.toolkit.Context: pta.toolkit.Context invokeContext>;
+
+        $stack6 = virtualinvoke $stack5.<pta.toolkit.Context: boolean isInRecursion(java.lang.String)>(invokeSignature);
+
+        return $stack6;
+
+     label2:
+        return 0;
+    }
+
+    public boolean isInBranchChain(java.lang.String)
+    {
+        java.lang.String branchStmt, $stack2;
+        pta.toolkit.Context this, $stack4, $stack5;
+        boolean $stack3, $stack6;
+
+        this := @this: pta.toolkit.Context;
+
+        branchStmt := @parameter0: java.lang.String;
+
+        $stack2 = this.<pta.toolkit.Context: java.lang.String branchStmt>;
+
+        $stack3 = virtualinvoke branchStmt.<java.lang.String: boolean equals(java.lang.Object)>($stack2);
+
+        if $stack3 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        $stack4 = this.<pta.toolkit.Context: pta.toolkit.Context preContext>;
+
+        if $stack4 == null goto label2;
+
+        $stack5 = this.<pta.toolkit.Context: pta.toolkit.Context preContext>;
+
+        $stack6 = virtualinvoke $stack5.<pta.toolkit.Context: boolean isInBranchChain(java.lang.String)>(branchStmt);
+
+        return $stack6;
+
+     label2:
+        return 0;
+    }
+
+    public int getDepth()
+    {
+        pta.toolkit.Context this;
+        int $stack1;
+
+        this := @this: pta.toolkit.Context;
+
+        $stack1 = this.<pta.toolkit.Context: int depth>;
+
+        return $stack1;
+    }
+
+    public java.lang.String getClassName()
+    {
+        pta.toolkit.Context this;
+        java.lang.String $stack1;
+
+        this := @this: pta.toolkit.Context;
+
+        $stack1 = this.<pta.toolkit.Context: java.lang.String className>;
+
+        return $stack1;
+    }
+
+    public pta.toolkit.Context getPreContext()
+    {
+        pta.toolkit.Context this, $stack1;
+
+        this := @this: pta.toolkit.Context;
+
+        $stack1 = this.<pta.toolkit.Context: pta.toolkit.Context preContext>;
+
+        return $stack1;
+    }
+
+    public java.lang.String toString()
+    {
+        java.lang.StringBuilder $stack1, $stack2, $stack4, $stack5;
+        pta.toolkit.Context this;
+        java.util.Map $stack3;
+        java.lang.String $stack6;
+
+        this := @this: pta.toolkit.Context;
+
+        $stack1 = new java.lang.StringBuilder;
+
+        specialinvoke $stack1.<java.lang.StringBuilder: void <init>()>();
+
+        $stack2 = virtualinvoke $stack1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Contex{ ");
+
+        $stack3 = this.<pta.toolkit.Context: java.util.Map localMap>;
+
+        $stack4 = virtualinvoke $stack2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack3);
+
+        $stack5 = virtualinvoke $stack4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("}");
+
+        $stack6 = virtualinvoke $stack5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $stack6;
+    }
+}

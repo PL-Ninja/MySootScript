@@ -1,0 +1,40 @@
+public class demo.CGDemo extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        demo.CGDemo this;
+
+        this := @this: demo.CGDemo;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public java.lang.String begin(java.lang.String) throws java.io.IOException
+    {
+        demo.A $stack3;
+        java.lang.String args, cmd, $stack6;
+        demo.B $stack5;
+        demo.CGDemo this;
+
+        this := @this: demo.CGDemo;
+
+        args := @parameter0: java.lang.String;
+
+        $stack3 = new demo.A;
+
+        specialinvoke $stack3.<demo.A: void <init>()>();
+
+        cmd = virtualinvoke $stack3.<demo.A: java.lang.String method1(java.lang.String)>(args);
+
+        $stack5 = new demo.B;
+
+        specialinvoke $stack5.<demo.B: void <init>()>();
+
+        $stack6 = virtualinvoke $stack5.<demo.B: java.lang.String method2(java.lang.String)>(cmd);
+
+        return $stack6;
+    }
+}

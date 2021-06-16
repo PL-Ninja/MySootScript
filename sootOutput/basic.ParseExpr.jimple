@@ -1,0 +1,189 @@
+public class basic.ParseExpr extends java.lang.Object
+{
+    private static java.lang.String className;
+    private static final java.lang.String methodSubSignature;
+
+    public void <init>()
+    {
+        basic.ParseExpr this;
+
+        this := @this: basic.ParseExpr;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        java.lang.String $stack1;
+        java.lang.String[] args;
+
+        args := @parameter0: java.lang.String[];
+
+        $stack1 = <basic.ParseExpr: java.lang.String className>;
+
+        staticinvoke <config.SootConfig: void setupSoot(java.lang.String)>($stack1);
+
+        staticinvoke <basic.ParseExpr: void getExprInfo()>();
+
+        return;
+    }
+
+    public static void getExprInfo()
+    {
+        soot.Scene $stack8;
+        java.lang.String $stack9, $stack31, $stack45;
+        soot.SootClass sc;
+        soot.SootMethod areaMethod;
+        soot.Body $stack12;
+        soot.jimple.JimpleBody areaBody;
+        soot.jimple.Stmt firstNonIdentitiyStmt, stmt;
+        soot.UnitPatchingChain $stack14;
+        java.util.Iterator l4;
+        boolean $stack16, $stack18, $stack19, $stack21;
+        java.lang.Object $stack17;
+        soot.Unit u;
+        java.io.PrintStream $stack26, $stack34, $stack39, $stack46;
+        int $stack27, $stack41;
+        java.lang.StringBuilder $stack28, $stack29, $stack30, $stack40, $stack42, $stack43, $stack44, $u0, $u1;
+        soot.jimple.InvokeExpr invokeExpr;
+        soot.jimple.FieldRef invokeExpr#2;
+        basic.ParseExpr$1 $u2;
+        basic.ParseExpr$2 $u3;
+        basic.ParseExpr$3 $u4;
+        soot.util.Switch $r0, $r1, $r2;
+
+        $stack8 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        $stack9 = <basic.ParseExpr: java.lang.String className>;
+
+        sc = virtualinvoke $stack8.<soot.Scene: soot.SootClass getSootClass(java.lang.String)>($stack9);
+
+        areaMethod = virtualinvoke sc.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("int area(boolean)");
+
+        $stack12 = virtualinvoke areaMethod.<soot.SootMethod: soot.Body retrieveActiveBody()>();
+
+        areaBody = (soot.jimple.JimpleBody) $stack12;
+
+        firstNonIdentitiyStmt = virtualinvoke areaBody.<soot.jimple.JimpleBody: soot.jimple.Stmt getFirstNonIdentityStmt()>();
+
+        $stack14 = virtualinvoke areaBody.<soot.jimple.JimpleBody: soot.UnitPatchingChain getUnits()>();
+
+        l4 = virtualinvoke $stack14.<soot.UnitPatchingChain: java.util.Iterator iterator()>();
+
+     label1:
+        $stack16 = interfaceinvoke l4.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack16 == 0 goto label5;
+
+        $stack17 = interfaceinvoke l4.<java.util.Iterator: java.lang.Object next()>();
+
+        u = (soot.Unit) $stack17;
+
+        stmt = (soot.jimple.Stmt) u;
+
+        $stack18 = virtualinvoke stmt.<java.lang.Object: boolean equals(java.lang.Object)>(firstNonIdentitiyStmt);
+
+        if $stack18 == 0 goto label2;
+
+        $stack39 = <java.lang.System: java.io.PrintStream out>;
+
+        $u0 = new java.lang.StringBuilder;
+
+        specialinvoke $u0.<java.lang.StringBuilder: void <init>()>();
+
+        $stack40 = virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("First invoke expr : \n");
+
+        $stack41 = interfaceinvoke stmt.<soot.jimple.Stmt: int getJavaSourceStartLineNumber()>();
+
+        $stack42 = virtualinvoke $stack40.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($stack41);
+
+        $stack43 = virtualinvoke $stack42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" : ");
+
+        $stack44 = virtualinvoke $stack43.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(stmt);
+
+        $stack45 = virtualinvoke $stack44.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $stack39.<java.io.PrintStream: void println(java.lang.String)>($stack45);
+
+        $stack46 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $stack46.<java.io.PrintStream: void println(java.lang.String)>("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+
+     label2:
+        $stack19 = interfaceinvoke stmt.<soot.jimple.Stmt: boolean containsInvokeExpr()>();
+
+        if $stack19 == 0 goto label3;
+
+        $stack26 = <java.lang.System: java.io.PrintStream out>;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        $stack27 = interfaceinvoke stmt.<soot.jimple.Stmt: int getJavaSourceStartLineNumber()>();
+
+        $stack28 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($stack27);
+
+        $stack29 = virtualinvoke $stack28.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" : ");
+
+        $stack30 = virtualinvoke $stack29.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(stmt);
+
+        $stack31 = virtualinvoke $stack30.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $stack26.<java.io.PrintStream: void println(java.lang.String)>($stack31);
+
+        invokeExpr = interfaceinvoke stmt.<soot.jimple.Stmt: soot.jimple.InvokeExpr getInvokeExpr()>();
+
+        $u2 = new basic.ParseExpr$1;
+
+        specialinvoke $u2.<basic.ParseExpr$1: void <init>()>();
+
+        $r0 = (soot.util.Switch) $u2;
+
+        interfaceinvoke invokeExpr.<soot.jimple.InvokeExpr: void apply(soot.util.Switch)>($r0);
+
+        $stack34 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $stack34.<java.io.PrintStream: void println(java.lang.String)>("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+
+     label3:
+        $u3 = new basic.ParseExpr$2;
+
+        specialinvoke $u3.<basic.ParseExpr$2: void <init>(soot.jimple.JimpleBody)>(areaBody);
+
+        $r1 = (soot.util.Switch) $u3;
+
+        interfaceinvoke stmt.<soot.jimple.Stmt: void apply(soot.util.Switch)>($r1);
+
+        $stack21 = interfaceinvoke stmt.<soot.jimple.Stmt: boolean containsFieldRef()>();
+
+        if $stack21 == 0 goto label4;
+
+        invokeExpr#2 = interfaceinvoke stmt.<soot.jimple.Stmt: soot.jimple.FieldRef getFieldRef()>();
+
+        $u4 = new basic.ParseExpr$3;
+
+        specialinvoke $u4.<basic.ParseExpr$3: void <init>()>();
+
+        $r2 = (soot.util.Switch) $u4;
+
+        interfaceinvoke invokeExpr#2.<soot.jimple.FieldRef: void apply(soot.util.Switch)>($r2);
+
+     label4:
+        goto label1;
+
+     label5:
+        return;
+    }
+
+    static void <clinit>()
+    {
+        <basic.ParseExpr: java.lang.String methodSubSignature> = "int area(boolean)";
+
+        <basic.ParseExpr: java.lang.String className> = "Demo.Circle";
+
+        return;
+    }
+}

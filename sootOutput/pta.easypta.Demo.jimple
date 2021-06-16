@@ -1,0 +1,65 @@
+public class pta.easypta.Demo extends java.lang.Object
+{
+    public pta.easypta.Demo f;
+
+    public void <init>()
+    {
+        pta.easypta.Demo this;
+
+        this := @this: pta.easypta.Demo;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        pta.easypta.Demo $stack6, $stack7, b, $stack8, c, $stack9, $stack10, a, d, e;
+        java.lang.String[] args;
+
+        args := @parameter0: java.lang.String[];
+
+        $stack6 = new pta.easypta.Demo;
+
+        specialinvoke $stack6.<pta.easypta.Demo: void <init>()>();
+
+        a = $stack6;
+
+        $stack7 = new pta.easypta.Demo;
+
+        specialinvoke $stack7.<pta.easypta.Demo: void <init>()>();
+
+        b = $stack7;
+
+        $stack8 = new pta.easypta.Demo;
+
+        specialinvoke $stack8.<pta.easypta.Demo: void <init>()>();
+
+        c = $stack8;
+
+        $stack9 = new pta.easypta.Demo;
+
+        specialinvoke $stack9.<pta.easypta.Demo: void <init>()>();
+
+        d = $stack9;
+
+        $stack10 = new pta.easypta.Demo;
+
+        specialinvoke $stack10.<pta.easypta.Demo: void <init>()>();
+
+        e = $stack10;
+
+        a = b;
+
+        c.<pta.easypta.Demo: pta.easypta.Demo f> = a;
+
+        d = c;
+
+        c.<pta.easypta.Demo: pta.easypta.Demo f> = d;
+
+        e = d.<pta.easypta.Demo: pta.easypta.Demo f>;
+
+        return;
+    }
+}

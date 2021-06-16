@@ -1,0 +1,26 @@
+class demo.NullPointerExample$Data extends java.lang.Object
+{
+    java.lang.String message;
+    final demo.NullPointerExample this$0;
+
+    public void <init>(demo.NullPointerExample, java.lang.String)
+    {
+        demo.NullPointerExample$Data this;
+        demo.NullPointerExample this$0;
+        java.lang.String message;
+
+        this := @this: demo.NullPointerExample$Data;
+
+        this$0 := @parameter0: demo.NullPointerExample;
+
+        message := @parameter1: java.lang.String;
+
+        this.<demo.NullPointerExample$Data: demo.NullPointerExample this$0> = this$0;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<demo.NullPointerExample$Data: java.lang.String message> = message;
+
+        return;
+    }
+}

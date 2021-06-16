@@ -1,0 +1,254 @@
+public class flowsets.VeryBusyExpressionFlowSet extends soot.toolkits.scalar.AbstractFlowSet
+{
+    private java.util.Set busyExprs;
+
+    public void <init>()
+    {
+        flowsets.VeryBusyExpressionFlowSet this;
+        java.util.HashSet $stack1;
+
+        this := @this: flowsets.VeryBusyExpressionFlowSet;
+
+        specialinvoke this.<soot.toolkits.scalar.AbstractFlowSet: void <init>()>();
+
+        $stack1 = new java.util.HashSet;
+
+        specialinvoke $stack1.<java.util.HashSet: void <init>()>();
+
+        this.<flowsets.VeryBusyExpressionFlowSet: java.util.Set busyExprs> = $stack1;
+
+        return;
+    }
+
+    public flowsets.VeryBusyExpressionFlowSet clone()
+    {
+        flowsets.VeryBusyExpressionFlowSet $stack2, myClone, this;
+        java.util.Set $stack3, $stack4;
+
+        this := @this: flowsets.VeryBusyExpressionFlowSet;
+
+        $stack2 = new flowsets.VeryBusyExpressionFlowSet;
+
+        specialinvoke $stack2.<flowsets.VeryBusyExpressionFlowSet: void <init>()>();
+
+        myClone = $stack2;
+
+        $stack4 = myClone.<flowsets.VeryBusyExpressionFlowSet: java.util.Set busyExprs>;
+
+        $stack3 = this.<flowsets.VeryBusyExpressionFlowSet: java.util.Set busyExprs>;
+
+        interfaceinvoke $stack4.<java.util.Set: boolean addAll(java.util.Collection)>($stack3);
+
+        return myClone;
+    }
+
+    public boolean isEmpty()
+    {
+        flowsets.VeryBusyExpressionFlowSet this;
+        java.util.Set $stack1;
+        boolean $stack2;
+
+        this := @this: flowsets.VeryBusyExpressionFlowSet;
+
+        $stack1 = this.<flowsets.VeryBusyExpressionFlowSet: java.util.Set busyExprs>;
+
+        $stack2 = interfaceinvoke $stack1.<java.util.Set: boolean isEmpty()>();
+
+        return $stack2;
+    }
+
+    public int size()
+    {
+        flowsets.VeryBusyExpressionFlowSet this;
+        java.util.Set $stack1;
+        int $stack2;
+
+        this := @this: flowsets.VeryBusyExpressionFlowSet;
+
+        $stack1 = this.<flowsets.VeryBusyExpressionFlowSet: java.util.Set busyExprs>;
+
+        $stack2 = interfaceinvoke $stack1.<java.util.Set: int size()>();
+
+        return $stack2;
+    }
+
+    public void add(soot.jimple.internal.AbstractBinopExpr)
+    {
+        flowsets.VeryBusyExpressionFlowSet this;
+        soot.jimple.internal.AbstractBinopExpr abstractBinopExpr;
+        java.util.Set $stack2;
+
+        this := @this: flowsets.VeryBusyExpressionFlowSet;
+
+        abstractBinopExpr := @parameter0: soot.jimple.internal.AbstractBinopExpr;
+
+        $stack2 = this.<flowsets.VeryBusyExpressionFlowSet: java.util.Set busyExprs>;
+
+        interfaceinvoke $stack2.<java.util.Set: boolean add(java.lang.Object)>(abstractBinopExpr);
+
+        return;
+    }
+
+    public void remove(soot.jimple.internal.AbstractBinopExpr)
+    {
+        flowsets.VeryBusyExpressionFlowSet this;
+        soot.jimple.internal.AbstractBinopExpr abstractBinopExpr;
+        java.util.Set $stack2, $stack4;
+        boolean $stack3;
+
+        this := @this: flowsets.VeryBusyExpressionFlowSet;
+
+        abstractBinopExpr := @parameter0: soot.jimple.internal.AbstractBinopExpr;
+
+        $stack2 = this.<flowsets.VeryBusyExpressionFlowSet: java.util.Set busyExprs>;
+
+        $stack3 = interfaceinvoke $stack2.<java.util.Set: boolean contains(java.lang.Object)>(abstractBinopExpr);
+
+        if $stack3 == 0 goto label1;
+
+        $stack4 = this.<flowsets.VeryBusyExpressionFlowSet: java.util.Set busyExprs>;
+
+        interfaceinvoke $stack4.<java.util.Set: boolean remove(java.lang.Object)>(abstractBinopExpr);
+
+     label1:
+        return;
+    }
+
+    public boolean contains(soot.jimple.internal.AbstractBinopExpr)
+    {
+        flowsets.VeryBusyExpressionFlowSet this;
+        soot.jimple.internal.AbstractBinopExpr abstractBinopExpr;
+        java.util.Set $stack2;
+        boolean $stack3;
+
+        this := @this: flowsets.VeryBusyExpressionFlowSet;
+
+        abstractBinopExpr := @parameter0: soot.jimple.internal.AbstractBinopExpr;
+
+        $stack2 = this.<flowsets.VeryBusyExpressionFlowSet: java.util.Set busyExprs>;
+
+        $stack3 = interfaceinvoke $stack2.<java.util.Set: boolean contains(java.lang.Object)>(abstractBinopExpr);
+
+        return $stack3;
+    }
+
+    public java.util.Iterator iterator()
+    {
+        flowsets.VeryBusyExpressionFlowSet this;
+        java.util.Set $stack1;
+        java.util.Iterator $stack2;
+
+        this := @this: flowsets.VeryBusyExpressionFlowSet;
+
+        $stack1 = this.<flowsets.VeryBusyExpressionFlowSet: java.util.Set busyExprs>;
+
+        $stack2 = interfaceinvoke $stack1.<java.util.Set: java.util.Iterator iterator()>();
+
+        return $stack2;
+    }
+
+    public java.util.List toList()
+    {
+        java.util.ArrayList $stack1;
+        flowsets.VeryBusyExpressionFlowSet this;
+        java.util.Set $stack2;
+
+        this := @this: flowsets.VeryBusyExpressionFlowSet;
+
+        $stack1 = new java.util.ArrayList;
+
+        $stack2 = this.<flowsets.VeryBusyExpressionFlowSet: java.util.Set busyExprs>;
+
+        specialinvoke $stack1.<java.util.ArrayList: void <init>(java.util.Collection)>($stack2);
+
+        return $stack1;
+    }
+
+    public volatile boolean contains(java.lang.Object)
+    {
+        flowsets.VeryBusyExpressionFlowSet this;
+        java.lang.Object l1;
+        soot.jimple.internal.AbstractBinopExpr $stack2;
+        boolean $stack3;
+
+        this := @this: flowsets.VeryBusyExpressionFlowSet;
+
+        l1 := @parameter0: java.lang.Object;
+
+        $stack2 = (soot.jimple.internal.AbstractBinopExpr) l1;
+
+        $stack3 = virtualinvoke this.<flowsets.VeryBusyExpressionFlowSet: boolean contains(soot.jimple.internal.AbstractBinopExpr)>($stack2);
+
+        return $stack3;
+    }
+
+    public volatile void remove(java.lang.Object)
+    {
+        flowsets.VeryBusyExpressionFlowSet this;
+        java.lang.Object l1;
+        soot.jimple.internal.AbstractBinopExpr $stack2;
+
+        this := @this: flowsets.VeryBusyExpressionFlowSet;
+
+        l1 := @parameter0: java.lang.Object;
+
+        $stack2 = (soot.jimple.internal.AbstractBinopExpr) l1;
+
+        virtualinvoke this.<flowsets.VeryBusyExpressionFlowSet: void remove(soot.jimple.internal.AbstractBinopExpr)>($stack2);
+
+        return;
+    }
+
+    public volatile void add(java.lang.Object)
+    {
+        flowsets.VeryBusyExpressionFlowSet this;
+        java.lang.Object l1;
+        soot.jimple.internal.AbstractBinopExpr $stack2;
+
+        this := @this: flowsets.VeryBusyExpressionFlowSet;
+
+        l1 := @parameter0: java.lang.Object;
+
+        $stack2 = (soot.jimple.internal.AbstractBinopExpr) l1;
+
+        virtualinvoke this.<flowsets.VeryBusyExpressionFlowSet: void add(soot.jimple.internal.AbstractBinopExpr)>($stack2);
+
+        return;
+    }
+
+    public volatile soot.toolkits.scalar.AbstractFlowSet clone()
+    {
+        flowsets.VeryBusyExpressionFlowSet this, $stack1;
+
+        this := @this: flowsets.VeryBusyExpressionFlowSet;
+
+        $stack1 = virtualinvoke this.<flowsets.VeryBusyExpressionFlowSet: flowsets.VeryBusyExpressionFlowSet clone()>();
+
+        return $stack1;
+    }
+
+    public volatile soot.toolkits.scalar.FlowSet clone()
+    {
+        flowsets.VeryBusyExpressionFlowSet this, $stack1;
+        soot.toolkits.scalar.FlowSet $r0;
+
+        this := @this: flowsets.VeryBusyExpressionFlowSet;
+
+        $stack1 = virtualinvoke this.<flowsets.VeryBusyExpressionFlowSet: flowsets.VeryBusyExpressionFlowSet clone()>();
+
+        $r0 = (soot.toolkits.scalar.FlowSet) $stack1;
+
+        return $r0;
+    }
+
+    public volatile java.lang.Object clone() throws java.lang.CloneNotSupportedException
+    {
+        flowsets.VeryBusyExpressionFlowSet this, $stack1;
+
+        this := @this: flowsets.VeryBusyExpressionFlowSet;
+
+        $stack1 = virtualinvoke this.<flowsets.VeryBusyExpressionFlowSet: flowsets.VeryBusyExpressionFlowSet clone()>();
+
+        return $stack1;
+    }
+}

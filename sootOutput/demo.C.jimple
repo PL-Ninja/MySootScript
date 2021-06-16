@@ -1,0 +1,26 @@
+class demo.C extends java.lang.Object
+{
+
+    void <init>()
+    {
+        demo.C this;
+
+        this := @this: demo.C;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public java.lang.String method3(java.lang.String)
+    {
+        java.lang.String param;
+        demo.C this;
+
+        this := @this: demo.C;
+
+        param := @parameter0: java.lang.String;
+
+        return param;
+    }
+}

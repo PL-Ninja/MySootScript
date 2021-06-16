@@ -1,0 +1,43 @@
+public class demo.VariableExample extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        demo.VariableExample this;
+
+        this := @this: demo.VariableExample;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        byte a;
+        java.lang.StringBuilder $stack2, $stack4, $stack5;
+        java.io.PrintStream $stack3;
+        java.lang.String $stack6;
+        java.lang.String[] args;
+
+        args := @parameter0: java.lang.String[];
+
+        a = 10;
+
+        $stack3 = <java.lang.System: java.io.PrintStream out>;
+
+        $stack2 = new java.lang.StringBuilder;
+
+        specialinvoke $stack2.<java.lang.StringBuilder: void <init>()>();
+
+        $stack4 = virtualinvoke $stack2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("a = ");
+
+        $stack5 = virtualinvoke $stack4.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(a);
+
+        $stack6 = virtualinvoke $stack5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $stack3.<java.io.PrintStream: void println(java.lang.String)>($stack6);
+
+        return;
+    }
+}

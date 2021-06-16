@@ -1,0 +1,436 @@
+public class graph.BuildCallGraph extends java.lang.Object
+{
+    public static final java.lang.String className;
+    public static final java.lang.String methodName;
+
+    public void <init>()
+    {
+        graph.BuildCallGraph this;
+
+        this := @this: graph.BuildCallGraph;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void main(java.lang.String[]) throws java.lang.Exception
+    {
+        java.lang.String[] args;
+
+        args := @parameter0: java.lang.String[];
+
+        staticinvoke <config.SootConfig: void setupSoot(java.lang.String)>("Demo.CGDemo");
+
+        staticinvoke <graph.BuildCallGraph: void buildCG()>();
+
+        return;
+    }
+
+    public static void buildCG() throws java.lang.Exception
+    {
+        soot.Scene $stack14;
+        soot.SootClass sc;
+        soot.SootMethod beginmethod, method, m;
+        java.util.ArrayList $stack17, WL, $stack19, RM;
+        java.util.LinkedHashMap $stack18, CG, $stack63, info;
+        boolean $stack21, $stack24, $stack32, $stack51, $stack56, $stack60;
+        java.util.Set $stack22, $stack30;
+        soot.PackManager $stack25;
+        java.lang.Object $stack26, $stack27, $stack34, $stack38, $stack41, $stack44, $stack49, $stack57, $stack62;
+        utils.CallInfo $stack28, $stack67, ci;
+        java.util.Map $stack29;
+        java.lang.StringBuilder $stack35, $stack37, $stack39, $stack40, $stack42, $stack43, $stack45, $stack46;
+        java.io.PrintStream $stack36;
+        java.lang.String $stack47;
+        java.util.List T, callSite;
+        java.util.Iterator l10, l7, m#5;
+        int $stack64;
+        java.lang.Integer $stack65;
+        soot.jimple.Stmt stmt;
+        java.util.Map$Entry callSite#6, stmt#8;
+
+        $stack14 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        sc = virtualinvoke $stack14.<soot.Scene: soot.SootClass getSootClass(java.lang.String)>("Demo.CGDemo");
+
+        beginmethod = virtualinvoke sc.<soot.SootClass: soot.SootMethod getMethodByName(java.lang.String)>("begin");
+
+        $stack17 = new java.util.ArrayList;
+
+        specialinvoke $stack17.<java.util.ArrayList: void <init>()>();
+
+        WL = $stack17;
+
+        $stack18 = new java.util.LinkedHashMap;
+
+        specialinvoke $stack18.<java.util.LinkedHashMap: void <init>()>();
+
+        CG = $stack18;
+
+        $stack19 = new java.util.ArrayList;
+
+        specialinvoke $stack19.<java.util.ArrayList: void <init>()>();
+
+        RM = $stack19;
+
+        interfaceinvoke WL.<java.util.List: boolean add(java.lang.Object)>(beginmethod);
+
+     label01:
+        $stack21 = interfaceinvoke WL.<java.util.List: boolean isEmpty()>();
+
+        if $stack21 != 0 goto label06;
+
+        $stack49 = interfaceinvoke WL.<java.util.List: java.lang.Object get(int)>(0);
+
+        m = (soot.SootMethod) $stack49;
+
+        interfaceinvoke WL.<java.util.List: java.lang.Object remove(int)>(0);
+
+        $stack51 = interfaceinvoke RM.<java.util.List: boolean contains(java.lang.Object)>(m);
+
+        if $stack51 != 0 goto label05;
+
+        interfaceinvoke RM.<java.util.List: boolean add(java.lang.Object)>(m);
+
+        callSite = staticinvoke <graph.BuildCallGraph: java.util.List getCallSite(soot.SootMethod)>(m);
+
+        l7 = interfaceinvoke callSite.<java.util.List: java.util.Iterator iterator()>();
+
+     label02:
+        $stack56 = interfaceinvoke l7.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack56 == 0 goto label05;
+
+        $stack57 = interfaceinvoke l7.<java.util.Iterator: java.lang.Object next()>();
+
+        stmt = (soot.jimple.Stmt) $stack57;
+
+        T = staticinvoke <graph.BuildCallGraph: java.util.List findtargetMethods(soot.jimple.Stmt)>(stmt);
+
+        l10 = interfaceinvoke T.<java.util.List: java.util.Iterator iterator()>();
+
+     label03:
+        $stack60 = interfaceinvoke l10.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack60 == 0 goto label04;
+
+        $stack62 = interfaceinvoke l10.<java.util.Iterator: java.lang.Object next()>();
+
+        method = (soot.SootMethod) $stack62;
+
+        $stack63 = new java.util.LinkedHashMap;
+
+        specialinvoke $stack63.<java.util.LinkedHashMap: void <init>()>();
+
+        info = $stack63;
+
+        $stack64 = interfaceinvoke stmt.<soot.jimple.Stmt: int getJavaSourceStartLineNumber()>();
+
+        $stack65 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($stack64);
+
+        interfaceinvoke info.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(m, $stack65);
+
+        $stack67 = new utils.CallInfo;
+
+        specialinvoke $stack67.<utils.CallInfo: void <init>(java.util.Map,soot.jimple.Stmt)>(info, stmt);
+
+        ci = $stack67;
+
+        interfaceinvoke CG.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(ci, method);
+
+        interfaceinvoke WL.<java.util.List: boolean add(java.lang.Object)>(method);
+
+        goto label03;
+
+     label04:
+        goto label02;
+
+     label05:
+        goto label01;
+
+     label06:
+        $stack22 = interfaceinvoke CG.<java.util.Map: java.util.Set entrySet()>();
+
+        m#5 = interfaceinvoke $stack22.<java.util.Set: java.util.Iterator iterator()>();
+
+     label07:
+        $stack24 = interfaceinvoke m#5.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack24 == 0 goto label10;
+
+        $stack26 = interfaceinvoke m#5.<java.util.Iterator: java.lang.Object next()>();
+
+        callSite#6 = (java.util.Map$Entry) $stack26;
+
+        $stack27 = interfaceinvoke callSite#6.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $stack28 = (utils.CallInfo) $stack27;
+
+        $stack29 = $stack28.<utils.CallInfo: java.util.Map info>;
+
+        $stack30 = interfaceinvoke $stack29.<java.util.Map: java.util.Set entrySet()>();
+
+        l7 = interfaceinvoke $stack30.<java.util.Set: java.util.Iterator iterator()>();
+
+     label08:
+        $stack32 = interfaceinvoke l7.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack32 == 0 goto label09;
+
+        $stack34 = interfaceinvoke l7.<java.util.Iterator: java.lang.Object next()>();
+
+        stmt#8 = (java.util.Map$Entry) $stack34;
+
+        $stack36 = <java.lang.System: java.io.PrintStream out>;
+
+        $stack35 = new java.lang.StringBuilder;
+
+        specialinvoke $stack35.<java.lang.StringBuilder: void <init>()>();
+
+        $stack37 = virtualinvoke $stack35.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("{RESULT} : { (Location : ");
+
+        $stack38 = interfaceinvoke stmt#8.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $stack39 = virtualinvoke $stack37.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack38);
+
+        $stack40 = virtualinvoke $stack39.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(") : ");
+
+        $stack41 = interfaceinvoke stmt#8.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $stack42 = virtualinvoke $stack40.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack41);
+
+        $stack43 = virtualinvoke $stack42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" -invoke-> ");
+
+        $stack44 = interfaceinvoke callSite#6.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $stack45 = virtualinvoke $stack43.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack44);
+
+        $stack46 = virtualinvoke $stack45.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" }");
+
+        $stack47 = virtualinvoke $stack46.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $stack36.<java.io.PrintStream: void println(java.lang.String)>($stack47);
+
+        goto label08;
+
+     label09:
+        goto label07;
+
+     label10:
+        $stack25 = staticinvoke <soot.PackManager: soot.PackManager v()>();
+
+        virtualinvoke $stack25.<soot.PackManager: void writeOutput()>();
+
+        return;
+    }
+
+    public static java.util.List getCallSite(soot.SootMethod) throws java.lang.Exception
+    {
+        java.util.ArrayList invokeExprList, $u0;
+        soot.SootMethod m;
+        boolean $stack8, $stack12, $stack14;
+        soot.Body $stack9, $r0;
+        soot.toolkits.graph.BriefUnitGraph bug, $u1;
+        java.util.Iterator l4;
+        java.lang.Object $stack13;
+        soot.Unit u;
+        soot.jimple.Stmt stmt;
+        java.lang.Exception $stack17, body#2;
+        soot.jimple.JimpleBody body;
+
+        m := @parameter0: soot.SootMethod;
+
+        $u0 = new java.util.ArrayList;
+
+        specialinvoke $u0.<java.util.ArrayList: void <init>()>();
+
+        invokeExprList = $u0;
+
+     label1:
+        $stack8 = virtualinvoke m.<soot.SootMethod: boolean isConcrete()>();
+
+        if $stack8 == 0 goto label4;
+
+        $stack9 = virtualinvoke m.<soot.SootMethod: soot.Body retrieveActiveBody()>();
+
+        body = (soot.jimple.JimpleBody) $stack9;
+
+        $u1 = new soot.toolkits.graph.BriefUnitGraph;
+
+        $r0 = (soot.Body) body;
+
+        specialinvoke $u1.<soot.toolkits.graph.BriefUnitGraph: void <init>(soot.Body)>($r0);
+
+        bug = $u1;
+
+        l4 = virtualinvoke bug.<soot.toolkits.graph.BriefUnitGraph: java.util.Iterator iterator()>();
+
+     label2:
+        $stack12 = interfaceinvoke l4.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack12 == 0 goto label4;
+
+        $stack13 = interfaceinvoke l4.<java.util.Iterator: java.lang.Object next()>();
+
+        u = (soot.Unit) $stack13;
+
+        stmt = (soot.jimple.Stmt) u;
+
+        $stack14 = interfaceinvoke stmt.<soot.jimple.Stmt: boolean containsInvokeExpr()>();
+
+        if $stack14 == 0 goto label3;
+
+        interfaceinvoke invokeExprList.<java.util.List: boolean add(java.lang.Object)>(stmt);
+
+     label3:
+        goto label2;
+
+     label4:
+        goto label6;
+
+     label5:
+        $stack17 := @caughtexception;
+
+        body#2 = $stack17;
+
+        throw body#2;
+
+     label6:
+        return invokeExprList;
+
+        catch java.lang.Exception from label1 to label4 with label5;
+    }
+
+    public static java.util.List findtargetMethods(soot.jimple.Stmt)
+    {
+        java.util.ArrayList targetMethodsList, $u0;
+        soot.jimple.Stmt stmt;
+        soot.jimple.InvokeExpr $stack4, $stack7;
+        soot.SootMethod $stack5;
+        java.lang.String signature;
+        graph.BuildCallGraph$1 $u1;
+        soot.util.Switch $r0;
+
+        stmt := @parameter0: soot.jimple.Stmt;
+
+        $u0 = new java.util.ArrayList;
+
+        specialinvoke $u0.<java.util.ArrayList: void <init>()>();
+
+        targetMethodsList = $u0;
+
+        $stack4 = interfaceinvoke stmt.<soot.jimple.Stmt: soot.jimple.InvokeExpr getInvokeExpr()>();
+
+        $stack5 = interfaceinvoke $stack4.<soot.jimple.InvokeExpr: soot.SootMethod getMethod()>();
+
+        signature = virtualinvoke $stack5.<soot.SootMethod: java.lang.String getSubSignature()>();
+
+        $stack7 = interfaceinvoke stmt.<soot.jimple.Stmt: soot.jimple.InvokeExpr getInvokeExpr()>();
+
+        $u1 = new graph.BuildCallGraph$1;
+
+        specialinvoke $u1.<graph.BuildCallGraph$1: void <init>(java.util.List,java.lang.String)>(targetMethodsList, signature);
+
+        $r0 = (soot.util.Switch) $u1;
+
+        interfaceinvoke $stack7.<soot.jimple.InvokeExpr: void apply(soot.util.Switch)>($r0);
+
+        return targetMethodsList;
+    }
+
+    public static soot.SootMethod Dispatch(soot.SootClass, java.lang.String)
+    {
+        soot.SootClass sc, $stack15;
+        java.util.List methods;
+        java.util.ArrayList $stack7, signatureList;
+        boolean $stack9, $stack11, $stack14, $stack18, $stack21;
+        java.lang.String $stack12, $stack13, signature, $stack20, $stack23;
+        java.lang.Object $stack17, $stack22;
+        java.util.Iterator l4;
+        soot.SootMethod method;
+
+        sc := @parameter0: soot.SootClass;
+
+        signature := @parameter1: java.lang.String;
+
+        methods = virtualinvoke sc.<soot.SootClass: java.util.List getMethods()>();
+
+        $stack7 = new java.util.ArrayList;
+
+        specialinvoke $stack7.<java.util.ArrayList: void <init>()>();
+
+        signatureList = $stack7;
+
+        l4 = interfaceinvoke methods.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $stack9 = interfaceinvoke l4.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack9 == 0 goto label2;
+
+        $stack22 = interfaceinvoke l4.<java.util.Iterator: java.lang.Object next()>();
+
+        method = (soot.SootMethod) $stack22;
+
+        $stack23 = virtualinvoke method.<soot.SootMethod: java.lang.String getSubSignature()>();
+
+        interfaceinvoke signatureList.<java.util.List: boolean add(java.lang.Object)>($stack23);
+
+        goto label1;
+
+     label2:
+        l4 = interfaceinvoke methods.<java.util.List: java.util.Iterator iterator()>();
+
+     label3:
+        $stack11 = interfaceinvoke l4.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack11 == 0 goto label5;
+
+        $stack17 = interfaceinvoke l4.<java.util.Iterator: java.lang.Object next()>();
+
+        method = (soot.SootMethod) $stack17;
+
+        $stack18 = virtualinvoke method.<soot.SootMethod: boolean isConcrete()>();
+
+        if $stack18 == 0 goto label4;
+
+        $stack20 = virtualinvoke method.<soot.SootMethod: java.lang.String getSubSignature()>();
+
+        $stack21 = virtualinvoke $stack20.<java.lang.String: boolean equals(java.lang.Object)>(signature);
+
+        if $stack21 == 0 goto label4;
+
+        return method;
+
+     label4:
+        goto label3;
+
+     label5:
+        $stack12 = "java.lang.Object";
+
+        $stack13 = virtualinvoke sc.<soot.SootClass: java.lang.String getName()>();
+
+        $stack14 = virtualinvoke $stack12.<java.lang.String: boolean equals(java.lang.Object)>($stack13);
+
+        if $stack14 == 0 goto label6;
+
+        return null;
+
+     label6:
+        $stack15 = virtualinvoke sc.<soot.SootClass: soot.SootClass getSuperclassUnsafe()>();
+
+        staticinvoke <graph.BuildCallGraph: soot.SootMethod Dispatch(soot.SootClass,java.lang.String)>($stack15, signature);
+
+        return null;
+    }
+
+    public static void <clinit>()
+    {
+        <graph.BuildCallGraph: java.lang.String methodName> = "begin";
+
+        <graph.BuildCallGraph: java.lang.String className> = "Demo.CGDemo";
+
+        return;
+    }
+}

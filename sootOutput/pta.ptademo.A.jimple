@@ -1,0 +1,99 @@
+public class pta.ptademo.A extends java.lang.Object
+{
+    public int i;
+    public pta.ptademo.B f;
+    public pta.ptademo.B g;
+    public pta.ptademo.B h;
+
+    public void <init>()
+    {
+        pta.ptademo.A this;
+        pta.ptademo.B $stack1, $stack2;
+
+        this := @this: pta.ptademo.A;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<pta.ptademo.A: int i> = 5;
+
+        $stack1 = new pta.ptademo.B;
+
+        specialinvoke $stack1.<pta.ptademo.B: void <init>()>();
+
+        this.<pta.ptademo.A: pta.ptademo.B f> = $stack1;
+
+        $stack2 = new pta.ptademo.B;
+
+        specialinvoke $stack2.<pta.ptademo.B: void <init>()>();
+
+        this.<pta.ptademo.A: pta.ptademo.B g> = $stack2;
+
+        return;
+    }
+
+    public void <init>(pta.ptademo.B)
+    {
+        pta.ptademo.A this;
+        pta.ptademo.B $stack2, $stack3, b;
+
+        this := @this: pta.ptademo.A;
+
+        b := @parameter0: pta.ptademo.B;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<pta.ptademo.A: int i> = 5;
+
+        $stack2 = new pta.ptademo.B;
+
+        specialinvoke $stack2.<pta.ptademo.B: void <init>()>();
+
+        this.<pta.ptademo.A: pta.ptademo.B f> = $stack2;
+
+        $stack3 = new pta.ptademo.B;
+
+        specialinvoke $stack3.<pta.ptademo.B: void <init>()>();
+
+        this.<pta.ptademo.A: pta.ptademo.B g> = $stack3;
+
+        this.<pta.ptademo.A: pta.ptademo.B f> = b;
+
+        return;
+    }
+
+    public pta.ptademo.B getF()
+    {
+        pta.ptademo.A this;
+        pta.ptademo.B $stack1;
+
+        this := @this: pta.ptademo.A;
+
+        $stack1 = this.<pta.ptademo.A: pta.ptademo.B f>;
+
+        return $stack1;
+    }
+
+    public pta.ptademo.B getH()
+    {
+        pta.ptademo.A this;
+        pta.ptademo.B $stack1;
+
+        this := @this: pta.ptademo.A;
+
+        $stack1 = this.<pta.ptademo.A: pta.ptademo.B h>;
+
+        return $stack1;
+    }
+
+    public pta.ptademo.B id(pta.ptademo.B)
+    {
+        pta.ptademo.B b;
+        pta.ptademo.A this;
+
+        this := @this: pta.ptademo.A;
+
+        b := @parameter0: pta.ptademo.B;
+
+        return b;
+    }
+}

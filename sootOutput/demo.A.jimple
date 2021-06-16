@@ -1,0 +1,26 @@
+class demo.A extends java.lang.Object
+{
+
+    void <init>()
+    {
+        demo.A this;
+
+        this := @this: demo.A;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public java.lang.String method1(java.lang.String)
+    {
+        java.lang.String param;
+        demo.A this;
+
+        this := @this: demo.A;
+
+        param := @parameter0: java.lang.String;
+
+        return param;
+    }
+}

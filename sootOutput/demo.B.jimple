@@ -1,0 +1,33 @@
+class demo.B extends java.lang.Object
+{
+
+    void <init>()
+    {
+        demo.B this;
+
+        this := @this: demo.B;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public java.lang.String method2(java.lang.String)
+    {
+        demo.C $stack2;
+        java.lang.String param, $stack3;
+        demo.B this;
+
+        this := @this: demo.B;
+
+        param := @parameter0: java.lang.String;
+
+        $stack2 = new demo.C;
+
+        specialinvoke $stack2.<demo.C: void <init>()>();
+
+        $stack3 = virtualinvoke $stack2.<demo.C: java.lang.String method3(java.lang.String)>(param);
+
+        return $stack3;
+    }
+}

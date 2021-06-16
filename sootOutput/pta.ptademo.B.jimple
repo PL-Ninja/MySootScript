@@ -1,0 +1,14 @@
+public class pta.ptademo.B extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        pta.ptademo.B this;
+
+        this := @this: pta.ptademo.B;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

@@ -1,0 +1,80 @@
+public class pta.Starter extends java.lang.Object
+{
+    public static final java.lang.String className;
+
+    public void <init>()
+    {
+        pta.Starter this;
+
+        this := @this: pta.Starter;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        soot.Scene $stack2;
+        java.lang.String sootClassPath, $stack8;
+        java.io.PrintStream $stack5;
+        java.lang.StringBuilder $stack6, $stack7, $u0;
+        soot.PackManager $stack9, $stack14;
+        soot.Pack $stack10;
+        java.lang.String[] args;
+        pta.MyPTATransformer $u1;
+        soot.Transform $u2;
+        soot.Transformer $r0;
+
+        args := @parameter0: java.lang.String[];
+
+        staticinvoke <config.SootConfig: void setupSoot(java.lang.String)>("pta.ptademo.Hello");
+
+        $stack2 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        sootClassPath = virtualinvoke $stack2.<soot.Scene: java.lang.String getSootClassPath()>();
+
+        $stack5 = <java.lang.System: java.io.PrintStream out>;
+
+        $u0 = new java.lang.StringBuilder;
+
+        specialinvoke $u0.<java.lang.StringBuilder: void <init>()>();
+
+        $stack6 = virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("sootClassPath = ");
+
+        $stack7 = virtualinvoke $stack6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(sootClassPath);
+
+        $stack8 = virtualinvoke $stack7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $stack5.<java.io.PrintStream: void println(java.lang.String)>($stack8);
+
+        $stack9 = staticinvoke <soot.PackManager: soot.PackManager v()>();
+
+        $stack10 = virtualinvoke $stack9.<soot.PackManager: soot.Pack getPack(java.lang.String)>("wjtp");
+
+        $u2 = new soot.Transform;
+
+        $u1 = new pta.MyPTATransformer;
+
+        specialinvoke $u1.<pta.MyPTATransformer: void <init>()>();
+
+        $r0 = (soot.Transformer) $u1;
+
+        specialinvoke $u2.<soot.Transform: void <init>(java.lang.String,soot.Transformer)>("wjtp.MyPTA", $r0);
+
+        virtualinvoke $stack10.<soot.Pack: void add(soot.Transform)>($u2);
+
+        $stack14 = staticinvoke <soot.PackManager: soot.PackManager v()>();
+
+        virtualinvoke $stack14.<soot.PackManager: void runPacks()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <pta.Starter: java.lang.String className> = "pta.ptademo.Hello";
+
+        return;
+    }
+}

@@ -1,0 +1,131 @@
+public class pack.MyMethodFinderAnalysis extends soot.SceneTransformer
+{
+    public java.lang.String classname;
+    public java.lang.String methodname;
+
+    public void <init>(java.lang.String, java.lang.String)
+    {
+        pack.MyMethodFinderAnalysis this;
+        java.lang.String classname, methodname;
+
+        this := @this: pack.MyMethodFinderAnalysis;
+
+        classname := @parameter0: java.lang.String;
+
+        methodname := @parameter1: java.lang.String;
+
+        specialinvoke this.<soot.SceneTransformer: void <init>()>();
+
+        this.<pack.MyMethodFinderAnalysis: java.lang.String classname> = classname;
+
+        this.<pack.MyMethodFinderAnalysis: java.lang.String methodname> = methodname;
+
+        return;
+    }
+
+    protected void internalTransform(java.lang.String, java.util.Map)
+    {
+        soot.Scene $stack10, $stack19, $stack24;
+        soot.util.Chain $stack11;
+        java.util.Iterator l3, l8;
+        boolean $stack13, $stack17, $stack27, $stack33, $stack38;
+        java.lang.Object $stack14, $stack28;
+        soot.SootClass sootClass, sc, $stack30;
+        java.lang.String $stack15, $stack16, $stack20, $stack22, $stack31, $stack32, $stack36, $stack37, s;
+        pack.MyMethodFinderAnalysis this;
+        soot.jimple.toolkits.callgraph.CallGraph cg;
+        soot.jimple.toolkits.callgraph.Edge edge;
+        soot.SootMethod $stack29, $stack35;
+        java.io.PrintStream $stack39;
+        java.util.Map map;
+
+        this := @this: pack.MyMethodFinderAnalysis;
+
+        s := @parameter0: java.lang.String;
+
+        map := @parameter1: java.util.Map;
+
+        $stack10 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        $stack11 = virtualinvoke $stack10.<soot.Scene: soot.util.Chain getApplicationClasses()>();
+
+        l3 = interfaceinvoke $stack11.<soot.util.Chain: java.util.Iterator iterator()>();
+
+     label1:
+        $stack13 = interfaceinvoke l3.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack13 == 0 goto label5;
+
+        $stack14 = interfaceinvoke l3.<java.util.Iterator: java.lang.Object next()>();
+
+        sootClass = (soot.SootClass) $stack14;
+
+        $stack15 = virtualinvoke sootClass.<soot.SootClass: java.lang.String getName()>();
+
+        $stack16 = this.<pack.MyMethodFinderAnalysis: java.lang.String classname>;
+
+        $stack17 = virtualinvoke $stack15.<java.lang.String: boolean equals(java.lang.Object)>($stack16);
+
+        if $stack17 == 0 goto label4;
+
+        $stack19 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        $stack20 = virtualinvoke sootClass.<soot.SootClass: java.lang.String getName()>();
+
+        sc = virtualinvoke $stack19.<soot.Scene: soot.SootClass forceResolve(java.lang.String,int)>($stack20, 3);
+
+        $stack22 = this.<pack.MyMethodFinderAnalysis: java.lang.String methodname>;
+
+        virtualinvoke sc.<soot.SootClass: soot.SootMethod getMethodByName(java.lang.String)>($stack22);
+
+        $stack24 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        cg = virtualinvoke $stack24.<soot.Scene: soot.jimple.toolkits.callgraph.CallGraph getCallGraph()>();
+
+        l8 = virtualinvoke cg.<soot.jimple.toolkits.callgraph.CallGraph: java.util.Iterator iterator()>();
+
+     label2:
+        $stack27 = interfaceinvoke l8.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack27 == 0 goto label4;
+
+        $stack28 = interfaceinvoke l8.<java.util.Iterator: java.lang.Object next()>();
+
+        edge = (soot.jimple.toolkits.callgraph.Edge) $stack28;
+
+        $stack29 = virtualinvoke edge.<soot.jimple.toolkits.callgraph.Edge: soot.SootMethod src()>();
+
+        $stack30 = virtualinvoke $stack29.<soot.SootMethod: soot.SootClass getDeclaringClass()>();
+
+        $stack31 = virtualinvoke $stack30.<soot.SootClass: java.lang.String getName()>();
+
+        $stack32 = this.<pack.MyMethodFinderAnalysis: java.lang.String classname>;
+
+        $stack33 = virtualinvoke $stack31.<java.lang.String: boolean equals(java.lang.Object)>($stack32);
+
+        if $stack33 == 0 goto label3;
+
+        $stack35 = virtualinvoke edge.<soot.jimple.toolkits.callgraph.Edge: soot.SootMethod src()>();
+
+        $stack36 = virtualinvoke $stack35.<soot.SootMethod: java.lang.String getName()>();
+
+        $stack37 = this.<pack.MyMethodFinderAnalysis: java.lang.String methodname>;
+
+        $stack38 = virtualinvoke $stack36.<java.lang.String: boolean equals(java.lang.Object)>($stack37);
+
+        if $stack38 == 0 goto label3;
+
+        $stack39 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $stack39.<java.io.PrintStream: void println(java.lang.Object)>(edge);
+
+     label3:
+        goto label2;
+
+     label4:
+        goto label1;
+
+     label5:
+        return;
+    }
+}

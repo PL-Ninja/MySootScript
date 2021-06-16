@@ -1,0 +1,51 @@
+public class pta.Printer extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        pta.Printer this;
+
+        this := @this: pta.Printer;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void printResult(java.lang.String, java.lang.String)
+    {
+        java.io.FileWriter $stack3, writer;
+        java.lang.String filename, result;
+        java.io.IOException $stack4, writer#2;
+
+        filename := @parameter0: java.lang.String;
+
+        result := @parameter1: java.lang.String;
+
+     label1:
+        $stack3 = new java.io.FileWriter;
+
+        specialinvoke $stack3.<java.io.FileWriter: void <init>(java.lang.String)>(filename);
+
+        writer = $stack3;
+
+        virtualinvoke writer.<java.io.FileWriter: void write(java.lang.String)>(result);
+
+        virtualinvoke writer.<java.io.FileWriter: void close()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $stack4 := @caughtexception;
+
+        writer#2 = $stack4;
+
+        virtualinvoke writer#2.<java.io.IOException: void printStackTrace()>();
+
+     label4:
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+}

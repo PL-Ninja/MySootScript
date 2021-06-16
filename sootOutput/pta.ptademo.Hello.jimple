@@ -1,0 +1,48 @@
+public class pta.ptademo.Hello extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        pta.ptademo.Hello this;
+
+        this := @this: pta.ptademo.Hello;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        pta.ptademo.A $stack4, $stack5, b, $stack6, a, c;
+        java.lang.String[] args;
+
+        args := @parameter0: java.lang.String[];
+
+        $stack4 = new pta.ptademo.A;
+
+        specialinvoke $stack4.<pta.ptademo.A: void <init>()>();
+
+        a = $stack4;
+
+        $stack5 = new pta.ptademo.A;
+
+        specialinvoke $stack5.<pta.ptademo.A: void <init>()>();
+
+        b = $stack5;
+
+        $stack6 = new pta.ptademo.A;
+
+        specialinvoke $stack6.<pta.ptademo.A: void <init>()>();
+
+        c = $stack6;
+
+        a = b;
+
+        c = a;
+
+        c.<pta.ptademo.A: int i> = 6;
+
+        return;
+    }
+}

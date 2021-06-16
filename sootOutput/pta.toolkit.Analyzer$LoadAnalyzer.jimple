@@ -1,0 +1,37 @@
+class pta.toolkit.Analyzer$LoadAnalyzer extends java.lang.Object
+{
+    private static final pta.toolkit.Analyzer instance;
+
+    private void <init>()
+    {
+        pta.toolkit.Analyzer$LoadAnalyzer this;
+
+        this := @this: pta.toolkit.Analyzer$LoadAnalyzer;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static pta.toolkit.Analyzer access$100()
+    {
+        pta.toolkit.Analyzer $stack0;
+
+        $stack0 = <pta.toolkit.Analyzer$LoadAnalyzer: pta.toolkit.Analyzer instance>;
+
+        return $stack0;
+    }
+
+    static void <clinit>()
+    {
+        pta.toolkit.Analyzer $stack0;
+
+        $stack0 = new pta.toolkit.Analyzer;
+
+        specialinvoke $stack0.<pta.toolkit.Analyzer: void <init>(pta.toolkit.Analyzer$1)>(null);
+
+        <pta.toolkit.Analyzer$LoadAnalyzer: pta.toolkit.Analyzer instance> = $stack0;
+
+        return;
+    }
+}

@@ -1,0 +1,91 @@
+public class graph.GadgetsParser extends java.lang.Object
+{
+    public static final java.lang.String className;
+    public static final java.lang.String methodName;
+
+    public void <init>()
+    {
+        graph.GadgetsParser this;
+
+        this := @this: graph.GadgetsParser;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void main(java.lang.String[]) throws java.lang.Exception
+    {
+        java.lang.String[] args;
+
+        args := @parameter0: java.lang.String[];
+
+        staticinvoke <config.SootConfig: void setupSoot(java.lang.String)>("demo.CGDemo");
+
+        staticinvoke <graph.GadgetsParser: void parseGadgets()>();
+
+        return;
+    }
+
+    public static void parseGadgets()
+    {
+        soot.Scene $stack3, $stack8;
+        soot.SootClass sc;
+        soot.SootMethod srcMethod;
+        java.util.ArrayList entrypoint, $u0;
+        soot.PackManager $stack9, $stack14;
+        soot.Pack $stack10;
+        graph.GadgetsParser$1 $u1;
+        soot.Transform $u2;
+        soot.Transformer $r0;
+
+        $stack3 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        sc = virtualinvoke $stack3.<soot.Scene: soot.SootClass forceResolve(java.lang.String,int)>("demo.CGDemo", 3);
+
+        srcMethod = virtualinvoke sc.<soot.SootClass: soot.SootMethod getMethodByName(java.lang.String)>("begin");
+
+        $u0 = new java.util.ArrayList;
+
+        specialinvoke $u0.<java.util.ArrayList: void <init>()>();
+
+        entrypoint = $u0;
+
+        interfaceinvoke entrypoint.<java.util.List: boolean add(java.lang.Object)>(srcMethod);
+
+        $stack8 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        virtualinvoke $stack8.<soot.Scene: void setEntryPoints(java.util.List)>(entrypoint);
+
+        $stack9 = staticinvoke <soot.PackManager: soot.PackManager v()>();
+
+        $stack10 = virtualinvoke $stack9.<soot.PackManager: soot.Pack getPack(java.lang.String)>("wjtp");
+
+        $u2 = new soot.Transform;
+
+        $u1 = new graph.GadgetsParser$1;
+
+        specialinvoke $u1.<graph.GadgetsParser$1: void <init>(soot.SootMethod)>(srcMethod);
+
+        $r0 = (soot.Transformer) $u1;
+
+        specialinvoke $u2.<soot.Transform: void <init>(java.lang.String,soot.Transformer)>("wjtp.myTransform", $r0);
+
+        virtualinvoke $stack10.<soot.Pack: void add(soot.Transform)>($u2);
+
+        $stack14 = staticinvoke <soot.PackManager: soot.PackManager v()>();
+
+        virtualinvoke $stack14.<soot.PackManager: void runPacks()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <graph.GadgetsParser: java.lang.String methodName> = "begin";
+
+        <graph.GadgetsParser: java.lang.String className> = "demo.CGDemo";
+
+        return;
+    }
+}

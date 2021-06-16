@@ -1,0 +1,95 @@
+public final enum class pack.NullPointerAnalysis$AnalysisMode extends java.lang.Enum
+{
+    public static final enum pack.NullPointerAnalysis$AnalysisMode MUST;
+    public static final enum pack.NullPointerAnalysis$AnalysisMode MAY_P;
+    public static final enum pack.NullPointerAnalysis$AnalysisMode MAY_O;
+    private static final pack.NullPointerAnalysis$AnalysisMode[] $VALUES;
+
+    public static pack.NullPointerAnalysis$AnalysisMode[] values()
+    {
+        pack.NullPointerAnalysis$AnalysisMode[] $stack0, $stack2;
+        java.lang.Object $stack1;
+
+        $stack0 = <pack.NullPointerAnalysis$AnalysisMode: pack.NullPointerAnalysis$AnalysisMode[] $VALUES>;
+
+        $stack1 = virtualinvoke $stack0.<java.lang.Object: java.lang.Object clone()>();
+
+        $stack2 = (pack.NullPointerAnalysis$AnalysisMode[]) $stack1;
+
+        return $stack2;
+    }
+
+    public static pack.NullPointerAnalysis$AnalysisMode valueOf(java.lang.String)
+    {
+        java.lang.String name;
+        java.lang.Enum $stack1;
+        pack.NullPointerAnalysis$AnalysisMode $stack2;
+
+        name := @parameter0: java.lang.String;
+
+        $stack1 = staticinvoke <java.lang.Enum: java.lang.Enum valueOf(java.lang.Class,java.lang.String)>(class "Lpack/NullPointerAnalysis$AnalysisMode;", name);
+
+        $stack2 = (pack.NullPointerAnalysis$AnalysisMode) $stack1;
+
+        return $stack2;
+    }
+
+    private void <init>(java.lang.String, int)
+    {
+        pack.NullPointerAnalysis$AnalysisMode this;
+        java.lang.String l1;
+        int l2;
+
+        this := @this: pack.NullPointerAnalysis$AnalysisMode;
+
+        l1 := @parameter0: java.lang.String;
+
+        l2 := @parameter1: int;
+
+        specialinvoke this.<java.lang.Enum: void <init>(java.lang.String,int)>(l1, l2);
+
+        return;
+    }
+
+    static void <clinit>()
+    {
+        pack.NullPointerAnalysis$AnalysisMode $stack0, $stack1, $stack2, $stack4, $stack5, $stack6;
+        pack.NullPointerAnalysis$AnalysisMode[] $stack3;
+
+        $stack0 = new pack.NullPointerAnalysis$AnalysisMode;
+
+        specialinvoke $stack0.<pack.NullPointerAnalysis$AnalysisMode: void <init>(java.lang.String,int)>("MUST", 0);
+
+        <pack.NullPointerAnalysis$AnalysisMode: pack.NullPointerAnalysis$AnalysisMode MUST> = $stack0;
+
+        $stack1 = new pack.NullPointerAnalysis$AnalysisMode;
+
+        specialinvoke $stack1.<pack.NullPointerAnalysis$AnalysisMode: void <init>(java.lang.String,int)>("MAY_P", 1);
+
+        <pack.NullPointerAnalysis$AnalysisMode: pack.NullPointerAnalysis$AnalysisMode MAY_P> = $stack1;
+
+        $stack2 = new pack.NullPointerAnalysis$AnalysisMode;
+
+        specialinvoke $stack2.<pack.NullPointerAnalysis$AnalysisMode: void <init>(java.lang.String,int)>("MAY_O", 2);
+
+        <pack.NullPointerAnalysis$AnalysisMode: pack.NullPointerAnalysis$AnalysisMode MAY_O> = $stack2;
+
+        $stack3 = newarray (pack.NullPointerAnalysis$AnalysisMode)[3];
+
+        $stack4 = <pack.NullPointerAnalysis$AnalysisMode: pack.NullPointerAnalysis$AnalysisMode MUST>;
+
+        $stack3[0] = $stack4;
+
+        $stack5 = <pack.NullPointerAnalysis$AnalysisMode: pack.NullPointerAnalysis$AnalysisMode MAY_P>;
+
+        $stack3[1] = $stack5;
+
+        $stack6 = <pack.NullPointerAnalysis$AnalysisMode: pack.NullPointerAnalysis$AnalysisMode MAY_O>;
+
+        $stack3[2] = $stack6;
+
+        <pack.NullPointerAnalysis$AnalysisMode: pack.NullPointerAnalysis$AnalysisMode[] $VALUES> = $stack3;
+
+        return;
+    }
+}

@@ -1,0 +1,121 @@
+public class utils.CallInfo extends java.lang.Object
+{
+    public java.util.Map info;
+    public soot.jimple.Stmt stmt;
+
+    public void <init>()
+    {
+        utils.CallInfo this;
+
+        this := @this: utils.CallInfo;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void <init>(java.util.Map, soot.jimple.Stmt)
+    {
+        utils.CallInfo this;
+        java.util.Map info;
+        soot.jimple.Stmt stmt;
+
+        this := @this: utils.CallInfo;
+
+        info := @parameter0: java.util.Map;
+
+        stmt := @parameter1: soot.jimple.Stmt;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<utils.CallInfo: java.util.Map info> = info;
+
+        this.<utils.CallInfo: soot.jimple.Stmt stmt> = stmt;
+
+        return;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        utils.CallInfo this, callInfo;
+        java.lang.Object o;
+        java.lang.Class $stack3, $stack4;
+        java.util.Map $stack5, $stack6;
+        boolean $stack7, $stack10, $stack11;
+        soot.jimple.Stmt $stack8, $stack9;
+
+        this := @this: utils.CallInfo;
+
+        o := @parameter0: java.lang.Object;
+
+        if this != o goto label1;
+
+        return 1;
+
+     label1:
+        if o == null goto label2;
+
+        $stack3 = virtualinvoke this.<java.lang.Object: java.lang.Class getClass()>();
+
+        $stack4 = virtualinvoke o.<java.lang.Object: java.lang.Class getClass()>();
+
+        if $stack3 == $stack4 goto label3;
+
+     label2:
+        return 0;
+
+     label3:
+        callInfo = (utils.CallInfo) o;
+
+        $stack6 = this.<utils.CallInfo: java.util.Map info>;
+
+        $stack5 = callInfo.<utils.CallInfo: java.util.Map info>;
+
+        $stack7 = staticinvoke <java.util.Objects: boolean equals(java.lang.Object,java.lang.Object)>($stack6, $stack5);
+
+        if $stack7 == 0 goto label4;
+
+        $stack9 = this.<utils.CallInfo: soot.jimple.Stmt stmt>;
+
+        $stack8 = callInfo.<utils.CallInfo: soot.jimple.Stmt stmt>;
+
+        $stack10 = staticinvoke <java.util.Objects: boolean equals(java.lang.Object,java.lang.Object)>($stack9, $stack8);
+
+        if $stack10 == 0 goto label4;
+
+        $stack11 = 1;
+
+        goto label5;
+
+     label4:
+        $stack11 = 0;
+
+     label5:
+        return $stack11;
+    }
+
+    public int hashCode()
+    {
+        java.lang.Object[] $stack1;
+        utils.CallInfo this;
+        java.util.Map $stack2;
+        soot.jimple.Stmt $stack3;
+        int $stack4;
+
+        this := @this: utils.CallInfo;
+
+        $stack1 = newarray (java.lang.Object)[2];
+
+        $stack2 = this.<utils.CallInfo: java.util.Map info>;
+
+        $stack1[0] = $stack2;
+
+        $stack3 = this.<utils.CallInfo: soot.jimple.Stmt stmt>;
+
+        $stack1[1] = $stack3;
+
+        $stack4 = staticinvoke <java.util.Objects: int hash(java.lang.Object[])>($stack1);
+
+        return $stack4;
+    }
+}

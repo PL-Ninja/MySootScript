@@ -1,0 +1,49 @@
+class pack.NullPointerAnalysis$1 extends soot.jimple.AbstractStmtSwitch
+{
+    final flowsets.NullPointerFlowSet val$outSet;
+    final pack.NullPointerAnalysis this$0;
+
+    void <init>(pack.NullPointerAnalysis, flowsets.NullPointerFlowSet)
+    {
+        pack.NullPointerAnalysis$1 this;
+        pack.NullPointerAnalysis this$0;
+        flowsets.NullPointerFlowSet l2;
+
+        this := @this: pack.NullPointerAnalysis$1;
+
+        this$0 := @parameter0: pack.NullPointerAnalysis;
+
+        l2 := @parameter1: flowsets.NullPointerFlowSet;
+
+        this.<pack.NullPointerAnalysis$1: pack.NullPointerAnalysis this$0> = this$0;
+
+        this.<pack.NullPointerAnalysis$1: flowsets.NullPointerFlowSet val$outSet> = l2;
+
+        specialinvoke this.<soot.jimple.AbstractStmtSwitch: void <init>()>();
+
+        return;
+    }
+
+    public void caseAssignStmt(soot.jimple.AssignStmt)
+    {
+        soot.jimple.AssignStmt stmt;
+        soot.Value $stack3;
+        soot.Local leftOp;
+        pack.NullPointerAnalysis$1 this;
+        flowsets.NullPointerFlowSet $stack4;
+
+        this := @this: pack.NullPointerAnalysis$1;
+
+        stmt := @parameter0: soot.jimple.AssignStmt;
+
+        $stack3 = interfaceinvoke stmt.<soot.jimple.AssignStmt: soot.Value getLeftOp()>();
+
+        leftOp = (soot.Local) $stack3;
+
+        $stack4 = this.<pack.NullPointerAnalysis$1: flowsets.NullPointerFlowSet val$outSet>;
+
+        virtualinvoke $stack4.<flowsets.NullPointerFlowSet: void remove(soot.Local)>(leftOp);
+
+        return;
+    }
+}

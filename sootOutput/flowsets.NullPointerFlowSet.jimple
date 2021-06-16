@@ -1,0 +1,257 @@
+public class flowsets.NullPointerFlowSet extends soot.toolkits.scalar.AbstractBoundedFlowSet
+{
+    private java.util.Set nullLocals;
+
+    public void <init>()
+    {
+        flowsets.NullPointerFlowSet this;
+        java.util.HashSet $stack1;
+
+        this := @this: flowsets.NullPointerFlowSet;
+
+        specialinvoke this.<soot.toolkits.scalar.AbstractBoundedFlowSet: void <init>()>();
+
+        $stack1 = new java.util.HashSet;
+
+        specialinvoke $stack1.<java.util.HashSet: void <init>()>();
+
+        this.<flowsets.NullPointerFlowSet: java.util.Set nullLocals> = $stack1;
+
+        return;
+    }
+
+    public flowsets.NullPointerFlowSet clone()
+    {
+        flowsets.NullPointerFlowSet $stack2, myClone, this;
+        java.util.Set $stack3, $stack4;
+
+        this := @this: flowsets.NullPointerFlowSet;
+
+        $stack2 = new flowsets.NullPointerFlowSet;
+
+        specialinvoke $stack2.<flowsets.NullPointerFlowSet: void <init>()>();
+
+        myClone = $stack2;
+
+        $stack4 = myClone.<flowsets.NullPointerFlowSet: java.util.Set nullLocals>;
+
+        $stack3 = this.<flowsets.NullPointerFlowSet: java.util.Set nullLocals>;
+
+        interfaceinvoke $stack4.<java.util.Set: boolean addAll(java.util.Collection)>($stack3);
+
+        return myClone;
+    }
+
+    public boolean isEmpty()
+    {
+        flowsets.NullPointerFlowSet this;
+        java.util.Set $stack1;
+        boolean $stack2;
+
+        this := @this: flowsets.NullPointerFlowSet;
+
+        $stack1 = this.<flowsets.NullPointerFlowSet: java.util.Set nullLocals>;
+
+        $stack2 = interfaceinvoke $stack1.<java.util.Set: boolean isEmpty()>();
+
+        return $stack2;
+    }
+
+    public int size()
+    {
+        flowsets.NullPointerFlowSet this;
+        java.util.Set $stack1;
+        int $stack2;
+
+        this := @this: flowsets.NullPointerFlowSet;
+
+        $stack1 = this.<flowsets.NullPointerFlowSet: java.util.Set nullLocals>;
+
+        $stack2 = interfaceinvoke $stack1.<java.util.Set: int size()>();
+
+        return $stack2;
+    }
+
+    public void add(soot.Local)
+    {
+        flowsets.NullPointerFlowSet this;
+        soot.Local local;
+        java.util.Set $stack2;
+
+        this := @this: flowsets.NullPointerFlowSet;
+
+        local := @parameter0: soot.Local;
+
+        $stack2 = this.<flowsets.NullPointerFlowSet: java.util.Set nullLocals>;
+
+        interfaceinvoke $stack2.<java.util.Set: boolean add(java.lang.Object)>(local);
+
+        return;
+    }
+
+    public void remove(soot.Local)
+    {
+        flowsets.NullPointerFlowSet this;
+        soot.Local local;
+        java.util.Set $stack2, $stack4;
+        boolean $stack3;
+
+        this := @this: flowsets.NullPointerFlowSet;
+
+        local := @parameter0: soot.Local;
+
+        $stack2 = this.<flowsets.NullPointerFlowSet: java.util.Set nullLocals>;
+
+        $stack3 = interfaceinvoke $stack2.<java.util.Set: boolean contains(java.lang.Object)>(local);
+
+        if $stack3 == 0 goto label1;
+
+        $stack4 = this.<flowsets.NullPointerFlowSet: java.util.Set nullLocals>;
+
+        interfaceinvoke $stack4.<java.util.Set: boolean remove(java.lang.Object)>(local);
+
+     label1:
+        return;
+    }
+
+    public boolean contains(soot.Local)
+    {
+        flowsets.NullPointerFlowSet this;
+        soot.Local local;
+        java.util.Set $stack2;
+        boolean $stack3;
+
+        this := @this: flowsets.NullPointerFlowSet;
+
+        local := @parameter0: soot.Local;
+
+        $stack2 = this.<flowsets.NullPointerFlowSet: java.util.Set nullLocals>;
+
+        $stack3 = interfaceinvoke $stack2.<java.util.Set: boolean contains(java.lang.Object)>(local);
+
+        return $stack3;
+    }
+
+    public java.util.Iterator iterator()
+    {
+        flowsets.NullPointerFlowSet this;
+        java.util.Set $stack1;
+        java.util.Iterator $stack2;
+
+        this := @this: flowsets.NullPointerFlowSet;
+
+        $stack1 = this.<flowsets.NullPointerFlowSet: java.util.Set nullLocals>;
+
+        $stack2 = interfaceinvoke $stack1.<java.util.Set: java.util.Iterator iterator()>();
+
+        return $stack2;
+    }
+
+    public java.util.List toList()
+    {
+        java.util.ArrayList $stack1;
+        flowsets.NullPointerFlowSet this;
+        java.util.Set $stack2;
+
+        this := @this: flowsets.NullPointerFlowSet;
+
+        $stack1 = new java.util.ArrayList;
+
+        $stack2 = this.<flowsets.NullPointerFlowSet: java.util.Set nullLocals>;
+
+        specialinvoke $stack1.<java.util.ArrayList: void <init>(java.util.Collection)>($stack2);
+
+        return $stack1;
+    }
+
+    public volatile boolean contains(java.lang.Object)
+    {
+        flowsets.NullPointerFlowSet this;
+        java.lang.Object l1;
+        soot.Local $stack2;
+        boolean $stack3;
+
+        this := @this: flowsets.NullPointerFlowSet;
+
+        l1 := @parameter0: java.lang.Object;
+
+        $stack2 = (soot.Local) l1;
+
+        $stack3 = virtualinvoke this.<flowsets.NullPointerFlowSet: boolean contains(soot.Local)>($stack2);
+
+        return $stack3;
+    }
+
+    public volatile void remove(java.lang.Object)
+    {
+        flowsets.NullPointerFlowSet this;
+        java.lang.Object l1;
+        soot.Local $stack2;
+
+        this := @this: flowsets.NullPointerFlowSet;
+
+        l1 := @parameter0: java.lang.Object;
+
+        $stack2 = (soot.Local) l1;
+
+        virtualinvoke this.<flowsets.NullPointerFlowSet: void remove(soot.Local)>($stack2);
+
+        return;
+    }
+
+    public volatile void add(java.lang.Object)
+    {
+        flowsets.NullPointerFlowSet this;
+        java.lang.Object l1;
+        soot.Local $stack2;
+
+        this := @this: flowsets.NullPointerFlowSet;
+
+        l1 := @parameter0: java.lang.Object;
+
+        $stack2 = (soot.Local) l1;
+
+        virtualinvoke this.<flowsets.NullPointerFlowSet: void add(soot.Local)>($stack2);
+
+        return;
+    }
+
+    public volatile soot.toolkits.scalar.FlowSet clone()
+    {
+        flowsets.NullPointerFlowSet this, $stack1;
+        soot.toolkits.scalar.FlowSet $r0;
+
+        this := @this: flowsets.NullPointerFlowSet;
+
+        $stack1 = virtualinvoke this.<flowsets.NullPointerFlowSet: flowsets.NullPointerFlowSet clone()>();
+
+        $r0 = (soot.toolkits.scalar.FlowSet) $stack1;
+
+        return $r0;
+    }
+
+    public volatile soot.toolkits.scalar.AbstractFlowSet clone()
+    {
+        flowsets.NullPointerFlowSet this, $stack1;
+        soot.toolkits.scalar.AbstractFlowSet $r0;
+
+        this := @this: flowsets.NullPointerFlowSet;
+
+        $stack1 = virtualinvoke this.<flowsets.NullPointerFlowSet: flowsets.NullPointerFlowSet clone()>();
+
+        $r0 = (soot.toolkits.scalar.AbstractFlowSet) $stack1;
+
+        return $r0;
+    }
+
+    public volatile java.lang.Object clone() throws java.lang.CloneNotSupportedException
+    {
+        flowsets.NullPointerFlowSet this, $stack1;
+
+        this := @this: flowsets.NullPointerFlowSet;
+
+        $stack1 = virtualinvoke this.<flowsets.NullPointerFlowSet: flowsets.NullPointerFlowSet clone()>();
+
+        return $stack1;
+    }
+}

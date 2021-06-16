@@ -1,0 +1,257 @@
+public class flowsets.LiveVariableFlowSet extends soot.toolkits.scalar.AbstractBoundedFlowSet
+{
+    private java.util.Set liveVariableSet;
+
+    public void <init>()
+    {
+        flowsets.LiveVariableFlowSet this;
+        java.util.HashSet $stack1;
+
+        this := @this: flowsets.LiveVariableFlowSet;
+
+        specialinvoke this.<soot.toolkits.scalar.AbstractBoundedFlowSet: void <init>()>();
+
+        $stack1 = new java.util.HashSet;
+
+        specialinvoke $stack1.<java.util.HashSet: void <init>()>();
+
+        this.<flowsets.LiveVariableFlowSet: java.util.Set liveVariableSet> = $stack1;
+
+        return;
+    }
+
+    public flowsets.LiveVariableFlowSet clone()
+    {
+        flowsets.LiveVariableFlowSet $stack2, myClone, this;
+        java.util.Set $stack3, $stack4;
+
+        this := @this: flowsets.LiveVariableFlowSet;
+
+        $stack2 = new flowsets.LiveVariableFlowSet;
+
+        specialinvoke $stack2.<flowsets.LiveVariableFlowSet: void <init>()>();
+
+        myClone = $stack2;
+
+        $stack4 = myClone.<flowsets.LiveVariableFlowSet: java.util.Set liveVariableSet>;
+
+        $stack3 = this.<flowsets.LiveVariableFlowSet: java.util.Set liveVariableSet>;
+
+        interfaceinvoke $stack4.<java.util.Set: boolean addAll(java.util.Collection)>($stack3);
+
+        return myClone;
+    }
+
+    public boolean isEmpty()
+    {
+        flowsets.LiveVariableFlowSet this;
+        java.util.Set $stack1;
+        boolean $stack2;
+
+        this := @this: flowsets.LiveVariableFlowSet;
+
+        $stack1 = this.<flowsets.LiveVariableFlowSet: java.util.Set liveVariableSet>;
+
+        $stack2 = interfaceinvoke $stack1.<java.util.Set: boolean isEmpty()>();
+
+        return $stack2;
+    }
+
+    public int size()
+    {
+        flowsets.LiveVariableFlowSet this;
+        java.util.Set $stack1;
+        int $stack2;
+
+        this := @this: flowsets.LiveVariableFlowSet;
+
+        $stack1 = this.<flowsets.LiveVariableFlowSet: java.util.Set liveVariableSet>;
+
+        $stack2 = interfaceinvoke $stack1.<java.util.Set: int size()>();
+
+        return $stack2;
+    }
+
+    public void add(soot.Local)
+    {
+        flowsets.LiveVariableFlowSet this;
+        soot.Local local;
+        java.util.Set $stack2;
+
+        this := @this: flowsets.LiveVariableFlowSet;
+
+        local := @parameter0: soot.Local;
+
+        $stack2 = this.<flowsets.LiveVariableFlowSet: java.util.Set liveVariableSet>;
+
+        interfaceinvoke $stack2.<java.util.Set: boolean add(java.lang.Object)>(local);
+
+        return;
+    }
+
+    public void remove(soot.Local)
+    {
+        flowsets.LiveVariableFlowSet this;
+        soot.Local local;
+        java.util.Set $stack2, $stack4;
+        boolean $stack3;
+
+        this := @this: flowsets.LiveVariableFlowSet;
+
+        local := @parameter0: soot.Local;
+
+        $stack2 = this.<flowsets.LiveVariableFlowSet: java.util.Set liveVariableSet>;
+
+        $stack3 = interfaceinvoke $stack2.<java.util.Set: boolean contains(java.lang.Object)>(local);
+
+        if $stack3 == 0 goto label1;
+
+        $stack4 = this.<flowsets.LiveVariableFlowSet: java.util.Set liveVariableSet>;
+
+        interfaceinvoke $stack4.<java.util.Set: boolean remove(java.lang.Object)>(local);
+
+     label1:
+        return;
+    }
+
+    public boolean contains(soot.Local)
+    {
+        flowsets.LiveVariableFlowSet this;
+        soot.Local local;
+        java.util.Set $stack2;
+        boolean $stack3;
+
+        this := @this: flowsets.LiveVariableFlowSet;
+
+        local := @parameter0: soot.Local;
+
+        $stack2 = this.<flowsets.LiveVariableFlowSet: java.util.Set liveVariableSet>;
+
+        $stack3 = interfaceinvoke $stack2.<java.util.Set: boolean contains(java.lang.Object)>(local);
+
+        return $stack3;
+    }
+
+    public java.util.Iterator iterator()
+    {
+        flowsets.LiveVariableFlowSet this;
+        java.util.Set $stack1;
+        java.util.Iterator $stack2;
+
+        this := @this: flowsets.LiveVariableFlowSet;
+
+        $stack1 = this.<flowsets.LiveVariableFlowSet: java.util.Set liveVariableSet>;
+
+        $stack2 = interfaceinvoke $stack1.<java.util.Set: java.util.Iterator iterator()>();
+
+        return $stack2;
+    }
+
+    public java.util.List toList()
+    {
+        java.util.ArrayList $stack1;
+        flowsets.LiveVariableFlowSet this;
+        java.util.Set $stack2;
+
+        this := @this: flowsets.LiveVariableFlowSet;
+
+        $stack1 = new java.util.ArrayList;
+
+        $stack2 = this.<flowsets.LiveVariableFlowSet: java.util.Set liveVariableSet>;
+
+        specialinvoke $stack1.<java.util.ArrayList: void <init>(java.util.Collection)>($stack2);
+
+        return $stack1;
+    }
+
+    public volatile boolean contains(java.lang.Object)
+    {
+        flowsets.LiveVariableFlowSet this;
+        java.lang.Object l1;
+        soot.Local $stack2;
+        boolean $stack3;
+
+        this := @this: flowsets.LiveVariableFlowSet;
+
+        l1 := @parameter0: java.lang.Object;
+
+        $stack2 = (soot.Local) l1;
+
+        $stack3 = virtualinvoke this.<flowsets.LiveVariableFlowSet: boolean contains(soot.Local)>($stack2);
+
+        return $stack3;
+    }
+
+    public volatile void remove(java.lang.Object)
+    {
+        flowsets.LiveVariableFlowSet this;
+        java.lang.Object l1;
+        soot.Local $stack2;
+
+        this := @this: flowsets.LiveVariableFlowSet;
+
+        l1 := @parameter0: java.lang.Object;
+
+        $stack2 = (soot.Local) l1;
+
+        virtualinvoke this.<flowsets.LiveVariableFlowSet: void remove(soot.Local)>($stack2);
+
+        return;
+    }
+
+    public volatile void add(java.lang.Object)
+    {
+        flowsets.LiveVariableFlowSet this;
+        java.lang.Object l1;
+        soot.Local $stack2;
+
+        this := @this: flowsets.LiveVariableFlowSet;
+
+        l1 := @parameter0: java.lang.Object;
+
+        $stack2 = (soot.Local) l1;
+
+        virtualinvoke this.<flowsets.LiveVariableFlowSet: void add(soot.Local)>($stack2);
+
+        return;
+    }
+
+    public volatile soot.toolkits.scalar.FlowSet clone()
+    {
+        flowsets.LiveVariableFlowSet this, $stack1;
+        soot.toolkits.scalar.FlowSet $r0;
+
+        this := @this: flowsets.LiveVariableFlowSet;
+
+        $stack1 = virtualinvoke this.<flowsets.LiveVariableFlowSet: flowsets.LiveVariableFlowSet clone()>();
+
+        $r0 = (soot.toolkits.scalar.FlowSet) $stack1;
+
+        return $r0;
+    }
+
+    public volatile soot.toolkits.scalar.AbstractFlowSet clone()
+    {
+        flowsets.LiveVariableFlowSet this, $stack1;
+        soot.toolkits.scalar.AbstractFlowSet $r0;
+
+        this := @this: flowsets.LiveVariableFlowSet;
+
+        $stack1 = virtualinvoke this.<flowsets.LiveVariableFlowSet: flowsets.LiveVariableFlowSet clone()>();
+
+        $r0 = (soot.toolkits.scalar.AbstractFlowSet) $stack1;
+
+        return $r0;
+    }
+
+    public volatile java.lang.Object clone() throws java.lang.CloneNotSupportedException
+    {
+        flowsets.LiveVariableFlowSet this, $stack1;
+
+        this := @this: flowsets.LiveVariableFlowSet;
+
+        $stack1 = virtualinvoke this.<flowsets.LiveVariableFlowSet: flowsets.LiveVariableFlowSet clone()>();
+
+        return $stack1;
+    }
+}

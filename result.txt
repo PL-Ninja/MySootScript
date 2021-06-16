@@ -1,0 +1,11 @@
+Result : 
+pta.ptademo.Hello : a : [16]
+pta.ptademo.Hello : b : [16]
+pta.ptademo.Hello : c : [16]
+
+Obj's Fields : 
+pta.ptademo.Hello : a : <pta.ptademo.A: int i> value 6 from pta.ptademo.A : [30] , <pta.ptademo.A: pta.ptademo.B f> from pta.ptademo.A : [15] <pta.ptademo.A: pta.ptademo.B g> from pta.ptademo.A : [16] 
+pta.ptademo.Hello : b : <pta.ptademo.A: int i> value 6 from pta.ptademo.A : [30] , <pta.ptademo.A: pta.ptademo.B f> from pta.ptademo.A : [15] <pta.ptademo.A: pta.ptademo.B g> from pta.ptademo.A : [16] 
+pta.ptademo.Hello : c : <pta.ptademo.A: int i> value 6 from pta.ptademo.A : [30] , <pta.ptademo.A: pta.ptademo.B f> from pta.ptademo.A : [15] <pta.ptademo.A: pta.ptademo.B g> from pta.ptademo.A : [16] 
+
+Track Changes : 

@@ -1,0 +1,330 @@
+public class pta.toolkit.Member extends java.lang.Object implements pta.toolkit.Data
+{
+    private java.lang.String id;
+    private final soot.Value value;
+    private soot.Type type;
+    private java.lang.String typeName;
+    private soot.Local local;
+    private java.util.Map fieldMap;
+
+    public void <init>(soot.Value)
+    {
+        pta.toolkit.Member this;
+        java.util.UUID $stack2;
+        java.lang.String $stack3, $stack6;
+        soot.Value v;
+        soot.Type $stack4, $stack5, $stack7;
+        boolean $stack8;
+        java.util.LinkedHashMap $stack9;
+
+        this := @this: pta.toolkit.Member;
+
+        v := @parameter0: soot.Value;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $stack2 = staticinvoke <java.util.UUID: java.util.UUID randomUUID()>();
+
+        $stack3 = virtualinvoke $stack2.<java.util.UUID: java.lang.String toString()>();
+
+        this.<pta.toolkit.Member: java.lang.String id> = $stack3;
+
+        this.<pta.toolkit.Member: soot.Value value> = v;
+
+        $stack4 = interfaceinvoke v.<soot.Value: soot.Type getType()>();
+
+        this.<pta.toolkit.Member: soot.Type type> = $stack4;
+
+        $stack5 = interfaceinvoke v.<soot.Value: soot.Type getType()>();
+
+        $stack6 = virtualinvoke $stack5.<soot.Type: java.lang.String toString()>();
+
+        this.<pta.toolkit.Member: java.lang.String typeName> = $stack6;
+
+        $stack7 = this.<pta.toolkit.Member: soot.Type type>;
+
+        $stack8 = $stack7 instanceof soot.RefLikeType;
+
+        if $stack8 == 0 goto label1;
+
+        $stack9 = new java.util.LinkedHashMap;
+
+        specialinvoke $stack9.<java.util.LinkedHashMap: void <init>()>();
+
+        this.<pta.toolkit.Member: java.util.Map fieldMap> = $stack9;
+
+     label1:
+        return;
+    }
+
+    public pta.toolkit.Member copyDeep()
+    {
+        pta.toolkit.Member $stack4, this, m;
+        soot.Value $stack5;
+        java.util.Map $stack6, $stack7, $stack13;
+        java.util.Set $stack8;
+        java.util.Iterator l2;
+        boolean $stack10;
+        java.lang.Object $stack12, $stack14, $stack15;
+        java.util.Map$Entry entry;
+        pta.toolkit.Variable $stack16, $stack17;
+
+        this := @this: pta.toolkit.Member;
+
+        $stack4 = new pta.toolkit.Member;
+
+        $stack5 = this.<pta.toolkit.Member: soot.Value value>;
+
+        specialinvoke $stack4.<pta.toolkit.Member: void <init>(soot.Value)>($stack5);
+
+        m = $stack4;
+
+        $stack6 = this.<pta.toolkit.Member: java.util.Map fieldMap>;
+
+        if $stack6 == null goto label2;
+
+        $stack7 = this.<pta.toolkit.Member: java.util.Map fieldMap>;
+
+        $stack8 = interfaceinvoke $stack7.<java.util.Map: java.util.Set entrySet()>();
+
+        l2 = interfaceinvoke $stack8.<java.util.Set: java.util.Iterator iterator()>();
+
+     label1:
+        $stack10 = interfaceinvoke l2.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack10 == 0 goto label2;
+
+        $stack12 = interfaceinvoke l2.<java.util.Iterator: java.lang.Object next()>();
+
+        entry = (java.util.Map$Entry) $stack12;
+
+        $stack13 = m.<pta.toolkit.Member: java.util.Map fieldMap>;
+
+        $stack14 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $stack15 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $stack16 = (pta.toolkit.Variable) $stack15;
+
+        $stack17 = virtualinvoke $stack16.<pta.toolkit.Variable: pta.toolkit.Variable copyDeep(boolean)>(1);
+
+        interfaceinvoke $stack13.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($stack14, $stack17);
+
+        goto label1;
+
+     label2:
+        return m;
+    }
+
+    public pta.toolkit.Variable getVariable(soot.SootFieldRef)
+    {
+        pta.toolkit.Member this;
+        soot.SootFieldRef sfr;
+        java.util.Map $stack2;
+        java.lang.Object $stack3;
+        pta.toolkit.Variable $stack4;
+
+        this := @this: pta.toolkit.Member;
+
+        sfr := @parameter0: soot.SootFieldRef;
+
+        $stack2 = this.<pta.toolkit.Member: java.util.Map fieldMap>;
+
+        $stack3 = interfaceinvoke $stack2.<java.util.Map: java.lang.Object get(java.lang.Object)>(sfr);
+
+        $stack4 = (pta.toolkit.Variable) $stack3;
+
+        return $stack4;
+    }
+
+    public void addField(soot.SootFieldRef, pta.toolkit.Variable, pta.toolkit.Context, pta.toolkit.Analyzer)
+    {
+        pta.toolkit.Member this;
+        soot.SootFieldRef sfr;
+        java.util.Map $stack6, $stack8;
+        java.lang.Object $stack7;
+        pta.toolkit.Variable v, var, $stack9;
+        pta.toolkit.Context context;
+        pta.toolkit.Analyzer analyzer;
+
+        this := @this: pta.toolkit.Member;
+
+        sfr := @parameter0: soot.SootFieldRef;
+
+        var := @parameter1: pta.toolkit.Variable;
+
+        context := @parameter2: pta.toolkit.Context;
+
+        analyzer := @parameter3: pta.toolkit.Analyzer;
+
+        $stack6 = this.<pta.toolkit.Member: java.util.Map fieldMap>;
+
+        $stack7 = interfaceinvoke $stack6.<java.util.Map: java.lang.Object get(java.lang.Object)>(sfr);
+
+        v = (pta.toolkit.Variable) $stack7;
+
+        if v != null goto label1;
+
+        $stack8 = this.<pta.toolkit.Member: java.util.Map fieldMap>;
+
+        $stack9 = virtualinvoke var.<pta.toolkit.Variable: pta.toolkit.Variable copyDeep(boolean)>(0);
+
+        interfaceinvoke $stack8.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(sfr, $stack9);
+
+        goto label2;
+
+     label1:
+        virtualinvoke v.<pta.toolkit.Variable: void assign(pta.toolkit.Context,pta.toolkit.Variable,pta.toolkit.Analyzer)>(context, var, analyzer);
+
+     label2:
+        return;
+    }
+
+    public soot.Value getValue()
+    {
+        pta.toolkit.Member this;
+        soot.Value $stack1;
+
+        this := @this: pta.toolkit.Member;
+
+        $stack1 = this.<pta.toolkit.Member: soot.Value value>;
+
+        return $stack1;
+    }
+
+    public soot.Type getType()
+    {
+        pta.toolkit.Member this;
+        soot.Type $stack1;
+
+        this := @this: pta.toolkit.Member;
+
+        $stack1 = this.<pta.toolkit.Member: soot.Type type>;
+
+        return $stack1;
+    }
+
+    public java.util.Map getFieldMap()
+    {
+        pta.toolkit.Member this;
+        java.util.Map $stack1;
+
+        this := @this: pta.toolkit.Member;
+
+        $stack1 = this.<pta.toolkit.Member: java.util.Map fieldMap>;
+
+        return $stack1;
+    }
+
+    public java.lang.String getId()
+    {
+        pta.toolkit.Member this;
+        java.lang.String $stack1;
+
+        this := @this: pta.toolkit.Member;
+
+        $stack1 = this.<pta.toolkit.Member: java.lang.String id>;
+
+        return $stack1;
+    }
+
+    public java.lang.String toString()
+    {
+        java.lang.StringBuilder $stack1, $stack2, $stack5, $stack6, $stack9, $stack10, $stack12, $stack13, $stack15, $stack16;
+        pta.toolkit.Member this;
+        soot.Value $stack3;
+        java.lang.String $stack4, $stack11, $stack17;
+        soot.Local $stack7;
+        java.util.Map $stack14;
+        java.lang.Object $stack8;
+
+        this := @this: pta.toolkit.Member;
+
+        $stack1 = new java.lang.StringBuilder;
+
+        specialinvoke $stack1.<java.lang.StringBuilder: void <init>()>();
+
+        $stack2 = virtualinvoke $stack1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Member{ ");
+
+        $stack3 = this.<pta.toolkit.Member: soot.Value value>;
+
+        $stack4 = virtualinvoke $stack3.<java.lang.Object: java.lang.String toString()>();
+
+        $stack5 = virtualinvoke $stack2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack4);
+
+        $stack6 = virtualinvoke $stack5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ");
+
+        $stack7 = this.<pta.toolkit.Member: soot.Local local>;
+
+        if $stack7 != null goto label1;
+
+        $stack8 = "nolocal";
+
+        goto label2;
+
+     label1:
+        $stack8 = this.<pta.toolkit.Member: soot.Local local>;
+
+     label2:
+        $stack9 = virtualinvoke $stack6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack8);
+
+        $stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ");
+
+        $stack11 = this.<pta.toolkit.Member: java.lang.String typeName>;
+
+        $stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11);
+
+        $stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ");
+
+        $stack14 = this.<pta.toolkit.Member: java.util.Map fieldMap>;
+
+        $stack15 = virtualinvoke $stack13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack14);
+
+        $stack16 = virtualinvoke $stack15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" }");
+
+        $stack17 = virtualinvoke $stack16.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $stack17;
+    }
+
+    public java.lang.String getName()
+    {
+        pta.toolkit.Member this;
+        soot.Value $stack1;
+        java.lang.String $stack2;
+
+        this := @this: pta.toolkit.Member;
+
+        $stack1 = this.<pta.toolkit.Member: soot.Value value>;
+
+        $stack2 = virtualinvoke $stack1.<java.lang.Object: java.lang.String toString()>();
+
+        return $stack2;
+    }
+
+    public soot.Local getLocal()
+    {
+        pta.toolkit.Member this;
+        soot.Local $stack1;
+
+        this := @this: pta.toolkit.Member;
+
+        $stack1 = this.<pta.toolkit.Member: soot.Local local>;
+
+        return $stack1;
+    }
+
+    public void setLocal(soot.Local)
+    {
+        pta.toolkit.Member this;
+        soot.Local local;
+
+        this := @this: pta.toolkit.Member;
+
+        local := @parameter0: soot.Local;
+
+        this.<pta.toolkit.Member: soot.Local local> = local;
+
+        return;
+    }
+}
