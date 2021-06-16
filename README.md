@@ -13,6 +13,8 @@
 2. 一些经典的程序分析问题
 3. soot API 的用法
 
+感兴趣的朋友们可以加我微信，进讨论群，一起进步。
+
 
 # 参考
 1. [soot-wiki](https://github.com/soot-oss/soot/wiki)
