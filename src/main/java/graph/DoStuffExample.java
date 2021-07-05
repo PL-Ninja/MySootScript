@@ -3,6 +3,7 @@ package graph;
 import soot.*;
 import soot.jimple.toolkits.callgraph.CHATransformer;
 import soot.jimple.toolkits.callgraph.CallGraph;
+import soot.jimple.toolkits.callgraph.Edge;
 import soot.jimple.toolkits.callgraph.Targets;
 import soot.options.Options;
 
@@ -42,8 +43,8 @@ public class DoStuffExample {
     public static void main(String[] args) throws IOException {
         setupSoot();
 
-//        SootClass sc = Scene.v().forceResolve(className, SootClass.BODIES);也可以
-        SootClass sc = Scene.v().getSootClass(className);
+        SootClass sc = Scene.v().forceResolve(className, SootClass.BODIES);
+//        SootClass sc = Scene.v().getSootClass(className);
         SootMethod srcMethod = sc.getMethodByName(methodName);
 
         //设置入口点
@@ -61,11 +62,31 @@ public class DoStuffExample {
                 CallGraph cg = Scene.v().getCallGraph();
                 Iterator<MethodOrMethodContext> targets = new Targets(cg.edgesOutOf(srcMethod));
 
+                List<SootMethod> tgtList = new ArrayList<>();
+
                 while(targets.hasNext()){
                     SootMethod tgt = (SootMethod) targets.next();
                     System.out.println(srcMethod+" may call "+tgt);
-
+                    tgtList.add(tgt);
                 }
+                iteration(cg,tgtList);
+            }
+
+            private void iteration(CallGraph cg, List<SootMethod> tgtList) {
+                List<SootMethod> internalList = new ArrayList<>();
+                for (SootMethod method : tgtList) {
+                    Iterator<MethodOrMethodContext> targetIterator = new Targets(cg.edgesOutOf(method));
+                    if(targetIterator.hasNext()){
+                        SootMethod tgt = (SootMethod)targetIterator.next();
+                        if(!"<java.lang.Object: void <init>()>".equals(method.toString())){
+                            System.out.println(method+" may call "+tgt);
+                            internalList.add(tgt);
+                        }
+                    }else{
+                        return;
+                    }
+                }
+                iteration(cg,internalList);
             }
         }));
 
