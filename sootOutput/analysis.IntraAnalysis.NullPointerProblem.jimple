@@ -1,12 +1,12 @@
-public class analysis.IntraAnalysis.NullPointerProblem extends java.lang.Object
+public class analysis.intraAnalysis.NullPointerProblem extends java.lang.Object
 {
     public static java.lang.String className;
 
     public void <init>()
     {
-        analysis.IntraAnalysis.NullPointerProblem this;
+        analysis.intraAnalysis.NullPointerProblem this;
 
-        this := @this: analysis.IntraAnalysis.NullPointerProblem;
+        this := @this: analysis.intraAnalysis.NullPointerProblem;
 
         specialinvoke this.<java.lang.Object: void <init>()>();
 
@@ -20,11 +20,11 @@ public class analysis.IntraAnalysis.NullPointerProblem extends java.lang.Object
 
         args := @parameter0: java.lang.String[];
 
-        $stack1 = <analysis.IntraAnalysis.NullPointerProblem: java.lang.String className>;
+        $stack1 = <analysis.intraAnalysis.NullPointerProblem: java.lang.String className>;
 
         staticinvoke <config.SootConfig: void setupSoot(java.lang.String)>($stack1);
 
-        staticinvoke <analysis.IntraAnalysis.NullPointerProblem: void findNullPointer()>();
+        staticinvoke <analysis.intraAnalysis.NullPointerProblem: void findNullPointer()>();
 
         return;
     }
@@ -49,7 +49,7 @@ public class analysis.IntraAnalysis.NullPointerProblem extends java.lang.Object
 
         $stack6 = staticinvoke <soot.Scene: soot.Scene v()>();
 
-        $stack7 = <analysis.IntraAnalysis.NullPointerProblem: java.lang.String className>;
+        $stack7 = <analysis.intraAnalysis.NullPointerProblem: java.lang.String className>;
 
         sc = virtualinvoke $stack6.<soot.Scene: soot.SootClass getSootClass(java.lang.String)>($stack7);
 
@@ -114,7 +114,7 @@ public class analysis.IntraAnalysis.NullPointerProblem extends java.lang.Object
 
         interfaceinvoke npAnalyzers.<java.util.List: boolean add(java.lang.Object)>($u4);
 
-        staticinvoke <analysis.IntraAnalysis.NullPointerProblem: void doNullPointerAnalysis(soot.jimple.JimpleBody,java.util.List)>(body, npAnalyzers);
+        staticinvoke <analysis.intraAnalysis.NullPointerProblem: void doNullPointerAnalysis(soot.jimple.JimpleBody,java.util.List)>(body, npAnalyzers);
 
         goto label1;
 
@@ -290,7 +290,7 @@ public class analysis.IntraAnalysis.NullPointerProblem extends java.lang.Object
 
     static void <clinit>()
     {
-        <analysis.IntraAnalysis.NullPointerProblem: java.lang.String className> = "Demo.NullPointerExample";
+        <analysis.intraAnalysis.NullPointerProblem: java.lang.String className> = "Demo.NullPointerExample";
 
         return;
     }

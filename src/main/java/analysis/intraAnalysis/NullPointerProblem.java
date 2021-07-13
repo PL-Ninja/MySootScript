@@ -1,4 +1,4 @@
-package analysis.IntraAnalysis;
+package analysis.intraAnalysis;
 
 import config.SootConfig;
 import pack.NullPointerAnalysis;

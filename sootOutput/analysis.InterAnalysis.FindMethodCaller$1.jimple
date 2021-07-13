@@ -1,11 +1,11 @@
-final class analysis.InterAnalysis.FindMethodCaller$1 extends soot.jimple.AbstractExprSwitch
+final class analysis.interAnalysis.FindMethodCaller$1 extends soot.jimple.AbstractExprSwitch
 {
 
     void <init>()
     {
-        analysis.InterAnalysis.FindMethodCaller$1 this;
+        analysis.interAnalysis.FindMethodCaller$1 this;
 
-        this := @this: analysis.InterAnalysis.FindMethodCaller$1;
+        this := @this: analysis.interAnalysis.FindMethodCaller$1;
 
         specialinvoke this.<soot.jimple.AbstractExprSwitch: void <init>()>();
 
@@ -21,9 +21,9 @@ final class analysis.InterAnalysis.FindMethodCaller$1 extends soot.jimple.Abstra
         java.lang.String $stack7, $stack14, $stack20;
         soot.Type $stack12;
         soot.SootMethodRef $stack18;
-        analysis.InterAnalysis.FindMethodCaller$1 this;
+        analysis.interAnalysis.FindMethodCaller$1 this;
 
-        this := @this: analysis.InterAnalysis.FindMethodCaller$1;
+        this := @this: analysis.interAnalysis.FindMethodCaller$1;
 
         v := @parameter0: soot.jimple.VirtualInvokeExpr;
 

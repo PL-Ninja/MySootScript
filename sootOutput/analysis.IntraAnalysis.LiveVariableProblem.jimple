@@ -1,12 +1,12 @@
-public class analysis.IntraAnalysis.LiveVariableProblem extends java.lang.Object
+public class analysis.intraAnalysis.LiveVariableProblem extends java.lang.Object
 {
     public static java.lang.String className;
 
     public void <init>()
     {
-        analysis.IntraAnalysis.LiveVariableProblem this;
+        analysis.intraAnalysis.LiveVariableProblem this;
 
-        this := @this: analysis.IntraAnalysis.LiveVariableProblem;
+        this := @this: analysis.intraAnalysis.LiveVariableProblem;
 
         specialinvoke this.<java.lang.Object: void <init>()>();
 
@@ -21,11 +21,11 @@ public class analysis.IntraAnalysis.LiveVariableProblem extends java.lang.Object
 
         args := @parameter0: java.lang.String[];
 
-        $stack1 = <analysis.IntraAnalysis.LiveVariableProblem: java.lang.String className>;
+        $stack1 = <analysis.intraAnalysis.LiveVariableProblem: java.lang.String className>;
 
         staticinvoke <config.SootConfig: void setupSoot(java.lang.String)>($stack1);
 
-        staticinvoke <analysis.IntraAnalysis.LiveVariableProblem: void varialbleAnalysis()>();
+        staticinvoke <analysis.intraAnalysis.LiveVariableProblem: void varialbleAnalysis()>();
 
         $stack2 = staticinvoke <soot.PackManager: soot.PackManager v()>();
 
@@ -56,7 +56,7 @@ public class analysis.IntraAnalysis.LiveVariableProblem extends java.lang.Object
 
         $stack8 = staticinvoke <soot.Scene: soot.Scene v()>();
 
-        $stack9 = <analysis.IntraAnalysis.LiveVariableProblem: java.lang.String className>;
+        $stack9 = <analysis.intraAnalysis.LiveVariableProblem: java.lang.String className>;
 
         sc = virtualinvoke $stack8.<soot.Scene: soot.SootClass getSootClass(java.lang.String)>($stack9);
 
@@ -190,7 +190,7 @@ public class analysis.IntraAnalysis.LiveVariableProblem extends java.lang.Object
 
     static void <clinit>()
     {
-        <analysis.IntraAnalysis.LiveVariableProblem: java.lang.String className> = "Demo.LiveVariableExample";
+        <analysis.intraAnalysis.LiveVariableProblem: java.lang.String className> = "Demo.LiveVariableExample";
 
         return;
     }

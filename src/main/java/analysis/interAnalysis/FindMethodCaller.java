@@ -1,4 +1,4 @@
-package analysis.InterAnalysis;
+package analysis.interAnalysis;
 
 import config.SootConfig;
 import soot.*;
