@@ -1,4 +1,4 @@
-# MySootScript
+# Soot食用指北
 
 
 [![Page Views Count](https://badges.toozhao.com/badges/01F7SWY3AN10ZCNQZPWWVNGDYY/blue.svg)](https://badges.toozhao.com/stats/01F7SWY3AN10ZCNQZPWWVNGDYY "Get your own page views count badge on badges.toozhao.com")
