@@ -1,0 +1,162 @@
+public class graph.DoStuffExample extends java.lang.Object
+{
+    public static final java.lang.String className;
+    public static final java.lang.String methodName;
+    public static final java.lang.String sourceDirectory;
+
+    public void <init>()
+    {
+        graph.DoStuffExample this;
+
+        this := @this: graph.DoStuffExample;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void setupSoot()
+    {
+        soot.options.Options $stack1, $stack2, $stack3, $stack5, $stack6, $stack9;
+        java.lang.String $stack4, $stack7;
+        java.util.List $stack8;
+        soot.Scene $stack10, $stack11;
+        soot.SootClass sootClass;
+
+        staticinvoke <soot.G: void reset()>();
+
+        $stack1 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+
+        virtualinvoke $stack1.<soot.options.Options: void set_prepend_classpath(boolean)>(1);
+
+        $stack2 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+
+        virtualinvoke $stack2.<soot.options.Options: void set_allow_phantom_refs(boolean)>(1);
+
+        $stack3 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+
+        $stack4 = <graph.DoStuffExample: java.lang.String sourceDirectory>;
+
+        virtualinvoke $stack3.<soot.options.Options: void set_soot_classpath(java.lang.String)>($stack4);
+
+        $stack5 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+
+        virtualinvoke $stack5.<soot.options.Options: void set_output_format(int)>(1);
+
+        $stack6 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+
+        $stack7 = <graph.DoStuffExample: java.lang.String sourceDirectory>;
+
+        $stack8 = staticinvoke <java.util.Collections: java.util.List singletonList(java.lang.Object)>($stack7);
+
+        virtualinvoke $stack6.<soot.options.Options: void set_process_dir(java.util.List)>($stack8);
+
+        $stack9 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+
+        virtualinvoke $stack9.<soot.options.Options: void set_whole_program(boolean)>(1);
+
+        $stack10 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        virtualinvoke $stack10.<soot.Scene: void loadNecessaryClasses()>();
+
+        $stack11 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        sootClass = virtualinvoke $stack11.<soot.Scene: soot.SootClass loadClassAndSupport(java.lang.String)>("demo.CGDemo");
+
+        virtualinvoke sootClass.<soot.SootClass: void setApplicationClass()>();
+
+        return;
+    }
+
+    public static void main(java.lang.String[]) throws java.io.IOException
+    {
+        soot.Scene $stack4, $stack9;
+        soot.SootClass sc;
+        soot.SootMethod srcMethod;
+        soot.PackManager $stack10, $stack15;
+        soot.Pack $stack11;
+        java.lang.String[] args;
+        java.util.ArrayList $u0;
+        graph.DoStuffExample$1 $u1;
+        soot.Transform $u2;
+        soot.Transformer $r0;
+
+        args := @parameter0: java.lang.String[];
+
+        staticinvoke <graph.DoStuffExample: void setupSoot()>();
+
+        $stack4 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        sc = virtualinvoke $stack4.<soot.Scene: soot.SootClass forceResolve(java.lang.String,int)>("demo.CGDemo", 3);
+
+        srcMethod = virtualinvoke sc.<soot.SootClass: soot.SootMethod getMethodByName(java.lang.String)>("main");
+
+        $u0 = new java.util.ArrayList;
+
+        specialinvoke $u0.<java.util.ArrayList: void <init>()>();
+
+        interfaceinvoke $u0.<java.util.List: boolean add(java.lang.Object)>(srcMethod);
+
+        $stack9 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        virtualinvoke $stack9.<soot.Scene: void setEntryPoints(java.util.List)>($u0);
+
+        $stack10 = staticinvoke <soot.PackManager: soot.PackManager v()>();
+
+        $stack11 = virtualinvoke $stack10.<soot.PackManager: soot.Pack getPack(java.lang.String)>("wjtp");
+
+        $u2 = new soot.Transform;
+
+        $u1 = new graph.DoStuffExample$1;
+
+        specialinvoke $u1.<graph.DoStuffExample$1: void <init>()>();
+
+        $r0 = (soot.Transformer) $u1;
+
+        specialinvoke $u2.<soot.Transform: void <init>(java.lang.String,soot.Transformer)>("wjtp.myTransform", $r0);
+
+        virtualinvoke $stack11.<soot.Pack: void add(soot.Transform)>($u2);
+
+        $stack15 = staticinvoke <soot.PackManager: soot.PackManager v()>();
+
+        virtualinvoke $stack15.<soot.PackManager: void runPacks()>();
+
+        return;
+    }
+
+    static void <clinit>()
+    {
+        java.lang.StringBuilder $stack0, $stack2, $stack4, $stack5, $stack7, $stack8;
+        java.lang.String $stack1, $stack3, $stack6, $stack9;
+
+        <graph.DoStuffExample: java.lang.String methodName> = "main";
+
+        <graph.DoStuffExample: java.lang.String className> = "demo.CGDemo";
+
+        $stack0 = new java.lang.StringBuilder;
+
+        specialinvoke $stack0.<java.lang.StringBuilder: void <init>()>();
+
+        $stack1 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("user.dir");
+
+        $stack2 = virtualinvoke $stack0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack1);
+
+        $stack3 = <java.io.File: java.lang.String separator>;
+
+        $stack4 = virtualinvoke $stack2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack3);
+
+        $stack5 = virtualinvoke $stack4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("target");
+
+        $stack6 = <java.io.File: java.lang.String separator>;
+
+        $stack7 = virtualinvoke $stack5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack6);
+
+        $stack8 = virtualinvoke $stack7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("classes");
+
+        $stack9 = virtualinvoke $stack8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        <graph.DoStuffExample: java.lang.String sourceDirectory> = $stack9;
+
+        return;
+    }
+}

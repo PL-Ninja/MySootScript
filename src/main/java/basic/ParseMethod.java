@@ -17,7 +17,7 @@ import java.util.List;
 
 
 public class ParseMethod {
-    private static String className = "Demo.Circle";
+    private static String className = "demo.Circle";
 
     public static void main(String[] args) {
         SootConfig.setupSoot(className);

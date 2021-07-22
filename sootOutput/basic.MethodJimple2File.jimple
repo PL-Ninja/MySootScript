@@ -38,7 +38,7 @@ public class basic.MethodJimple2File extends java.lang.Object
         soot.SootMethod areaMethod;
         soot.Body $stack12;
         soot.jimple.JimpleBody areaBody;
-        java.io.FileWriter $stack13, writer;
+        java.io.FileWriter $stack13;
         java.lang.StringBuilder $stack14, $stack16, $stack18, $stack19, $stack21, $stack23, $stack24;
         soot.UnitPatchingChain $stack26;
         java.util.Iterator l5;
@@ -93,8 +93,6 @@ public class basic.MethodJimple2File extends java.lang.Object
 
         specialinvoke $stack13.<java.io.FileWriter: void <init>(java.lang.String)>($stack25);
 
-        writer = $stack13;
-
         c = 0;
 
         $stack26 = virtualinvoke areaBody.<soot.jimple.JimpleBody: soot.UnitPatchingChain getUnits()>();
@@ -136,14 +134,14 @@ public class basic.MethodJimple2File extends java.lang.Object
 
         $stack46 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("(%d): %s%n", $stack42);
 
-        virtualinvoke writer.<java.io.FileWriter: void write(java.lang.String)>($stack46);
+        virtualinvoke $stack13.<java.io.FileWriter: void write(java.lang.String)>($stack46);
 
-        virtualinvoke writer.<java.io.FileWriter: void flush()>();
+        virtualinvoke $stack13.<java.io.FileWriter: void flush()>();
 
         goto label1;
 
      label2:
-        virtualinvoke writer.<java.io.FileWriter: void close()>();
+        virtualinvoke $stack13.<java.io.FileWriter: void close()>();
 
         $stack30 = <java.lang.System: java.io.PrintStream out>;
 

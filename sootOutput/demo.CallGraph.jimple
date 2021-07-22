@@ -1,0 +1,38 @@
+public class demo.CallGraph extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        demo.CallGraph this;
+
+        this := @this: demo.CallGraph;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        java.lang.String[] args;
+
+        args := @parameter0: java.lang.String[];
+
+        staticinvoke <demo.CallGraph: void doStuff()>();
+
+        return;
+    }
+
+    public static void doStuff()
+    {
+        demo.D $stack0;
+
+        $stack0 = new demo.D;
+
+        specialinvoke $stack0.<demo.D: void <init>()>();
+
+        virtualinvoke $stack0.<demo.D: void foo()>();
+
+        return;
+    }
+}

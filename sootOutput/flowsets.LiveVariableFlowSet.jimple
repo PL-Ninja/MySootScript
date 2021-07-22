@@ -22,7 +22,7 @@ public class flowsets.LiveVariableFlowSet extends soot.toolkits.scalar.AbstractB
 
     public flowsets.LiveVariableFlowSet clone()
     {
-        flowsets.LiveVariableFlowSet $stack2, myClone, this;
+        flowsets.LiveVariableFlowSet $stack2, this;
         java.util.Set $stack3, $stack4;
 
         this := @this: flowsets.LiveVariableFlowSet;
@@ -31,15 +31,13 @@ public class flowsets.LiveVariableFlowSet extends soot.toolkits.scalar.AbstractB
 
         specialinvoke $stack2.<flowsets.LiveVariableFlowSet: void <init>()>();
 
-        myClone = $stack2;
-
-        $stack4 = myClone.<flowsets.LiveVariableFlowSet: java.util.Set liveVariableSet>;
+        $stack4 = $stack2.<flowsets.LiveVariableFlowSet: java.util.Set liveVariableSet>;
 
         $stack3 = this.<flowsets.LiveVariableFlowSet: java.util.Set liveVariableSet>;
 
         interfaceinvoke $stack4.<java.util.Set: boolean addAll(java.util.Collection)>($stack3);
 
-        return myClone;
+        return $stack2;
     }
 
     public boolean isEmpty()

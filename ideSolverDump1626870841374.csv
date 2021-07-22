@@ -1,0 +1,33 @@
+<demo.IFDSDemo: int foo(int)>;i0 := @parameter0: int@0;Pair <<zero>>,[];BOTTOM
+<demo.IFDSDemo: int foo(int)>;return i0@1;Pair i0,[i0 := @parameter0: int];BOTTOM
+<demo.IFDSDemo: int foo(int)>;return i0@1;Pair <<zero>>,[];BOTTOM
+<demo.IFDSDemo: int secret()>;return 88@0;Pair <<zero>>,[];BOTTOM
+<demo.IFDSDemo: void main(java.lang.String[])>;r0 := @parameter0: java.lang.String[]@0;Pair <<zero>>,[];BOTTOM
+<demo.IFDSDemo: void main(java.lang.String[])>;i0 = staticinvoke <demo.IFDSDemo: int secret()>()@1;Pair r0,[r0 := @parameter0: java.lang.String[]];BOTTOM
+<demo.IFDSDemo: void main(java.lang.String[])>;i0 = staticinvoke <demo.IFDSDemo: int secret()>()@1;Pair <<zero>>,[];BOTTOM
+<demo.IFDSDemo: void main(java.lang.String[])>;z0 = 0@2;Pair r0,[r0 := @parameter0: java.lang.String[]];BOTTOM
+<demo.IFDSDemo: void main(java.lang.String[])>;z0 = 0@2;Pair <<zero>>,[];BOTTOM
+<demo.IFDSDemo: void main(java.lang.String[])>;i1 = staticinvoke <demo.IFDSDemo: int foo(int)>(i0)@3;Pair r0,[r0 := @parameter0: java.lang.String[]];BOTTOM
+<demo.IFDSDemo: void main(java.lang.String[])>;i1 = staticinvoke <demo.IFDSDemo: int foo(int)>(i0)@3;Pair z0,[z0 = 0];BOTTOM
+<demo.IFDSDemo: void main(java.lang.String[])>;i1 = staticinvoke <demo.IFDSDemo: int foo(int)>(i0)@3;Pair <<zero>>,[];BOTTOM
+<demo.IFDSDemo: void main(java.lang.String[])>;staticinvoke <demo.IFDSDemo: void print(int)>(i1)@4;Pair r0,[r0 := @parameter0: java.lang.String[]];BOTTOM
+<demo.IFDSDemo: void main(java.lang.String[])>;staticinvoke <demo.IFDSDemo: void print(int)>(i1)@4;Pair z0,[z0 = 0];BOTTOM
+<demo.IFDSDemo: void main(java.lang.String[])>;staticinvoke <demo.IFDSDemo: void print(int)>(i1)@4;Pair <<zero>>,[];BOTTOM
+<demo.IFDSDemo: void main(java.lang.String[])>;staticinvoke <demo.IFDSDemo: void print(int)>(i1)@4;Pair i1,[i0 := @parameter0: int];BOTTOM
+<demo.IFDSDemo: void main(java.lang.String[])>;return@5;Pair z0,[z0 = 0];BOTTOM
+<demo.IFDSDemo: void main(java.lang.String[])>;return@5;Pair <<zero>>,[];BOTTOM
+<demo.IFDSDemo: void main(java.lang.String[])>;return@5;Pair r0,[r0 := @parameter0: java.lang.String[]];BOTTOM
+<demo.IFDSDemo: void main(java.lang.String[])>;return@5;Pair i1,[i0 := @parameter0: int];BOTTOM
+<demo.IFDSDemo: void print(int)>;i0 := @parameter0: int@0;Pair <<zero>>,[];BOTTOM
+<demo.IFDSDemo: void print(int)>;i0 := @parameter0: int@0;Pair @parameter0: int,[i0 := @parameter0: int];BOTTOM
+<demo.IFDSDemo: void print(int)>;$r0 = <java.lang.System: java.io.PrintStream out>@1;Pair i0,[i0 := @parameter0: int];BOTTOM
+<demo.IFDSDemo: void print(int)>;$r0 = <java.lang.System: java.io.PrintStream out>@1;Pair <<zero>>,[];BOTTOM
+<demo.IFDSDemo: void print(int)>;$r0 = <java.lang.System: java.io.PrintStream out>@1;Pair @parameter0: int,[i0 := @parameter0: int];BOTTOM
+<demo.IFDSDemo: void print(int)>;virtualinvoke $r0.<java.io.PrintStream: void println(int)>(i0)@2;Pair i0,[i0 := @parameter0: int];BOTTOM
+<demo.IFDSDemo: void print(int)>;virtualinvoke $r0.<java.io.PrintStream: void println(int)>(i0)@2;Pair $r0,[$r0 = <java.lang.System: java.io.PrintStream out>];BOTTOM
+<demo.IFDSDemo: void print(int)>;virtualinvoke $r0.<java.io.PrintStream: void println(int)>(i0)@2;Pair <<zero>>,[];BOTTOM
+<demo.IFDSDemo: void print(int)>;virtualinvoke $r0.<java.io.PrintStream: void println(int)>(i0)@2;Pair @parameter0: int,[i0 := @parameter0: int];BOTTOM
+<demo.IFDSDemo: void print(int)>;return@3;Pair i0,[i0 := @parameter0: int];BOTTOM
+<demo.IFDSDemo: void print(int)>;return@3;Pair $r0,[$r0 = <java.lang.System: java.io.PrintStream out>];BOTTOM
+<demo.IFDSDemo: void print(int)>;return@3;Pair <<zero>>,[];BOTTOM
+<demo.IFDSDemo: void print(int)>;return@3;Pair @parameter0: int,[i0 := @parameter0: int];BOTTOM

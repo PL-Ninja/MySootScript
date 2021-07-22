@@ -81,7 +81,7 @@ final class graph.BuildCallGraph$1 extends soot.jimple.AbstractExprSwitch
         java.lang.String $stack11, $stack21;
         soot.SootClass baseClass, c;
         soot.Hierarchy h;
-        java.util.ArrayList $stack15, subClasses;
+        java.util.ArrayList $stack15;
         java.util.List $stack16, $stack23;
         java.util.Iterator l5;
         boolean $stack19;
@@ -115,11 +115,9 @@ final class graph.BuildCallGraph$1 extends soot.jimple.AbstractExprSwitch
 
         specialinvoke $stack15.<java.util.ArrayList: void <init>(java.util.Collection)>($stack16);
 
-        subClasses = $stack15;
+        interfaceinvoke $stack15.<java.util.List: boolean add(java.lang.Object)>(baseClass);
 
-        interfaceinvoke subClasses.<java.util.List: boolean add(java.lang.Object)>(baseClass);
-
-        l5 = interfaceinvoke subClasses.<java.util.List: java.util.Iterator iterator()>();
+        l5 = interfaceinvoke $stack15.<java.util.List: java.util.Iterator iterator()>();
 
      label1:
         $stack19 = interfaceinvoke l5.<java.util.Iterator: boolean hasNext()>();

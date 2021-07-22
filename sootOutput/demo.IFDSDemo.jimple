@@ -1,0 +1,58 @@
+public class demo.IFDSDemo extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        demo.IFDSDemo this;
+
+        this := @this: demo.IFDSDemo;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        int x, y#2;
+        java.lang.String[] args;
+
+        args := @parameter0: java.lang.String[];
+
+        x = staticinvoke <demo.IFDSDemo: int secret()>();
+
+        y#2 = staticinvoke <demo.IFDSDemo: int foo(int)>(x);
+
+        staticinvoke <demo.IFDSDemo: void print(int)>(y#2);
+
+        return;
+    }
+
+    private static void print(int)
+    {
+        int y;
+        java.io.PrintStream $stack1;
+
+        y := @parameter0: int;
+
+        $stack1 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $stack1.<java.io.PrintStream: void println(int)>(y);
+
+        return;
+    }
+
+    private static int secret()
+    {
+        return 88;
+    }
+
+    private static int foo(int)
+    {
+        int p;
+
+        p := @parameter0: int;
+
+        return p;
+    }
+}

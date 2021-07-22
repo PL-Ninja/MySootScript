@@ -5,41 +5,56 @@ public class pta.toolkit.Analyzer extends java.lang.Object
     private java.util.Map queryMap;
     private java.util.Map localCheckMap;
     private java.util.Map transferMap;
+    private java.util.Map equalMap;
+    public java.lang.StringBuilder tracker;
 
     private void <init>()
     {
         pta.toolkit.Analyzer this;
-        java.util.LinkedHashMap $stack1, $stack2, $stack3, $stack4;
+        java.lang.StringBuilder $stack1;
+        java.util.LinkedHashMap $stack2, $stack3, $stack4, $stack5, $stack6;
 
         this := @this: pta.toolkit.Analyzer;
 
         specialinvoke this.<java.lang.Object: void <init>()>();
 
+        $stack1 = new java.lang.StringBuilder;
+
+        specialinvoke $stack1.<java.lang.StringBuilder: void <init>()>();
+
+        this.<pta.toolkit.Analyzer: java.lang.StringBuilder tracker> = $stack1;
+
         this.<pta.toolkit.Analyzer: int allocId> = 0;
-
-        $stack1 = new java.util.LinkedHashMap;
-
-        specialinvoke $stack1.<java.util.LinkedHashMap: void <init>()>();
-
-        this.<pta.toolkit.Analyzer: java.util.Map wholeLocalMap> = $stack1;
 
         $stack2 = new java.util.LinkedHashMap;
 
         specialinvoke $stack2.<java.util.LinkedHashMap: void <init>()>();
 
-        this.<pta.toolkit.Analyzer: java.util.Map queryMap> = $stack2;
+        this.<pta.toolkit.Analyzer: java.util.Map wholeLocalMap> = $stack2;
 
         $stack3 = new java.util.LinkedHashMap;
 
         specialinvoke $stack3.<java.util.LinkedHashMap: void <init>()>();
 
-        this.<pta.toolkit.Analyzer: java.util.Map localCheckMap> = $stack3;
+        this.<pta.toolkit.Analyzer: java.util.Map queryMap> = $stack3;
 
         $stack4 = new java.util.LinkedHashMap;
 
         specialinvoke $stack4.<java.util.LinkedHashMap: void <init>()>();
 
-        this.<pta.toolkit.Analyzer: java.util.Map transferMap> = $stack4;
+        this.<pta.toolkit.Analyzer: java.util.Map localCheckMap> = $stack4;
+
+        $stack5 = new java.util.LinkedHashMap;
+
+        specialinvoke $stack5.<java.util.LinkedHashMap: void <init>()>();
+
+        this.<pta.toolkit.Analyzer: java.util.Map transferMap> = $stack5;
+
+        $stack6 = new java.util.LinkedHashMap;
+
+        specialinvoke $stack6.<java.util.LinkedHashMap: void <init>()>();
+
+        this.<pta.toolkit.Analyzer: java.util.Map equalMap> = $stack6;
 
         return;
     }
@@ -153,421 +168,334 @@ public class pta.toolkit.Analyzer extends java.lang.Object
         return;
     }
 
-    public java.lang.String run()
+    public void addEqualMap(soot.Local, soot.Local)
     {
-        java.lang.StringBuilder $stack8, sb, $stack62, $stack67, $stack68, $stack70, $stack71, $stack73, $stack74, $stack75, $stack77, $stack88, $stack89, $stack93, $stack108, $stack110, $stack111, $stack115, $stack116, $stack120, $stack122, $stack125, $stack127, $stack128, $stack133, $stack134, $stack138, $stack139, $stack143, $stack145, $stack156, $stack157, $stack161, $stack162, $stack166;
         pta.toolkit.Analyzer this;
-        java.util.Map $stack10, $stack15, $stack20, $stack39, $stack42, $stack49, fieldMap;
-        java.util.Set $stack11, $stack16, $stack21, $stack50, $stack99, $stack119, $stack142, $stack165;
-        boolean $stack13, $stack18, $stack23, $stack52, $stack60, $stack101, $stack107;
-        java.io.PrintStream $stack24;
-        java.lang.String $stack25, $stack26, $stack35, $stack58, $stack59, $stack66, $stack76, $stack82, $stack87, $stack92, $stack106, $stack114, $stack121, $stack137, $stack144, $stack150, $stack155, $stack160;
-        java.lang.Object $stack27, $stack28, $stack32, $stack37, $stack40, $stack44, $stack47, $stack53, $stack54, $stack55, $stack56, $stack63, $stack69, $stack72, $stack79, $stack80, $stack85, $stack90, $stack95, $stack103, $stack104, $stack109, $stack112, $stack117, $stack126, $stack129, $stack135, $stack140, $stack147, $stack148, $stack153, $stack158, $stack163;
-        pta.toolkit.Member $stack29, $stack33, $stack38, $stack41, $stack45, $stack48, $stack64, $stack97, $stack131;
-        soot.Local $stack30, $stack34, $stack65, $stack81, $stack91, $stack149, $stack159;
-        char $stack36, $stack83, $stack151;
-        int $stack43;
-        pta.toolkit.Variable variable, $stack57, $stack86, $stack96, $stack105, $stack113, $stack118, $stack130, $stack136, $stack141, $stack154, $stack164;
-        soot.Value $stack132;
-        java.util.Iterator l2, l5;
-        java.util.Map$Entry entry, fieldMapEntry;
+        soot.Local lvar, rvar;
+        java.util.Map $stack3;
 
         this := @this: pta.toolkit.Analyzer;
 
-        $stack8 = new java.lang.StringBuilder;
+        lvar := @parameter0: soot.Local;
 
-        specialinvoke $stack8.<java.lang.StringBuilder: void <init>()>();
+        rvar := @parameter1: soot.Local;
 
-        sb = $stack8;
+        $stack3 = this.<pta.toolkit.Analyzer: java.util.Map equalMap>;
 
-        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Result : \n");
+        interfaceinvoke $stack3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(lvar, rvar);
 
-        $stack10 = this.<pta.toolkit.Analyzer: java.util.Map localCheckMap>;
+        return;
+    }
 
-        $stack11 = interfaceinvoke $stack10.<java.util.Map: java.util.Set entrySet()>();
+    public java.lang.String run()
+    {
+        java.lang.StringBuilder $stack7, $stack43, $stack44, $stack48, $stack63, $stack65, $stack66, $stack70, $stack71, $stack75, $stack77, $stack80, $stack82, $stack83, $stack88, $stack89, $stack93, $stack94, $stack98, $stack100, $stack111, $stack112, $stack116, $stack117, $stack121;
+        pta.toolkit.Analyzer this;
+        java.util.Map $stack9, $stack14, $stack19, $stack23, fieldMap;
+        java.util.Set $stack10, $stack15, $stack20, $stack24, $stack54, $stack74, $stack97, $stack120;
+        boolean $stack12, $stack17, $stack22, $stack26, $stack56, $stack62;
+        java.io.PrintStream $stack27;
+        java.lang.String $stack28, $stack29, $stack37, $stack42, $stack47, $stack61, $stack69, $stack76, $stack92, $stack99, $stack105, $stack110, $stack115;
+        java.lang.Object $stack30, $stack32, $stack34, $stack35, $stack40, $stack45, $stack50, $stack58, $stack59, $stack64, $stack67, $stack72, $stack81, $stack84, $stack90, $stack95, $stack102, $stack103, $stack108, $stack113, $stack118;
+        soot.Local $stack36, $stack46, $stack104, $stack114;
+        char $stack38, $stack106;
+        pta.toolkit.Variable $stack41, $stack51, $stack60, $stack68, $stack73, $stack85, $stack91, $stack96, $stack109, $stack119;
+        pta.toolkit.Member $stack52, $stack86;
+        java.util.Iterator l5, l2;
+        java.util.Map$Entry fieldMapEntry, entry;
+        soot.Value $stack87;
 
-        l2 = interfaceinvoke $stack11.<java.util.Set: java.util.Iterator iterator()>();
+        this := @this: pta.toolkit.Analyzer;
+
+        $stack7 = new java.lang.StringBuilder;
+
+        specialinvoke $stack7.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $stack7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Result : \n");
+
+        $stack9 = this.<pta.toolkit.Analyzer: java.util.Map localCheckMap>;
+
+        $stack10 = interfaceinvoke $stack9.<java.util.Map: java.util.Set entrySet()>();
+
+        l2 = interfaceinvoke $stack10.<java.util.Set: java.util.Iterator iterator()>();
 
      label01:
-        $stack13 = interfaceinvoke l2.<java.util.Iterator: boolean hasNext()>();
+        $stack12 = interfaceinvoke l2.<java.util.Iterator: boolean hasNext()>();
 
-        if $stack13 == 0 goto label03;
+        if $stack12 == 0 goto label03;
 
-        $stack147 = interfaceinvoke l2.<java.util.Iterator: java.lang.Object next()>();
+        $stack102 = interfaceinvoke l2.<java.util.Iterator: java.lang.Object next()>();
 
-        entry = (java.util.Map$Entry) $stack147;
+        entry = (java.util.Map$Entry) $stack102;
 
-        $stack148 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getKey()>();
+        $stack103 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getKey()>();
 
-        $stack149 = (soot.Local) $stack148;
+        $stack104 = (soot.Local) $stack103;
 
-        $stack150 = interfaceinvoke $stack149.<soot.Local: java.lang.String getName()>();
+        $stack105 = interfaceinvoke $stack104.<soot.Local: java.lang.String getName()>();
 
-        $stack151 = virtualinvoke $stack150.<java.lang.String: char charAt(int)>(0);
+        $stack106 = virtualinvoke $stack105.<java.lang.String: char charAt(int)>(0);
 
-        if $stack151 == 36 goto label02;
+        if $stack106 == 36 goto label02;
 
-        $stack153 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getValue()>();
+        $stack108 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getValue()>();
 
-        $stack154 = (pta.toolkit.Variable) $stack153;
+        $stack109 = (pta.toolkit.Variable) $stack108;
 
-        $stack155 = virtualinvoke $stack154.<pta.toolkit.Variable: java.lang.String getClassName()>();
+        $stack110 = virtualinvoke $stack109.<pta.toolkit.Variable: java.lang.String getClassName()>();
 
-        $stack156 = virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack155);
+        $stack111 = virtualinvoke $stack7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack110);
 
-        $stack157 = virtualinvoke $stack156.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" : ");
+        $stack112 = virtualinvoke $stack111.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" : ");
 
-        $stack158 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getKey()>();
+        $stack113 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getKey()>();
 
-        $stack159 = (soot.Local) $stack158;
+        $stack114 = (soot.Local) $stack113;
 
-        $stack160 = interfaceinvoke $stack159.<soot.Local: java.lang.String getName()>();
+        $stack115 = interfaceinvoke $stack114.<soot.Local: java.lang.String getName()>();
 
-        $stack161 = virtualinvoke $stack157.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack160);
+        $stack116 = virtualinvoke $stack112.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack115);
 
-        $stack162 = virtualinvoke $stack161.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" : ");
+        $stack117 = virtualinvoke $stack116.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" : ");
 
-        $stack163 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getValue()>();
+        $stack118 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getValue()>();
 
-        $stack164 = (pta.toolkit.Variable) $stack163;
+        $stack119 = (pta.toolkit.Variable) $stack118;
 
-        $stack165 = virtualinvoke $stack164.<pta.toolkit.Variable: java.util.Set getAllocIdSet()>();
+        $stack120 = virtualinvoke $stack119.<pta.toolkit.Variable: java.util.Set getAllocIdSet()>();
 
-        $stack166 = virtualinvoke $stack162.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack165);
+        $stack121 = virtualinvoke $stack117.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack120);
 
-        virtualinvoke $stack166.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\n");
+        virtualinvoke $stack121.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\n");
 
      label02:
         goto label01;
 
      label03:
-        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\nObj\'s Fields : \n");
+        virtualinvoke $stack7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\nObj\'s Fields : \n");
 
-        $stack15 = this.<pta.toolkit.Analyzer: java.util.Map localCheckMap>;
+        $stack14 = this.<pta.toolkit.Analyzer: java.util.Map localCheckMap>;
 
-        $stack16 = interfaceinvoke $stack15.<java.util.Map: java.util.Set entrySet()>();
+        $stack15 = interfaceinvoke $stack14.<java.util.Map: java.util.Set entrySet()>();
 
-        l2 = interfaceinvoke $stack16.<java.util.Set: java.util.Iterator iterator()>();
+        l2 = interfaceinvoke $stack15.<java.util.Set: java.util.Iterator iterator()>();
 
      label04:
-        $stack18 = interfaceinvoke l2.<java.util.Iterator: boolean hasNext()>();
+        $stack17 = interfaceinvoke l2.<java.util.Iterator: boolean hasNext()>();
 
-        if $stack18 == 0 goto label10;
+        if $stack17 == 0 goto label10;
 
-        $stack79 = interfaceinvoke l2.<java.util.Iterator: java.lang.Object next()>();
+        $stack34 = interfaceinvoke l2.<java.util.Iterator: java.lang.Object next()>();
 
-        entry = (java.util.Map$Entry) $stack79;
+        entry = (java.util.Map$Entry) $stack34;
 
-        $stack80 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getKey()>();
+        $stack35 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getKey()>();
 
-        $stack81 = (soot.Local) $stack80;
+        $stack36 = (soot.Local) $stack35;
 
-        $stack82 = interfaceinvoke $stack81.<soot.Local: java.lang.String getName()>();
+        $stack37 = interfaceinvoke $stack36.<soot.Local: java.lang.String getName()>();
 
-        $stack83 = virtualinvoke $stack82.<java.lang.String: char charAt(int)>(0);
+        $stack38 = virtualinvoke $stack37.<java.lang.String: char charAt(int)>(0);
 
-        if $stack83 == 36 goto label09;
+        if $stack38 == 36 goto label09;
 
-        $stack85 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getValue()>();
+        $stack40 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getValue()>();
 
-        $stack86 = (pta.toolkit.Variable) $stack85;
+        $stack41 = (pta.toolkit.Variable) $stack40;
 
-        $stack87 = virtualinvoke $stack86.<pta.toolkit.Variable: java.lang.String getClassName()>();
+        $stack42 = virtualinvoke $stack41.<pta.toolkit.Variable: java.lang.String getClassName()>();
 
-        $stack88 = virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack87);
+        $stack43 = virtualinvoke $stack7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack42);
 
-        $stack89 = virtualinvoke $stack88.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" : ");
+        $stack44 = virtualinvoke $stack43.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" : ");
 
-        $stack90 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getKey()>();
+        $stack45 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getKey()>();
 
-        $stack91 = (soot.Local) $stack90;
+        $stack46 = (soot.Local) $stack45;
 
-        $stack92 = interfaceinvoke $stack91.<soot.Local: java.lang.String getName()>();
+        $stack47 = interfaceinvoke $stack46.<soot.Local: java.lang.String getName()>();
+
+        $stack48 = virtualinvoke $stack44.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack47);
+
+        virtualinvoke $stack48.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" : ");
+
+        $stack50 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $stack51 = (pta.toolkit.Variable) $stack50;
+
+        $stack52 = virtualinvoke $stack51.<pta.toolkit.Variable: pta.toolkit.Member getMember()>();
+
+        fieldMap = virtualinvoke $stack52.<pta.toolkit.Member: java.util.Map getFieldMap()>();
+
+        $stack54 = interfaceinvoke fieldMap.<java.util.Map: java.util.Set entrySet()>();
+
+        l5 = interfaceinvoke $stack54.<java.util.Set: java.util.Iterator iterator()>();
+
+     label05:
+        $stack56 = interfaceinvoke l5.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack56 == 0 goto label08;
+
+        $stack58 = interfaceinvoke l5.<java.util.Iterator: java.lang.Object next()>();
+
+        fieldMapEntry = (java.util.Map$Entry) $stack58;
+
+        $stack59 = interfaceinvoke fieldMapEntry.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $stack60 = (pta.toolkit.Variable) $stack59;
+
+        $stack61 = virtualinvoke $stack60.<pta.toolkit.Variable: java.lang.String getName()>();
+
+        $stack62 = virtualinvoke $stack61.<java.lang.String: boolean contains(java.lang.CharSequence)>("ConstantValue");
+
+        if $stack62 == 0 goto label06;
+
+        $stack80 = new java.lang.StringBuilder;
+
+        specialinvoke $stack80.<java.lang.StringBuilder: void <init>()>();
+
+        $stack81 = interfaceinvoke fieldMapEntry.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $stack82 = virtualinvoke $stack80.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack81);
+
+        $stack83 = virtualinvoke $stack82.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" value ");
+
+        $stack84 = interfaceinvoke fieldMapEntry.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $stack85 = (pta.toolkit.Variable) $stack84;
+
+        $stack86 = virtualinvoke $stack85.<pta.toolkit.Variable: pta.toolkit.Member getMember()>();
+
+        $stack87 = virtualinvoke $stack86.<pta.toolkit.Member: soot.Value getValue()>();
+
+        $stack88 = virtualinvoke $stack83.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack87);
+
+        $stack89 = virtualinvoke $stack88.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" from ");
+
+        $stack90 = interfaceinvoke fieldMapEntry.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $stack91 = (pta.toolkit.Variable) $stack90;
+
+        $stack92 = virtualinvoke $stack91.<pta.toolkit.Variable: java.lang.String getClassName()>();
 
         $stack93 = virtualinvoke $stack89.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack92);
 
-        virtualinvoke $stack93.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" : ");
+        $stack94 = virtualinvoke $stack93.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" : ");
 
-        $stack95 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getValue()>();
+        $stack95 = interfaceinvoke fieldMapEntry.<java.util.Map$Entry: java.lang.Object getValue()>();
 
         $stack96 = (pta.toolkit.Variable) $stack95;
 
-        $stack97 = virtualinvoke $stack96.<pta.toolkit.Variable: pta.toolkit.Member getMember()>();
+        $stack97 = virtualinvoke $stack96.<pta.toolkit.Variable: java.util.Set getAllocIdSet()>();
 
-        fieldMap = virtualinvoke $stack97.<pta.toolkit.Member: java.util.Map getFieldMap()>();
+        $stack98 = virtualinvoke $stack94.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack97);
 
-        $stack99 = interfaceinvoke fieldMap.<java.util.Map: java.util.Set entrySet()>();
+        $stack99 = virtualinvoke $stack98.<java.lang.StringBuilder: java.lang.String toString()>();
 
-        l5 = interfaceinvoke $stack99.<java.util.Set: java.util.Iterator iterator()>();
+        $stack100 = virtualinvoke $stack7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack99);
 
-     label05:
-        $stack101 = interfaceinvoke l5.<java.util.Iterator: boolean hasNext()>();
-
-        if $stack101 == 0 goto label08;
-
-        $stack103 = interfaceinvoke l5.<java.util.Iterator: java.lang.Object next()>();
-
-        fieldMapEntry = (java.util.Map$Entry) $stack103;
-
-        $stack104 = interfaceinvoke fieldMapEntry.<java.util.Map$Entry: java.lang.Object getValue()>();
-
-        $stack105 = (pta.toolkit.Variable) $stack104;
-
-        $stack106 = virtualinvoke $stack105.<pta.toolkit.Variable: java.lang.String getName()>();
-
-        $stack107 = virtualinvoke $stack106.<java.lang.String: boolean contains(java.lang.CharSequence)>("ConstantValue");
-
-        if $stack107 == 0 goto label06;
-
-        $stack125 = new java.lang.StringBuilder;
-
-        specialinvoke $stack125.<java.lang.StringBuilder: void <init>()>();
-
-        $stack126 = interfaceinvoke fieldMapEntry.<java.util.Map$Entry: java.lang.Object getKey()>();
-
-        $stack127 = virtualinvoke $stack125.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack126);
-
-        $stack128 = virtualinvoke $stack127.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" value ");
-
-        $stack129 = interfaceinvoke fieldMapEntry.<java.util.Map$Entry: java.lang.Object getValue()>();
-
-        $stack130 = (pta.toolkit.Variable) $stack129;
-
-        $stack131 = virtualinvoke $stack130.<pta.toolkit.Variable: pta.toolkit.Member getMember()>();
-
-        $stack132 = virtualinvoke $stack131.<pta.toolkit.Member: soot.Value getValue()>();
-
-        $stack133 = virtualinvoke $stack128.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack132);
-
-        $stack134 = virtualinvoke $stack133.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" from ");
-
-        $stack135 = interfaceinvoke fieldMapEntry.<java.util.Map$Entry: java.lang.Object getValue()>();
-
-        $stack136 = (pta.toolkit.Variable) $stack135;
-
-        $stack137 = virtualinvoke $stack136.<pta.toolkit.Variable: java.lang.String getClassName()>();
-
-        $stack138 = virtualinvoke $stack134.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack137);
-
-        $stack139 = virtualinvoke $stack138.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" : ");
-
-        $stack140 = interfaceinvoke fieldMapEntry.<java.util.Map$Entry: java.lang.Object getValue()>();
-
-        $stack141 = (pta.toolkit.Variable) $stack140;
-
-        $stack142 = virtualinvoke $stack141.<pta.toolkit.Variable: java.util.Set getAllocIdSet()>();
-
-        $stack143 = virtualinvoke $stack139.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack142);
-
-        $stack144 = virtualinvoke $stack143.<java.lang.StringBuilder: java.lang.String toString()>();
-
-        $stack145 = virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack144);
-
-        virtualinvoke $stack145.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" , ");
+        virtualinvoke $stack100.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" , ");
 
         goto label07;
 
      label06:
-        $stack108 = new java.lang.StringBuilder;
+        $stack63 = new java.lang.StringBuilder;
 
-        specialinvoke $stack108.<java.lang.StringBuilder: void <init>()>();
+        specialinvoke $stack63.<java.lang.StringBuilder: void <init>()>();
 
-        $stack109 = interfaceinvoke fieldMapEntry.<java.util.Map$Entry: java.lang.Object getKey()>();
+        $stack64 = interfaceinvoke fieldMapEntry.<java.util.Map$Entry: java.lang.Object getKey()>();
 
-        $stack110 = virtualinvoke $stack108.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack109);
+        $stack65 = virtualinvoke $stack63.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack64);
 
-        $stack111 = virtualinvoke $stack110.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" from ");
+        $stack66 = virtualinvoke $stack65.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" from ");
 
-        $stack112 = interfaceinvoke fieldMapEntry.<java.util.Map$Entry: java.lang.Object getValue()>();
+        $stack67 = interfaceinvoke fieldMapEntry.<java.util.Map$Entry: java.lang.Object getValue()>();
 
-        $stack113 = (pta.toolkit.Variable) $stack112;
+        $stack68 = (pta.toolkit.Variable) $stack67;
 
-        $stack114 = virtualinvoke $stack113.<pta.toolkit.Variable: java.lang.String getClassName()>();
+        $stack69 = virtualinvoke $stack68.<pta.toolkit.Variable: java.lang.String getClassName()>();
 
-        $stack115 = virtualinvoke $stack111.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack114);
-
-        $stack116 = virtualinvoke $stack115.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" : ");
-
-        $stack117 = interfaceinvoke fieldMapEntry.<java.util.Map$Entry: java.lang.Object getValue()>();
-
-        $stack118 = (pta.toolkit.Variable) $stack117;
-
-        $stack119 = virtualinvoke $stack118.<pta.toolkit.Variable: java.util.Set getAllocIdSet()>();
-
-        $stack120 = virtualinvoke $stack116.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack119);
-
-        $stack121 = virtualinvoke $stack120.<java.lang.StringBuilder: java.lang.String toString()>();
-
-        $stack122 = virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack121);
-
-        virtualinvoke $stack122.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ");
-
-     label07:
-        goto label05;
-
-     label08:
-        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\n");
-
-     label09:
-        goto label04;
-
-     label10:
-        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\nTrack Changes : \n");
-
-        $stack20 = this.<pta.toolkit.Analyzer: java.util.Map transferMap>;
-
-        $stack21 = interfaceinvoke $stack20.<java.util.Map: java.util.Set entrySet()>();
-
-        l2 = interfaceinvoke $stack21.<java.util.Set: java.util.Iterator iterator()>();
-
-     label11:
-        $stack23 = interfaceinvoke l2.<java.util.Iterator: boolean hasNext()>();
-
-        if $stack23 == 0 goto label15;
-
-        $stack27 = interfaceinvoke l2.<java.util.Iterator: java.lang.Object next()>();
-
-        entry = (java.util.Map$Entry) $stack27;
-
-        $stack28 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getKey()>();
-
-        $stack29 = (pta.toolkit.Member) $stack28;
-
-        $stack30 = virtualinvoke $stack29.<pta.toolkit.Member: soot.Local getLocal()>();
-
-        if $stack30 == null goto label14;
-
-        $stack32 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getKey()>();
-
-        $stack33 = (pta.toolkit.Member) $stack32;
-
-        $stack34 = virtualinvoke $stack33.<pta.toolkit.Member: soot.Local getLocal()>();
-
-        $stack35 = interfaceinvoke $stack34.<soot.Local: java.lang.String getName()>();
-
-        $stack36 = virtualinvoke $stack35.<java.lang.String: char charAt(int)>(0);
-
-        if $stack36 == 36 goto label14;
-
-        $stack37 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getKey()>();
-
-        $stack38 = (pta.toolkit.Member) $stack37;
-
-        $stack39 = virtualinvoke $stack38.<pta.toolkit.Member: java.util.Map getFieldMap()>();
-
-        if $stack39 == null goto label14;
-
-        $stack40 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getKey()>();
-
-        $stack41 = (pta.toolkit.Member) $stack40;
-
-        $stack42 = virtualinvoke $stack41.<pta.toolkit.Member: java.util.Map getFieldMap()>();
-
-        $stack43 = interfaceinvoke $stack42.<java.util.Map: int size()>();
-
-        if $stack43 == 0 goto label14;
-
-        $stack44 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getValue()>();
-
-        $stack45 = (pta.toolkit.Member) $stack44;
-
-        fieldMap = virtualinvoke $stack45.<pta.toolkit.Member: java.util.Map getFieldMap()>();
-
-        $stack47 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getKey()>();
-
-        $stack48 = (pta.toolkit.Member) $stack47;
-
-        $stack49 = virtualinvoke $stack48.<pta.toolkit.Member: java.util.Map getFieldMap()>();
-
-        $stack50 = interfaceinvoke $stack49.<java.util.Map: java.util.Set entrySet()>();
-
-        l5 = interfaceinvoke $stack50.<java.util.Set: java.util.Iterator iterator()>();
-
-     label12:
-        $stack52 = interfaceinvoke l5.<java.util.Iterator: boolean hasNext()>();
-
-        if $stack52 == 0 goto label14;
-
-        $stack53 = interfaceinvoke l5.<java.util.Iterator: java.lang.Object next()>();
-
-        fieldMapEntry = (java.util.Map$Entry) $stack53;
-
-        $stack54 = interfaceinvoke fieldMapEntry.<java.util.Map$Entry: java.lang.Object getKey()>();
-
-        $stack55 = interfaceinvoke fieldMap.<java.util.Map: java.lang.Object get(java.lang.Object)>($stack54);
-
-        variable = (pta.toolkit.Variable) $stack55;
-
-        $stack56 = interfaceinvoke fieldMapEntry.<java.util.Map$Entry: java.lang.Object getValue()>();
-
-        $stack57 = (pta.toolkit.Variable) $stack56;
-
-        $stack58 = virtualinvoke $stack57.<pta.toolkit.Variable: java.lang.String toString()>();
-
-        $stack59 = virtualinvoke variable.<pta.toolkit.Variable: java.lang.String toString()>();
-
-        $stack60 = virtualinvoke $stack58.<java.lang.String: boolean equals(java.lang.Object)>($stack59);
-
-        if $stack60 != 0 goto label13;
-
-        $stack62 = new java.lang.StringBuilder;
-
-        specialinvoke $stack62.<java.lang.StringBuilder: void <init>()>();
-
-        $stack63 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getValue()>();
-
-        $stack64 = (pta.toolkit.Member) $stack63;
-
-        $stack65 = virtualinvoke $stack64.<pta.toolkit.Member: soot.Local getLocal()>();
-
-        $stack66 = interfaceinvoke $stack65.<soot.Local: java.lang.String getName()>();
-
-        $stack67 = virtualinvoke $stack62.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack66);
-
-        $stack68 = virtualinvoke $stack67.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" \'s ");
-
-        $stack69 = interfaceinvoke fieldMapEntry.<java.util.Map$Entry: java.lang.Object getKey()>();
-
-        $stack70 = virtualinvoke $stack68.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack69);
+        $stack70 = virtualinvoke $stack66.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack69);
 
         $stack71 = virtualinvoke $stack70.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" : ");
 
         $stack72 = interfaceinvoke fieldMapEntry.<java.util.Map$Entry: java.lang.Object getValue()>();
 
-        $stack73 = virtualinvoke $stack71.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack72);
+        $stack73 = (pta.toolkit.Variable) $stack72;
 
-        $stack74 = virtualinvoke $stack73.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" --> ");
+        $stack74 = virtualinvoke $stack73.<pta.toolkit.Variable: java.util.Set getAllocIdSet()>();
 
-        $stack75 = virtualinvoke $stack74.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(variable);
+        $stack75 = virtualinvoke $stack71.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack74);
 
         $stack76 = virtualinvoke $stack75.<java.lang.StringBuilder: java.lang.String toString()>();
 
-        $stack77 = virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack76);
+        $stack77 = virtualinvoke $stack7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack76);
 
-        virtualinvoke $stack77.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\n");
+        virtualinvoke $stack77.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ");
 
-     label13:
-        goto label12;
+     label07:
+        goto label05;
 
-     label14:
+     label08:
+        virtualinvoke $stack7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\n");
+
+     label09:
+        goto label04;
+
+     label10:
+        virtualinvoke $stack7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\nTrack Changes : \n");
+
+        $stack19 = this.<pta.toolkit.Analyzer: java.util.Map transferMap>;
+
+        $stack20 = interfaceinvoke $stack19.<java.util.Map: java.util.Set entrySet()>();
+
+        l2 = interfaceinvoke $stack20.<java.util.Set: java.util.Iterator iterator()>();
+
+     label11:
+        $stack22 = interfaceinvoke l2.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack22 == 0 goto label12;
+
+        $stack32 = interfaceinvoke l2.<java.util.Iterator: java.lang.Object next()>();
+
+        entry = (java.util.Map$Entry) $stack32;
+
         goto label11;
 
-     label15:
-        $stack24 = <java.lang.System: java.io.PrintStream out>;
+     label12:
+        $stack23 = this.<pta.toolkit.Analyzer: java.util.Map transferMap>;
 
-        $stack25 = virtualinvoke sb.<java.lang.StringBuilder: java.lang.String toString()>();
+        $stack24 = interfaceinvoke $stack23.<java.util.Map: java.util.Set entrySet()>();
 
-        virtualinvoke $stack24.<java.io.PrintStream: void println(java.lang.String)>($stack25);
+        l2 = interfaceinvoke $stack24.<java.util.Set: java.util.Iterator iterator()>();
 
-        $stack26 = virtualinvoke sb.<java.lang.StringBuilder: java.lang.String toString()>();
+     label13:
+        $stack26 = interfaceinvoke l2.<java.util.Iterator: boolean hasNext()>();
 
-        return $stack26;
+        if $stack26 == 0 goto label14;
+
+        $stack30 = interfaceinvoke l2.<java.util.Iterator: java.lang.Object next()>();
+
+        entry = (java.util.Map$Entry) $stack30;
+
+        goto label13;
+
+     label14:
+        $stack27 = <java.lang.System: java.io.PrintStream out>;
+
+        $stack28 = virtualinvoke $stack7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $stack27.<java.io.PrintStream: void println(java.lang.String)>($stack28);
+
+        $stack29 = virtualinvoke $stack7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $stack29;
     }
 
-    public void trackTransferMap(pta.toolkit.Context, pta.toolkit.Member, pta.toolkit.Member)
+    public void trackTransferMap(pta.toolkit.Context, pta.toolkit.Variable, pta.toolkit.Variable)
     {
         pta.toolkit.Analyzer this;
-        pta.toolkit.Member lvarMember, rvarMember;
+        pta.toolkit.Variable lvar, rvar;
         java.util.Map $stack4;
         pta.toolkit.Context context;
 
@@ -575,15 +503,64 @@ public class pta.toolkit.Analyzer extends java.lang.Object
 
         context := @parameter0: pta.toolkit.Context;
 
-        lvarMember := @parameter1: pta.toolkit.Member;
+        lvar := @parameter1: pta.toolkit.Variable;
 
-        rvarMember := @parameter2: pta.toolkit.Member;
+        rvar := @parameter2: pta.toolkit.Variable;
 
         $stack4 = this.<pta.toolkit.Analyzer: java.util.Map transferMap>;
 
-        interfaceinvoke $stack4.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(lvarMember, rvarMember);
+        interfaceinvoke $stack4.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(lvar, rvar);
 
         return;
+    }
+
+    public void trackTransferMap(pta.toolkit.Context, pta.toolkit.Variable, pta.toolkit.Variable, pta.toolkit.Variable, soot.SootFieldRef)
+    {
+        pta.toolkit.Variable baseVar, variable, lvar, rvar;
+        pta.toolkit.Member $stack8;
+        java.util.Map $stack9, $stack11;
+        soot.SootFieldRef sfr;
+        java.lang.Object $stack10;
+        pta.toolkit.Analyzer this;
+        pta.toolkit.Context context;
+
+        this := @this: pta.toolkit.Analyzer;
+
+        context := @parameter0: pta.toolkit.Context;
+
+        lvar := @parameter1: pta.toolkit.Variable;
+
+        rvar := @parameter2: pta.toolkit.Variable;
+
+        baseVar := @parameter3: pta.toolkit.Variable;
+
+        sfr := @parameter4: soot.SootFieldRef;
+
+        $stack8 = virtualinvoke baseVar.<pta.toolkit.Variable: pta.toolkit.Member getMember()>();
+
+        $stack9 = virtualinvoke $stack8.<pta.toolkit.Member: java.util.Map getFieldMap()>();
+
+        $stack10 = interfaceinvoke $stack9.<java.util.Map: java.lang.Object get(java.lang.Object)>(sfr);
+
+        variable = (pta.toolkit.Variable) $stack10;
+
+        $stack11 = this.<pta.toolkit.Analyzer: java.util.Map transferMap>;
+
+        interfaceinvoke $stack11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(lvar, variable);
+
+        return;
+    }
+
+    public java.util.Map getEqualMap()
+    {
+        pta.toolkit.Analyzer this;
+        java.util.Map $stack1;
+
+        this := @this: pta.toolkit.Analyzer;
+
+        $stack1 = this.<pta.toolkit.Analyzer: java.util.Map equalMap>;
+
+        return $stack1;
     }
 
     public int getAllocId()

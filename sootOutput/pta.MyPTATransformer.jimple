@@ -20,7 +20,7 @@ public class pta.MyPTATransformer extends soot.SceneTransformer
         java.lang.String initialClassName, $stack14, arg0;
         pta.MyPTATransformer this;
         pta.toolkit.Context $stack12;
-        java.lang.Throwable $stack15, analyzer#2;
+        java.lang.Throwable $stack15;
         java.util.Map arg1;
         pta.toolkit.Analyzer analyzer;
 
@@ -57,9 +57,7 @@ public class pta.MyPTATransformer extends soot.SceneTransformer
      label3:
         $stack15 := @caughtexception;
 
-        analyzer#2 = $stack15;
-
-        virtualinvoke analyzer#2.<java.lang.Throwable: void printStackTrace()>();
+        virtualinvoke $stack15.<java.lang.Throwable: void printStackTrace()>();
 
      label4:
         return;
@@ -71,7 +69,6 @@ public class pta.MyPTATransformer extends soot.SceneTransformer
     {
         soot.SootMethod method;
         soot.Body body;
-        soot.toolkits.graph.BriefUnitGraph graph, $u0;
         soot.util.Chain locals;
         soot.SootClass $stack11;
         java.lang.String declaringClassName;
@@ -81,6 +78,7 @@ public class pta.MyPTATransformer extends soot.SceneTransformer
         soot.Unit head;
         pta.MyPTATransformer this;
         pta.toolkit.Context contex;
+        soot.toolkits.graph.BriefUnitGraph $u0;
         soot.toolkits.graph.UnitGraph $r0, $r1;
 
         this := @this: pta.MyPTATransformer;
@@ -95,15 +93,13 @@ public class pta.MyPTATransformer extends soot.SceneTransformer
 
         specialinvoke $u0.<soot.toolkits.graph.BriefUnitGraph: void <init>(soot.Body)>(body);
 
-        graph = $u0;
-
         locals = virtualinvoke body.<soot.Body: soot.util.Chain getLocals()>();
 
         $stack11 = virtualinvoke method.<soot.SootMethod: soot.SootClass getDeclaringClass()>();
 
         declaringClassName = virtualinvoke $stack11.<soot.SootClass: java.lang.String getName()>();
 
-        $r0 = (soot.toolkits.graph.UnitGraph) graph;
+        $r0 = (soot.toolkits.graph.UnitGraph) $u0;
 
         $stack13 = virtualinvoke $r0.<soot.toolkits.graph.UnitGraph: java.util.List getHeads()>();
 
@@ -113,7 +109,7 @@ public class pta.MyPTATransformer extends soot.SceneTransformer
 
         head = (soot.Unit) $stack15;
 
-        $r1 = (soot.toolkits.graph.UnitGraph) graph;
+        $r1 = (soot.toolkits.graph.UnitGraph) $u0;
 
         specialinvoke this.<pta.MyPTATransformer: void solveBlock(soot.Unit,pta.toolkit.Context,soot.toolkits.graph.UnitGraph,soot.util.Chain,java.lang.String)>(head, contex, $r1, locals, declaringClassName);
 
@@ -207,19 +203,20 @@ public class pta.MyPTATransformer extends soot.SceneTransformer
         pta.toolkit.Context context, rbaseVar#32;
         soot.Unit u;
         java.io.PrintStream $stack16;
-        java.lang.String $stack17, $stack35, className, pr#27, rfield#33;
-        boolean $stack18, $stack19, $stack20, $stack25, $stack27, $stack34, $stack36, $stack37, $stack43, $stack44, $stack45, $stack46, $stack52, $stack53, $stack55, $stack61, $stack64, $stack78, $stack79;
-        int $stack26, $stack49, $stack50, $stack73, $stack74, $stack82, rbase#39;
+        java.lang.String $stack17, $stack35, $stack62, className, pr#27;
+        boolean $stack18, $stack19, $stack20, $stack25, $stack27, $stack34, $stack36, $stack37, $stack43, $stack44, $stack45, $stack46, $stack52, $stack53, $stack55, $stack61, $stack71, $stack85, $stack86;
+        int $stack26, $stack49, $stack50, $stack80, $stack81, $stack89, rbase#39;
         java.lang.Object $stack28, $stack30, $stack31;
         soot.jimple.IntConstant $stack29, $stack32;
-        soot.Value $stack38, $stack56, $stack66, lop, rop, $r0;
+        soot.Value $stack38, $stack56, $stack73, lop, rop, $r0;
         pta.MyPTATransformer this;
         soot.jimple.Constant $stack47;
-        java.lang.Integer $stack51, $stack75;
-        pta.toolkit.Member $stack58, $stack68;
-        soot.Local $stack59, $stack62, $stack70, $stack80, $stack81, rbase, rifref#30, rbaseVar#41;
+        java.lang.Integer $stack51, $stack82;
+        pta.toolkit.Member $stack58, $stack75;
+        soot.Local $stack59, $stack64, $stack65, $stack66, $stack77, $stack87, $stack88, rbase, rifref#30, rbaseVar#41;
         soot.util.Chain localChain;
-        java.lang.Exception $stack83, analyzer#42;
+        char $stack63;
+        java.lang.Exception $stack90;
         pta.toolkit.Analyzer analyzer;
         soot.jimple.IdentityStmt is;
         soot.jimple.ParameterRef pr;
@@ -264,36 +261,36 @@ public class pta.MyPTATransformer extends soot.SceneTransformer
 
         rop = interfaceinvoke is.<soot.jimple.IdentityStmt: soot.Value getRightOp()>();
 
-        $stack78 = rop instanceof soot.jimple.ParameterRef;
+        $stack85 = rop instanceof soot.jimple.ParameterRef;
 
-        if $stack78 == 0 goto label02;
+        if $stack85 == 0 goto label02;
 
         pr = (soot.jimple.ParameterRef) rop;
 
-        $stack81 = (soot.Local) lop;
+        $stack88 = (soot.Local) lop;
 
-        $stack82 = virtualinvoke pr.<soot.jimple.ParameterRef: int getIndex()>();
+        $stack89 = virtualinvoke pr.<soot.jimple.ParameterRef: int getIndex()>();
 
-        virtualinvoke context.<pta.toolkit.Context: void bindArg(soot.Local,int)>($stack81, $stack82);
+        virtualinvoke context.<pta.toolkit.Context: void bindArg(soot.Local,int)>($stack88, $stack89);
 
         goto label03;
 
      label02:
-        $stack79 = rop instanceof soot.jimple.ThisRef;
+        $stack86 = rop instanceof soot.jimple.ThisRef;
 
-        if $stack79 == 0 goto label03;
+        if $stack86 == 0 goto label03;
 
-        $stack80 = (soot.Local) lop;
+        $stack87 = (soot.Local) lop;
 
-        virtualinvoke context.<pta.toolkit.Context: void bindThis(soot.Local)>($stack80);
+        virtualinvoke context.<pta.toolkit.Context: void bindThis(soot.Local)>($stack87);
 
      label03:
-        goto label25;
+        goto label26;
 
      label04:
         $stack19 = u instanceof soot.jimple.AssignStmt;
 
-        if $stack19 == 0 goto label14;
+        if $stack19 == 0 goto label15;
 
         is#6 = (soot.jimple.AssignStmt) u;
 
@@ -309,15 +306,15 @@ public class pta.MyPTATransformer extends soot.SceneTransformer
 
         pr#9 = virtualinvoke context.<pta.toolkit.Context: pta.toolkit.Variable createVariable(soot.Value)>(rop);
 
-        $stack73 = interfaceinvoke u.<soot.Unit: int getJavaSourceStartLineNumber()>();
+        $stack80 = interfaceinvoke u.<soot.Unit: int getJavaSourceStartLineNumber()>();
 
-        virtualinvoke analyzer.<pta.toolkit.Analyzer: void setAllocId(int)>($stack73);
+        virtualinvoke analyzer.<pta.toolkit.Analyzer: void setAllocId(int)>($stack80);
 
-        $stack74 = virtualinvoke analyzer.<pta.toolkit.Analyzer: int getAllocId()>();
+        $stack81 = virtualinvoke analyzer.<pta.toolkit.Analyzer: int getAllocId()>();
 
-        $stack75 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($stack74);
+        $stack82 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($stack81);
 
-        virtualinvoke pr#9.<pta.toolkit.Variable: void addAllocId(java.lang.Integer)>($stack75);
+        virtualinvoke pr#9.<pta.toolkit.Variable: void addAllocId(java.lang.Integer)>($stack82);
 
         virtualinvoke analyzer.<pta.toolkit.Analyzer: void setAllocId(int)>(0);
 
@@ -328,9 +325,9 @@ public class pta.MyPTATransformer extends soot.SceneTransformer
 
         if $stack44 == 0 goto label06;
 
-        $stack70 = (soot.Local) rop;
+        $stack77 = (soot.Local) rop;
 
-        pr#9 = virtualinvoke context.<pta.toolkit.Context: pta.toolkit.Variable getOrAdd(soot.Local)>($stack70);
+        pr#9 = virtualinvoke context.<pta.toolkit.Context: pta.toolkit.Variable getOrAdd(soot.Local)>($stack77);
 
         goto label10;
 
@@ -343,21 +340,21 @@ public class pta.MyPTATransformer extends soot.SceneTransformer
 
         rfield = interfaceinvoke rfref.<soot.jimple.FieldRef: soot.SootFieldRef getFieldRef()>();
 
-        $stack64 = rop instanceof soot.jimple.InstanceFieldRef;
+        $stack71 = rop instanceof soot.jimple.InstanceFieldRef;
 
-        if $stack64 == 0 goto label07;
+        if $stack71 == 0 goto label07;
 
         rifref = (soot.jimple.InstanceFieldRef) rop;
 
-        $stack66 = interfaceinvoke rifref.<soot.jimple.InstanceFieldRef: soot.Value getBase()>();
+        $stack73 = interfaceinvoke rifref.<soot.jimple.InstanceFieldRef: soot.Value getBase()>();
 
-        rbase = (soot.Local) $stack66;
+        rbase = (soot.Local) $stack73;
 
         rbaseVar = virtualinvoke context.<pta.toolkit.Context: pta.toolkit.Variable getOrAdd(soot.Local)>(rbase);
 
-        $stack68 = virtualinvoke rbaseVar.<pta.toolkit.Variable: pta.toolkit.Member getMember()>();
+        $stack75 = virtualinvoke rbaseVar.<pta.toolkit.Variable: pta.toolkit.Member getMember()>();
 
-        pr#9 = virtualinvoke $stack68.<pta.toolkit.Member: pta.toolkit.Variable getVariable(soot.SootFieldRef)>(rfield);
+        pr#9 = virtualinvoke $stack75.<pta.toolkit.Member: pta.toolkit.Variable getVariable(soot.SootFieldRef)>(rfield);
 
      label07:
         goto label10;
@@ -391,11 +388,11 @@ public class pta.MyPTATransformer extends soot.SceneTransformer
         return;
 
      label10:
-        if pr#9 == null goto label13;
+        if pr#9 == null goto label14;
 
         $stack52 = lop instanceof soot.Local;
 
-        if $stack52 == 0 goto label12;
+        if $stack52 == 0 goto label13;
 
         $stack59 = (soot.Local) lop;
 
@@ -407,17 +404,30 @@ public class pta.MyPTATransformer extends soot.SceneTransformer
 
         if $stack61 == 0 goto label11;
 
-        $stack62 = (soot.Local) lop;
+        $stack66 = (soot.Local) lop;
 
-        virtualinvoke analyzer.<pta.toolkit.Analyzer: void addLocalCheckMap(soot.Local,pta.toolkit.Variable)>($stack62, rfref#18);
+        virtualinvoke analyzer.<pta.toolkit.Analyzer: void addLocalCheckMap(soot.Local,pta.toolkit.Variable)>($stack66, rfref#18);
 
      label11:
-        goto label13;
+        $stack62 = virtualinvoke rop.<java.lang.Object: java.lang.String toString()>();
+
+        $stack63 = virtualinvoke $stack62.<java.lang.String: char charAt(int)>(0);
+
+        if $stack63 != 36 goto label12;
+
+        $stack65 = (soot.Local) rop;
+
+        $stack64 = (soot.Local) lop;
+
+        virtualinvoke analyzer.<pta.toolkit.Analyzer: void addEqualMap(soot.Local,soot.Local)>($stack65, $stack64);
 
      label12:
+        goto label14;
+
+     label13:
         $stack53 = lop instanceof soot.jimple.FieldRef;
 
-        if $stack53 == 0 goto label13;
+        if $stack53 == 0 goto label14;
 
         rfref = (soot.jimple.FieldRef) lop;
 
@@ -425,7 +435,7 @@ public class pta.MyPTATransformer extends soot.SceneTransformer
 
         $stack55 = lop instanceof soot.jimple.InstanceFieldRef;
 
-        if $stack55 == 0 goto label13;
+        if $stack55 == 0 goto label14;
 
         rifref = (soot.jimple.InstanceFieldRef) lop;
 
@@ -437,21 +447,23 @@ public class pta.MyPTATransformer extends soot.SceneTransformer
 
         $stack58 = virtualinvoke rbaseVar.<pta.toolkit.Variable: pta.toolkit.Member getMember()>();
 
-        virtualinvoke $stack58.<pta.toolkit.Member: void addField(soot.SootFieldRef,pta.toolkit.Variable,pta.toolkit.Context,pta.toolkit.Analyzer)>(rfield, pr#9, context, analyzer);
+        virtualinvoke $stack58.<pta.toolkit.Member: void addField(soot.SootFieldRef,pta.toolkit.Variable,pta.toolkit.Context,pta.toolkit.Analyzer,pta.toolkit.Variable)>(rfield, pr#9, context, analyzer, rbaseVar);
 
-     label13:
-        goto label25;
+        virtualinvoke analyzer.<pta.toolkit.Analyzer: void trackTransferMap(pta.toolkit.Context,pta.toolkit.Variable,pta.toolkit.Variable)>(context, rbaseVar, pr#9);
 
      label14:
+        goto label26;
+
+     label15:
         $stack20 = u instanceof soot.jimple.InvokeStmt;
 
-        if $stack20 == 0 goto label25;
+        if $stack20 == 0 goto label26;
 
         is#24 = (soot.jimple.InvokeStmt) u;
 
         lop#25 = interfaceinvoke is#24.<soot.jimple.InvokeStmt: soot.jimple.InvokeExpr getInvokeExpr()>();
 
-        if lop#25 == null goto label25;
+        if lop#25 == null goto label26;
 
         rop#26 = interfaceinvoke lop#25.<soot.jimple.InvokeExpr: soot.SootMethod getMethod()>();
 
@@ -461,26 +473,26 @@ public class pta.MyPTATransformer extends soot.SceneTransformer
 
         $stack25 = lop#25 instanceof soot.jimple.InstanceInvokeExpr;
 
-        if $stack25 == 0 goto label19;
+        if $stack25 == 0 goto label20;
 
         $stack35 = "<java.lang.Object: void <init>()>";
 
         $stack36 = virtualinvoke $stack35.<java.lang.String: boolean equals(java.lang.Object)>(pr#27);
 
-        if $stack36 == 0 goto label16;
-
-     label15:
-        return;
+        if $stack36 == 0 goto label17;
 
      label16:
-        $stack37 = virtualinvoke context.<pta.toolkit.Context: boolean isInRecursion(java.lang.String)>(pr#27);
-
-        if $stack37 == 0 goto label18;
-
-     label17:
         return;
 
+     label17:
+        $stack37 = virtualinvoke context.<pta.toolkit.Context: boolean isInRecursion(java.lang.String)>(pr#27);
+
+        if $stack37 == 0 goto label19;
+
      label18:
+        return;
+
+     label19:
         rfield#29 = (soot.jimple.InstanceInvokeExpr) lop#25;
 
         $stack38 = interfaceinvoke rfield#29.<soot.jimple.InstanceInvokeExpr: soot.Value getBase()>();
@@ -493,47 +505,45 @@ public class pta.MyPTATransformer extends soot.SceneTransformer
 
         specialinvoke this.<pta.MyPTATransformer: void solveMethod(soot.SootMethod,pta.toolkit.Context)>(rop#26, rbaseVar#32);
 
-        goto label25;
+        goto label26;
 
-     label19:
-        rfield#33 = pr#27;
-
+     label20:
         rifref#34 = -1;
 
-        $stack26 = virtualinvoke rfield#33.<java.lang.String: int hashCode()>();
+        $stack26 = virtualinvoke pr#27.<java.lang.String: int hashCode()>();
 
         lookupswitch($stack26)
         {
-            case -169207433: goto label21;
-            case 1240721133: goto label20;
-            default: goto label22;
+            case -169207433: goto label22;
+            case 1240721133: goto label21;
+            default: goto label23;
         };
 
-     label20:
-        $stack27 = virtualinvoke rfield#33.<java.lang.String: boolean equals(java.lang.Object)>("<pta.ptademo.Benchmark: void alloc(int)>");
+     label21:
+        $stack27 = virtualinvoke pr#27.<java.lang.String: boolean equals(java.lang.Object)>("<pta.ptademo.Benchmark: void alloc(int)>");
 
-        if $stack27 == 0 goto label22;
+        if $stack27 == 0 goto label23;
 
         rifref#34 = 0;
 
-        goto label22;
+        goto label23;
 
-     label21:
-        $stack34 = virtualinvoke rfield#33.<java.lang.String: boolean equals(java.lang.Object)>("<pta.ptademo.Benchmark: void test(int,java.lang.Object)>");
+     label22:
+        $stack34 = virtualinvoke pr#27.<java.lang.String: boolean equals(java.lang.Object)>("<pta.ptademo.Benchmark: void test(int,java.lang.Object)>");
 
-        if $stack34 == 0 goto label22;
+        if $stack34 == 0 goto label23;
 
         rifref#34 = 1;
 
-     label22:
+     label23:
         lookupswitch(rifref#34)
         {
-            case 0: goto label23;
-            case 1: goto label24;
-            default: goto label25;
+            case 0: goto label24;
+            case 1: goto label25;
+            default: goto label26;
         };
 
-     label23:
+     label24:
         $stack31 = interfaceinvoke rfref#28.<java.util.List: java.lang.Object get(int)>(0);
 
         $stack32 = (soot.jimple.IntConstant) $stack31;
@@ -542,9 +552,9 @@ public class pta.MyPTATransformer extends soot.SceneTransformer
 
         virtualinvoke analyzer.<pta.toolkit.Analyzer: void setAllocId(int)>(rbase#39);
 
-        goto label25;
+        goto label26;
 
-     label24:
+     label25:
         $stack28 = interfaceinvoke rfref#28.<java.util.List: java.lang.Object get(int)>(0);
 
         $stack29 = (soot.jimple.IntConstant) $stack28;
@@ -557,24 +567,22 @@ public class pta.MyPTATransformer extends soot.SceneTransformer
 
         virtualinvoke analyzer.<pta.toolkit.Analyzer: void addQuery(int,soot.Local)>(rbase#39, rbaseVar#41);
 
-        goto label25;
-
-     label25:
-        goto label27;
+        goto label26;
 
      label26:
-        $stack83 := @caughtexception;
-
-        analyzer#42 = $stack83;
-
-        virtualinvoke analyzer#42.<java.lang.Exception: void printStackTrace()>();
+        goto label28;
 
      label27:
+        $stack90 := @caughtexception;
+
+        virtualinvoke $stack90.<java.lang.Exception: void printStackTrace()>();
+
+     label28:
         return;
 
-        catch java.lang.Exception from label01 to label09 with label26;
-        catch java.lang.Exception from label10 to label15 with label26;
-        catch java.lang.Exception from label16 to label17 with label26;
-        catch java.lang.Exception from label18 to label25 with label26;
+        catch java.lang.Exception from label01 to label09 with label27;
+        catch java.lang.Exception from label10 to label16 with label27;
+        catch java.lang.Exception from label17 to label18 with label27;
+        catch java.lang.Exception from label19 to label26 with label27;
     }
 }

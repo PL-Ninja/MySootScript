@@ -133,7 +133,7 @@ public class pta.toolkit.Context extends java.lang.Object
 
     public pta.toolkit.Context createBranchScope(java.lang.String)
     {
-        pta.toolkit.Context $stack6, this, $stack10, context;
+        pta.toolkit.Context $stack6, this, $stack10;
         java.lang.String branchStmt, $stack9, $stack11;
         pta.toolkit.Variable $stack7, $stack20, copy;
         java.util.List $stack8;
@@ -169,8 +169,6 @@ public class pta.toolkit.Context extends java.lang.Object
 
         specialinvoke $stack6.<pta.toolkit.Context: void <init>(pta.toolkit.Analyzer,int,java.lang.String,pta.toolkit.Context,java.lang.String,java.util.List,pta.toolkit.Context,java.lang.String,pta.toolkit.Variable)>($stack13, $stack12, $stack11, $stack10, $stack9, $stack8, this, branchStmt, $stack7);
 
-        context = $stack6;
-
         $stack14 = this.<pta.toolkit.Context: java.util.Map localMap>;
 
         $stack15 = interfaceinvoke $stack14.<java.util.Map: java.util.Set entrySet()>();
@@ -194,12 +192,12 @@ public class pta.toolkit.Context extends java.lang.Object
 
         $stack22 = virtualinvoke copy.<pta.toolkit.Variable: soot.Local getLocal()>();
 
-        virtualinvoke context.<pta.toolkit.Context: void bindLocalAndVariable(soot.Local,pta.toolkit.Variable)>($stack22, copy);
+        virtualinvoke $stack6.<pta.toolkit.Context: void bindLocalAndVariable(soot.Local,pta.toolkit.Variable)>($stack22, copy);
 
         goto label1;
 
      label2:
-        return context;
+        return $stack6;
     }
 
     public void bindLocalAndVariable(soot.Local, pta.toolkit.Variable)

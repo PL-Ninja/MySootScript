@@ -48,10 +48,10 @@ public class analysis.intraAnalysis.LiveVariableProblem extends java.lang.Object
         java.lang.StringBuilder $stack21, $stack23, $stack37, $stack38, $stack40, $stack45, $stack46, $stack48, $u0, $u3, $u4;
         soot.Body $stack26, $r0;
         soot.jimple.JimpleBody body;
-        soot.toolkits.graph.TrapUnitGraph g, $u1;
-        pack.SimpleLiveVariablesAnalysis lva, $u2;
         soot.UnitPatchingChain $stack29;
         soot.Unit unit;
+        soot.toolkits.graph.TrapUnitGraph $u1;
+        pack.SimpleLiveVariablesAnalysis $u2;
         soot.toolkits.graph.DirectedGraph $r1;
 
         $stack8 = staticinvoke <soot.Scene: soot.Scene v()>();
@@ -111,15 +111,11 @@ public class analysis.intraAnalysis.LiveVariableProblem extends java.lang.Object
 
         specialinvoke $u1.<soot.toolkits.graph.TrapUnitGraph: void <init>(soot.Body)>($r0);
 
-        g = $u1;
-
         $u2 = new pack.SimpleLiveVariablesAnalysis;
 
-        $r1 = (soot.toolkits.graph.DirectedGraph) g;
+        $r1 = (soot.toolkits.graph.DirectedGraph) $u1;
 
         specialinvoke $u2.<pack.SimpleLiveVariablesAnalysis: void <init>(soot.toolkits.graph.DirectedGraph)>($r1);
-
-        lva = $u2;
 
         $stack29 = virtualinvoke body.<soot.jimple.JimpleBody: soot.UnitPatchingChain getUnits()>();
 
@@ -146,7 +142,7 @@ public class analysis.intraAnalysis.LiveVariableProblem extends java.lang.Object
 
         $stack38 = virtualinvoke $stack37.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[entry]");
 
-        $stack39 = virtualinvoke lva.<pack.SimpleLiveVariablesAnalysis: java.lang.Object getFlowBefore(java.lang.Object)>(unit);
+        $stack39 = virtualinvoke $u2.<pack.SimpleLiveVariablesAnalysis: java.lang.Object getFlowBefore(java.lang.Object)>(unit);
 
         $stack40 = virtualinvoke $stack38.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack39);
 
@@ -166,7 +162,7 @@ public class analysis.intraAnalysis.LiveVariableProblem extends java.lang.Object
 
         $stack46 = virtualinvoke $stack45.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[exit]");
 
-        $stack47 = virtualinvoke lva.<pack.SimpleLiveVariablesAnalysis: java.lang.Object getFlowBefore(java.lang.Object)>(unit);
+        $stack47 = virtualinvoke $u2.<pack.SimpleLiveVariablesAnalysis: java.lang.Object getFlowBefore(java.lang.Object)>(unit);
 
         $stack48 = virtualinvoke $stack46.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($stack47);
 

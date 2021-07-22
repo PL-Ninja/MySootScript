@@ -41,9 +41,9 @@ public class analysis.intraAnalysis.NullPointerProblem extends java.lang.Object
         soot.SootMethod method;
         soot.Body $stack13, $r0;
         soot.jimple.JimpleBody body;
-        soot.toolkits.graph.TrapUnitGraph unitGraph, $u0;
-        java.util.ArrayList npAnalyzers, $u1;
         pack.NullPointerAnalysis$AnalysisMode $stack17, $stack20, $stack23;
+        soot.toolkits.graph.TrapUnitGraph $u0;
+        java.util.ArrayList $u1;
         pack.NullPointerAnalysis $u2, $u3, $u4;
         soot.toolkits.graph.DirectedGraph $r1, $r2, $r3;
 
@@ -76,45 +76,41 @@ public class analysis.intraAnalysis.NullPointerProblem extends java.lang.Object
 
         specialinvoke $u0.<soot.toolkits.graph.TrapUnitGraph: void <init>(soot.Body)>($r0);
 
-        unitGraph = $u0;
-
         $u1 = new java.util.ArrayList;
 
         specialinvoke $u1.<java.util.ArrayList: void <init>()>();
-
-        npAnalyzers = $u1;
 
         $u2 = new pack.NullPointerAnalysis;
 
         $stack17 = <pack.NullPointerAnalysis$AnalysisMode: pack.NullPointerAnalysis$AnalysisMode MUST>;
 
-        $r1 = (soot.toolkits.graph.DirectedGraph) unitGraph;
+        $r1 = (soot.toolkits.graph.DirectedGraph) $u0;
 
         specialinvoke $u2.<pack.NullPointerAnalysis: void <init>(soot.toolkits.graph.DirectedGraph,pack.NullPointerAnalysis$AnalysisMode)>($r1, $stack17);
 
-        interfaceinvoke npAnalyzers.<java.util.List: boolean add(java.lang.Object)>($u2);
+        interfaceinvoke $u1.<java.util.List: boolean add(java.lang.Object)>($u2);
 
         $u3 = new pack.NullPointerAnalysis;
 
         $stack20 = <pack.NullPointerAnalysis$AnalysisMode: pack.NullPointerAnalysis$AnalysisMode MAY_O>;
 
-        $r2 = (soot.toolkits.graph.DirectedGraph) unitGraph;
+        $r2 = (soot.toolkits.graph.DirectedGraph) $u0;
 
         specialinvoke $u3.<pack.NullPointerAnalysis: void <init>(soot.toolkits.graph.DirectedGraph,pack.NullPointerAnalysis$AnalysisMode)>($r2, $stack20);
 
-        interfaceinvoke npAnalyzers.<java.util.List: boolean add(java.lang.Object)>($u3);
+        interfaceinvoke $u1.<java.util.List: boolean add(java.lang.Object)>($u3);
 
         $u4 = new pack.NullPointerAnalysis;
 
         $stack23 = <pack.NullPointerAnalysis$AnalysisMode: pack.NullPointerAnalysis$AnalysisMode MAY_P>;
 
-        $r3 = (soot.toolkits.graph.DirectedGraph) unitGraph;
+        $r3 = (soot.toolkits.graph.DirectedGraph) $u0;
 
         specialinvoke $u4.<pack.NullPointerAnalysis: void <init>(soot.toolkits.graph.DirectedGraph,pack.NullPointerAnalysis$AnalysisMode)>($r3, $stack23);
 
-        interfaceinvoke npAnalyzers.<java.util.List: boolean add(java.lang.Object)>($u4);
+        interfaceinvoke $u1.<java.util.List: boolean add(java.lang.Object)>($u4);
 
-        staticinvoke <analysis.intraAnalysis.NullPointerProblem: void doNullPointerAnalysis(soot.jimple.JimpleBody,java.util.List)>(body, npAnalyzers);
+        staticinvoke <analysis.intraAnalysis.NullPointerProblem: void doNullPointerAnalysis(soot.jimple.JimpleBody,java.util.List)>(body, $u1);
 
         goto label1;
 
@@ -124,7 +120,6 @@ public class analysis.intraAnalysis.NullPointerProblem extends java.lang.Object
 
     public static void doNullPointerAnalysis(soot.jimple.JimpleBody, java.util.List)
     {
-        byte unitIndex;
         soot.jimple.JimpleBody body;
         soot.UnitPatchingChain $stack10;
         java.util.Iterator l3, l5, l8;
@@ -148,8 +143,6 @@ public class analysis.intraAnalysis.NullPointerProblem extends java.lang.Object
         body := @parameter0: soot.jimple.JimpleBody;
 
         npAnalyzers := @parameter1: java.util.List;
-
-        unitIndex = 0;
 
         $stack10 = virtualinvoke body.<soot.jimple.JimpleBody: soot.UnitPatchingChain getUnits()>();
 
@@ -268,7 +261,7 @@ public class analysis.intraAnalysis.NullPointerProblem extends java.lang.Object
 
         $stack32 = virtualinvoke $stack31.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": MUST NullPointer usage in unit (");
 
-        $stack33 = virtualinvoke $stack32.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(unitIndex);
+        $stack33 = virtualinvoke $stack32.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(0);
 
         $stack34 = virtualinvoke $stack33.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(") ");
 

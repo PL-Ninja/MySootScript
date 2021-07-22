@@ -176,7 +176,7 @@ public class basic.ParseMethod extends java.lang.Object
 
     static void <clinit>()
     {
-        <basic.ParseMethod: java.lang.String className> = "Demo.Circle";
+        <basic.ParseMethod: java.lang.String className> = "demo.Circle";
 
         return;
     }

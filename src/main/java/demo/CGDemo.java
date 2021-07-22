@@ -11,7 +11,7 @@ import java.io.IOException;
 
 
 public class CGDemo {
-    public String begin(String args) throws IOException {
+    public String main(String args) throws IOException {
         String cmd = new A().method1(args);
         return new B().method2(cmd);
     }

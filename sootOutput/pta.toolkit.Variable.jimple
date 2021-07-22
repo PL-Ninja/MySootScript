@@ -74,7 +74,7 @@ public class pta.toolkit.Variable extends java.lang.Object implements pta.toolki
 
     public static pta.toolkit.Variable getInstance(soot.Value, pta.toolkit.Context)
     {
-        pta.toolkit.Member $stack3, member;
+        pta.toolkit.Member $stack3;
         soot.Value value;
         pta.toolkit.Variable $stack4;
         pta.toolkit.Context context;
@@ -87,18 +87,16 @@ public class pta.toolkit.Variable extends java.lang.Object implements pta.toolki
 
         specialinvoke $stack3.<pta.toolkit.Member: void <init>(soot.Value)>(value);
 
-        member = $stack3;
-
         $stack4 = new pta.toolkit.Variable;
 
-        specialinvoke $stack4.<pta.toolkit.Variable: void <init>(soot.Value,pta.toolkit.Member,pta.toolkit.Context)>(value, member, context);
+        specialinvoke $stack4.<pta.toolkit.Variable: void <init>(soot.Value,pta.toolkit.Member,pta.toolkit.Context)>(value, $stack3, context);
 
         return $stack4;
     }
 
     public static pta.toolkit.Variable getConstantInstance(soot.Value, pta.toolkit.Context)
     {
-        pta.toolkit.Member $stack3, member;
+        pta.toolkit.Member $stack3;
         soot.Value cons;
         pta.toolkit.Variable $stack4;
         pta.toolkit.Context context;
@@ -111,11 +109,9 @@ public class pta.toolkit.Variable extends java.lang.Object implements pta.toolki
 
         specialinvoke $stack3.<pta.toolkit.Member: void <init>(soot.Value)>(cons);
 
-        member = $stack3;
-
         $stack4 = new pta.toolkit.Variable;
 
-        specialinvoke $stack4.<pta.toolkit.Variable: void <init>(soot.Value,pta.toolkit.Member,pta.toolkit.Context)>(cons, member, context);
+        specialinvoke $stack4.<pta.toolkit.Variable: void <init>(soot.Value,pta.toolkit.Member,pta.toolkit.Context)>(cons, $stack3, context);
 
         return $stack4;
     }
@@ -144,7 +140,7 @@ public class pta.toolkit.Variable extends java.lang.Object implements pta.toolki
 
     public pta.toolkit.Variable copyDeep(boolean)
     {
-        pta.toolkit.Variable this, var, $u1;
+        pta.toolkit.Variable this, $u1;
         soot.Local $stack4;
         boolean flag;
         pta.toolkit.Member $stack11, $stack6;
@@ -194,30 +190,28 @@ public class pta.toolkit.Variable extends java.lang.Object implements pta.toolki
 
         specialinvoke $u1.<pta.toolkit.Variable: void <init>(soot.Value,pta.toolkit.Member,pta.toolkit.Context)>($r0, $stack6, $stack5);
 
-        var = $u1;
-
-        $stack9 = var.<pta.toolkit.Variable: java.util.Set allocIdSet>;
+        $stack9 = $u1.<pta.toolkit.Variable: java.util.Set allocIdSet>;
 
         $stack8 = this.<pta.toolkit.Variable: java.util.Set allocIdSet>;
 
         interfaceinvoke $stack9.<java.util.Set: boolean addAll(java.util.Collection)>($stack8);
 
-        return var;
+        return $u1;
     }
 
     public void assign(pta.toolkit.Context, pta.toolkit.Variable, pta.toolkit.Analyzer)
     {
-        pta.toolkit.Context belongContext, $stack4, $stack12;
-        pta.toolkit.Variable this, var;
-        java.util.Set $stack5, $stack6, $stack7, $stack22, $stack23;
+        pta.toolkit.Context belongContext, $stack4, $stack10;
+        pta.toolkit.Variable this, rvar;
+        java.util.Set $stack5, $stack6, $stack7, $stack20, $stack21;
         pta.toolkit.Analyzer analyzer;
-        pta.toolkit.Member $stack9, $stack10, $stack11, $stack25, $stack26, $stack27;
+        pta.toolkit.Member $stack9, $stack23;
 
         this := @this: pta.toolkit.Variable;
 
         belongContext := @parameter0: pta.toolkit.Context;
 
-        var := @parameter1: pta.toolkit.Variable;
+        rvar := @parameter1: pta.toolkit.Variable;
 
         analyzer := @parameter2: pta.toolkit.Analyzer;
 
@@ -225,25 +219,21 @@ public class pta.toolkit.Variable extends java.lang.Object implements pta.toolki
 
         if $stack4 == null goto label1;
 
-        $stack12 = virtualinvoke belongContext.<pta.toolkit.Context: pta.toolkit.Context getPreContext()>();
+        $stack10 = virtualinvoke belongContext.<pta.toolkit.Context: pta.toolkit.Context getPreContext()>();
 
-        if $stack12 == belongContext goto label1;
+        if $stack10 == belongContext goto label1;
 
-        $stack23 = this.<pta.toolkit.Variable: java.util.Set allocIdSet>;
+        $stack21 = this.<pta.toolkit.Variable: java.util.Set allocIdSet>;
 
-        $stack22 = var.<pta.toolkit.Variable: java.util.Set allocIdSet>;
+        $stack20 = rvar.<pta.toolkit.Variable: java.util.Set allocIdSet>;
 
-        interfaceinvoke $stack23.<java.util.Set: boolean addAll(java.util.Collection)>($stack22);
+        interfaceinvoke $stack21.<java.util.Set: boolean addAll(java.util.Collection)>($stack20);
 
-        $stack26 = this.<pta.toolkit.Variable: pta.toolkit.Member member>;
+        virtualinvoke analyzer.<pta.toolkit.Analyzer: void trackTransferMap(pta.toolkit.Context,pta.toolkit.Variable,pta.toolkit.Variable)>(belongContext, this, rvar);
 
-        $stack25 = var.<pta.toolkit.Variable: pta.toolkit.Member member>;
+        $stack23 = rvar.<pta.toolkit.Variable: pta.toolkit.Member member>;
 
-        virtualinvoke analyzer.<pta.toolkit.Analyzer: void trackTransferMap(pta.toolkit.Context,pta.toolkit.Member,pta.toolkit.Member)>(belongContext, $stack26, $stack25);
-
-        $stack27 = var.<pta.toolkit.Variable: pta.toolkit.Member member>;
-
-        this.<pta.toolkit.Variable: pta.toolkit.Member member> = $stack27;
+        this.<pta.toolkit.Variable: pta.toolkit.Member member> = $stack23;
 
         goto label2;
 
@@ -254,17 +244,77 @@ public class pta.toolkit.Variable extends java.lang.Object implements pta.toolki
 
         $stack7 = this.<pta.toolkit.Variable: java.util.Set allocIdSet>;
 
-        $stack6 = var.<pta.toolkit.Variable: java.util.Set allocIdSet>;
+        $stack6 = rvar.<pta.toolkit.Variable: java.util.Set allocIdSet>;
 
         interfaceinvoke $stack7.<java.util.Set: boolean addAll(java.util.Collection)>($stack6);
 
-        $stack10 = this.<pta.toolkit.Variable: pta.toolkit.Member member>;
+        virtualinvoke analyzer.<pta.toolkit.Analyzer: void trackTransferMap(pta.toolkit.Context,pta.toolkit.Variable,pta.toolkit.Variable)>(belongContext, this, rvar);
 
-        $stack9 = var.<pta.toolkit.Variable: pta.toolkit.Member member>;
+        $stack9 = rvar.<pta.toolkit.Variable: pta.toolkit.Member member>;
 
-        virtualinvoke analyzer.<pta.toolkit.Analyzer: void trackTransferMap(pta.toolkit.Context,pta.toolkit.Member,pta.toolkit.Member)>(belongContext, $stack10, $stack9);
+        this.<pta.toolkit.Variable: pta.toolkit.Member member> = $stack9;
 
-        $stack11 = var.<pta.toolkit.Variable: pta.toolkit.Member member>;
+     label2:
+        return;
+    }
+
+    public void assign(pta.toolkit.Context, pta.toolkit.Variable, pta.toolkit.Analyzer, pta.toolkit.Variable, soot.SootFieldRef)
+    {
+        pta.toolkit.Context belongContext, $stack6, $stack12;
+        pta.toolkit.Variable this, rvar, baseVar;
+        java.util.Set $stack7, $stack8, $stack9, $stack24, $stack25;
+        pta.toolkit.Analyzer analyzer;
+        soot.SootFieldRef sfr;
+        pta.toolkit.Member $stack11, $stack27;
+
+        this := @this: pta.toolkit.Variable;
+
+        belongContext := @parameter0: pta.toolkit.Context;
+
+        rvar := @parameter1: pta.toolkit.Variable;
+
+        analyzer := @parameter2: pta.toolkit.Analyzer;
+
+        baseVar := @parameter3: pta.toolkit.Variable;
+
+        sfr := @parameter4: soot.SootFieldRef;
+
+        $stack6 = virtualinvoke belongContext.<pta.toolkit.Context: pta.toolkit.Context getPreContext()>();
+
+        if $stack6 == null goto label1;
+
+        $stack12 = virtualinvoke belongContext.<pta.toolkit.Context: pta.toolkit.Context getPreContext()>();
+
+        if $stack12 == belongContext goto label1;
+
+        $stack25 = this.<pta.toolkit.Variable: java.util.Set allocIdSet>;
+
+        $stack24 = rvar.<pta.toolkit.Variable: java.util.Set allocIdSet>;
+
+        interfaceinvoke $stack25.<java.util.Set: boolean addAll(java.util.Collection)>($stack24);
+
+        virtualinvoke analyzer.<pta.toolkit.Analyzer: void trackTransferMap(pta.toolkit.Context,pta.toolkit.Variable,pta.toolkit.Variable)>(belongContext, this, rvar);
+
+        $stack27 = rvar.<pta.toolkit.Variable: pta.toolkit.Member member>;
+
+        this.<pta.toolkit.Variable: pta.toolkit.Member member> = $stack27;
+
+        goto label2;
+
+     label1:
+        $stack7 = this.<pta.toolkit.Variable: java.util.Set allocIdSet>;
+
+        interfaceinvoke $stack7.<java.util.Set: void clear()>();
+
+        $stack9 = this.<pta.toolkit.Variable: java.util.Set allocIdSet>;
+
+        $stack8 = rvar.<pta.toolkit.Variable: java.util.Set allocIdSet>;
+
+        interfaceinvoke $stack9.<java.util.Set: boolean addAll(java.util.Collection)>($stack8);
+
+        virtualinvoke analyzer.<pta.toolkit.Analyzer: void trackTransferMap(pta.toolkit.Context,pta.toolkit.Variable,pta.toolkit.Variable,pta.toolkit.Variable,soot.SootFieldRef)>(belongContext, this, rvar, baseVar, sfr);
+
+        $stack11 = rvar.<pta.toolkit.Variable: pta.toolkit.Member member>;
 
         this.<pta.toolkit.Variable: pta.toolkit.Member member> = $stack11;
 
@@ -377,7 +427,7 @@ public class pta.toolkit.Variable extends java.lang.Object implements pta.toolki
 
         if $stack9 != null goto label1;
 
-        $stack11 = "nolocal";
+        $stack11 = "Constant";
 
         goto label2;
 

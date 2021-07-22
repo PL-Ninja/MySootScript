@@ -12,10 +12,9 @@ import soot.PackManager;
 
 
 public class ClassJimple2File {
-    //private static String className = "Demo.Circle";
+    private static String className = "demo.Circle";
 //    private static String className = "java.util.concurrent.ForkJoinTask$AdaptedRunnableAction";
-    private static String className = "pta.ptademo.Hello";
-
+    //private static String className = "pta.ptademo.Hello";
 
 
     public static void main(String[] args) throws Exception{

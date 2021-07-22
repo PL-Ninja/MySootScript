@@ -21,7 +21,7 @@ import java.io.FileWriter;
 
 public class MethodJimple2File {
 
-    private static String className = "Demo.Circle";
+    private static String className = "demo.Circle";
 
     public static final String methodSubSignature = "int area(boolean)";
 

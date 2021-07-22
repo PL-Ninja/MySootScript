@@ -14,7 +14,7 @@ public class demo.NullPointerExample extends java.lang.Object
 
     public void methodA()
     {
-        demo.NullPointerExample$Data $stack2, d;
+        demo.NullPointerExample$Data $stack2;
         demo.NullPointerExample this;
 
         this := @this: demo.NullPointerExample;
@@ -23,9 +23,7 @@ public class demo.NullPointerExample extends java.lang.Object
 
         specialinvoke $stack2.<demo.NullPointerExample$Data: void <init>(demo.NullPointerExample,java.lang.String)>(this, "Something");
 
-        d = $stack2;
-
-        virtualinvoke this.<demo.NullPointerExample: void use(demo.NullPointerExample$Data)>(d);
+        virtualinvoke this.<demo.NullPointerExample: void use(demo.NullPointerExample$Data)>($stack2);
 
         virtualinvoke this.<demo.NullPointerExample: void use(demo.NullPointerExample$Data)>(null);
 
@@ -48,9 +46,9 @@ public class demo.NullPointerExample extends java.lang.Object
 
     public void methodC()
     {
-        demo.NullPointerExample$Data $stack5, $stack9, $stack10, $stack11, mayNullData, mustNull, notNull;
+        demo.NullPointerExample$Data $stack5, $stack9, $stack10, $stack11, mayNullData, notNull;
         demo.NullPointerExample this;
-        java.lang.Object $stack6, o;
+        java.lang.Object $stack6;
         int $stack7, $stack8;
 
         this := @this: demo.NullPointerExample;
@@ -61,21 +59,17 @@ public class demo.NullPointerExample extends java.lang.Object
 
         specialinvoke $stack5.<demo.NullPointerExample$Data: void <init>(demo.NullPointerExample,java.lang.String)>(this, "Must Be null");
 
-        mustNull = $stack5;
-
         virtualinvoke this.<demo.NullPointerExample: void use(demo.NullPointerExample$Data)>(null);
 
         virtualinvoke this.<demo.NullPointerExample: void use(demo.NullPointerExample$Data)>(null);
 
-        virtualinvoke this.<demo.NullPointerExample: void use(demo.NullPointerExample$Data)>(mustNull);
+        virtualinvoke this.<demo.NullPointerExample: void use(demo.NullPointerExample$Data)>($stack5);
 
         $stack6 = new java.lang.Object;
 
         specialinvoke $stack6.<java.lang.Object: void <init>()>();
 
-        o = $stack6;
-
-        $stack7 = virtualinvoke o.<java.lang.Object: int hashCode()>();
+        $stack7 = virtualinvoke $stack6.<java.lang.Object: int hashCode()>();
 
         $stack8 = $stack7 % 2;
 

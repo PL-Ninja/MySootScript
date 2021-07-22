@@ -12,7 +12,7 @@ public class demo.CGDemo extends java.lang.Object
         return;
     }
 
-    public java.lang.String begin(java.lang.String) throws java.io.IOException
+    public java.lang.String main(java.lang.String) throws java.io.IOException
     {
         demo.A $stack3;
         java.lang.String args, cmd, $stack6;

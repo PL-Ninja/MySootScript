@@ -20,7 +20,6 @@ final class graph.GadgetsParser$1 extends soot.SceneTransformer
 
     protected void internalTransform(java.lang.String, java.util.Map)
     {
-        java.util.LinkedList directList, transitiveList, $u0, $u1;
         soot.Scene $stack14, $stack22;
         soot.util.Chain $stack15;
         java.util.Iterator l5, $stack27, transitiveIterator, $r1;
@@ -31,12 +30,13 @@ final class graph.GadgetsParser$1 extends soot.SceneTransformer
         soot.jimple.toolkits.callgraph.CallGraph cg;
         graph.GadgetsParser$1 this;
         soot.SootMethod $stack26, $stack29, $stack34, $stack42, transitiveTarget;
-        soot.jimple.toolkits.callgraph.ReachableMethods directTargets, $u3;
-        soot.jimple.toolkits.callgraph.TransitiveTargets transitiveTargets, $u4;
         java.io.PrintStream $stack33, $stack41;
         java.lang.StringBuilder $stack36, $stack37, $stack38, $stack44, $stack45, $stack46, $u5, $u6;
         java.util.Map map;
+        java.util.LinkedList $u0, $u1;
         soot.jimple.toolkits.callgraph.Targets $u2;
+        soot.jimple.toolkits.callgraph.ReachableMethods $u3;
+        soot.jimple.toolkits.callgraph.TransitiveTargets $u4;
         soot.MethodOrMethodContext $r0, $r2, $r3;
 
         this := @this: graph.GadgetsParser$1;
@@ -49,13 +49,9 @@ final class graph.GadgetsParser$1 extends soot.SceneTransformer
 
         specialinvoke $u0.<java.util.LinkedList: void <init>()>();
 
-        directList = $u0;
-
         $u1 = new java.util.LinkedList;
 
         specialinvoke $u1.<java.util.LinkedList: void <init>()>();
-
-        transitiveList = $u1;
 
         $stack14 = staticinvoke <soot.Scene: soot.Scene v()>();
 
@@ -98,19 +94,15 @@ final class graph.GadgetsParser$1 extends soot.SceneTransformer
 
         specialinvoke $u3.<soot.jimple.toolkits.callgraph.ReachableMethods: void <init>(soot.jimple.toolkits.callgraph.CallGraph,java.util.Iterator)>(cg, $r1);
 
-        directTargets = $u3;
-
         $u4 = new soot.jimple.toolkits.callgraph.TransitiveTargets;
 
         specialinvoke $u4.<soot.jimple.toolkits.callgraph.TransitiveTargets: void <init>(soot.jimple.toolkits.callgraph.CallGraph)>(cg);
-
-        transitiveTargets = $u4;
 
         $stack29 = this.<graph.GadgetsParser$1: soot.SootMethod val$srcMethod>;
 
         $r2 = (soot.MethodOrMethodContext) $stack29;
 
-        transitiveIterator = virtualinvoke transitiveTargets.<soot.jimple.toolkits.callgraph.TransitiveTargets: java.util.Iterator iterator(soot.MethodOrMethodContext)>($r2);
+        transitiveIterator = virtualinvoke $u4.<soot.jimple.toolkits.callgraph.TransitiveTargets: java.util.Iterator iterator(soot.MethodOrMethodContext)>($r2);
 
      label2:
         $stack31 = interfaceinvoke transitiveIterator.<java.util.Iterator: boolean hasNext()>();
@@ -121,15 +113,15 @@ final class graph.GadgetsParser$1 extends soot.SceneTransformer
 
         transitiveTarget = (soot.SootMethod) $stack48;
 
-        interfaceinvoke transitiveList.<java.util.List: boolean add(java.lang.Object)>(transitiveTarget);
+        interfaceinvoke $u1.<java.util.List: boolean add(java.lang.Object)>(transitiveTarget);
 
         $r3 = (soot.MethodOrMethodContext) transitiveTarget;
 
-        $stack50 = virtualinvoke directTargets.<soot.jimple.toolkits.callgraph.ReachableMethods: boolean contains(soot.MethodOrMethodContext)>($r3);
+        $stack50 = virtualinvoke $u3.<soot.jimple.toolkits.callgraph.ReachableMethods: boolean contains(soot.MethodOrMethodContext)>($r3);
 
         if $stack50 == 0 goto label3;
 
-        interfaceinvoke directList.<java.util.List: boolean add(java.lang.Object)>(transitiveTarget);
+        interfaceinvoke $u0.<java.util.List: boolean add(java.lang.Object)>(transitiveTarget);
 
      label3:
         goto label2;
@@ -149,7 +141,7 @@ final class graph.GadgetsParser$1 extends soot.SceneTransformer
 
         $stack37 = virtualinvoke $stack36.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" may reach ");
 
-        $stack38 = virtualinvoke $stack37.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(transitiveList);
+        $stack38 = virtualinvoke $stack37.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u1);
 
         $stack39 = virtualinvoke $stack38.<java.lang.StringBuilder: java.lang.String toString()>();
 
@@ -169,7 +161,7 @@ final class graph.GadgetsParser$1 extends soot.SceneTransformer
 
         $stack45 = virtualinvoke $stack44.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" direct to ");
 
-        $stack46 = virtualinvoke $stack45.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(directList);
+        $stack46 = virtualinvoke $stack45.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u0);
 
         $stack47 = virtualinvoke $stack46.<java.lang.StringBuilder: java.lang.String toString()>();
 

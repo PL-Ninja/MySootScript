@@ -32,9 +32,9 @@ public class graph.SootParseCallGraph extends java.lang.Object
         soot.Scene $stack3, $stack8;
         soot.SootClass sc;
         soot.SootMethod srcMethod;
-        java.util.ArrayList entrypoint, $u0;
         soot.PackManager $stack9, $stack14;
         soot.Pack $stack10;
+        java.util.ArrayList $u0;
         pack.MyMethodFinderAnalysis $u1;
         soot.Transform $u2;
         soot.Transformer $r0;
@@ -49,13 +49,11 @@ public class graph.SootParseCallGraph extends java.lang.Object
 
         specialinvoke $u0.<java.util.ArrayList: void <init>()>();
 
-        entrypoint = $u0;
-
-        interfaceinvoke entrypoint.<java.util.List: boolean add(java.lang.Object)>(srcMethod);
+        interfaceinvoke $u0.<java.util.List: boolean add(java.lang.Object)>(srcMethod);
 
         $stack8 = staticinvoke <soot.Scene: soot.Scene v()>();
 
-        virtualinvoke $stack8.<soot.Scene: void setEntryPoints(java.util.List)>(entrypoint);
+        virtualinvoke $stack8.<soot.Scene: void setEntryPoints(java.util.List)>($u0);
 
         $stack9 = staticinvoke <soot.PackManager: soot.PackManager v()>();
 

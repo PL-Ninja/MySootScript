@@ -37,8 +37,7 @@ public class demo.Circle extends java.lang.Object
 
     public static void main(java.lang.String[])
     {
-        demo.Circle $stack4, circle;
-        int actualArea, integerArea;
+        demo.Circle $stack4;
         java.lang.String[] args;
 
         args := @parameter0: java.lang.String[];
@@ -47,11 +46,9 @@ public class demo.Circle extends java.lang.Object
 
         specialinvoke $stack4.<demo.Circle: void <init>(int)>(5);
 
-        circle = $stack4;
+        virtualinvoke $stack4.<demo.Circle: int area(boolean)>(0);
 
-        actualArea = virtualinvoke circle.<demo.Circle: int area(boolean)>(0);
-
-        integerArea = virtualinvoke circle.<demo.Circle: int area(boolean)>(1);
+        virtualinvoke $stack4.<demo.Circle: int area(boolean)>(1);
 
         return;
     }
@@ -119,7 +116,7 @@ public class demo.Circle extends java.lang.Object
         demo.Circle this;
         int $stack4, $stack6, $stack11, $stack12;
         double $stack5, $stack7, $stack8, $stack9, $stack10;
-        java.lang.Exception $stack13, circleCount#2;
+        java.lang.Exception $stack13;
 
         this := @this: demo.Circle;
 
@@ -140,8 +137,6 @@ public class demo.Circle extends java.lang.Object
 
      label4:
         $stack13 := @caughtexception;
-
-        circleCount#2 = $stack13;
 
      label5:
         $stack4 = this.<demo.Circle: int radius>;

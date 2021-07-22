@@ -1,0 +1,63 @@
+public class ifds.IFDSDataFlowTransformer extends soot.SceneTransformer
+{
+
+    public void <init>()
+    {
+        ifds.IFDSDataFlowTransformer this;
+
+        this := @this: ifds.IFDSDataFlowTransformer;
+
+        specialinvoke this.<soot.SceneTransformer: void <init>()>();
+
+        return;
+    }
+
+    protected void internalTransform(java.lang.String, java.util.Map)
+    {
+        java.io.PrintStream $stack9, $stack10;
+        ifds.IFDSDataFlowTransformer this;
+        java.lang.String phaseName;
+        java.util.Map options;
+        soot.jimple.toolkits.ide.icfg.JimpleBasedInterproceduralCFG $u0;
+        soot.jimple.toolkits.ide.exampleproblems.IFDSReachingDefinitions $u1;
+        soot.jimple.toolkits.ide.JimpleIFDSSolver $u2;
+        heros.InterproceduralCFG $r0;
+        heros.IFDSTabulationProblem $r1;
+
+        this := @this: ifds.IFDSDataFlowTransformer;
+
+        phaseName := @parameter0: java.lang.String;
+
+        options := @parameter1: java.util.Map;
+
+        $u0 = new soot.jimple.toolkits.ide.icfg.JimpleBasedInterproceduralCFG;
+
+        specialinvoke $u0.<soot.jimple.toolkits.ide.icfg.JimpleBasedInterproceduralCFG: void <init>()>();
+
+        $u1 = new soot.jimple.toolkits.ide.exampleproblems.IFDSReachingDefinitions;
+
+        $r0 = (heros.InterproceduralCFG) $u0;
+
+        specialinvoke $u1.<soot.jimple.toolkits.ide.exampleproblems.IFDSReachingDefinitions: void <init>(heros.InterproceduralCFG)>($r0);
+
+        $u2 = new soot.jimple.toolkits.ide.JimpleIFDSSolver;
+
+        $r1 = (heros.IFDSTabulationProblem) $u1;
+
+        specialinvoke $u2.<soot.jimple.toolkits.ide.JimpleIFDSSolver: void <init>(heros.IFDSTabulationProblem)>($r1);
+
+        $stack9 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $stack9.<java.io.PrintStream: void println(java.lang.String)>("Starting solver");
+
+        virtualinvoke $u2.<soot.jimple.toolkits.ide.JimpleIFDSSolver: void solve()>();
+
+        virtualinvoke $u2.<soot.jimple.toolkits.ide.JimpleIFDSSolver: void dumpResults()>();
+
+        $stack10 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $stack10.<java.io.PrintStream: void println(java.lang.String)>("Done");
+
+        return;
+    }
+}

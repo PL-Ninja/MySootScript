@@ -1,6 +1,7 @@
 public class config.SootConfig extends java.lang.Object
 {
     public static final java.lang.String sourceDirectory;
+    public static java.util.List excludeClassList;
 
     public void <init>()
     {
@@ -15,11 +16,12 @@ public class config.SootConfig extends java.lang.Object
 
     public static void setupSoot(java.lang.String)
     {
-        soot.options.Options $stack2, $stack3, $stack4, $stack5, $stack7, $stack8, $stack11, $stack12, $stack13, $stack18, $stack20, $stack22, $stack24;
+        soot.options.Options $stack2, $stack3, $stack4, $stack5, $stack7, $stack8, $stack11, $stack12, $stack13, $stack18, $stack21, $stack23, $stack25, $stack27;
         java.lang.String $stack6, $stack9, classname;
-        java.util.List $stack10;
+        java.util.List $stack10, $stack19;
         soot.Scene $stack15, $stack16;
         soot.SootClass sootClass;
+        soot.PackManager $stack20;
 
         classname := @parameter0: java.lang.String;
 
@@ -79,19 +81,29 @@ public class config.SootConfig extends java.lang.Object
 
         $stack18 = staticinvoke <soot.options.Options: soot.options.Options v()>();
 
-        virtualinvoke $stack18.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "on");
+        $stack19 = staticinvoke <config.SootConfig: java.util.List addExcludeClasses()>();
 
-        $stack20 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+        virtualinvoke $stack18.<soot.options.Options: void set_exclude(java.util.List)>($stack19);
 
-        virtualinvoke $stack20.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "enabled:true");
+        $stack20 = staticinvoke <soot.PackManager: soot.PackManager v()>();
 
-        $stack22 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+        virtualinvoke $stack20.<soot.PackManager: void runPacks()>();
 
-        virtualinvoke $stack22.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "verbose:true");
+        $stack21 = staticinvoke <soot.options.Options: soot.options.Options v()>();
 
-        $stack24 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+        virtualinvoke $stack21.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "on");
 
-        virtualinvoke $stack24.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "on-fly-cg:true");
+        $stack23 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+
+        virtualinvoke $stack23.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "enabled:true");
+
+        $stack25 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+
+        virtualinvoke $stack25.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "verbose:true");
+
+        $stack27 = staticinvoke <soot.options.Options: soot.options.Options v()>();
+
+        virtualinvoke $stack27.<soot.options.Options: boolean setPhaseOption(java.lang.String,java.lang.String)>("cg.spark", "on-fly-cg:true");
 
         return;
     }
@@ -133,6 +145,51 @@ public class config.SootConfig extends java.lang.Object
         virtualinvoke $stack22.<soot.Scene: java.lang.String defaultClassPath()>();
 
         return;
+    }
+
+    public static java.util.List addExcludeClasses()
+    {
+        java.util.List $stack0, $stack1, $stack3, $stack5, $stack7, $stack9, $stack11, $stack13;
+        java.util.ArrayList $stack14;
+
+        $stack0 = <config.SootConfig: java.util.List excludeClassList>;
+
+        if $stack0 != null goto label1;
+
+        $stack14 = new java.util.ArrayList;
+
+        specialinvoke $stack14.<java.util.ArrayList: void <init>()>();
+
+        <config.SootConfig: java.util.List excludeClassList> = $stack14;
+
+     label1:
+        $stack1 = <config.SootConfig: java.util.List excludeClassList>;
+
+        interfaceinvoke $stack1.<java.util.List: boolean add(java.lang.Object)>("java.");
+
+        $stack3 = <config.SootConfig: java.util.List excludeClassList>;
+
+        interfaceinvoke $stack3.<java.util.List: boolean add(java.lang.Object)>("javax.");
+
+        $stack5 = <config.SootConfig: java.util.List excludeClassList>;
+
+        interfaceinvoke $stack5.<java.util.List: boolean add(java.lang.Object)>("sun.");
+
+        $stack7 = <config.SootConfig: java.util.List excludeClassList>;
+
+        interfaceinvoke $stack7.<java.util.List: boolean add(java.lang.Object)>("sunw.");
+
+        $stack9 = <config.SootConfig: java.util.List excludeClassList>;
+
+        interfaceinvoke $stack9.<java.util.List: boolean add(java.lang.Object)>("com.sun.");
+
+        $stack11 = <config.SootConfig: java.util.List excludeClassList>;
+
+        interfaceinvoke $stack11.<java.util.List: boolean add(java.lang.Object)>("com.ibm.");
+
+        $stack13 = <config.SootConfig: java.util.List excludeClassList>;
+
+        return $stack13;
     }
 
     static void <clinit>()

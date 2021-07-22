@@ -14,18 +14,13 @@ public class demo.LiveVariableExample extends java.lang.Object
 
     public static void main(java.lang.String[])
     {
-        byte a, b;
         java.lang.String[] args;
 
         args := @parameter0: java.lang.String[];
 
-        a = 0;
+        staticinvoke <demo.LiveVariableExample: void func1(int)>(0);
 
-        b = 95;
-
-        staticinvoke <demo.LiveVariableExample: void func1(int)>(a);
-
-        staticinvoke <demo.LiveVariableExample: void func1(int)>(b);
+        staticinvoke <demo.LiveVariableExample: void func1(int)>(95);
 
         return;
     }

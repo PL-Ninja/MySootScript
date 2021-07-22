@@ -17,7 +17,7 @@ import java.util.List;
 
 public class ParseMethodBody {
 
-    private static String className = "Demo.Circle";
+    private static String className = "demo.Circle";
 
 //    private static final String methodSubSignature = "int area(boolean)";
     private static final String methodSubSignature = "int area()";

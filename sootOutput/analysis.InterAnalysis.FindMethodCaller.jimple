@@ -38,7 +38,6 @@ public class analysis.interAnalysis.FindMethodCaller extends java.lang.Object
         java.util.Iterator l2, l6;
         boolean $stack26, $stack32, $stack45, $stack69;
         java.lang.Object $stack27, $stack46, $stack68;
-        java.util.ArrayList stmtList, $u1;
         soot.Body $stack29;
         soot.jimple.JimpleBody body;
         soot.UnitPatchingChain $stack30;
@@ -46,6 +45,7 @@ public class analysis.interAnalysis.FindMethodCaller extends java.lang.Object
         soot.Unit unit, $r0;
         soot.jimple.Stmt stmt, unit#5;
         soot.jimple.InvokeExpr stmt#6;
+        java.util.ArrayList $u1;
         analysis.interAnalysis.FindMethodCaller$1 $u6;
         soot.util.Switch $r1;
 
@@ -96,8 +96,6 @@ public class analysis.interAnalysis.FindMethodCaller extends java.lang.Object
 
         specialinvoke $u1.<java.util.ArrayList: void <init>()>();
 
-        stmtList = $u1;
-
         $stack29 = virtualinvoke m.<soot.SootMethod: soot.Body retrieveActiveBody()>();
 
         body = (soot.jimple.JimpleBody) $stack29;
@@ -123,13 +121,13 @@ public class analysis.interAnalysis.FindMethodCaller extends java.lang.Object
 
         if $stack69 == 0 goto label3;
 
-        interfaceinvoke stmtList.<java.util.List: boolean add(java.lang.Object)>(stmt);
+        interfaceinvoke $u1.<java.util.List: boolean add(java.lang.Object)>(stmt);
 
      label3:
         goto label2;
 
      label4:
-        $stack33 = interfaceinvoke stmtList.<java.util.List: int size()>();
+        $stack33 = interfaceinvoke $u1.<java.util.List: int size()>();
 
         if $stack33 <= 0 goto label6;
 
@@ -143,7 +141,7 @@ public class analysis.interAnalysis.FindMethodCaller extends java.lang.Object
 
         specialinvoke $u2.<java.lang.StringBuilder: void <init>()>();
 
-        $stack38 = interfaceinvoke stmtList.<java.util.List: int size()>();
+        $stack38 = interfaceinvoke $u1.<java.util.List: int size()>();
 
         $stack39 = virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($stack38);
 
@@ -157,7 +155,7 @@ public class analysis.interAnalysis.FindMethodCaller extends java.lang.Object
 
         virtualinvoke $stack37.<java.io.PrintStream: void println(java.lang.String)>($stack43);
 
-        l6 = interfaceinvoke stmtList.<java.util.List: java.util.Iterator iterator()>();
+        l6 = interfaceinvoke $u1.<java.util.List: java.util.Iterator iterator()>();
 
      label5:
         $stack45 = interfaceinvoke l6.<java.util.Iterator: boolean hasNext()>();
@@ -237,10 +235,10 @@ public class analysis.interAnalysis.FindMethodCaller extends java.lang.Object
 
     public static boolean doesinvoke(soot.Unit, soot.SootMethod)
     {
-        java.util.concurrent.atomic.AtomicBoolean result, $u0;
         soot.Unit u;
         soot.SootMethod method;
         boolean $stack5;
+        java.util.concurrent.atomic.AtomicBoolean $u0;
         analysis.interAnalysis.FindMethodCaller$2 $u1;
         soot.util.Switch $r0;
 
@@ -252,17 +250,15 @@ public class analysis.interAnalysis.FindMethodCaller extends java.lang.Object
 
         specialinvoke $u0.<java.util.concurrent.atomic.AtomicBoolean: void <init>(boolean)>(0);
 
-        result = $u0;
-
         $u1 = new analysis.interAnalysis.FindMethodCaller$2;
 
-        specialinvoke $u1.<analysis.interAnalysis.FindMethodCaller$2: void <init>(soot.SootMethod,java.util.concurrent.atomic.AtomicBoolean)>(method, result);
+        specialinvoke $u1.<analysis.interAnalysis.FindMethodCaller$2: void <init>(soot.SootMethod,java.util.concurrent.atomic.AtomicBoolean)>(method, $u0);
 
         $r0 = (soot.util.Switch) $u1;
 
         interfaceinvoke u.<soot.Unit: void apply(soot.util.Switch)>($r0);
 
-        $stack5 = virtualinvoke result.<java.util.concurrent.atomic.AtomicBoolean: boolean get()>();
+        $stack5 = virtualinvoke $u0.<java.util.concurrent.atomic.AtomicBoolean: boolean get()>();
 
         return $stack5;
     }

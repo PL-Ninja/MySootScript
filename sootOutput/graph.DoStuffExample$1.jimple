@@ -1,0 +1,202 @@
+final class graph.DoStuffExample$1 extends soot.SceneTransformer
+{
+
+    void <init>()
+    {
+        graph.DoStuffExample$1 this;
+
+        this := @this: graph.DoStuffExample$1;
+
+        specialinvoke this.<soot.SceneTransformer: void <init>()>();
+
+        return;
+    }
+
+    protected void internalTransform(java.lang.String, java.util.Map)
+    {
+        soot.jimple.toolkits.callgraph.CHATransformer $stack9;
+        soot.Scene $stack10, $stack13;
+        soot.SootClass sc;
+        soot.SootMethod srcMethod, tgt;
+        soot.jimple.toolkits.callgraph.CallGraph cg;
+        java.util.Iterator $stack16, $r1, $r2;
+        boolean $stack18;
+        graph.DoStuffExample$1 this;
+        java.lang.Object $stack19;
+        java.io.PrintStream $stack21;
+        java.lang.StringBuilder $stack22, $stack23, $stack24, $u2;
+        java.lang.String $stack25, s;
+        java.util.Map map;
+        soot.jimple.toolkits.callgraph.Targets $u0;
+        java.util.ArrayList $u1;
+        soot.MethodOrMethodContext $r0;
+
+        this := @this: graph.DoStuffExample$1;
+
+        s := @parameter0: java.lang.String;
+
+        map := @parameter1: java.util.Map;
+
+        $stack9 = staticinvoke <soot.jimple.toolkits.callgraph.CHATransformer: soot.jimple.toolkits.callgraph.CHATransformer v()>();
+
+        virtualinvoke $stack9.<soot.jimple.toolkits.callgraph.CHATransformer: void transform()>();
+
+        $stack10 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        sc = virtualinvoke $stack10.<soot.Scene: soot.SootClass forceResolve(java.lang.String,int)>("demo.CGDemo", 3);
+
+        srcMethod = virtualinvoke sc.<soot.SootClass: soot.SootMethod getMethodByName(java.lang.String)>("main");
+
+        $stack13 = staticinvoke <soot.Scene: soot.Scene v()>();
+
+        cg = virtualinvoke $stack13.<soot.Scene: soot.jimple.toolkits.callgraph.CallGraph getCallGraph()>();
+
+        $u0 = new soot.jimple.toolkits.callgraph.Targets;
+
+        $r0 = (soot.MethodOrMethodContext) srcMethod;
+
+        $stack16 = virtualinvoke cg.<soot.jimple.toolkits.callgraph.CallGraph: java.util.Iterator edgesOutOf(soot.MethodOrMethodContext)>($r0);
+
+        specialinvoke $u0.<soot.jimple.toolkits.callgraph.Targets: void <init>(java.util.Iterator)>($stack16);
+
+        $u1 = new java.util.ArrayList;
+
+        specialinvoke $u1.<java.util.ArrayList: void <init>()>();
+
+     label1:
+        $r1 = (java.util.Iterator) $u0;
+
+        $stack18 = interfaceinvoke $r1.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack18 == 0 goto label2;
+
+        $r2 = (java.util.Iterator) $u0;
+
+        $stack19 = interfaceinvoke $r2.<java.util.Iterator: java.lang.Object next()>();
+
+        tgt = (soot.SootMethod) $stack19;
+
+        $stack21 = <java.lang.System: java.io.PrintStream out>;
+
+        $u2 = new java.lang.StringBuilder;
+
+        specialinvoke $u2.<java.lang.StringBuilder: void <init>()>();
+
+        $stack22 = virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(srcMethod);
+
+        $stack23 = virtualinvoke $stack22.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" may call ");
+
+        $stack24 = virtualinvoke $stack23.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(tgt);
+
+        $stack25 = virtualinvoke $stack24.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $stack21.<java.io.PrintStream: void println(java.lang.String)>($stack25);
+
+        interfaceinvoke $u1.<java.util.List: boolean add(java.lang.Object)>(tgt);
+
+        goto label1;
+
+     label2:
+        specialinvoke this.<graph.DoStuffExample$1: void iteration(soot.jimple.toolkits.callgraph.CallGraph,java.util.List)>(cg, $u1);
+
+        return;
+    }
+
+    private void iteration(soot.jimple.toolkits.callgraph.CallGraph, java.util.List)
+    {
+        java.util.List tgtList;
+        java.util.Iterator l4, $stack13, $r1, $r2;
+        boolean $stack10, $stack14, $stack18;
+        graph.DoStuffExample$1 this;
+        soot.jimple.toolkits.callgraph.CallGraph cg;
+        java.lang.Object $stack11, $stack15;
+        soot.SootMethod method, tgt;
+        java.lang.String $stack16, $stack17, $stack25;
+        java.io.PrintStream $stack21;
+        java.lang.StringBuilder $stack22, $stack23, $stack24, $u2;
+        java.util.ArrayList $u0;
+        soot.jimple.toolkits.callgraph.Targets $u1;
+        soot.MethodOrMethodContext $r0;
+
+        this := @this: graph.DoStuffExample$1;
+
+        cg := @parameter0: soot.jimple.toolkits.callgraph.CallGraph;
+
+        tgtList := @parameter1: java.util.List;
+
+        $u0 = new java.util.ArrayList;
+
+        specialinvoke $u0.<java.util.ArrayList: void <init>()>();
+
+        l4 = interfaceinvoke tgtList.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $stack10 = interfaceinvoke l4.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack10 == 0 goto label5;
+
+        $stack11 = interfaceinvoke l4.<java.util.Iterator: java.lang.Object next()>();
+
+        method = (soot.SootMethod) $stack11;
+
+        $u1 = new soot.jimple.toolkits.callgraph.Targets;
+
+        $r0 = (soot.MethodOrMethodContext) method;
+
+        $stack13 = virtualinvoke cg.<soot.jimple.toolkits.callgraph.CallGraph: java.util.Iterator edgesOutOf(soot.MethodOrMethodContext)>($r0);
+
+        specialinvoke $u1.<soot.jimple.toolkits.callgraph.Targets: void <init>(java.util.Iterator)>($stack13);
+
+        $r1 = (java.util.Iterator) $u1;
+
+        $stack14 = interfaceinvoke $r1.<java.util.Iterator: boolean hasNext()>();
+
+        if $stack14 == 0 goto label3;
+
+        $r2 = (java.util.Iterator) $u1;
+
+        $stack15 = interfaceinvoke $r2.<java.util.Iterator: java.lang.Object next()>();
+
+        tgt = (soot.SootMethod) $stack15;
+
+        $stack16 = "<java.lang.Object: void <init>()>";
+
+        $stack17 = virtualinvoke method.<soot.SootMethod: java.lang.String toString()>();
+
+        $stack18 = virtualinvoke $stack16.<java.lang.String: boolean equals(java.lang.Object)>($stack17);
+
+        if $stack18 != 0 goto label2;
+
+        $stack21 = <java.lang.System: java.io.PrintStream out>;
+
+        $u2 = new java.lang.StringBuilder;
+
+        specialinvoke $u2.<java.lang.StringBuilder: void <init>()>();
+
+        $stack22 = virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(method);
+
+        $stack23 = virtualinvoke $stack22.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" may call ");
+
+        $stack24 = virtualinvoke $stack23.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(tgt);
+
+        $stack25 = virtualinvoke $stack24.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $stack21.<java.io.PrintStream: void println(java.lang.String)>($stack25);
+
+        interfaceinvoke $u0.<java.util.List: boolean add(java.lang.Object)>(tgt);
+
+     label2:
+        goto label4;
+
+     label3:
+        return;
+
+     label4:
+        goto label1;
+
+     label5:
+        specialinvoke this.<graph.DoStuffExample$1: void iteration(soot.jimple.toolkits.callgraph.CallGraph,java.util.List)>(cg, $u0);
+
+        return;
+    }
+}

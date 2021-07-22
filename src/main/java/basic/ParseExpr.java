@@ -14,7 +14,7 @@ import soot.jimple.*;
 
 public class ParseExpr {
 
-    private static String className = "Demo.Circle";
+    private static String className = "demo.Circle";
 
     private static final String methodSubSignature = "int area(boolean)";
 

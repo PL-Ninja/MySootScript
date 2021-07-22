@@ -1,0 +1,43 @@
+public class demo.Father extends java.lang.Object
+{
+    public java.lang.String name;
+    public int age;
+
+    public void <init>(java.lang.String, int)
+    {
+        demo.Father this;
+        java.lang.String name;
+        int age;
+
+        this := @this: demo.Father;
+
+        name := @parameter0: java.lang.String;
+
+        age := @parameter1: int;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<demo.Father: java.lang.String name> = name;
+
+        this.<demo.Father: int age> = age;
+
+        return;
+    }
+
+    public void SayMyName()
+    {
+        demo.Father this;
+        java.lang.String $stack1;
+        java.io.PrintStream $stack2;
+
+        this := @this: demo.Father;
+
+        $stack2 = <java.lang.System: java.io.PrintStream out>;
+
+        $stack1 = this.<demo.Father: java.lang.String name>;
+
+        virtualinvoke $stack2.<java.io.PrintStream: void println(java.lang.String)>($stack1);
+
+        return;
+    }
+}

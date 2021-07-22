@@ -34,7 +34,7 @@ public class basic.ClassJimple2File extends java.lang.Object
 
     static void <clinit>()
     {
-        <basic.ClassJimple2File: java.lang.String className> = "pta.ptademo.Hello";
+        <basic.ClassJimple2File: java.lang.String className> = "demo.Circle";
 
         return;
     }

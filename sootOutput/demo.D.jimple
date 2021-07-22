@@ -1,0 +1,34 @@
+class demo.D extends java.lang.Object
+{
+
+    void <init>()
+    {
+        demo.D this;
+
+        this := @this: demo.D;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void foo()
+    {
+        demo.D this;
+
+        this := @this: demo.D;
+
+        virtualinvoke this.<demo.D: void bar()>();
+
+        return;
+    }
+
+    public void bar()
+    {
+        demo.D this;
+
+        this := @this: demo.D;
+
+        return;
+    }
+}

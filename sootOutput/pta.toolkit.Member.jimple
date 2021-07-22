@@ -59,7 +59,7 @@ public class pta.toolkit.Member extends java.lang.Object implements pta.toolkit.
 
     public pta.toolkit.Member copyDeep()
     {
-        pta.toolkit.Member $stack4, this, m;
+        pta.toolkit.Member $stack4, this;
         soot.Value $stack5;
         java.util.Map $stack6, $stack7, $stack13;
         java.util.Set $stack8;
@@ -76,8 +76,6 @@ public class pta.toolkit.Member extends java.lang.Object implements pta.toolkit.
         $stack5 = this.<pta.toolkit.Member: soot.Value value>;
 
         specialinvoke $stack4.<pta.toolkit.Member: void <init>(soot.Value)>($stack5);
-
-        m = $stack4;
 
         $stack6 = this.<pta.toolkit.Member: java.util.Map fieldMap>;
 
@@ -98,7 +96,7 @@ public class pta.toolkit.Member extends java.lang.Object implements pta.toolkit.
 
         entry = (java.util.Map$Entry) $stack12;
 
-        $stack13 = m.<pta.toolkit.Member: java.util.Map fieldMap>;
+        $stack13 = $stack4.<pta.toolkit.Member: java.util.Map fieldMap>;
 
         $stack14 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getKey()>();
 
@@ -113,7 +111,7 @@ public class pta.toolkit.Member extends java.lang.Object implements pta.toolkit.
         goto label1;
 
      label2:
-        return m;
+        return $stack4;
     }
 
     public pta.toolkit.Variable getVariable(soot.SootFieldRef)
@@ -137,13 +135,13 @@ public class pta.toolkit.Member extends java.lang.Object implements pta.toolkit.
         return $stack4;
     }
 
-    public void addField(soot.SootFieldRef, pta.toolkit.Variable, pta.toolkit.Context, pta.toolkit.Analyzer)
+    public void addField(soot.SootFieldRef, pta.toolkit.Variable, pta.toolkit.Context, pta.toolkit.Analyzer, pta.toolkit.Variable)
     {
         pta.toolkit.Member this;
         soot.SootFieldRef sfr;
-        java.util.Map $stack6, $stack8;
-        java.lang.Object $stack7;
-        pta.toolkit.Variable v, var, $stack9;
+        java.util.Map $stack7, $stack9;
+        java.lang.Object $stack8;
+        pta.toolkit.Variable v, rvar, var, $stack10;
         pta.toolkit.Context context;
         pta.toolkit.Analyzer analyzer;
 
@@ -151,30 +149,32 @@ public class pta.toolkit.Member extends java.lang.Object implements pta.toolkit.
 
         sfr := @parameter0: soot.SootFieldRef;
 
-        var := @parameter1: pta.toolkit.Variable;
+        rvar := @parameter1: pta.toolkit.Variable;
 
         context := @parameter2: pta.toolkit.Context;
 
         analyzer := @parameter3: pta.toolkit.Analyzer;
 
-        $stack6 = this.<pta.toolkit.Member: java.util.Map fieldMap>;
+        var := @parameter4: pta.toolkit.Variable;
 
-        $stack7 = interfaceinvoke $stack6.<java.util.Map: java.lang.Object get(java.lang.Object)>(sfr);
+        $stack7 = this.<pta.toolkit.Member: java.util.Map fieldMap>;
 
-        v = (pta.toolkit.Variable) $stack7;
+        $stack8 = interfaceinvoke $stack7.<java.util.Map: java.lang.Object get(java.lang.Object)>(sfr);
+
+        v = (pta.toolkit.Variable) $stack8;
 
         if v != null goto label1;
 
-        $stack8 = this.<pta.toolkit.Member: java.util.Map fieldMap>;
+        $stack9 = this.<pta.toolkit.Member: java.util.Map fieldMap>;
 
-        $stack9 = virtualinvoke var.<pta.toolkit.Variable: pta.toolkit.Variable copyDeep(boolean)>(0);
+        $stack10 = virtualinvoke rvar.<pta.toolkit.Variable: pta.toolkit.Variable copyDeep(boolean)>(0);
 
-        interfaceinvoke $stack8.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(sfr, $stack9);
+        interfaceinvoke $stack9.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(sfr, $stack10);
 
         goto label2;
 
      label1:
-        virtualinvoke v.<pta.toolkit.Variable: void assign(pta.toolkit.Context,pta.toolkit.Variable,pta.toolkit.Analyzer)>(context, var, analyzer);
+        virtualinvoke v.<pta.toolkit.Variable: void assign(pta.toolkit.Context,pta.toolkit.Variable,pta.toolkit.Analyzer,pta.toolkit.Variable,soot.SootFieldRef)>(context, rvar, analyzer, var, sfr);
 
      label2:
         return;
@@ -258,7 +258,7 @@ public class pta.toolkit.Member extends java.lang.Object implements pta.toolkit.
 
         if $stack7 != null goto label1;
 
-        $stack8 = "nolocal";
+        $stack8 = "Constant";
 
         goto label2;
 

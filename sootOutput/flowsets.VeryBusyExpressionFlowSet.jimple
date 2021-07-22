@@ -22,7 +22,7 @@ public class flowsets.VeryBusyExpressionFlowSet extends soot.toolkits.scalar.Abs
 
     public flowsets.VeryBusyExpressionFlowSet clone()
     {
-        flowsets.VeryBusyExpressionFlowSet $stack2, myClone, this;
+        flowsets.VeryBusyExpressionFlowSet $stack2, this;
         java.util.Set $stack3, $stack4;
 
         this := @this: flowsets.VeryBusyExpressionFlowSet;
@@ -31,15 +31,13 @@ public class flowsets.VeryBusyExpressionFlowSet extends soot.toolkits.scalar.Abs
 
         specialinvoke $stack2.<flowsets.VeryBusyExpressionFlowSet: void <init>()>();
 
-        myClone = $stack2;
-
-        $stack4 = myClone.<flowsets.VeryBusyExpressionFlowSet: java.util.Set busyExprs>;
+        $stack4 = $stack2.<flowsets.VeryBusyExpressionFlowSet: java.util.Set busyExprs>;
 
         $stack3 = this.<flowsets.VeryBusyExpressionFlowSet: java.util.Set busyExprs>;
 
         interfaceinvoke $stack4.<java.util.Set: boolean addAll(java.util.Collection)>($stack3);
 
-        return myClone;
+        return $stack2;
     }
 
     public boolean isEmpty()

@@ -21,9 +21,11 @@ import java.util.*;
 
 public class DoStuffExample {
 
-    public static final String className = "demo.CallGraph";
+//    public static final String className = "demo.CallGraph";
+    public static final String className = "demo.CGDemo";
 
-    public static final String methodName = "doStuff";
+//    public static final String methodName = "doStuff";
+    public static final String methodName = "main";
 
     public static final String sourceDirectory = System.getProperty("user.dir")+ File.separator + "target" + File.separator + "classes";
 
@@ -36,7 +38,6 @@ public class DoStuffExample {
         Options.v().set_process_dir(Collections.singletonList(sourceDirectory));
         Options.v().set_whole_program(true);
         Scene.v().loadNecessaryClasses();
-        PackManager.v().runPacks();
         SootClass sootClass = Scene.v().loadClassAndSupport(className);
         sootClass.setApplicationClass();
     }

@@ -111,11 +111,11 @@ public class pack.SimpleLiveVariablesAnalysis extends soot.toolkits.scalar.Backw
 
     private void kill(flowsets.LiveVariableFlowSet, soot.Unit, flowsets.LiveVariableFlowSet)
     {
-        flowsets.LiveVariableFlowSet kills, inSet, destSet, $u0;
         soot.Unit u;
         java.util.List $stack8;
         java.util.Iterator defIt;
         boolean $stack10;
+        flowsets.LiveVariableFlowSet inSet, destSet, $u0;
         java.lang.Object $stack11;
         soot.ValueBox defBox;
         soot.Value $stack12;
@@ -136,8 +136,6 @@ public class pack.SimpleLiveVariablesAnalysis extends soot.toolkits.scalar.Backw
 
         specialinvoke $u0.<flowsets.LiveVariableFlowSet: void <init>()>();
 
-        kills = $u0;
-
         $stack8 = interfaceinvoke u.<soot.Unit: java.util.List getDefBoxes()>();
 
         defIt = interfaceinvoke $stack8.<java.util.List: java.util.Iterator iterator()>();
@@ -155,7 +153,7 @@ public class pack.SimpleLiveVariablesAnalysis extends soot.toolkits.scalar.Backw
 
         $u1 = new pack.SimpleLiveVariablesAnalysis$1;
 
-        specialinvoke $u1.<pack.SimpleLiveVariablesAnalysis$1: void <init>(pack.SimpleLiveVariablesAnalysis,flowsets.LiveVariableFlowSet,soot.ValueBox,flowsets.LiveVariableFlowSet)>(this, inSet, defBox, kills);
+        specialinvoke $u1.<pack.SimpleLiveVariablesAnalysis$1: void <init>(pack.SimpleLiveVariablesAnalysis,flowsets.LiveVariableFlowSet,soot.ValueBox,flowsets.LiveVariableFlowSet)>(this, inSet, defBox, $u0);
 
         $r0 = (soot.util.Switch) $u1;
 
@@ -164,7 +162,7 @@ public class pack.SimpleLiveVariablesAnalysis extends soot.toolkits.scalar.Backw
         goto label1;
 
      label2:
-        $r1 = (soot.toolkits.scalar.FlowSet) kills;
+        $r1 = (soot.toolkits.scalar.FlowSet) $u0;
 
         $r2 = (soot.toolkits.scalar.FlowSet) destSet;
 
