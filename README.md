@@ -21,6 +21,6 @@
 # 参考
 1. [Soot-wiki](https://github.com/soot-oss/soot/wiki)
 2. [Dr. Navid](https://github.com/noidsirius/SootTutorial)
-3. [Soot个人学习笔记系列](https://0range228.github.io/tags/Soot/)
+3. [Soot个人学习笔记系列](https://fynch3r.github.io/tags/Soot/)
 4. [NJU《软件分析》课程](https://pascal-group.bitbucket.io/teaching.html)
 5. [PKU《软件分析技术》课程](https://liveclass.org.cn/cloudCourse/#/courseDetail/8mI06L2eRqk8GcsW)
